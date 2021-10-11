@@ -14,6 +14,7 @@ import {
   // ListTitle
 } from './index.styled'
 import MenuComponent from './Menu'
+import LogoutButtonComponent from './LogoutButton'
 
 const SidebarComponent = () => {
   const [visible, setVisible] = useState(false)
@@ -59,6 +60,7 @@ const SidebarComponent = () => {
           </ListArea>
         ))} */}
         <MenuComponent />
+        <LogoutButtonComponent />
       </CustomDrawer>
     </>
   )
