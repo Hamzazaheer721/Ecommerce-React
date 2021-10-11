@@ -1,5 +1,6 @@
 {
-  "name": "vonage",
+  "name": "whatspays",
+  "homepage": "https://whatspays.org",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
