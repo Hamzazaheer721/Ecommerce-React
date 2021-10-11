@@ -1,9 +1,6 @@
 import Drawer from 'antd/lib/drawer'
 import styled from 'styled-components'
-import {
-  CloseOutlined,
-  StepForwardOutlined
-} from '@ant-design/icons'
+import { CloseOutlined, StepForwardOutlined } from '@ant-design/icons'
 
 export const CustomDrawer = styled(Drawer)`
   .ant-drawer-body {
@@ -11,17 +8,17 @@ export const CustomDrawer = styled(Drawer)`
   }
   .ant-drawer-content {
     border-radius: 0px 15px 15px 0px;
-    background: #ffffff 0% 0% no-repeat padding-box;
+    background: ${(props) => props.theme.color.white} 0% 0% no-repeat
+      padding-box;
   }
 `
 export const Header = styled.p`
-  background-color: #1b9bd7;
+  background-color: ${(props) => props.theme.sidebarColor.blue};
   padding: 10px;
   margin-bottom: 27px;
 `
 
 export const CrossIcon = styled(CloseOutlined)`
-  color: #1b9bd7;
   float: right;
   padding: 5px;
   background-color: white;

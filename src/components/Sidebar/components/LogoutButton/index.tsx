@@ -1,7 +1,8 @@
 import { LogoutOutlined } from '@ant-design/icons'
+import { memo } from 'react'
 import { LogoutButton, WrapContainer } from './index.styled'
 
-const LogoutButtonComponent = () => (
+const LogoutButtonComponent = memo(() => (
   <>
     <WrapContainer>
       <LogoutButton>
@@ -10,6 +11,5 @@ const LogoutButtonComponent = () => (
       </LogoutButton>
     </WrapContainer>
   </>
-)
-
+))
 export default LogoutButtonComponent

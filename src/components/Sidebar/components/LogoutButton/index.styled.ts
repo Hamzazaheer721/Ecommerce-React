@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { device } from '../../../styles/devices'
+import { device } from '../../../../styles/devices'
 
 export const LogoutButton = styled.button`
   padding: 8px 80px;

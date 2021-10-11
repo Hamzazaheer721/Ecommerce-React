@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import { Button } from 'antd'
+/* eslint-disable react/require-default-props */
+import { FC, memo } from 'react'
+// import { Button } from 'antd'
 // import { TabList } from './helper'
 import 'antd/dist/antd.css'
 import {
@@ -13,29 +14,22 @@ import {
   // ListIcon,
   // ListTitle
 } from './index.styled'
-import MenuComponent from './Menu'
-import LogoutButtonComponent from './LogoutButton'
+import MenuComponent from './components/Menu'
+import LogoutButtonComponent from './components/LogoutButton'
+import AboutWhatsPaysComponent from './components/AboutWhatsPays'
 
-const SidebarComponent = () => {
-  const [visible, setVisible] = useState(false)
+interface ISidebarComponentProps {
+  visible: boolean
+  handleDrawer: () => void
+}
 
-  const showDrawer = () => {
-    setVisible(true)
-  }
-
-  const onClose = () => {
-    setVisible(false)
-  }
-
-  return (
+const SidebarComponent: FC<ISidebarComponentProps> = memo(
+  ({ visible, handleDrawer }: ISidebarComponentProps) => (
     <>
-      <Button type="primary" onClick={showDrawer}>
-        Open
-      </Button>
       <CustomDrawer
         placement="left"
         closable={false}
-        onClose={onClose}
+        onClose={handleDrawer}
         visible={visible}
       >
         <Header>
@@ -61,9 +55,10 @@ const SidebarComponent = () => {
         ))} */}
         <MenuComponent />
         <LogoutButtonComponent />
+        <AboutWhatsPaysComponent />
       </CustomDrawer>
     </>
   )
-}
+)
 
 export default SidebarComponent

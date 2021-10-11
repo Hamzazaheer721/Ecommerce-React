@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { memo } from 'react'
 import { Menu } from 'antd'
 import {
   SettingOutlined,
@@ -13,25 +14,17 @@ import { SubMenuItem } from './index.styled'
 const { SubMenu } = Menu
 // const rootSubmenuKeys = ['sub1', 'sub2', 'sub4']
 
-const MenuComponent = () => {
+const MenuComponent = memo(() => {
   return (
     <>
-      <Menu
-        style={{ width: 250 }}
-        defaultOpenKeys={['']}
-        mode="inline"
-      >
+      <Menu style={{ width: 250 }} defaultOpenKeys={['']} mode="inline">
         <Menu.Item key="1" icon={<UserOutlined />}>
           Profile
         </Menu.Item>
         <Menu.Item key="2" icon={<DashboardOutlined />}>
           Dashboard
         </Menu.Item>
-        <SubMenu
-          key="sub4"
-          icon={<SettingOutlined />}
-          title="Business Profile"
-        >
+        <SubMenu key="sub4" icon={<SettingOutlined />} title="Business Profile">
           <SubMenuItem icon={<PlusOutlined />} key="15">
             Create
           </SubMenuItem>
@@ -78,6 +71,5 @@ const MenuComponent = () => {
       </Menu>
     </>
   )
-}
-
+})
 export default MenuComponent

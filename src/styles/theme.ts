@@ -21,7 +21,10 @@ export const defaultTheme: any = {
     blueInfo: '#1E7FE0'
   },
   sidebarColor: {
-    blue: '#1B9BD7'
+    blue: '#1B9BD7',
+    tabBackground: '#EEEEEE',
+    aboutBannerBackground: '#F2F4FF',
+    darkBlue: '#243D82',
+    lightBlue: '#1C9CD8'
   }
-
 }

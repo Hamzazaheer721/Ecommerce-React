@@ -1,12 +1,12 @@
-import { FC } from 'react';
-import { Container, WelcomeText } from './index.styled';
+import { FC } from 'react'
+import HeaderComponent from '../Header'
+import { Container, WelcomeText } from './index.styled'
 
 const WelcomeComponent: FC<{}> = () => (
   <Container>
-    <WelcomeText>
-      Hey
-    </WelcomeText>
+    <HeaderComponent />
+    <WelcomeText>Hey</WelcomeText>
   </Container>
 )
 
-export default WelcomeComponent;
+export default WelcomeComponent
