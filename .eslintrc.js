@@ -24,12 +24,11 @@ module.exports = {
     semi: 0,
     'react/jsx-filename-extension': [
       1,
-      {
-        extensions: ['.js', '.jsx', '.ts', '.tsx']
-      }
+      { extensions: ['.js', '.jsx', '.ts', '.tsx'] }
     ],
     'comma-dangle': ['error', 'never'],
     'react/react-in-jsx-scope': 'off',
+    'import/prefer-default-export': 'off',
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
     '@typescript-eslint/no-shadow': ['error'],
