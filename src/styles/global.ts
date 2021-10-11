@@ -6,5 +6,6 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     min-height: 100%;
     font-family: "Roboto", sans-serif;
+    background-color: #F2F4FF;
   }
 `
