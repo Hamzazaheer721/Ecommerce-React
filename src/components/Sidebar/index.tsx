@@ -1,5 +1,6 @@
 /* eslint-disable react/require-default-props */
 import { FC, memo } from 'react'
+import { CloseOutlined } from '@ant-design/icons'
 // import { Button } from 'antd'
 // import { TabList } from './helper'
 import 'antd/dist/antd.css'
@@ -33,7 +34,9 @@ const SidebarComponent: FC<ISidebarComponentProps> = memo(
         visible={visible}
       >
         <Header>
-          <CrossIcon />
+          <CrossIcon>
+            <CloseOutlined />
+          </CrossIcon>
           <br />
           <HeaderArea>
             <HeaderAreaImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" />
