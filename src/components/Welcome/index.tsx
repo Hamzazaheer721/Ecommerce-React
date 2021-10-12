@@ -1,10 +1,10 @@
 import { FC, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { State } from '../../redux/reducers';
-import { Container, WelcomeText } from './index.styled';
 
 import * as bankActions from '../../redux/actions/bankActions'
+import { State } from '../../redux/reducers';
+import { Container, WelcomeText } from './index.styled';
 
 const WelcomeComponent: FC<{}> = memo(() => {
   const dispatch = useDispatch();
