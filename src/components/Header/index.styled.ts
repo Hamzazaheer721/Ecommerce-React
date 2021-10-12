@@ -23,6 +23,8 @@ export const ArrowLeftIcon = styled(ArrowLeftOutlined)`
     svg {
       fill: ${(props) => props.theme.color.primary};
       margin: auto 10px;
+      font-size: 1.2rem;
+      margin: 1px 10px 0 10px;
     }
   }
 `

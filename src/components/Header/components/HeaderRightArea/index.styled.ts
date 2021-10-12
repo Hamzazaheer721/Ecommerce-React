@@ -13,8 +13,8 @@ export const SearchIconStyle = styled(SearchOutlined)`
   &.anticon {
     svg {
       fill: ${(props) => props.theme.color.primary};
-      margin: auto 10px;
-      font-size: 1.1rem;
+      margin: 1px 10px 0 10px;
+      font-size: 1.2rem;
     }
   }
 `
@@ -22,8 +22,8 @@ export const BellhIconStyle = styled(BellOutlined)`
   &.anticon {
     svg {
       fill: ${(props) => props.theme.color.primary};
-      margin: auto 10px;
-      font-size: 1.1rem;
+      margin: 0 10px;
+      font-size: 1.2rem;
     }
   }
 `

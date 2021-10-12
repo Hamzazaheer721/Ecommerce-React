@@ -13,6 +13,7 @@ export const defaultTheme: any = {
     gray: '#DDDDDD', // inputfield
     red: '#FF3E2C',
     darkBlue: '#243D82',
+    darkGray: '#6E6E6E', // paragraph
     blackLighter: '#333333' // for cross icon border and stroke
   },
   messagesColor: {
