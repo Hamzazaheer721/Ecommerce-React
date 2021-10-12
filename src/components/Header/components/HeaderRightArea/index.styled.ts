@@ -34,4 +34,5 @@ export const ProfileImage = styled.img`
   width: 1.4rem;
   margin-top: -7px;
   margin-left: 10px;
+  cursor: pointer;
 `

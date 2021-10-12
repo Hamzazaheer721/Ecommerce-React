@@ -25,29 +25,31 @@ interface ISidebarComponentProps {
 }
 
 const SidebarComponent: FC<ISidebarComponentProps> = memo(
-  ({ visible, handleDrawer }: ISidebarComponentProps) => (
-    <>
-      <CustomDrawer
-        placement="left"
-        closable={false}
-        onClose={handleDrawer}
-        visible={visible}
-      >
-        <Header>
-          <CrossIcon>
-            <CloseOutlined />
-          </CrossIcon>
-          <br />
-          <HeaderArea>
-            <HeaderAreaImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" />
-            <HeaderAreaH1>
-              Glen Maxwel l
-              <br />
-              0322-4991944
-            </HeaderAreaH1>
-          </HeaderArea>
-        </Header>
-        {/* {TabList.map((item) => (
+  ({ visible, handleDrawer }: ISidebarComponentProps) => {
+    console.info('I am rendered')
+    return (
+      <>
+        <CustomDrawer
+          placement="left"
+          closable={false}
+          onClose={handleDrawer}
+          visible={visible}
+        >
+          <Header>
+            <CrossIcon>
+              <CloseOutlined />
+            </CrossIcon>
+            <br />
+            <HeaderArea>
+              <HeaderAreaImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" />
+              <HeaderAreaH1>
+                Glen Maxwel l
+                <br />
+                0322-4991944
+              </HeaderAreaH1>
+            </HeaderArea>
+          </Header>
+          {/* {TabList.map((item) => (
           <ListArea>
             <ListIcon>
               {' '}
@@ -56,12 +58,13 @@ const SidebarComponent: FC<ISidebarComponentProps> = memo(
             <ListTitle>{item.title}</ListTitle>
           </ListArea>
         ))} */}
-        <MenuComponent />
-        <LogoutButtonComponent />
-        <AboutWhatsPaysComponent />
-      </CustomDrawer>
-    </>
-  )
+          <MenuComponent />
+          <LogoutButtonComponent />
+          <AboutWhatsPaysComponent />
+        </CustomDrawer>
+      </>
+    )
+  }
 )
 
 export default SidebarComponent

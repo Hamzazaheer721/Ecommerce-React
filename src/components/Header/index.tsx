@@ -22,12 +22,11 @@ const HeaderComponent = memo(() => {
       <HeaderContainer>
         <HeaderIconContainer onClick={handleDrawer}>
           <ArrowLeftIcon />
-          {visible && (
-            <SidebarComponent
-              handleDrawer={handleDrawer}
-              visible={visible}
-            />
-          )}
+
+          <SidebarComponent
+            handleDrawer={handleDrawer}
+            visible={visible}
+          />
         </HeaderIconContainer>
         <HeaderInputContainer>
           <InputComponent />
