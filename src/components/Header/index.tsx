@@ -4,9 +4,11 @@ import {
   HeaderContainer,
   HeaderIconContainer,
   HeaderInputContainer,
-  HeaderRightIconsContainer
+  HeaderRightIconsContainer,
+  ArrowLeftIcon
 } from './index.styled'
 import SidebarComponent from '../Sidebar'
+import HeaderRightComponent from './components/HeaderRightArea'
 
 const HeaderComponent = memo(() => {
   const [visible, setVisible] = useState<boolean>(false)
@@ -19,7 +21,7 @@ const HeaderComponent = memo(() => {
     <>
       <HeaderContainer>
         <HeaderIconContainer onClick={handleDrawer}>
-          Click me
+          <ArrowLeftIcon />
           {visible && (
             <SidebarComponent
               handleDrawer={handleDrawer}
@@ -31,7 +33,7 @@ const HeaderComponent = memo(() => {
           <InputComponent />
         </HeaderInputContainer>
         <HeaderRightIconsContainer>
-          icons
+          <HeaderRightComponent />
         </HeaderRightIconsContainer>
       </HeaderContainer>
     </>
