@@ -10,9 +10,10 @@ export const Container = styled.div`
   top: 50%;
   left: 50%;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `
 export const WelcomeText = styled.h1`
   color: black;
-  position: absolute; 
   font-size : 20px; 
 `
