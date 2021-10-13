@@ -1,6 +1,8 @@
 /* eslint-disable react/require-default-props */
 import { useState, memo } from 'react'
 import { CloseOutlined } from '@ant-design/icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/pro-light-svg-icons'
 import 'antd/dist/antd.css'
 import {
   CustomDrawer,
@@ -29,6 +31,7 @@ const SidebarComponent = memo(() => {
     <>
       <ArrowLeftIcon onClick={showDrawer} />
 
+      <FontAwesomeIcon icon={faCoffee} />
       <CustomDrawer
         placement="left"
         closable={false}
