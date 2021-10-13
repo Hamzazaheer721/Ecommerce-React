@@ -33,6 +33,8 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': ['error'],
     '@typescript-eslint/no-shadow': ['error'],
     'react/jsx-props-no-spreading': 'off',
+    camelcase: 'off',
+    '@typescript-eslint/camelcase': 'off',
     'linebreak-style': 0,
     'import/extensions': [
       'error',
