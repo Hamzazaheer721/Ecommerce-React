@@ -5,9 +5,11 @@ export const Container = styled.div<{
 }>`
   display: flex;
   justify-content: between;
-  width: 350px;
+  /* width: 100%; */
   word-wrap: break-word;
   white-space: initial;
+  padding: 2px 10px;
+
   background-color: ${({ changeBackground }) =>
     // eslint-disable-next-line implicit-arrow-linebreak
     changeBackground && '#f8f8f8'};
@@ -15,6 +17,7 @@ export const Container = styled.div<{
     background-color: #f8f8f8;
   }
 `
+
 export const NameArea = styled.span`
   padding-top: 10px;
   margin-top: 5px;
@@ -24,7 +27,7 @@ export const NameArea = styled.span`
 export const Name = styled.span`
   padding: 0px 10px 6px 10px;
   border-radius: 50%;
-  font-size: 170%;
+  font-size: 150%;
   color: white;
 `
 
@@ -33,14 +36,15 @@ export const NotificationArea = styled.p`
   flex-grow: 11;
 `
 export const OrderTitle = styled.p`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
-  margin-bottom: 7px;
+  margin-bottom: 2px;
   margin-top: 8px;
   color: #6e6e6e;
 `
 export const OrderDescriptioon = styled.p`
   color: ${(props) => props.theme.color.darkGray};
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 0;
+  line-height: 18px;
 `

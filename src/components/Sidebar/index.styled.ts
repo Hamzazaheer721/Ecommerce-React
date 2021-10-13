@@ -2,7 +2,8 @@ import Drawer from 'antd/lib/drawer'
 import styled from 'styled-components'
 import {
   CloseOutlined,
-  StepForwardOutlined
+  StepForwardOutlined,
+  ArrowLeftOutlined
 } from '@ant-design/icons'
 
 export const CustomDrawer = styled(Drawer)`
@@ -94,4 +95,15 @@ export const ListTitle = styled.p`
   margin-bottom: 0;
 `
 
+export const ArrowLeftIcon = styled(ArrowLeftOutlined)`
+  &.anticon {
+    svg {
+      fill: ${(props) => props.theme.color.primary};
+      margin: auto 10px;
+      font-size: 1.2rem;
+      margin: 1px 10px 0 10px;
+      cursor: pointer;
+    }
+  }
+`
 export default {}

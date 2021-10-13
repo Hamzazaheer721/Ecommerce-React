@@ -1,12 +1,17 @@
-import 'antd/dist/antd.css'
+/* eslint-disable arrow-body-style */
+
 import { Menu, Dropdown } from 'antd'
+import ButtonComponent from '../../../button'
+import NotificationComponent from './NotificationsComponent'
+import { userNotifications } from './Helper'
 import {
   SearchIconStyle,
   BellhIconStyle,
   ProfileImage,
-  Container
+  Container,
+  CustomMenu,
+  ButtonContainer
 } from './index.styled'
-import NotificationComponent from './NitificationsComponent'
 
 const menu = (
   <Menu>
@@ -40,12 +45,27 @@ const menu = (
   </Menu>
 )
 
-const menu2 = (
-  <Menu>
-    <Menu.Item>
-      <NotificationComponent colorNew="#243d82" />
-    </Menu.Item>
-  </Menu>
+const NotificationsMenu = (
+  <CustomMenu>
+    {userNotifications.map((userNotification, index) => {
+      if (index <= 3) {
+        return (
+          <CustomMenu.Item>
+            <NotificationComponent
+              nameColor="#243d82"
+              giveBackgrounColor={!!(index % 2)}
+            />
+          </CustomMenu.Item>
+        )
+      }
+      return null
+    })}
+    {userNotifications.length >= 3 && (
+      <ButtonContainer>
+        <ButtonComponent />
+      </ButtonContainer>
+    )}
+  </CustomMenu>
 )
 
 const HeaderRightComponent = () => (
@@ -53,7 +73,7 @@ const HeaderRightComponent = () => (
     <Container>
       <SearchIconStyle />
       <Dropdown
-        overlay={menu2}
+        overlay={NotificationsMenu}
         placement="bottomLeft"
         trigger={['click']}
         arrow

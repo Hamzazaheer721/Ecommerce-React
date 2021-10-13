@@ -1,4 +1,4 @@
-export const userNotification = [
+export const userNotifications = [
   {
     orderId: '#WPDEMO237',
     orderDescription:
@@ -18,9 +18,27 @@ export const userNotification = [
     color: 'skyblue'
   },
   {
-    orderId: '#WPPOMO2291937',
+    orderId: '#WOSE637227',
     orderDescription:
       'Great choice. Your order from WhatsPays has been placed. Your order will be delivered shortly after confirmation.',
-    color: 'green'
+    color: 'blue'
+  },
+  {
+    orderId: '#WTR8762937',
+    orderDescription:
+      'Great choice. Your order from WhatsPays has been placed. Your order will be delivered shortly after confirmation.',
+    color: 'skyblue'
+  },
+  {
+    orderId: '#WTR8762937',
+    orderDescription:
+      'Great choice. Your order from WhatsPays has been placed. Your order will be delivered shortly after confirmation.',
+    color: 'skyblue'
+  },
+  {
+    orderId: '#WTR8762937',
+    orderDescription:
+      'Great choice. Your order from WhatsPays has been placed. Your order will be delivered shortly after confirmation.',
+    color: 'skyblue'
   }
 ]
