@@ -11,7 +11,7 @@ export const signUpUser = createAsyncThunk(
       url: `${SERVER_IP}`,
       data: user
     }).then((res) => {
-
-    })
+      console.info('response', res)
+    }).catch((err) => console.error(err))
   }
 )
