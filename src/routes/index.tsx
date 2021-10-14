@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Login from './login';
-import Welcome from './welcome';
+import Login from '../pages/login';
+import Welcome from '../pages/welcome';
 
 const RouterComponent = () => (
   <div>
