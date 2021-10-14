@@ -31,7 +31,7 @@ const Login: FC = memo(() => (
       </CheckboxContainer>
     </InputFieldsContainer>
 
-    <Button label="click me" icon={faUser} />
+    <Button label="Login" icon={faUser} />
   </InputContainer>
 ));
 

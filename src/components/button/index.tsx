@@ -1,6 +1,8 @@
 import { FC, memo } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { Container, CustomButton, IconStyler } from './index.styled';
+import {
+  Container, CustomButton, IconStyler
+} from './index.styled';
 
 interface IButtonProps {
   label: string
