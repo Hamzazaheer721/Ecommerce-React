@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const InputContainer = styled.div`
   display: flex;
@@ -10,7 +11,12 @@ export const InputContainer = styled.div`
   padding-bottom: 200px;
   margin: auto;
 `
-
+export const HeadingsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 80px;
+  text-align:center;
+`
 export const Heading = styled.div`
   color: ${(props) => props.theme.color.primary};
   font-size: 30px;
@@ -22,7 +28,6 @@ export const SubHeading = styled.div`
   font-size: 16px;
   letter-spacing: 0.7px; 
   margin-top: 13px;
-  margin-bottom: 80px;
 `
 
 export const InputFieldsContainer = styled.div`
@@ -51,6 +56,9 @@ export const CheckboxPlaceholder = styled.p`
   text-align: left;
   letter-spacing: 0px;
   padding-left: 6px;
-  padding-top: 1px;
+  padding-top: 10px;
   font-size: 12px;
+`
+export const UserButton = styled(FontAwesomeIcon)`
+  
 `

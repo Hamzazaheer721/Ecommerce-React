@@ -32,6 +32,8 @@ module.exports = {
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
     '@typescript-eslint/no-shadow': ['error'],
+    'react/require-default-props': 'off',
+    'react/prop-types': 'off',
     'react/jsx-props-no-spreading': 'off',
     camelcase: 'off',
     '@typescript-eslint/camelcase': 'off',

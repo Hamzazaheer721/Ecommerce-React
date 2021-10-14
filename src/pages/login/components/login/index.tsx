@@ -1,20 +1,25 @@
 import { FC, memo } from 'react'
+import { faUser } from '@fortawesome/pro-light-svg-icons';
+import Button from '../../../../components/button';
 import Input from '../../../../components/input';
+
 import {
   CheckboxContainer,
   CheckboxPlaceholder,
   CustomCheckBox,
-  Heading, InputContainer, InputFieldsContainer, MarginDiv, SubHeading
+  Heading, HeadingsContainer, InputContainer, InputFieldsContainer, MarginDiv, SubHeading
 } from './index.styled';
 
 const Login: FC = memo(() => (
   <InputContainer>
-    <Heading>
-      Welcome Back
-    </Heading>
-    <SubHeading>
-      Please login to your account
-    </SubHeading>
+    <HeadingsContainer>
+      <Heading>
+        Welcome Back
+      </Heading>
+      <SubHeading>
+        Please login to your account
+      </SubHeading>
+    </HeadingsContainer>
     <InputFieldsContainer>
       <Input />
       <MarginDiv />
@@ -25,6 +30,8 @@ const Login: FC = memo(() => (
         <CheckboxPlaceholder>Remember me</CheckboxPlaceholder>
       </CheckboxContainer>
     </InputFieldsContainer>
+
+    <Button label="click me" icon={faUser} />
   </InputContainer>
 ));
 
