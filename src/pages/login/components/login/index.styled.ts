@@ -2,25 +2,27 @@ import styled from 'styled-components';
 
 export const InputContainer = styled.div`
   display: flex;
+  box-sizing: border-box;
   flex-direction: column;
   min-height: 100vh;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  padding-bottom: 200px;
   margin: auto;
 `
 
 export const Heading = styled.div`
   color: ${(props) => props.theme.color.primary};
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 700;
 `
 
 export const SubHeading = styled.div`
   color : ${(props) => props.theme.color.secondary};
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 0.7px; 
   margin-top: 13px;
-  margin-bottom: 40px;
+  margin-bottom: 80px;
 `
 
 export const InputFieldsContainer = styled.div`

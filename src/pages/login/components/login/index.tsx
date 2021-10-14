@@ -25,7 +25,6 @@ const Login: FC = memo(() => (
         <CheckboxPlaceholder>Remember me</CheckboxPlaceholder>
       </CheckboxContainer>
     </InputFieldsContainer>
-
   </InputContainer>
 ));
 
