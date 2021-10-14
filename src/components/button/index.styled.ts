@@ -9,13 +9,13 @@ export const Container = styled.div`
   width: 200px;
   .ant-btn{
     color: ${(props) => props.theme.color.white};
-    background-color: ${(props) => props.theme.color.primary};
+    background: linear-gradient(270deg,#1A87BB, #1B9BD7);
     border: none;
     border-radius: 20px;
     width: 100%;
-    &:hover {
+    &:hover, &:focus, &:active {
       color: ${(props) => props.theme.color.white};
-      background-color: ${(props) => props.theme.color.primary};
+      background: linear-gradient(270deg,#1A87BB, #1B9BD7);
     }
   }
 `
