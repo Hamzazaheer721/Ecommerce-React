@@ -1,5 +1,5 @@
 import { FC, memo } from 'react'
-import Input from '../input';
+import Input from '../../../../components/input';
 import {
   CheckboxContainer,
   CheckboxPlaceholder,
