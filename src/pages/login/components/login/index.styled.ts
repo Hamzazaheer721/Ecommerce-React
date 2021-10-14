@@ -34,6 +34,8 @@ export const InputFieldsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-bottom: 20px;
+
 `
 export const MarginDiv = styled.div`
   visibility: hidden;
@@ -42,7 +44,6 @@ export const MarginDiv = styled.div`
 export const CheckboxContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
 `
 
 export const CustomCheckBox = styled.input`
@@ -60,5 +61,4 @@ export const CheckboxPlaceholder = styled.p`
   font-size: 12px;
 `
 export const UserButton = styled(FontAwesomeIcon)`
-  
 `

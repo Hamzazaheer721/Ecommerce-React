@@ -1,19 +1,19 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FC, memo } from 'react';
-import { CustomButton } from './index.styled';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { Container, CustomButton, IconStyler } from './index.styled';
 
 interface IButtonProps {
   label: string
-  icon: any
+  icon: IconProp
 }
 
 const Button: FC<IButtonProps> = memo(({ label, icon }: IButtonProps) => (
-
-  <CustomButton>
-    <FontAwesomeIcon icon={icon} />
-    {label}
-  </CustomButton>
-
+  <Container>
+    <CustomButton>
+      <IconStyler icon={icon} />
+      {label}
+    </CustomButton>
+  </Container>
 ));
 
 export default Button;
