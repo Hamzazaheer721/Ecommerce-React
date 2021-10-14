@@ -1,7 +1,12 @@
-import { CardContainer } from './index.styled'
+import {
+  CardContainer,
+  GroupContainer
+} from './index.styled'
 
 const StoreCardComponent = () => (
-  <CardContainer>test</CardContainer>
+  <CardContainer>
+    <GroupContainer> test</GroupContainer>
+  </CardContainer>
 )
 
 export default StoreCardComponent

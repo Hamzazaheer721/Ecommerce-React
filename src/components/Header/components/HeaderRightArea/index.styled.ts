@@ -75,7 +75,7 @@ export const BellhIconStyle = styled(BellOutlined)`
 
 export const ProfileImage = styled.img`
   border-radius: 50%;
-  width: 1.4rem;
+  width: 1.6rem;
   margin-left: 10px;
   cursor: pointer;
 `
@@ -83,4 +83,8 @@ export const ButtonContainer = styled.div`
   width: 100%;
   text-align: center;
   padding: 10px 0 7px 0;
+`
+
+export const IconContainer = styled.div`
+  margin-right: 15px;
 `

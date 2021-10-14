@@ -1,38 +1,60 @@
 /* eslint-disable */
 import { memo } from 'react'
 import { Menu } from 'antd'
+
 import {
-  SettingOutlined,
-  PlusOutlined,
-  EyeOutlined,
-  UserOutlined,
-  DashboardOutlined
-} from '@ant-design/icons'
+  faUser,
+  faTachometerAltFast,
+  faFileUser,
+  faPlus,
+  faEye,
+  faBellOn,
+  faSlidersV,
+  faTasks,
+  faFileAlt,
+  faFile,
+  faCommentsAlt,
+  faUsers,
+  faListUl,
+  faBox,
+  faUserFriends,
+  faUserGraduate,
+  faBadgeCheck
+} from '@fortawesome/pro-light-svg-icons'
 import 'antd/dist/antd.css'
-import { SubMenuItem } from './index.styled'
-import StyledIconComponent from './styleIcon'
+import {
+  SubMenuItem,
+  CustomMenu,
+  IconContainer
+} from './index.styled'
+import Icon from '../../../icon'
 
 const { SubMenu } = Menu
-// const rootSubmenuKeys = ['sub1', 'sub2', 'sub4']
 
 const MenuComponent = memo(() => {
   return (
     <>
-      <Menu
+      <CustomMenu
         style={{ width: 250 }}
         defaultOpenKeys={['']}
         mode="inline"
       >
         <Menu.Item
           key="1"
-          icon={<StyledIconComponent Icon={UserOutlined} />}
+          icon={
+            <IconContainer>
+              <Icon icon={faUser} />
+            </IconContainer>
+          }
         >
           Profile
         </Menu.Item>
         <Menu.Item
           key="2"
           icon={
-            <StyledIconComponent Icon={DashboardOutlined} />
+            <IconContainer>
+              <Icon icon={faTachometerAltFast} />
+            </IconContainer>
           }
         >
           Dashboard
@@ -40,13 +62,17 @@ const MenuComponent = memo(() => {
         <SubMenu
           key="sub4"
           icon={
-            <StyledIconComponent Icon={SettingOutlined} />
+            <IconContainer>
+              <Icon icon={faFileUser} />
+            </IconContainer>
           }
           title="Business Profile"
         >
           <SubMenuItem
             icon={
-              <StyledIconComponent Icon={PlusOutlined} />
+              <IconContainer>
+                <Icon icon={faPlus} />
+              </IconContainer>
             }
             key="15"
           >
@@ -54,7 +80,9 @@ const MenuComponent = memo(() => {
           </SubMenuItem>
           <SubMenuItem
             icon={
-              <StyledIconComponent Icon={EyeOutlined} />
+              <IconContainer>
+                <Icon icon={faEye} />
+              </IconContainer>
             }
             key="16"
           >
@@ -64,7 +92,9 @@ const MenuComponent = memo(() => {
         <Menu.Item
           key="3"
           icon={
-            <StyledIconComponent Icon={DashboardOutlined} />
+            <IconContainer>
+              <Icon icon={faBellOn} />
+            </IconContainer>
           }
         >
           Subscription
@@ -72,7 +102,9 @@ const MenuComponent = memo(() => {
         <Menu.Item
           key="4"
           icon={
-            <StyledIconComponent Icon={DashboardOutlined} />
+            <IconContainer>
+              <Icon icon={faSlidersV} />
+            </IconContainer>
           }
         >
           Orders
@@ -80,7 +112,9 @@ const MenuComponent = memo(() => {
         <Menu.Item
           key="5"
           icon={
-            <StyledIconComponent Icon={DashboardOutlined} />
+            <IconContainer>
+              <Icon icon={faTasks} />
+            </IconContainer>
           }
         >
           Invoices
@@ -88,7 +122,9 @@ const MenuComponent = memo(() => {
         <Menu.Item
           key="6"
           icon={
-            <StyledIconComponent Icon={DashboardOutlined} />
+            <IconContainer>
+              <Icon icon={faFileAlt} />
+            </IconContainer>
           }
         >
           Transitions
@@ -96,7 +132,9 @@ const MenuComponent = memo(() => {
         <Menu.Item
           key="7"
           icon={
-            <StyledIconComponent Icon={DashboardOutlined} />
+            <IconContainer>
+              <Icon icon={faFile} />
+            </IconContainer>
           }
         >
           Chat
@@ -104,7 +142,9 @@ const MenuComponent = memo(() => {
         <Menu.Item
           key="8"
           icon={
-            <StyledIconComponent Icon={DashboardOutlined} />
+            <IconContainer>
+              <Icon icon={faUsers} />
+            </IconContainer>
           }
         >
           Users
@@ -112,7 +152,9 @@ const MenuComponent = memo(() => {
         <Menu.Item
           key="9"
           icon={
-            <StyledIconComponent Icon={DashboardOutlined} />
+            <IconContainer>
+              <Icon icon={faCommentsAlt} />
+            </IconContainer>
           }
         >
           Categories
@@ -120,40 +162,54 @@ const MenuComponent = memo(() => {
         <Menu.Item
           key="10"
           icon={
-            <StyledIconComponent Icon={DashboardOutlined} />
+            <IconContainer>
+              <Icon icon={faListUl} />
+            </IconContainer>
           }
         >
           Products
         </Menu.Item>
         <Menu.Item
           key="11"
-          icon={<StyledIconComponent Icon={UserOutlined} />}
+          icon={
+            <IconContainer>
+              <Icon icon={faBox} />
+            </IconContainer>
+          }
         >
           Classes
         </Menu.Item>
         <Menu.Item
           key="12"
           icon={
-            <StyledIconComponent Icon={DashboardOutlined} />
+            <IconContainer>
+              <Icon icon={faUserFriends} />
+            </IconContainer>
           }
         >
           Students
         </Menu.Item>
         <Menu.Item
           key="13"
-          icon={<StyledIconComponent Icon={UserOutlined} />}
+          icon={
+            <IconContainer>
+              <Icon icon={faUserGraduate} />
+            </IconContainer>
+          }
         >
           Deals/Promotions
         </Menu.Item>
         <Menu.Item
           key="14"
           icon={
-            <StyledIconComponent Icon={DashboardOutlined} />
+            <IconContainer>
+              <Icon icon={faBadgeCheck} />
+            </IconContainer>
           }
         >
           Voucher
         </Menu.Item>
-      </Menu>
+      </CustomMenu>
     </>
   )
 })

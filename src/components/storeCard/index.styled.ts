@@ -8,3 +8,10 @@ export const CardContainer = styled.div`
   margin-right: auto;
   margin-left: auto;
 `
+
+export const GroupContainer = styled.div`
+  position: relative;
+  border-radius: 7px;
+  row-gap: 0.25rem;
+  cursor: pointer;
+`

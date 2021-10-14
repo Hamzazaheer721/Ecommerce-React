@@ -1,10 +1,12 @@
 import { FC } from 'react'
 
-import WelcomeComponent from '../../components/Welcome'
+import HeaderComponent from '../../components/Header'
+import StoreCardComponent from '../../components/storeCard'
 
 const ViewComponent: FC<{}> = () => (
   <>
-    <WelcomeComponent />
+    <HeaderComponent />
+    <StoreCardComponent />
   </>
 )
 
