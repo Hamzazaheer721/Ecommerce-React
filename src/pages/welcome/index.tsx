@@ -4,7 +4,7 @@ import Loader from '../../components/loader';
 const LazyView = lazy(() => import('./view'))
 
 const Welcome: FC<{}> = (props) => (
-  <Suspense fallback={Loader}>
+  <Suspense fallback={<Loader />}>
     <LazyView {...props} />
   </Suspense>
 )
