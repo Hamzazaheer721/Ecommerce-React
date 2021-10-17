@@ -15,9 +15,9 @@ import {
 
 const Login: FC = memo(() => {
   const {
-    handleSubmit, handleChange, errors
+    handleSubmit, handleChange, errors, inputData
   } = useFormLogin();
-
+  const { password } = inputData
   const { emailError, passwordError } = errors;
 
   const emailFieldRef = useRef<HTMLInputElement>(null)
@@ -43,7 +43,7 @@ const Login: FC = memo(() => {
           <MarginDiv />
         )}
         <InputContainer>
-          <Input ref={passwordFieldRef} label="Please enter your passwrod" name="password" value={passwordFieldRef && passwordFieldRef.current?.value} handleChange={handleChange} />
+          <Input ref={passwordFieldRef} label="Please enter your passwrod" name="password" value={password} handleChange={handleChange} />
         </InputContainer>
         {passwordError ? (
           <h1>{passwordError}</h1>

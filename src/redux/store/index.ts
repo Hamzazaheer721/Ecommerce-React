@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { userSignupSlice } from '../features/userSignupSlice';
+// import { userSignupSlice } from '../features/userSignupSlice';
+import logger from 'redux-logger';
+import { reducer } from '../reducers';
 
 export const store = configureStore({
-  reducer: {
-    userSignup: userSignupSlice.reducer
-  }
+  reducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
 });
 
 export type RootState = ReturnType<typeof store.getState>
