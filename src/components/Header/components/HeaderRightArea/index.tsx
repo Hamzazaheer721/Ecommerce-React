@@ -7,7 +7,7 @@ import {
   faBell
 } from '@fortawesome/pro-light-svg-icons'
 import ButtonComponent from '../../../button'
-import NotificationComponent from './NotificationsComponent'
+import NotificationComponent from './notificationsComponent'
 import { userNotifications } from './Helper'
 import {
   ProfileImage,

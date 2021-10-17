@@ -5,9 +5,9 @@ import {
   faTimes
 } from '@fortawesome/pro-light-svg-icons'
 import { ThemeContext } from 'styled-components'
-import MenuComponent from './components/Menu'
-import LogoutButtonComponent from './components/LogoutButton'
-import AboutWhatsPaysComponent from './components/AboutWhatsPays'
+import MenuComponent from './components/menu'
+import LogoutButtonComponent from './components/logoutButton'
+import AboutWhatsPaysComponent from './components/aboutWhatsPays'
 import Icon from '../icon'
 import 'antd/dist/antd.css'
 import {
