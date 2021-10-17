@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 // import { ILoginUserTypes } from './index';
 import { Instance } from '../../../config/axios';
 import { SERVER_IP } from '../../../config/constants';
+import { userSignupSlice } from '../userSignupSlice';
 // import { userSignupSlice } from '../userSignupSlice';
 
 export const loginUser = createAsyncThunk(('user-signin/loginUser'), async ({ name, password }:ILoginUserTypes, thunkAPI) => {
@@ -34,9 +35,9 @@ export interface ILoginUserTypes {
   loading?: boolean,
   success?: boolean,
   error?: boolean,
-  message: string
+  message?: string
 }
-export const initialState = {
+export const initialState: ILoginUserTypes = {
   name: '',
   password: '',
   loading: false,
@@ -56,5 +57,3 @@ export const userSigninSlice = createSlice({
 })
 
 // export const {} = userSignupSlice.actions;
-
-export default {}
