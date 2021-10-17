@@ -34,6 +34,7 @@ export const Name = styled.span`
 export const NotificationArea = styled.p`
   width: 150px;
   flex-grow: 11;
+  margin-bottom: 0.5rem;
 `
 export const OrderTitle = styled.p`
   font-size: 16px;
