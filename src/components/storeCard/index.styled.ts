@@ -145,3 +145,6 @@ export const Description = styled.p`
   white-space: nowrap;
   overflow: hidden;
 `
+export const ButtonsContainer = styled.p`
+  width: 100%;
+`

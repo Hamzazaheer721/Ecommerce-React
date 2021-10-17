@@ -21,7 +21,8 @@ import {
   IconContainer,
   BadgeAreaWraper,
   RatingIconStyle,
-  Description
+  Description,
+  ButtonsContainer
 } from './index.styled'
 
 const StoreCardComponent = memo(() => (
@@ -63,6 +64,9 @@ const StoreCardComponent = memo(() => (
         Chinese, Pakistani, Bakery, Pizza, Coffee, Cake
         Chinese, Pakistani, Bakery, Pizza, Coffee, Cake
       </Description>
+      <ButtonsContainer>
+        <p>whatspays</p>
+      </ButtonsContainer>
     </CardContainer>
   </>
 ))
