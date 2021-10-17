@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import HomeComponent from '../../components/newHome'
+import HomeComponent from '../../components/home'
 
 const ViewComponent: FC<{}> = () => <HomeComponent />
 

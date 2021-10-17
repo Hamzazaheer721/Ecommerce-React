@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import HeaderComponent from '../newHeader'
+import HeaderComponent from '../header'
 import { Container } from './index.styled'
 
 const HomeComponent: FC<{}> = () => (

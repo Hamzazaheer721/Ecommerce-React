@@ -1,12 +1,12 @@
 import { memo } from 'react'
-import InputComponent from './components/newInputField'
+import InputComponent from './components/inputField'
 import {
   HeaderContainer,
   HeaderIconContainer,
   HeaderInputContainer,
   HeaderRightIconsContainer
 } from './index.styled'
-import SidebarComponent from '../newSidebar'
+import SidebarComponent from '../sidebar'
 // import HeaderRightComponent from './components/headerRightArea'
 
 const HeaderComponent = memo(() => (
