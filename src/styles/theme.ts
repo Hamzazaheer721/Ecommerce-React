@@ -4,6 +4,7 @@ export const defaultTheme: any = {
     primary: '#1B9BD7',
     secondary: '#1D1D1D',
     DarkBlue: '#243D82',
+    lightBlue: '#DDEEFF',
     white: '#FFFFFF',
     black: '#000000',
     green: '#25D366',

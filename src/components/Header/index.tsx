@@ -1,13 +1,13 @@
 import { memo } from 'react'
-import InputComponent from './components/InputField'
+import InputComponent from './components/inputField'
 import {
   HeaderContainer,
   HeaderIconContainer,
   HeaderInputContainer,
   HeaderRightIconsContainer
 } from './index.styled'
-import SidebarComponent from '../Sidebar'
-import HeaderRightComponent from './components/HeaderRightArea'
+import SidebarComponent from '../sidebar'
+// import HeaderRightComponent from './components/headerRightArea'
 
 const HeaderComponent = memo(() => (
   <>
@@ -19,7 +19,7 @@ const HeaderComponent = memo(() => (
         <InputComponent />
       </HeaderInputContainer>
       <HeaderRightIconsContainer>
-        <HeaderRightComponent />
+        {/* <HeaderRightComponent /> */}
       </HeaderRightIconsContainer>
     </HeaderContainer>
   </>

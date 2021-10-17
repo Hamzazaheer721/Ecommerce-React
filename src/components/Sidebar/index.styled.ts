@@ -1,10 +1,7 @@
 import Drawer from 'antd/lib/drawer'
 import styled from 'styled-components'
-import {
-  CloseOutlined,
-  StepForwardOutlined,
-  ArrowLeftOutlined
-} from '@ant-design/icons'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const CustomDrawer = styled(Drawer)`
   .ant-drawer-content-wrapper {
@@ -37,17 +34,13 @@ export const Header = styled.p`
   margin-bottom: 27px;
 `
 
-export const CrossIcon = styled(CloseOutlined)`
+export const CrossIcon = styled.div`
   float: right;
-  padding: 5px;
+  padding: 4px 5px 1px 5px;
   background-color: white;
   border-radius: 50%;
   cursor: pointer;
-  &.anticon {
-    svg {
-      fill: ${(props) => props.theme.color.primary};
-    }
-  }
+  font-size: 10px;
 `
 
 export const HeaderArea = styled.p`
@@ -84,7 +77,7 @@ export const ListArea = styled.p`
   }
 `
 
-export const ListIcon = styled(StepForwardOutlined)`
+export const ListIcon = styled(FontAwesomeIcon)`
   flex: 1;
   margin-right: 5%;
   padding: 5px;
@@ -95,7 +88,7 @@ export const ListTitle = styled.p`
   margin-bottom: 0;
 `
 
-export const ArrowLeftIcon = styled(ArrowLeftOutlined)`
+export const ArrowLeftIcon = styled(FontAwesomeIcon)`
   &.anticon {
     svg {
       fill: ${(props) => props.theme.color.primary};

@@ -7,4 +7,10 @@ export const SubMenuItem = styled(Menu.Item)`
   }
 `
 
+export const CustomMenu = styled(Menu)``
+
+export const IconContainer = styled.div`
+  width: 30px;
+  text-align: center;
+`
 export default {}

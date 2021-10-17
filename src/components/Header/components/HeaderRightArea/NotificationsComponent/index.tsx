@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import {
   Container,
   Name,
@@ -12,8 +12,7 @@ import {
 const NotificationComponent: FC<{
   nameColor: string
   giveBackgrounColor: boolean
-}> = ({ nameColor, giveBackgrounColor }) => {
-  console.info('hey')
+}> = memo(({ nameColor, giveBackgrounColor }) => {
   return (
     <>
       <Container changeBackground={giveBackgrounColor}>
@@ -33,6 +32,5 @@ const NotificationComponent: FC<{
       </Container>
     </>
   )
-}
-
+})
 export default NotificationComponent

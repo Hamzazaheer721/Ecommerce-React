@@ -1,5 +1,5 @@
-import { SettingOutlined } from '@ant-design/icons'
 import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const AboutWhatsPaysContainer = styled.div`
   padding: 14px 0;
@@ -11,7 +11,7 @@ export const AboutWhatsPaysContainer = styled.div`
   font-weight: 700;
 `
 
-export const PIcon = styled(SettingOutlined)`
+export const PIcon = styled(FontAwesomeIcon)`
   margin: 0 5px;
 `
 export const WhatsText = styled.span`

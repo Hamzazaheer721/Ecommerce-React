@@ -1,11 +1,14 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
+import HeaderComponent from '../../components/header'
 
-import WelcomeComponent from '../../components/home'
+import StoreCardComponent from '../../components/storeCard'
+// import StoreCard2 from '../../components/storeCard2'
 
-const ViewComponent: FC<{}> = () => (
+const ViewComponent: FC<{}> = memo(() => (
   <>
-    <WelcomeComponent />
+    <HeaderComponent />
+    <StoreCardComponent />
+    {/* <StoreCard2 /> */}
   </>
-)
-
+))
 export default ViewComponent

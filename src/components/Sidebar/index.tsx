@@ -1,6 +1,19 @@
 /* eslint-disable react/require-default-props */
-import { useState, memo } from 'react'
-import { CloseOutlined } from '@ant-design/icons'
+import {
+  useState,
+  memo,
+  useContext,
+  useCallback
+} from 'react'
+import {
+  faBars,
+  faTimes
+} from '@fortawesome/pro-light-svg-icons'
+import { ThemeContext } from 'styled-components'
+import MenuComponent from './components/menu'
+import LogoutButtonComponent from './components/logoutButton'
+import AboutWhatsPaysComponent from './components/aboutWhatsPays'
+import Icon from '../icon'
 import 'antd/dist/antd.css'
 import {
   CustomDrawer,
@@ -8,27 +21,28 @@ import {
   CrossIcon,
   HeaderArea,
   HeaderAreaImage,
-  HeaderAreaH1,
-  ArrowLeftIcon
+  HeaderAreaH1
 } from './index.styled'
-import MenuComponent from './components/Menu'
-import LogoutButtonComponent from './components/LogoutButton'
-import AboutWhatsPaysComponent from './components/AboutWhatsPays'
 
 const SidebarComponent = memo(() => {
   const [visible, setVisible] = useState<boolean>(false)
+  const theme = useContext(ThemeContext)
 
-  const showDrawer = () => {
+  const showDrawer = useCallback(() => {
     setVisible(true)
-  }
+  }, [visible])
 
-  const onClose = () => {
+  const onClose = useCallback(() => {
     setVisible(false)
-  }
+  }, [visible])
+
   return (
     <>
-      <ArrowLeftIcon onClick={showDrawer} />
-
+      <Icon
+        onClick={showDrawer}
+        icon={faBars}
+        color={theme.color.primary}
+      />
       <CustomDrawer
         placement="left"
         closable={false}
@@ -37,7 +51,10 @@ const SidebarComponent = memo(() => {
       >
         <Header>
           <CrossIcon onClick={onClose}>
-            <CloseOutlined />
+            <Icon
+              icon={faTimes}
+              color={theme.color.primary}
+            />
           </CrossIcon>
           <br />
           <HeaderArea>
