@@ -2,6 +2,7 @@ import { FC, memo, useRef } from 'react'
 import { faUser } from '@fortawesome/pro-light-svg-icons';
 import Button from '../../../../components/button';
 import Input from '../../../../components/input';
+import { useFormLogin } from './useForm';
 
 import {
   ButtonContainer,
@@ -11,7 +12,6 @@ import {
   CustomCheckBox,
   Heading, HeadingsContainer, InputContainer, InputFieldsContainer, MarginDiv, SubHeading
 } from './index.styled';
-import { useFormLogin } from './useForm';
 
 const Login: FC = memo(() => {
   const {
