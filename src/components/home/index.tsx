@@ -2,10 +2,10 @@ import { FC } from 'react'
 import HeaderComponent from '../Header'
 import { Container } from './index.styled'
 
-const WelcomeComponent: FC<{}> = () => (
+const HomeComponent: FC<{}> = () => (
   <Container>
     <HeaderComponent />
   </Container>
 )
 
-export default WelcomeComponent
+export default HomeComponent

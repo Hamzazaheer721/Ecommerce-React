@@ -1,5 +1,5 @@
 import { FC, lazy, Suspense } from 'react'
-import Loader from '../../components/Loader'
+import Loader from '../../components/loader'
 
 const LazyView = lazy(() => import('./view'))
 

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import WelcomeComponent from '../../components/Welcome'
+import WelcomeComponent from '../../components/home'
 
 const ViewComponent: FC<{}> = () => (
   <>
