@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import 'antd/dist/antd.css'
-import { Button } from 'antd';
+import Button from 'antd/es/button';
 
 export const Container = styled.div`
   min-width: 64px;
