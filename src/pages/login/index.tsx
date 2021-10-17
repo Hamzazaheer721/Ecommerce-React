@@ -1,14 +1,12 @@
-import {
-  FC, memo, Suspense, lazy
-} from 'react'
+import React from 'react'
 import Loader from '../../components/loader'
 
-const LazyView = lazy(() => import('./view'))
+const LazyView = React.lazy(() => import('./view'))
 
-const LoginRoute: FC = memo((props) => (
-  <Suspense fallback={<Loader />}>
+const LoginRoute: React.FC = React.memo((props) => (
+  <React.Suspense fallback={<Loader />}>
     <LazyView {...props} />
-  </Suspense>
+  </React.Suspense>
 ))
 
 export default LoginRoute
