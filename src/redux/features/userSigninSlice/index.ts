@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { ILoginUserTypes } from './index';
+// import { ILoginUserTypes } from './index';
 import { Instance } from '../../../config/axios';
 import { SERVER_IP } from '../../../config/constants';
 // import { userSignupSlice } from '../userSignupSlice';
@@ -48,8 +48,10 @@ export const userSigninSlice = createSlice({
   name: 'user-signin',
   initialState,
   reducers: {},
-  extraReducers: {
-
+  extraReducers: (builder) => {
+    builder.addCase(loginUser.fulfilled, (state, __) => ({
+      ...state, loading: false, success: true, error: false
+    }))
   }
 })
 
