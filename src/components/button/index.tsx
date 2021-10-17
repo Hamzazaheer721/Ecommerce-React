@@ -1,7 +1,7 @@
 import { FC, memo } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {
-  Container, CustomButton, IconStyler
+  CustomButton, IconStyler
 } from './index.styled';
 
 interface IButtonProps {
@@ -10,12 +10,10 @@ interface IButtonProps {
 }
 
 const Button: FC<IButtonProps> = memo(({ label, icon }: IButtonProps) => (
-  <Container>
-    <CustomButton>
-      <IconStyler icon={icon} />
-      {label}
-    </CustomButton>
-  </Container>
+  <CustomButton>
+    <IconStyler icon={icon} />
+    {label}
+  </CustomButton>
 ));
 
 export default Button;

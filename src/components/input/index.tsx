@@ -1,8 +1,12 @@
-import { FC, memo } from 'react';
+import { forwardRef, memo } from 'react';
 import { InputField } from './index.styled';
 
-const Input: FC = memo(() => (
-  <InputField />
-));
+interface InputProps {
+  label?: string,
+}
+
+const Input = forwardRef<HTMLInputElement, InputProps>(memo(({ label }, ref) => (
+  <InputField ref={ref} placeholder={label} />
+)));
 
 export default Input;
