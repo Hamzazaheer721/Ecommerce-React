@@ -11,9 +11,16 @@ import {
   CustomCheckBox,
   Heading, HeadingsContainer, InputContainer, InputFieldsContainer, MarginDiv, SubHeading
 } from './index.styled';
+import { useFormLogin } from './useForm';
 
 const Login: FC = memo(() => {
-  const nameFieldRef = useRef<HTMLInputElement>(null)
+  const {
+    handleSubmit, handleChange, errors
+  } = useFormLogin();
+
+  const { emailError, passwordError } = errors;
+
+  const emailFieldRef = useRef<HTMLInputElement>(null)
   const passwordFieldRef = useRef<HTMLInputElement>(null)
   return (
     <Container>
@@ -27,20 +34,28 @@ const Login: FC = memo(() => {
       </HeadingsContainer>
       <InputFieldsContainer>
         <InputContainer>
-          <Input ref={nameFieldRef} />
+          <Input ref={emailFieldRef} label="Enter your name" name="email" value={emailFieldRef && emailFieldRef.current?.value} handleChange={handleChange} />
         </InputContainer>
-        <MarginDiv />
+        {emailError ? (
+          <h1>{emailError}</h1>
+        ) : (
+          <MarginDiv />
+        )}
         <InputContainer>
-          <Input ref={passwordFieldRef} />
+          <Input ref={passwordFieldRef} label="Please enter your passwrod" name="password" value={passwordFieldRef && passwordFieldRef.current?.value} handleChange={handleChange} />
         </InputContainer>
-        <MarginDiv />
+        {passwordError ? (
+          <h1>{passwordError}</h1>
+        ) : (
+          <MarginDiv />
+        )}
         <CheckboxContainer>
           <CustomCheckBox type="checkbox" />
           <CheckboxPlaceholder>Remember me</CheckboxPlaceholder>
         </CheckboxContainer>
       </InputFieldsContainer>
       <ButtonContainer>
-        <Button label="Login" icon={faUser} />
+        <Button type="submit" label="Login" icon={faUser} handleSubmit={handleSubmit} />
       </ButtonContainer>
     </Container>
   )
