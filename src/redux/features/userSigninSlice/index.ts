@@ -17,13 +17,13 @@ export const loginUser = createAsyncThunk(('user-signin/loginUser'), async ({ em
     })
     const data = await response;
     if (response.status === 200) {
-      console.info('Response', data)
+      // console.info('Response', data)
       localStorage.setItem('token', JSON.stringify(data))
       return { ...data }
     }
     return thunkAPI.rejectWithValue(data);
   } catch (e: any) {
-    console.info('error', e.response)
+    // console.info('error', e.response)
     return thunkAPI.rejectWithValue(e)
   }
 });
