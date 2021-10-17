@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import InputComponent from './components/inputField'
+import InputComponent from './components/InputField'
 import {
   HeaderContainer,
   HeaderIconContainer,
