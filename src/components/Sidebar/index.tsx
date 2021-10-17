@@ -1,5 +1,10 @@
 /* eslint-disable react/require-default-props */
-import { useState, memo, useContext } from 'react'
+import {
+  useState,
+  memo,
+  useContext,
+  useCallback
+} from 'react'
 import {
   faBars,
   faTimes
@@ -23,13 +28,14 @@ const SidebarComponent = memo(() => {
   const [visible, setVisible] = useState<boolean>(false)
   const theme = useContext(ThemeContext)
 
-  const showDrawer = () => {
+  const showDrawer = useCallback(() => {
     setVisible(true)
-  }
+  }, [visible])
 
-  const onClose = () => {
+  const onClose = useCallback(() => {
     setVisible(false)
-  }
+  }, [visible])
+
   return (
     <>
       <Icon

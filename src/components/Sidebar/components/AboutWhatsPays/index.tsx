@@ -1,4 +1,5 @@
 import { memo } from 'react'
+import { faSignOut } from '@fortawesome/pro-light-svg-icons'
 import {
   AboutWhatsPaysContainer,
   PIcon,
@@ -9,7 +10,7 @@ import {
 const AboutWhatsPaysComponent = memo(() => (
   <AboutWhatsPaysContainer>
     About
-    <PIcon />
+    <PIcon icon={faSignOut} />
     <WhatsText> What</WhatsText>
     <PaysText> Pays </PaysText>
   </AboutWhatsPaysContainer>

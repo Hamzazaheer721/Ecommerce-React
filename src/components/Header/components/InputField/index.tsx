@@ -1,6 +1,7 @@
+import { memo } from 'react'
 import { HeaderInputField } from './index.styled'
 
-const InputComponent = () => (
+const InputComponent = memo(() => (
   <>
     <form>
       <HeaderInputField
@@ -10,6 +11,5 @@ const InputComponent = () => (
       />
     </form>
   </>
-)
-
+))
 export default InputComponent

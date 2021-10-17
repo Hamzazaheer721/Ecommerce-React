@@ -4,7 +4,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ant-design/icons": "^4.7.0",
     "@fortawesome/fontawesome-pro": "^6.0.0-beta2",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/pro-light-svg-icons": "^5.15.4",

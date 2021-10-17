@@ -1,12 +1,12 @@
 /* eslint-disable arrow-body-style */
-import { useContext } from 'react'
+import { memo, useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import { Menu, Dropdown } from 'antd'
 import {
   faSearch,
   faBell
 } from '@fortawesome/pro-light-svg-icons'
-import ButtonComponent from '../../../button'
+import ButtonComponent from '../../../genericButton'
 import NotificationComponent from './notificationsComponent'
 import { userNotifications } from './Helper'
 import {
@@ -74,7 +74,7 @@ const NotificationsMenu = (
   </CustomMenu>
 )
 
-const HeaderRightComponent = () => {
+const HeaderRightComponent = memo(() => {
   const theme = useContext(ThemeContext)
 
   return (
@@ -111,6 +111,5 @@ const HeaderRightComponent = () => {
       </Container>
     </>
   )
-}
-
+})
 export default HeaderRightComponent
