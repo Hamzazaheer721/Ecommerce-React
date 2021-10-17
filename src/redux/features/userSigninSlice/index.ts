@@ -4,7 +4,7 @@ import { Instance } from '../../../config/axios';
 import { SERVER_IP } from '../../../config/constants';
 // import { userSignupSlice } from '../userSignupSlice';
 
-export const loginUser = createAsyncThunk(('user-signin/loginUser'), async ({ name, password }:ILoginUserTypes, thunkAPI) => {
+export const loginUser = createAsyncThunk(('user-signin/loginUser'), async ({ email, password }:ILoginUserTypes, thunkAPI) => {
   try {
     const response = await Instance({
       method: 'POST',
@@ -13,23 +13,23 @@ export const loginUser = createAsyncThunk(('user-signin/loginUser'), async ({ na
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
-      data: { name, password }
+      data: { username: email, password }
     })
     const data = await response;
     if (response.status === 200) {
+      console.info('Response', data)
       localStorage.setItem('token', JSON.stringify(data))
       return { ...data }
     }
     return thunkAPI.rejectWithValue(data);
-    console.info(data)
-  } catch (e) {
-    console.error('error', e)
+  } catch (e: any) {
+    console.info('error', e.response)
     return thunkAPI.rejectWithValue(e)
   }
 });
 
 export interface ILoginUserTypes {
-  name: string,
+  email: string,
   password: string,
   loading?: boolean,
   success?: boolean,
@@ -37,7 +37,7 @@ export interface ILoginUserTypes {
   message?: string
 }
 export const initialState: ILoginUserTypes = {
-  name: '',
+  email: '',
   password: '',
   loading: false,
   success: false,
@@ -49,7 +49,7 @@ export const userSigninSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(loginUser.fulfilled, (state, __) => ({
+    builder.addCase(loginUser.fulfilled, (state) => ({
       ...state, loading: false, success: true, error: false
     }))
   }
