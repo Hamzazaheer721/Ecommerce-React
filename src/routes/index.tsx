@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from '../pages/login';
-import Welcome from '../pages/welcome';
+import Home from '../pages/home';
 
 const RouterComponent = () => (
   <div>
     <Router>
       <Switch>
-        <Route exact path="/" component={Welcome} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
       </Switch>
     </Router>

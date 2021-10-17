@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import WelcomeComponent from '../../components/welcome';
+import HomeComponent from '../../components/home';
 
 const ViewComponent: FC<{}> = () => (
-  <WelcomeComponent />
+  <HomeComponent />
 )
 
 export default ViewComponent;

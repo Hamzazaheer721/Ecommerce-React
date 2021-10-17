@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Container, WelcomeText } from './index.styled';
 
-const WelcomeComponent: FC<{}> = () => (
+const HomeComponent: FC<{}> = () => (
   <Container>
     <WelcomeText>
       Hey
@@ -9,4 +9,4 @@ const WelcomeComponent: FC<{}> = () => (
   </Container>
 )
 
-export default WelcomeComponent;
+export default HomeComponent;

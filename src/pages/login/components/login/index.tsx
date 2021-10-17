@@ -1,6 +1,6 @@
 import { FC, memo, useRef } from 'react'
 import { faUser } from '@fortawesome/pro-light-svg-icons';
-import Button from '../../../../components/button';
+import Button from '../../../../components/genericButton';
 import Input from '../../../../components/input';
 import { useFormLogin } from './useForm';
 

@@ -8,11 +8,11 @@ const initialState : IUserStateType = {
   value: []
 };
 
-export const userSlice = createSlice({
-  name: 'user',
+export const userSignupSlice = createSlice({
+  name: 'user-signup',
   initialState,
   reducers: {},
   extraReducers: {}
 })
 
-export const userActions = userSlice.actions;
+export const userActions = userSignupSlice.actions;

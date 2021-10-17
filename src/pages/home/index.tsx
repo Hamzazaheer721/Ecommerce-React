@@ -3,10 +3,10 @@ import Loader from '../../components/loader';
 
 const LazyView = lazy(() => import('./view'))
 
-const Welcome: FC<{}> = (props) => (
+const Home: FC<{}> = (props) => (
   <Suspense fallback={<Loader />}>
     <LazyView {...props} />
   </Suspense>
 )
 
-export default Welcome;
+export default Home;

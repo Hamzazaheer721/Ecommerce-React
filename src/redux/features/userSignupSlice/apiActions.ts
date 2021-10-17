@@ -3,7 +3,7 @@ import { SERVER_IP } from '../../../config/constants';
 import { Instance } from '../../../config/axios';
 import { IUserType } from '../../../types/user';
 
-export const signUpUser = createAsyncThunk(
+export const userSignup = createAsyncThunk(
   'user/signUpUser',
   async (user: IUserType) => {
     await Instance({
