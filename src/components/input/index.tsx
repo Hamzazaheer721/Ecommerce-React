@@ -55,7 +55,6 @@ const Input = memo(forwardRef<HTMLInputElement, InputProps>(({
         type="text"
       />
     </>
-
   )
 }));
 
