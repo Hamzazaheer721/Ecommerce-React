@@ -22,6 +22,7 @@ const Login: FC = memo(() => {
 
   const emailFieldRef = useRef<HTMLInputElement>(null)
   const passwordFieldRef = useRef<HTMLInputElement>(null)
+
   return (
     <Container>
       <HeadingsContainer>
