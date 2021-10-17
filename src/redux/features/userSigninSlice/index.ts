@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { ILoginUserTypes } from './index';
 import { Instance } from '../../../config/axios';
 import { SERVER_IP } from '../../../config/constants';
 // import { userSignupSlice } from '../userSignupSlice';
