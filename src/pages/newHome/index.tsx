@@ -1,5 +1,5 @@
-import { FC, lazy, Suspense } from 'react';
-import Loader from '../../components/loader';
+import { FC, lazy, Suspense } from 'react'
+import Loader from '../../components/newLoader'
 
 const LazyView = lazy(() => import('./view'))
 
@@ -9,4 +9,4 @@ const Home: FC<{}> = (props) => (
   </Suspense>
 )
 
-export default Home;
+export default Home

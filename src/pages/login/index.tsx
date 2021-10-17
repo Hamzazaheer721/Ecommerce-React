@@ -1,7 +1,5 @@
-import {
-  FC, memo, Suspense, lazy
-} from 'react'
-import Loader from '../../components/loader'
+import { FC, memo, Suspense, lazy } from 'react'
+import Loader from '../../components/newLoader'
 
 const LazyView = lazy(() => import('./view'))
 
