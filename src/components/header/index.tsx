@@ -7,7 +7,7 @@ import {
   HeaderRightIconsContainer
 } from './index.styled'
 import SidebarComponent from '../sidebar'
-// import HeaderRightComponent from './components/headerRightArea'
+import HeaderRightComponent from './components/headerRightArea'
 
 const HeaderComponent = memo(() => (
   <>
@@ -19,7 +19,7 @@ const HeaderComponent = memo(() => (
         <InputComponent />
       </HeaderInputContainer>
       <HeaderRightIconsContainer>
-        {/* <HeaderRightComponent /> */}
+        <HeaderRightComponent />
       </HeaderRightIconsContainer>
     </HeaderContainer>
   </>
