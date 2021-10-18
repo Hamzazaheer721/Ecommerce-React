@@ -20,14 +20,14 @@ export const useFormLogin = () => {
 
   const [errors, setErrors] = useState<IInputformErrorsType>({})
 
-  const loginState = useSelector((state: RootState) => state.user)
+  const { user } = useSelector((state: RootState) => state.user)
 
   useEffect(() => {
-    if (loginState) {
-      localStorage.setItem('token', JSON.stringify(loginState.user?.auth_token))
-      localStorage.setItem('user', JSON.stringify(loginState.user))
+    if (user) {
+      localStorage.setItem('token', JSON.stringify(user.auth_token))
+      localStorage.setItem('user', JSON.stringify(user))
     }
-  }, [loginState])
+  }, [user])
 
   const handleChange = useCallback(((e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
