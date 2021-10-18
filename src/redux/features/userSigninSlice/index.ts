@@ -1,10 +1,11 @@
+/* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 // import { ILoginUserTypes } from './index';
 import { Instance } from '../../../config/axios';
 import { SERVER_IP } from '../../../config/constants';
 // import { userSignupSlice } from '../userSignupSlice';
 
-export const loginUser = createAsyncThunk(('user-signin/loginUser'), async ({ email, password }:ILoginUserTypes, thunkAPI) => {
+export const loginUser = createAsyncThunk(('user-signin/loginUser'), async ({ email, password }:{email: string, password: string}, thunkAPI) => {
   try {
     const response = await Instance({
       method: 'POST',
@@ -29,16 +30,14 @@ export const loginUser = createAsyncThunk(('user-signin/loginUser'), async ({ em
 });
 
 export interface ILoginUserTypes {
-  email: string,
-  password: string,
+  user: any
   loading?: boolean,
   success?: boolean,
   error?: boolean,
   message?: string
 }
 export const initialState: ILoginUserTypes = {
-  email: '',
-  password: '',
+  user: [],
   loading: false,
   success: false,
   error: false
@@ -47,11 +46,17 @@ export const initialState: ILoginUserTypes = {
 export const userSigninSlice = createSlice({
   name: 'user-signin',
   initialState,
-  reducers: {},
+  reducers: {
+
+  },
   extraReducers: (builder) => {
-    builder.addCase(loginUser.fulfilled, (state) => ({
-      ...state, loading: false, success: true, error: false
-    }))
+    builder.addCase(loginUser.fulfilled, (state, action) => {
+      state.loading = false;
+      state.user.push(action.payload)
+    })
+    builder.addCase(loginUser.pending, (state) => {
+      state.loading = true
+    })
   }
 })
 
