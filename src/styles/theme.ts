@@ -8,6 +8,7 @@ export const defaultTheme: any = {
     white: '#FFFFFF',
     black: '#000000',
     green: '#25D366',
+    purpule: '#A869E1',
     yellow: '#FFB818',
     orange: '#FF7630',
     lightGreen: '#8CE4AC',

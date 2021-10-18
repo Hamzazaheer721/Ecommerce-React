@@ -7,9 +7,8 @@ export const CardContainer = styled.div`
   padding-left: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
-  margin-right: auto;
-  margin-left: auto;
   max-width: 350px;
+  display: inline-block;
 `
 
 export const GroupContainer = styled.div`
@@ -43,8 +42,10 @@ export const BadgeArea = styled.span`
 `
 export const BadgeAreaWraper = styled.div`
   background-color: ${(props) => props.theme.color.primary};
-  padding: 2px;
-  width: 28%;
+  padding: 2px 5px 2px 2px;
+  /* width: 30%; */
+  white-space: nowrap;
+
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
 `
@@ -144,4 +145,33 @@ export const Description = styled.p`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+`
+export const ButtonsContainer = styled.p`
+  width: 100%;
+`
+export const ShopButton = styled.button`
+  padding: 4px 25px;
+  background-color: ${(props) => props.theme.color.primary};
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 500;
+`
+
+export const WhatsAppButton = styled.button`
+  padding: 4px 25px;
+  background-color: ${(props) => props.theme.color.green};
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 500;
+  float: right;
+`
+
+export const ButtonIcon = styled(FontAwesomeIcon)`
+  color: white;
+  font-size: 16px;
+  margin-right: 5px;
 `
