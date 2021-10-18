@@ -37,7 +37,7 @@ module.exports = {
     'object-curly-newline': ['off', { multiline: true }],
     'no-unused-expressions': [
       'error',
-      { allowTernary: true }
+      { allowTernary: true, allowShortCircuit: true }
     ],
     'react/require-default-props': 'off',
     'react/prop-types': 'off',

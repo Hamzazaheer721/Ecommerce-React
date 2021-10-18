@@ -1,21 +1,29 @@
 import {
-  ChangeEvent, useCallback, useState
+  ChangeEvent, useCallback, useEffect, useState
 } from 'react';
 import { AxiosResponse } from 'axios';
-import { IUserLoginRtnData } from '../../../../../types/user';
+import { useDispatch, useSelector } from 'react-redux';
+import { addUserAction } from '../../../../../redux/features/userSigninSlice';
+import { IUserLoginRtnResponse } from '../../../../../types/user';
 import { SERVER_IP } from '../../../../../config/constants';
 import { Instance } from '../../../../../config/axios';
-// import { useDispatch } from 'react-redux';
 
 // import { loginUser } from '../../../../../redux/features/userSigninSlice';
 import { validateInputForm } from './helper';
 import { IIinputformType, IInputformErrorsType, IInputformInitialValue } from './types';
+import { RootState } from '../../../../../redux/store';
 
 export const useFormLogin = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [inputData, setInputData] = useState<IIinputformType>(IInputformInitialValue);
 
   const [errors, setErrors] = useState<IInputformErrorsType>({})
+
+  const loginState = useSelector((state: RootState) => state.user)
+
+  useEffect(() => {
+    loginState && localStorage.setItem('token', JSON.stringify(loginState.user?.auth_token))
+  }, [loginState])
 
   const handleChange = useCallback(((e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -23,9 +31,10 @@ export const useFormLogin = () => {
   }), [inputData])
 
   const makeApiCall = useCallback(async () => {
-    await Instance.post<any>(`${SERVER_IP}/user/login`, inputData).then((res: AxiosResponse<IUserLoginRtnData>) => {
-      // eslint-disable-next-line no-console
-      if (res.status === 200) console.info(res.data)
+    await Instance.post<any>(`${SERVER_IP}/user/login`, inputData).then((res: AxiosResponse<IUserLoginRtnResponse>) => {
+      if (res.data) {
+        dispatch(addUserAction(res.data.data))
+      }
     }).catch((error) => {
       // eslint-disable-next-line no-console
       console.error(error.response.data)
@@ -37,7 +46,6 @@ export const useFormLogin = () => {
     const validateErrors = validateInputForm(inputData);
     setErrors(validateErrors)
     if (!Object.keys(errors).length) makeApiCall();
-    // if (!Object.keys(errors).length) dispatch(loginUser(inputData));
   }, [inputData, errors])
 
   return {
