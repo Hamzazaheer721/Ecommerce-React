@@ -13,6 +13,7 @@ export const defaultTheme: any = {
     yellow: '#FFB818',
     orange: '#FF7630',
     lightGreen: '#8CE4AC',
+    darkGreen: '#146B3A',
     gray: '#DDDDDD', // inputfield
     red: '#FF3E2C',
     darkBlue: '#243D82',
