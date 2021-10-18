@@ -34,6 +34,7 @@ module.exports = {
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
     '@typescript-eslint/no-shadow': ['error'],
+    'object-curly-newline': ['off', { multiline: true }],
     'react/require-default-props': 'off',
     'react/prop-types': 'off',
     'react/jsx-props-no-spreading': 'off',

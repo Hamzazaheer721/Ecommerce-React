@@ -1,14 +1,14 @@
 import {
   ChangeEvent, useCallback, useState
 } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 
-import { loginUser } from '../../../../../redux/features/userSigninSlice';
+// import { loginUser } from '../../../../../redux/features/userSigninSlice';
 import { validateInputForm } from './helper';
 import { IIinputformType, IInputformErrorsType, IInputformInitialValue } from './types';
 
 export const useFormLogin = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [inputData, setInputData] = useState<IIinputformType>(IInputformInitialValue);
   const [errors, setErrors] = useState<IInputformErrorsType>({})
 
@@ -21,7 +21,7 @@ export const useFormLogin = () => {
     e.preventDefault();
     const validateErrors = validateInputForm(inputData);
     setErrors(validateErrors)
-    if (!Object.keys(errors).length) dispatch(loginUser(inputData));
+    // if (!Object.keys(errors).length) dispatch(loginUser(inputData));
   }, [inputData, errors])
 
   return {

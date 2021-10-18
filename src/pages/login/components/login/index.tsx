@@ -1,4 +1,6 @@
-import { FC, memo, useRef } from 'react'
+import {
+  FC, memo, useRef
+} from 'react'
 import { faUser } from '@fortawesome/pro-light-svg-icons';
 import Button from '../../../../components/genericButton';
 import Input from '../../../../components/input';
@@ -15,9 +17,8 @@ import {
 
 const Login: FC = memo(() => {
   const {
-    handleSubmit, handleChange, errors, inputData
+    handleSubmit, handleChange, errors
   } = useFormLogin();
-  const { password } = inputData
   const { emailError, passwordError } = errors;
 
   const emailFieldRef = useRef<HTMLInputElement>(null)
@@ -43,7 +44,7 @@ const Login: FC = memo(() => {
           <MarginDiv />
         )}
         <InputContainer>
-          <Input ref={passwordFieldRef} label="Please enter your passwrod" name="password" value={password} handleChange={handleChange} />
+          <Input ref={passwordFieldRef} label="Please enter your passwrod" name="password" value={passwordFieldRef && passwordFieldRef.current?.value} handleChange={handleChange} />
         </InputContainer>
         {passwordError ? (
           <h1>{passwordError}</h1>
