@@ -33,7 +33,6 @@ const Input = memo(forwardRef<HTMLInputElement, InputProps>(({
   //   setValue(e.target.value)
   //   handleInputDebounce(e);
   // }, [_value])
-
   return (
     <InputContainer>
       <InputField
@@ -53,7 +52,9 @@ const Input = memo(forwardRef<HTMLInputElement, InputProps>(({
         onChange={handleChange}
         type="text"
       />
-      <Label>{label}</Label>
+      <Label hasValue={!!value}>
+        {label}
+      </Label>
     </InputContainer>
   )
 }));

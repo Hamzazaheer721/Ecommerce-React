@@ -3,6 +3,7 @@ export const defaultTheme: any = {
   color: {
     primary: '#1B9BD7',
     secondary: '#1D1D1D',
+    global: '#F2F4FF',
     DarkBlue: '#243D82',
     lightBlue: '#DDEEFF',
     white: '#FFFFFF',

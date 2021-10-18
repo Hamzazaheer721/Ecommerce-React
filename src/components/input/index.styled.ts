@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Label = styled.p`
+export const Label = styled.p<{hasValue : boolean}>`
   font-size: 1rem;
   position: absolute;
   opacity: 0.6;
@@ -11,6 +11,13 @@ export const Label = styled.p`
   transform: translateY(-50%);
   display: block;
   transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+
+   ${({ hasValue }) => hasValue && `
+      top: 0;
+      left: 0.8rem;
+      font-size: 0.8rem;
+      background: linear-gradient(179deg, #F2F4FF 52%, white 48%);
+   `}
 `
 
 export const InputField = styled.input`
@@ -20,10 +27,12 @@ export const InputField = styled.input`
   height: 100%;
   padding: 12px;
   background-color: transparent;
-  &:focus ~ ${Label} {
+  
+  :focus ~ ${Label}{
     top: 0;
     left: 0.8rem;
     font-size: 0.8rem;
+    background: linear-gradient(179deg, #F2F4FF 52%, white 48%);
   }
 `;
 
@@ -34,10 +43,10 @@ export const InputContainer = styled.div`
   border: ${(props) => props.theme.borderColor.gray};
   background-color: ${(props) => props.theme.color.white};
   border-radius: 8px;
+  z-index: 1;
   transition: 0.4s;
 
-  &:focus, &:hover, &:active{
+  &:focus, &:hover{
     border: ${(props) => props.theme.borderColor.black};
   }
-
 `;
