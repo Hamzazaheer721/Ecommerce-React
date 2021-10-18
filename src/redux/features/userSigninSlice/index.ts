@@ -5,7 +5,7 @@ import { Instance } from '../../../config/axios';
 import { SERVER_IP } from '../../../config/constants';
 // import { userSignupSlice } from '../userSignupSlice';
 
-export const loginUser = createAsyncThunk(('user-signin/loginUser'), async ({ email, password }:{email: string, password: string}, thunkAPI) => {
+export const loginUser = createAsyncThunk(('user-signin/loginUser'), async ({ username, password }:{username: string, password: string}, thunkAPI) => {
   try {
     // const response = await Instance({
     //   method: 'POST',
@@ -17,7 +17,7 @@ export const loginUser = createAsyncThunk(('user-signin/loginUser'), async ({ em
     //   },
     //   data: { username: email, password }
     // })
-    const response = await Instance.post<any>(`${SERVER_IP}/user/login`, { username: email, password });
+    const response = await Instance.post<any>(`${SERVER_IP}/user/login`, { username, password });
     const data = await response.data;
     if (response.status === 200) {
       // console.info('Response', data)
