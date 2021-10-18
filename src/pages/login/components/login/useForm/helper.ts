@@ -3,10 +3,10 @@ import { IIinputformType, IInputformErrorsType } from './types';
 
 export const validateInputForm = (inputData: IIinputformType) => {
   const errors: IInputformErrorsType = {};
-  const { email, password } = inputData;
+  const { username, password } = inputData;
 
-  if (isEmpty(email)) {
-    errors.emailError = 'Please enter your email'
+  if (isEmpty(username)) {
+    errors.usernameError = 'Please enter your username'
   }
 
   if (isEmpty(password)) {

@@ -19,9 +19,9 @@ const Login: FC = memo(() => {
   const {
     handleSubmit, handleChange, errors
   } = useFormLogin();
-  const { emailError, passwordError } = errors;
+  const { usernameError, passwordError } = errors;
 
-  const emailFieldRef = useRef<HTMLInputElement>(null)
+  const userFieldRef = useRef<HTMLInputElement>(null)
   const passwordFieldRef = useRef<HTMLInputElement>(null)
 
   return (
@@ -36,10 +36,10 @@ const Login: FC = memo(() => {
       </HeadingsContainer>
       <InputFieldsContainer>
         <InputContainer>
-          <Input ref={emailFieldRef} label="Enter your name" name="email" value={emailFieldRef && emailFieldRef.current?.value} handleChange={handleChange} />
+          <Input ref={userFieldRef} label="Enter your name" name="username" value={userFieldRef && userFieldRef.current?.value} handleChange={handleChange} />
         </InputContainer>
-        {emailError ? (
-          <h1>{emailError}</h1>
+        {usernameError ? (
+          <h1>{usernameError}</h1>
         ) : (
           <MarginDiv />
         )}

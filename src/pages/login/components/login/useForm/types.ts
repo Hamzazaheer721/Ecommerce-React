@@ -1,14 +1,14 @@
 export const IInputformInitialValue = {
-  email: '',
+  username: '',
   password: ''
 }
 
 export type IIinputformType = {
-  email : string,
+  username : string,
   password: string
 }
 
 export type IInputformErrorsType = {
-  emailError? : string,
+  usernameError? : string,
   passwordError?: string
 }
