@@ -15,6 +15,7 @@ import { RootState } from '../../../../../redux/store';
 
 export const useFormLogin = () => {
   const dispatch = useDispatch();
+
   const [inputData, setInputData] = useState<IIinputformType>(IInputformInitialValue);
 
   const [errors, setErrors] = useState<IInputformErrorsType>({})
@@ -22,7 +23,10 @@ export const useFormLogin = () => {
   const loginState = useSelector((state: RootState) => state.user)
 
   useEffect(() => {
-    loginState && localStorage.setItem('token', JSON.stringify(loginState.user?.auth_token))
+    if (loginState) {
+      localStorage.setItem('token', JSON.stringify(loginState.user?.auth_token))
+      localStorage.setItem('user', JSON.stringify(loginState.user))
+    }
   }, [loginState])
 
   const handleChange = useCallback(((e: ChangeEvent<HTMLInputElement>) => {
