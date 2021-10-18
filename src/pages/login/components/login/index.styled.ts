@@ -19,10 +19,9 @@ export const Container = styled.div`
 `
 
 export const InputContainer = styled.div`
-
   width: 100%;
-  border: 1px solid #DDDDDD;
-
+  border: none;
+  outline: none;
 `
 export const ButtonContainer = styled.div`
   /* min-width: 64px; */

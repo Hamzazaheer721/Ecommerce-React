@@ -18,6 +18,10 @@ export const defaultTheme: any = {
     darkGray: '#6E6E6E', // paragraph
     blackLighter: '#333333' // for cross icon border and stroke
   },
+  borderColor: {
+    gray: '1px solid #DDDDDD',
+    black: '1px solid #000000'
+  },
   messagesColor: {
     greenSuccess: '#146B3A',
     redError: '#FF3E2C',

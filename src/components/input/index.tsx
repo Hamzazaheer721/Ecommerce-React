@@ -4,7 +4,7 @@ import {
   forwardRef, memo, MutableRefObject, useRef
 } from 'react';
 // import debounce from 'lodash/debounce'
-import { InputField } from './index.styled';
+import { InputContainer, InputField, Label } from './index.styled';
 
 interface InputProps {
   label?: string
@@ -35,7 +35,7 @@ const Input = memo(forwardRef<HTMLInputElement, InputProps>(({
   // }, [_value])
 
   return (
-    <>
+    <InputContainer>
       <InputField
         {...props}
         name={name}
@@ -51,10 +51,10 @@ const Input = memo(forwardRef<HTMLInputElement, InputProps>(({
           }
         }}
         onChange={handleChange}
-        placeholder={label}
         type="text"
       />
-    </>
+      <Label>{label}</Label>
+    </InputContainer>
   )
 }));
 
