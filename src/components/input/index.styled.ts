@@ -16,6 +16,7 @@ export const Label = styled.p<{ hasValue: boolean }>`
   display: block;
   transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
   padding: 0 7px;
+
   ${({ hasValue }) =>
     hasValue &&
     `
@@ -36,6 +37,7 @@ export const InputField = styled.input`
   padding: 14px;
   background-color: transparent;
   padding-left: 3rem;
+
   :focus ~ ${Label} {
     top: 0;
     left: 0.8rem;
@@ -64,7 +66,6 @@ export const InputContainer = styled.div<{ hasValue: boolean }>`
   &:hover {
     border: ${(props) => props.theme.borderColor.black};
   }
-
 `
 
 export const Prefix = styled(FontAwesomeIcon)`
