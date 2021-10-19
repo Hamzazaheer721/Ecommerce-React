@@ -17,7 +17,8 @@ import { validateInputForm } from './helper'
 import {
   IInputformType,
   IInputformErrorsType,
-  IInputformInitialValue
+  IInputformInitialValue,
+  IResponseMessageType
 } from './types'
 import { RootState } from '../../../../../redux/store'
 
@@ -29,7 +30,7 @@ export const useFormLogin = () => {
 
   const [errors, setErrors] = useState<IInputformErrorsType>({})
 
-  const [response, setResponse] = useState<{ success?: string, error?: string }>({})
+  const [response, setResponse] = useState<IResponseMessageType>({})
 
   const { user } = useSelector(
     (state: RootState) => state.user

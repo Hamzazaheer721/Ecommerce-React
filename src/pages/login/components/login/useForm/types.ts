@@ -4,6 +4,11 @@ export const IInputformInitialValue = {
   remember: false
 }
 
+export interface IResponseMessageType {
+  success?: string
+  error?: string
+}
+
 export type IInputformType = {
   username : string,
   password: string,
