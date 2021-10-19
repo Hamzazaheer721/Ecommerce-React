@@ -30,8 +30,9 @@ import {
 
 const Login: FC = memo(() => {
   // eslint-disable-next-line operator-linebreak
-  const { handleSubmit, handleChange, errors } =
+  const { handleSubmit, handleChange, errors, response } =
     useFormLogin()
+  const { success, error } = response;
   const { usernameError, passwordError } = errors
 
   const userFieldRef = useRef<HTMLInputElement>(null)
@@ -45,6 +46,8 @@ const Login: FC = memo(() => {
           Please login to your account
         </SubHeading>
       </HeadingsContainer>
+      <h1>{success}</h1>
+      <h1>{error}</h1>
       <InputFieldsContainer>
         <InputContainer>
           <Input

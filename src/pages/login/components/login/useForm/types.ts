@@ -12,5 +12,6 @@ export type IInputformType = {
 
 export type IInputformErrorsType = {
   usernameError? : string,
-  passwordError?: string
+  passwordError?: string,
+  responseError?: string
 }

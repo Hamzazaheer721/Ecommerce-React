@@ -29,6 +29,8 @@ export const useFormLogin = () => {
 
   const [errors, setErrors] = useState<IInputformErrorsType>({})
 
+  const [response, setResponse] = useState<{ success?: string, error?: string }>({})
+
   const { user } = useSelector(
     (state: RootState) => state.user
   )
@@ -41,7 +43,7 @@ export const useFormLogin = () => {
       )
       localStorage.setItem('user', JSON.stringify(user))
     }
-  }, [user])
+  }, [user, remember])
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -69,17 +71,22 @@ export const useFormLogin = () => {
       .then((res: AxiosResponse<IUserLoginRtnResponse>) => {
         if (res.data) {
           dispatch(addUserAction(res.data.data))
+          setResponse({ success: res.data.message, error: '' })
         }
       })
       .catch((error) => {
-        // eslint-disable-next-line no-console
-        console.error(error.response.data)
+        if (error) {
+          setResponse({ error: error.response.data.message, success: '' })
+          // eslint-disable-next-line no-console
+          console.error(error.response.data)
+        }
       })
-  }, [inputData])
+  }, [inputData, response])
 
   const handleSubmit = useCallback(
     async (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
+      e.stopPropagation();
       const validateErrors = validateInputForm(inputData)
       setErrors(validateErrors)
       if (!Object.keys(errors).length) makeApiCall()
@@ -89,6 +96,7 @@ export const useFormLogin = () => {
 
   return {
     inputData,
+    response,
     errors,
     handleChange,
     handleSubmit
