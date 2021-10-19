@@ -4,7 +4,7 @@ export const IInputformInitialValue = {
   remember: false
 }
 
-export type IIinputformType = {
+export type IInputformType = {
   username : string,
   password: string,
   remember?: boolean

@@ -14,7 +14,7 @@ import { Instance } from '../../../../../config/axios'
 // import { loginUser } from '../../../../../redux/features/userSigninSlice';
 import { validateInputForm } from './helper'
 import {
-  IIinputformType,
+  IInputformType,
   IInputformErrorsType,
   IInputformInitialValue
 } from './types'
@@ -23,7 +23,7 @@ import { RootState } from '../../../../../redux/store'
 export const useFormLogin = () => {
   const dispatch = useDispatch()
 
-  const [inputData, setInputData] = useState<IIinputformType>(IInputformInitialValue)
+  const [inputData, setInputData] = useState<IInputformType>(IInputformInitialValue)
   const { remember } = inputData
 
   const [errors, setErrors] = useState<IInputformErrorsType>({})
@@ -56,7 +56,7 @@ export const useFormLogin = () => {
   )
 
   const makeApiCall = useCallback(async () => {
-    const updatedData: Omit<IIinputformType, 'remember'> = produce(inputData, (draft) => {
+    const updatedData: Omit<IInputformType, 'remember'> = produce(inputData, (draft) => {
       // eslint-disable-next-line no-param-reassign
       delete draft.remember
       return draft
