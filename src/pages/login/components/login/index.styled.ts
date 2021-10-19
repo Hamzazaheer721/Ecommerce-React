@@ -23,11 +23,6 @@ export const Container = styled.div`
   @media ${device.tiny} {
     width: 100%;
   }
-  /* position: absolute;
-  transform: translate(-50%, -60%);
-  left: 50%;
-  top: 50%; */
-  /* overflow-y: hidden; */
 `
 
 export const InputContainer = styled.div`
@@ -37,7 +32,6 @@ export const InputContainer = styled.div`
   outline: none;
 `
 export const ButtonContainer = styled.div`
-  /* min-width: 64px; */
   height: 40px;
   width: 100%;
   .ant-btn {
@@ -83,26 +77,6 @@ export const InputFieldsContainer = styled.div`
   align-items: flex-start;
   margin-bottom: 20px;
   width: 100%;
-
-  /* @media ${device.desktop} {
-    width: 450px;
-  }
-
-  @media ${device.laptop} {
-    padding: 0 300px;
-  }
-
-  @media ${device.tablet} {
-    padding: 0 150px;
-  }
-
-  @media ${device.mobile} {
-    width: 250px;
-  }
-
-  @media ${device.tiny} {
-    width: 250px;
-  } */
 `
 export const MarginDiv = styled.div`
   visibility: hidden;
