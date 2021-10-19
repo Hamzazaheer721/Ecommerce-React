@@ -1,9 +1,10 @@
 import {
   ChangeEvent,
-  forwardRef, memo, MutableRefObject, useRef
+  forwardRef, memo, MutableRefObject, useCallback, useRef, useState
 } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 // import debounce from 'lodash/debounce'
+import { faEye, faEyeSlash } from '@fortawesome/pro-light-svg-icons';
 import { InputContainer, InputField, Label, Prefix, Suffix } from './index.styled';
 
 interface InputProps {
@@ -12,15 +13,16 @@ interface InputProps {
   name?: string
   prefix?: IconProp
   suffix?: IconProp
-  type?: 'password'
+  typePassword?: boolean
   // eslint-disable-next-line no-unused-vars
   handleChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 const Input = memo(forwardRef<HTMLInputElement, InputProps>(({
-  label, value = '', name, handleChange, type, prefix, suffix, ...props
+  label, value = '', name, handleChange, typePassword = false, prefix, suffix, ...props
 }, inputRef) => {
   const localRef = useRef<HTMLInputElement>(null);
+  const [showPassword, setShowPassword] = useState(false);
   // const [_value, setValue] = useState<typeof value>(value);
 
   // useEffect(() => {
@@ -36,13 +38,18 @@ const Input = memo(forwardRef<HTMLInputElement, InputProps>(({
   //   setValue(e.target.value)
   //   handleInputDebounce(e);
   // }, [_value])
+
+  const handleEyeChange = useCallback(() => {
+    setShowPassword((prevState) => !prevState)
+  }, [showPassword])
+
   return (
     <InputContainer>
       <InputField
         {...props}
         name={name}
         value={value}
-        type={type === 'password' ? 'password' : 'text'}
+        type={typePassword && !showPassword ? 'password' : 'text'}
         ref={(_ref) => {
           if (_ref) (localRef as MutableRefObject<HTMLInputElement>).current = _ref;
           if (inputRef) {
@@ -61,8 +68,14 @@ const Input = memo(forwardRef<HTMLInputElement, InputProps>(({
       <Label hasValue={!!value}>
         {label}
       </Label>
+      {typePassword && (
+        <Suffix
+          onClick={handleEyeChange}
+          icon={!showPassword ? faEye : faEyeSlash}
+        />
+      )}
       {
-        suffix && (
+        !typePassword && suffix && (
           <Suffix icon={suffix} />
         )
       }
