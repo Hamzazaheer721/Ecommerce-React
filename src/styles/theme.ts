@@ -14,6 +14,7 @@ export const defaultTheme: any = {
     darkGreen: '#146B3A',
     gray: '#DDDDDD', // inputfield
     darkGray: '#6E6E6E',
+    lightGray: '#999999',
     red: '#FF3E2C',
     lightRed: '#FFE3E0',
     darkBlue: '#243D82',
