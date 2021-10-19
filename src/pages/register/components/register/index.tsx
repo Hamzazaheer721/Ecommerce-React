@@ -28,7 +28,7 @@ import {
   SubHeading
 } from './index.styled'
 
-const Login: FC = memo(() => {
+const Register: FC = memo(() => {
   // eslint-disable-next-line operator-linebreak
   // const { handleSubmit, handleChange, errors } =
   //   useFormLogin()
@@ -150,4 +150,4 @@ const Login: FC = memo(() => {
   )
 })
 
-export default Login
+export default Register
