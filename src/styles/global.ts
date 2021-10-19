@@ -15,7 +15,6 @@ export const LoginViewContainer = styled.div`
   width: 30%;
   text-align: center;
   display: flex;
-  /* align-items: center; */
   justify-content: center;
   flex-direction: column;
   min-height: 100vh;
@@ -32,4 +31,17 @@ export const LoginViewContainer = styled.div`
   @media ${device.tiny} {
     width: 100%;
   }
+`
+export const InputFieldsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  width: 100%;
+`
+
+export const InputContainer = styled.div`
+  width: 100%;
+  border: none;
+  outline: none;
 `
