@@ -1,6 +1,6 @@
+import { FC, memo, useRef } from 'react'
 import { faCheck, faTimes } from '@fortawesome/pro-light-svg-icons'
 import { faInfo } from '@fortawesome/free-solid-svg-icons'
-import { FC, memo, useRef } from 'react'
 import { filterColor } from './helper'
 import { IColorObjectProp } from './types'
 import {
