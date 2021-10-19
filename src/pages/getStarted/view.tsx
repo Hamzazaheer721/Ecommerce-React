@@ -19,7 +19,7 @@ const ViewComponent: FC = memo(() => (
     <LoginDescription>
       Its time to enjoy ultimate shoping experience through WhatsApp
     </LoginDescription>
-    <ToastComponent />
+    <ToastComponent toastType="info" />
     <ButtonContainer>
       <CustomButton label="Customer" icon={faUser} type="button" color="red" />
     </ButtonContainer>

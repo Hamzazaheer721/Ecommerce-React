@@ -1,8 +1,17 @@
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IColorObjectProp } from './types'
 
-export const ToastContainer = styled.div`
-  background-color: ${(props) => props.theme.color.lightGreen};
+interface IToastContainerProp {
+  colorProp: IColorObjectProp
+}
+
+interface ITitleContainerProp {
+  colorProp: IColorObjectProp
+}
+
+export const ToastContainer = styled.div<IToastContainerProp>`
+  background-color: ${(props) => props.colorProp.backgroundColor};
   border-radius: 8px;
   width: 90%;
   /* height: 70px; */
@@ -12,16 +21,17 @@ export const ToastContainer = styled.div`
   display: flex;
   margin: 15px auto;
 `
-export const CheckIcon = styled(FontAwesomeIcon)`
-  background-color: ${(props) => props.theme.color.darkGreen};
-  padding: 3.5px;
-  font-size: 18px;
+export const CheckIcon = styled(FontAwesomeIcon)<IToastContainerProp>`
+  background-color: ${(props) => props.colorProp.statusColor};
+  padding: 0 3px;
+  font-size: 22px;
+
   border-radius: 50%;
   color: white;
 `
-export const TitleContainer = styled.p`
+export const TitleContainer = styled.p<ITitleContainerProp>`
   h2 {
-    color: ${(props) => props.theme.color.darkGreen};
+    color: ${(props) => props.colorProp.statusColor};
     font-size: 16px;
     font-weight: 700;
     margin: 4px 0 0 5px;
@@ -37,8 +47,11 @@ export const CrossIcon = styled(FontAwesomeIcon)`
 `
 export const Description = styled.p`
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 0;
-  opacity: 0.9;
+  opacity: 1;
   margin-left: 5px;
+  span {
+    font-weight: 600;
+  }
 `
