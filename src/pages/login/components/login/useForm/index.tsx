@@ -1,63 +1,90 @@
 import {
-  ChangeEvent, useCallback, useEffect, useState
-} from 'react';
-import { AxiosResponse } from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
-import produce from 'immer';
-import { addUserAction } from '../../../../../redux/features/userSigninSlice';
-import { IUserLoginRtnResponse } from '../../../../../types/user';
-import { SERVER_IP } from '../../../../../config/constants';
-import { Instance } from '../../../../../config/axios';
+  ChangeEvent,
+  useCallback,
+  useEffect,
+  useState
+} from 'react'
+import { AxiosResponse } from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import produce from 'immer'
+import { addUserAction } from '../../../../../redux/features/userSigninSlice'
+import { IUserLoginRtnResponse } from '../../../../../types/user'
+import { SERVER_IP } from '../../../../../config/constants'
+import { Instance } from '../../../../../config/axios'
 // import { loginUser } from '../../../../../redux/features/userSigninSlice';
-import { validateInputForm } from './helper';
-import { IIinputformType, IInputformErrorsType, IInputformInitialValue } from './types';
-import { RootState } from '../../../../../redux/store';
+import { validateInputForm } from './helper'
+import {
+  IIinputformType,
+  IInputformErrorsType,
+  IInputformInitialValue
+} from './types'
+import { RootState } from '../../../../../redux/store'
 
 export const useFormLogin = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const [inputData, setInputData] = useState<IIinputformType>(IInputformInitialValue);
-  const { remember } = inputData;
+  const [inputData, setInputData] = useState<IIinputformType>(IInputformInitialValue)
+  const { remember } = inputData
 
   const [errors, setErrors] = useState<IInputformErrorsType>({})
 
-  const { user } = useSelector((state: RootState) => state.user)
+  const { user } = useSelector(
+    (state: RootState) => state.user
+  )
 
   useEffect(() => {
     if (user && remember) {
-      localStorage.setItem('token', JSON.stringify(user.auth_token))
+      localStorage.setItem(
+        'token',
+        JSON.stringify(user.auth_token)
+      )
       localStorage.setItem('user', JSON.stringify(user))
     }
   }, [user])
 
-  const handleChange = useCallback(((e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    name === 'remember' ? setInputData({ ...inputData, [name]: e.target.checked })
-      : setInputData({ ...inputData, [name]: value })
-  }), [inputData])
+  const handleChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target
+      name === 'remember'
+        ? setInputData({
+          ...inputData,
+          [name]: e.target.checked
+        })
+        : setInputData({ ...inputData, [name]: value })
+    },
+    [inputData]
+  )
 
   const makeApiCall = useCallback(async () => {
     const updatedData: Omit<IIinputformType, 'remember'> = produce(inputData, (draft) => {
       // eslint-disable-next-line no-param-reassign
-      delete draft.remember;
-      return draft;
+      delete draft.remember
+      return draft
     })
-    await Instance.post<any>(`${SERVER_IP}/user/login`, updatedData).then((res: AxiosResponse<IUserLoginRtnResponse>) => {
-      if (res.data) {
-        dispatch(addUserAction(res.data.data))
-      }
-    }).catch((error) => {
-      // eslint-disable-next-line no-console
-      console.error(error.response.data)
-    })
+    await Instance.post<any>(
+      `${SERVER_IP}/user/login`,
+      updatedData
+    )
+      .then((res: AxiosResponse<IUserLoginRtnResponse>) => {
+        if (res.data) {
+          dispatch(addUserAction(res.data.data))
+        }
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.error(error.response.data)
+      })
   }, [inputData])
 
-  const handleSubmit = useCallback(async (e: any) => {
-    e.preventDefault();
-    const validateErrors = validateInputForm(inputData);
-    setErrors(validateErrors)
-    if (!Object.keys(errors).length) makeApiCall();
-  }, [inputData, errors])
+  const handleSubmit = useCallback(
+    async (e: any) => {
+      e.preventDefault()
+      const validateErrors = validateInputForm(inputData)
+      setErrors(validateErrors)
+      if (!Object.keys(errors).length) makeApiCall()
+    },
+    [inputData, errors]
+  )
 
   return {
     inputData,
@@ -65,4 +92,4 @@ export const useFormLogin = () => {
     handleChange,
     handleSubmit
   }
-};
+}
