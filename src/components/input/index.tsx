@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {
   ChangeEvent,
   forwardRef, memo, MutableRefObject, useRef
 } from 'react';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 // import debounce from 'lodash/debounce'
 import { InputContainer, InputField, Label, Prefix, Suffix } from './index.styled';
 
