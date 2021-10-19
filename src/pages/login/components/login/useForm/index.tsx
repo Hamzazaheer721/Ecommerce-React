@@ -1,4 +1,5 @@
 import {
+  MouseEvent,
   ChangeEvent,
   useCallback,
   useEffect,
@@ -77,7 +78,7 @@ export const useFormLogin = () => {
   }, [inputData])
 
   const handleSubmit = useCallback(
-    async (e: any) => {
+    async (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
       const validateErrors = validateInputForm(inputData)
       setErrors(validateErrors)
