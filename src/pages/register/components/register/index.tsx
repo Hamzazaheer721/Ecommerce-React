@@ -6,7 +6,10 @@ import {
   InputContainer,
   InputFieldsContainer
 } from '../../../../styles/global'
-import { LoginHeader, LoginDescription } from '../../../../styles/typography'
+import {
+  LoginHeader,
+  LoginDescription
+} from '../../../../styles/typography'
 import Input from '../../../../components/input'
 
 const Register = () => {
@@ -17,7 +20,8 @@ const Register = () => {
     <LoginViewContainer>
       <LoginHeader>Get started free</LoginHeader>
       <LoginDescription>
-        Its time to enjoy ultimate shopping experience through WhatsApp
+        Its time to enjoy ultimate shopping experience
+        through WhatsApp
       </LoginDescription>
       <InputFieldsContainer>
         <InputContainer>
@@ -25,17 +29,9 @@ const Register = () => {
             ref={userFieldRef}
             label="WhatsApp Number/Email"
             name="username"
-            value={userFieldRef && userFieldRef.current?.value}
-            prefix={faWhatsapp}
-            // handleChange={handleChange}
-          />
-        </InputContainer>
-        <InputContainer>
-          <Input
-            ref={userFieldRef}
-            label="WhatsApp Number/Email"
-            name="username"
-            value={userFieldRef && userFieldRef.current?.value}
+            value={
+              userFieldRef && userFieldRef.current?.value
+            }
             prefix={faWhatsapp}
             // handleChange={handleChange}
           />

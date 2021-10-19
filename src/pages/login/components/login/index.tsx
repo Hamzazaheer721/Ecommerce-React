@@ -1,12 +1,16 @@
 import { FC, memo, useRef } from 'react'
-import { faKey, faUser } from '@fortawesome/pro-light-svg-icons'
+import {
+  faKey,
+  faUser
+} from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
 import {
   LoginSubFooter,
   LoginHeader,
-  LoginFooter
+  LoginFooter,
+  EmptyErrorState
 } from '../../../../styles/typography'
 
 import { useFormLogin } from './useForm'
@@ -25,7 +29,9 @@ import {
 } from './index.styled'
 
 const Login: FC = memo(() => {
-  const { handleSubmit, handleChange, errors } = useFormLogin()
+  // eslint-disable-next-line operator-linebreak
+  const { handleSubmit, handleChange, errors } =
+    useFormLogin()
   const { usernameError, passwordError } = errors
 
   const userFieldRef = useRef<HTMLInputElement>(null)
@@ -35,7 +41,9 @@ const Login: FC = memo(() => {
     <Container>
       <HeadingsContainer>
         <LoginHeader>Welcome Back</LoginHeader>
-        <SubHeading>Please login to your account</SubHeading>
+        <SubHeading>
+          Please login to your account
+        </SubHeading>
       </HeadingsContainer>
       <InputFieldsContainer>
         <InputContainer>
@@ -43,12 +51,18 @@ const Login: FC = memo(() => {
             ref={userFieldRef}
             label="WhatsApp Number/Email"
             name="username"
-            value={userFieldRef && userFieldRef.current?.value}
+            value={
+              userFieldRef && userFieldRef.current?.value
+            }
             prefix={faWhatsapp}
             handleChange={handleChange}
           />
         </InputContainer>
-        {usernameError ? <h1>{usernameError}</h1> : <MarginDiv />}
+        {usernameError ? (
+          <EmptyErrorState>{usernameError}</EmptyErrorState>
+        ) : (
+          <MarginDiv />
+        )}
         <InputContainer>
           <Input
             ref={passwordFieldRef}
@@ -56,14 +70,28 @@ const Login: FC = memo(() => {
             prefix={faKey}
             typePassword
             name="password"
-            value={passwordFieldRef && passwordFieldRef.current?.value}
+            value={
+              // eslint-disable-next-line operator-linebreak
+              passwordFieldRef &&
+              passwordFieldRef.current?.value
+            }
             handleChange={handleChange}
           />
         </InputContainer>
-        {passwordError ? <h1>{passwordError}</h1> : <MarginDiv />}
+        {passwordError ? (
+          <EmptyErrorState>{passwordError}</EmptyErrorState>
+        ) : (
+          <MarginDiv />
+        )}
         <CheckboxContainer>
-          <CustomCheckBox type="checkbox" name="remember" onChange={handleChange} />
-          <CheckboxPlaceholder>Remember me</CheckboxPlaceholder>
+          <CustomCheckBox
+            type="checkbox"
+            name="remember"
+            onChange={handleChange}
+          />
+          <CheckboxPlaceholder>
+            Remember me
+          </CheckboxPlaceholder>
         </CheckboxContainer>
       </InputFieldsContainer>
       <ButtonContainer>
@@ -74,7 +102,7 @@ const Login: FC = memo(() => {
           handleSubmit={handleSubmit}
         />
       </ButtonContainer>
-      <LoginSubFooter>Forget your password? </LoginSubFooter>
+      <LoginSubFooter>Forget your password?</LoginSubFooter>
       <LoginFooter>
         Don`t have an account?
         <span> Register</span>

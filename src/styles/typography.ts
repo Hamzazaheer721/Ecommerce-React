@@ -29,3 +29,9 @@ export const LoginSubFooter = styled.p`
   margin-top: 5%;
   text-decoration: underline;
 `
+
+export const EmptyErrorState = styled.p`
+  font-size: 14px;
+  margin: 3px 0;
+  color: red;
+`
