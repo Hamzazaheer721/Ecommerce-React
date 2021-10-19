@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
 
 export const Label = styled.p<{ hasValue: boolean }>`
+  color: #c5c5c5;
   font-size: 1rem;
   position: absolute;
   opacity: 0.6;
@@ -21,7 +22,9 @@ export const Label = styled.p<{ hasValue: boolean }>`
       top: 0;
       left: 0.8rem;
       font-size: 0.8rem;
-      background: linear-gradient(179deg, #F2F4FF 52%, white 48%);
+      background: linear-gradient(180deg, #F2F4FF 50%, white 50%);
+      opacity: 1;
+      color: #999999;
    `}
 `
 
@@ -30,20 +33,20 @@ export const InputField = styled.input`
   border: none;
   width: 100%;
   height: 100%;
-  padding: 12px;
+  padding: 14px;
   background-color: transparent;
   padding-left: 3rem;
   :focus ~ ${Label} {
     top: 0;
     left: 0.8rem;
     font-size: 0.8rem;
-    background: linear-gradient(179deg, #f2f4ff 52%, white 48%);
+    background: linear-gradient(180deg, #f2f4ff 50%, white 50%);
     opacity: 1;
     color: ${(props) => props.theme.color.lightGray};
   }
 `
 
-export const InputContainer = styled.div`
+export const InputContainer = styled.div<{ hasValue: boolean }>`
   height: 100%;
   width: 100%;
   position: relative;
@@ -52,14 +55,16 @@ export const InputContainer = styled.div`
   border-radius: 8px;
   z-index: 1;
   transition: 0.4s;
+
+  ${({ hasValue }) => hasValue && `
+    border: 1px solid black;
+  `}
+
   &:focus,
   &:hover {
     border: ${(props) => props.theme.borderColor.black};
   }
-  &:hover ~ ${Label} {
-    opacity: 1;
-    color: ${(props) => props.theme.color.lightGray};
-  }
+
 `
 
 export const Prefix = styled(FontAwesomeIcon)`
