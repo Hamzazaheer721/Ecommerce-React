@@ -1,5 +1,6 @@
 import { FC, memo, useRef } from 'react'
-import { faUser } from '@fortawesome/pro-light-svg-icons'
+import { faEye, faUser } from '@fortawesome/pro-light-svg-icons'
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
 import { useFormLogin } from './useForm'
@@ -38,6 +39,8 @@ const Login: FC = memo(() => {
             label="Enter your name"
             name="username"
             value={userFieldRef && userFieldRef.current?.value}
+            prefix={faWhatsapp}
+            suffix={faEye}
             handleChange={handleChange}
           />
         </InputContainer>
@@ -46,6 +49,7 @@ const Login: FC = memo(() => {
           <Input
             ref={passwordFieldRef}
             label="Please enter your passwrod"
+            type="password"
             name="password"
             value={passwordFieldRef && passwordFieldRef.current?.value}
             handleChange={handleChange}
