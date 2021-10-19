@@ -47,7 +47,7 @@ const Login: FC = memo(() => {
         <InputContainer>
           <Input
             ref={passwordFieldRef}
-            label="Please enter your passwrod"
+            label="Please enter your password"
             prefix={faKey}
             typePassword
             name="password"

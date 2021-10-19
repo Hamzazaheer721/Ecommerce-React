@@ -58,11 +58,20 @@ export const InputContainer = styled.div<{ hasValue: boolean }>`
   z-index: 1;
   transition: 0.4s;
 
+  input:-webkit-autofill,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    /* -webkit-text-fill-color: #0b233b; */
+  }
+  
   ${({ hasValue }) => hasValue && `
     border: 1px solid black;
   `}
 
   &:focus,
+  &:focus-within,
+  &:active,
   &:hover {
     border: ${(props) => props.theme.borderColor.black};
   }
