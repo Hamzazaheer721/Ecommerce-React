@@ -41,7 +41,7 @@ const Login: FC = memo(() => {
         <InputContainer>
           <Input
             ref={userFieldRef}
-            label="Enter your name"
+            label="WhatsApp Number/Email"
             name="username"
             value={userFieldRef && userFieldRef.current?.value}
             prefix={faWhatsapp}
@@ -52,7 +52,7 @@ const Login: FC = memo(() => {
         <InputContainer>
           <Input
             ref={passwordFieldRef}
-            label="Please enter your password"
+            label="Password"
             prefix={faKey}
             typePassword
             name="password"
