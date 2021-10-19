@@ -19,6 +19,7 @@ export const Container = styled.div`
 `
 
 export const InputContainer = styled.div`
+  min-width: 250px;
   width: 100%;
   border: none;
   outline: none;

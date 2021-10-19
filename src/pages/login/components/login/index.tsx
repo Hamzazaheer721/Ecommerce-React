@@ -1,5 +1,5 @@
 import { FC, memo, useRef } from 'react'
-import { faUser } from '@fortawesome/pro-light-svg-icons'
+import { faKey, faUser } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
@@ -48,6 +48,7 @@ const Login: FC = memo(() => {
           <Input
             ref={passwordFieldRef}
             label="Please enter your passwrod"
+            prefix={faKey}
             typePassword
             name="password"
             value={passwordFieldRef && passwordFieldRef.current?.value}
