@@ -4,13 +4,25 @@ import { device } from '../../../../styles/devices'
 
 export const Container = styled.div`
   display: flex;
-  /* box-sizing: border-box; */
   flex-direction: column;
   min-height: 100vh;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  width: 40%;
+  width: 35%;
+  padding: 0 1.5rem;
+
+  @media ${device.tablet} {
+    width: 50%;
+  }
+
+  @media ${device.mobile} {
+    width: 100%;
+  }
+
+  @media ${device.tiny} {
+    width: 100%;
+  }
   /* position: absolute;
   transform: translate(-50%, -60%);
   left: 50%;
@@ -19,7 +31,7 @@ export const Container = styled.div`
 `
 
 export const InputContainer = styled.div`
-  min-width: 250px;
+  /* min-width: 250px; */
   width: 100%;
   border: none;
   outline: none;
@@ -27,7 +39,7 @@ export const InputContainer = styled.div`
 export const ButtonContainer = styled.div`
   /* min-width: 64px; */
   height: 40px;
-  min-width: 250px;
+  width: 100%;
   .ant-btn {
     color: ${(props) => props.theme.color.white};
     background: linear-gradient(270deg, #1a87bb, #1b9bd7);
@@ -62,6 +74,7 @@ export const SubHeading = styled.div`
   font-size: 16px;
   letter-spacing: 0.7px;
   margin-top: 13px;
+  white-space: nowrap;
 `
 
 export const InputFieldsContainer = styled.div`
@@ -71,7 +84,7 @@ export const InputFieldsContainer = styled.div`
   margin-bottom: 20px;
   width: 100%;
 
-  @media ${device.desktop} {
+  /* @media ${device.desktop} {
     width: 450px;
   }
 
@@ -89,7 +102,7 @@ export const InputFieldsContainer = styled.div`
 
   @media ${device.tiny} {
     width: 250px;
-  }
+  } */
 `
 export const MarginDiv = styled.div`
   visibility: hidden;

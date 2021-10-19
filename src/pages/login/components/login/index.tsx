@@ -74,10 +74,10 @@ const Login: FC = memo(() => {
           handleSubmit={handleSubmit}
         />
       </ButtonContainer>
-      <LoginSubFooter>Forget your password?</LoginSubFooter>
+      <LoginSubFooter>Forget your password? </LoginSubFooter>
       <LoginFooter>
         Don`t have an account?
-        <span>Register</span>
+        <span> Register</span>
       </LoginFooter>
     </Container>
   )

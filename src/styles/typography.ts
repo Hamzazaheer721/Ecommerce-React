@@ -5,6 +5,7 @@ export const LoginHeader = styled.h3`
   color: ${(props) => props.theme.color.primary};
   text-transform: capitalize;
   font-weight: 600;
+  white-space: nowrap;
 `
 
 export const LoginDescription = styled.p`
@@ -16,6 +17,7 @@ export const LoginDescription = styled.p`
 export const LoginFooter = styled.p`
   font-size: 14px;
   margin-top: 20%;
+  white-space: nowrap;
   span {
     font-weight: 700;
   }
