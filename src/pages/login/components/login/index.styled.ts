@@ -4,18 +4,18 @@ import { device } from '../../../../styles/devices'
 
 export const Container = styled.div`
   display: flex;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   flex-direction: column;
   min-height: 100vh;
   align-items: center;
   justify-content: center;
-  margin: auto;
-  width: 100%;
-  position: absolute;
+  margin: 0 auto;
+  width: 40%;
+  /* position: absolute;
   transform: translate(-50%, -60%);
   left: 50%;
-  top: 50%;
-  overflow-y: hidden;
+  top: 50%; */
+  /* overflow-y: hidden; */
 `
 
 export const InputContainer = styled.div`
@@ -48,7 +48,7 @@ export const ButtonContainer = styled.div`
 export const HeadingsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
   text-align: center;
 `
 export const Heading = styled.div`
