@@ -3,6 +3,7 @@ import {
 } from 'react';
 import { AxiosResponse } from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
+import produce from 'immer';
 import { addUserAction } from '../../../../../redux/features/userSigninSlice';
 import { IUserLoginRtnResponse } from '../../../../../types/user';
 import { SERVER_IP } from '../../../../../config/constants';
@@ -16,13 +17,14 @@ export const useFormLogin = () => {
   const dispatch = useDispatch();
 
   const [inputData, setInputData] = useState<IIinputformType>(IInputformInitialValue);
+  const { remember } = inputData;
 
   const [errors, setErrors] = useState<IInputformErrorsType>({})
 
   const { user } = useSelector((state: RootState) => state.user)
 
   useEffect(() => {
-    if (user) {
+    if (user && remember) {
       localStorage.setItem('token', JSON.stringify(user.auth_token))
       localStorage.setItem('user', JSON.stringify(user))
     }
@@ -30,11 +32,17 @@ export const useFormLogin = () => {
 
   const handleChange = useCallback(((e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setInputData({ ...inputData, [name]: value })
+    name === 'remember' ? setInputData({ ...inputData, [name]: e.target.checked })
+      : setInputData({ ...inputData, [name]: value })
   }), [inputData])
 
   const makeApiCall = useCallback(async () => {
-    await Instance.post<any>(`${SERVER_IP}/user/login`, inputData).then((res: AxiosResponse<IUserLoginRtnResponse>) => {
+    const updatedData: Omit<IIinputformType, 'remember'> = produce(inputData, (draft) => {
+      // eslint-disable-next-line no-param-reassign
+      delete draft.remember;
+      return draft;
+    })
+    await Instance.post<any>(`${SERVER_IP}/user/login`, updatedData).then((res: AxiosResponse<IUserLoginRtnResponse>) => {
       if (res.data) {
         dispatch(addUserAction(res.data.data))
       }

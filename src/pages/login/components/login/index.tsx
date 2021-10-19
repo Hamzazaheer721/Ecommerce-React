@@ -62,7 +62,7 @@ const Login: FC = memo(() => {
         </InputContainer>
         {passwordError ? <h1>{passwordError}</h1> : <MarginDiv />}
         <CheckboxContainer>
-          <CustomCheckBox type="checkbox" />
+          <CustomCheckBox type="checkbox" name="remember" onChange={handleChange} />
           <CheckboxPlaceholder>Remember me</CheckboxPlaceholder>
         </CheckboxContainer>
       </InputFieldsContainer>

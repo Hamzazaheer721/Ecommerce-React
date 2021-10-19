@@ -1,11 +1,13 @@
 export const IInputformInitialValue = {
   username: '',
-  password: ''
+  password: '',
+  remember: false
 }
 
 export type IIinputformType = {
   username : string,
-  password: string
+  password: string,
+  remember?: boolean
 }
 
 export type IInputformErrorsType = {
