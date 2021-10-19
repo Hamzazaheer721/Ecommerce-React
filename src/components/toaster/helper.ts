@@ -1,11 +1,12 @@
 import { IColorObjectProp } from './types'
 import { defaultTheme } from '../../styles/theme'
 
+const initialValue = {
+  statusColor: '',
+  backgroundColor: ''
+}
 export const filterColor = (toastType: string) => {
-  const colorObj: IColorObjectProp = {
-    statusColor: '',
-    backgroundColor: ''
-  }
+  const colorObj: IColorObjectProp = initialValue
   switch (toastType) {
     case 'success':
       colorObj.backgroundColor = defaultTheme.color.lightGreen
