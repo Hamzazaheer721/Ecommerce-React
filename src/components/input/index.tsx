@@ -70,7 +70,7 @@ const Input = memo(
       }, [showPassword])
 
       return (
-        <InputContainer>
+        <InputContainer hasValue={!!value}>
           <InputField
             {...props}
             name={name}
