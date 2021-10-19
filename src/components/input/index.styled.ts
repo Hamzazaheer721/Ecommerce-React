@@ -103,8 +103,10 @@ export const InputContainer = styled.div<{ hasValue: boolean }>`
     transition: background-color 5000s ease-in-out 0s;
     /* -webkit-text-fill-color: #0b233b; */
   }
-  
-  ${({ hasValue }) => hasValue && `
+
+  ${({ hasValue }) =>
+    hasValue &&
+    `
     border: 1px solid black;
   `}
 
