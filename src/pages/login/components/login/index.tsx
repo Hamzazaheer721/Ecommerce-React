@@ -3,6 +3,12 @@ import { faKey, faUser } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
+import {
+  LoginSubFooter,
+  LoginHeader,
+  LoginFooter
+} from '../../../../styles/typography'
+
 import { useFormLogin } from './useForm'
 
 import {
@@ -11,7 +17,6 @@ import {
   CheckboxPlaceholder,
   Container,
   CustomCheckBox,
-  Heading,
   HeadingsContainer,
   InputContainer,
   InputFieldsContainer,
@@ -29,7 +34,7 @@ const Login: FC = memo(() => {
   return (
     <Container>
       <HeadingsContainer>
-        <Heading>Welcome Back</Heading>
+        <LoginHeader>Welcome Back</LoginHeader>
         <SubHeading>Please login to your account</SubHeading>
       </HeadingsContainer>
       <InputFieldsContainer>
@@ -69,6 +74,11 @@ const Login: FC = memo(() => {
           handleSubmit={handleSubmit}
         />
       </ButtonContainer>
+      <LoginSubFooter>Forget your password?</LoginSubFooter>
+      <LoginFooter>
+        Don`t have an account?
+        <span>Register</span>
+      </LoginFooter>
     </Container>
   )
 })

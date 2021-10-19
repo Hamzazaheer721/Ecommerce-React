@@ -20,3 +20,9 @@ export const LoginFooter = styled.p`
     font-weight: 700;
   }
 `
+
+export const LoginSubFooter = styled.p`
+  font-size: 14px;
+  margin-top: 5%;
+  text-decoration: underline;
+`

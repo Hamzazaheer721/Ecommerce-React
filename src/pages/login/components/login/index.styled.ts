@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { device } from '../../../../styles/devices';
+import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { device } from '../../../../styles/devices'
 
 export const Container = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ export const Container = styled.div`
   margin: auto;
   width: 100%;
   position: absolute;
-  transform : translate(-50%, -60%);
+  transform: translate(-50%, -60%);
   left: 50%;
   top: 50%;
   overflow-y: hidden;
@@ -28,17 +28,19 @@ export const ButtonContainer = styled.div`
   /* min-width: 64px; */
   height: 40px;
   min-width: 250px;
-  .ant-btn{
+  .ant-btn {
     color: ${(props) => props.theme.color.white};
-    background: linear-gradient(270deg,#1A87BB, #1B9BD7);
+    background: linear-gradient(270deg, #1a87bb, #1b9bd7);
     border: none;
     border-radius: 20px;
     width: 100%;
     font-size: 1rem;
     height: 100%;
-    &:hover, &:focus, &:active {
+    &:hover,
+    &:focus,
+    &:active {
       color: ${(props) => props.theme.color.white};
-      background: linear-gradient(270deg,#1A87BB, #1B9BD7);
+      background: linear-gradient(270deg, #1a87bb, #1b9bd7);
     }
   }
 `
@@ -47,7 +49,7 @@ export const HeadingsContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 80px;
-  text-align:center;
+  text-align: center;
 `
 export const Heading = styled.div`
   color: ${(props) => props.theme.color.primary};
@@ -56,9 +58,9 @@ export const Heading = styled.div`
 `
 
 export const SubHeading = styled.div`
-  color : ${(props) => props.theme.color.secondary};
+  color: ${(props) => props.theme.color.secondary};
   font-size: 16px;
-  letter-spacing: 0.7px; 
+  letter-spacing: 0.7px;
   margin-top: 13px;
 `
 
@@ -88,7 +90,6 @@ export const InputFieldsContainer = styled.div`
   @media ${device.tiny} {
     width: 250px;
   }
-
 `
 export const MarginDiv = styled.div`
   visibility: hidden;
@@ -100,9 +101,9 @@ export const CheckboxContainer = styled.div`
 `
 
 export const CustomCheckBox = styled.input`
-  margin:0;
+  margin: 0;
   box-shadow: 0px 3px 6px #00000029;
-  border: 0.5px solid #4E98E2;
+  border: 0.5px solid #4e98e2;
   border-radius: 3px;
 `
 export const CheckboxPlaceholder = styled.p`
@@ -113,5 +114,4 @@ export const CheckboxPlaceholder = styled.p`
   padding-top: 10px;
   font-size: 12px;
 `
-export const UserButton = styled(FontAwesomeIcon)`
-`
+export const UserButton = styled(FontAwesomeIcon)``
