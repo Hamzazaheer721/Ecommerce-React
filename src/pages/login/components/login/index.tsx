@@ -6,6 +6,7 @@ import {
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
+import ToastComponent from '../../../../components/toaster'
 import {
   LoginSubFooter,
   LoginHeader,
@@ -31,12 +32,13 @@ import {
 const Login: FC = memo(() => {
   // eslint-disable-next-line operator-linebreak
   const { handleSubmit, handleChange, errors, response } =
-    useFormLogin()
-  const { success, error } = response;
-  const { usernameError, passwordError } = errors
+    useFormLogin();
 
-  const userFieldRef = useRef<HTMLInputElement>(null)
-  const passwordFieldRef = useRef<HTMLInputElement>(null)
+  const { success, error } = response;
+  const { usernameError, passwordError } = errors;
+
+  const userFieldRef = useRef<HTMLInputElement>(null);
+  const passwordFieldRef = useRef<HTMLInputElement>(null);
 
   return (
     <Container>
@@ -46,8 +48,8 @@ const Login: FC = memo(() => {
           Please login to your account
         </SubHeading>
       </HeadingsContainer>
-      <h1>{success}</h1>
-      <h1>{error}</h1>
+      {success && <ToastComponent toastType="success" />}
+      {error && <ToastComponent toastType="error" />}
       <InputFieldsContainer>
         <InputContainer>
           <Input
