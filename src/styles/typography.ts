@@ -6,17 +6,18 @@ export const LoginHeader = styled.h3`
   text-transform: capitalize;
   font-weight: 600;
   white-space: nowrap;
-  margin-bottom: 5px;
+  margin-bottom: 0;
 `
 
 export const LoginDescription = styled.p`
   font-size: 16px;
   margin-bottom: 10%;
+  margin-top: 0;
   font-weight: 500;
 `
 export const LoginFooter = styled.p`
   font-size: 14px;
-  margin-top: 20%;
+  margin-top: 15%;
   white-space: nowrap;
   span {
     font-weight: 700;
