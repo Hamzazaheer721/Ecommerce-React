@@ -13,7 +13,6 @@ export const LoginDescription = styled.p`
   font-size: 16px;
   margin-bottom: 10%;
   font-weight: 500;
-  /* padding: 0 30px; */
 `
 export const LoginFooter = styled.p`
   font-size: 14px;
@@ -28,6 +27,7 @@ export const LoginSubFooter = styled.p`
   font-size: 14px;
   margin-top: 5%;
   text-decoration: underline;
+  color: black;
 `
 
 export const EmptyErrorState = styled.p`

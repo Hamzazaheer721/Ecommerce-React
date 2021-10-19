@@ -4,6 +4,7 @@ import {
   faUser
 } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { Link } from 'react-router-dom'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
 import ToastComponent from '../../../../components/toaster'
@@ -25,6 +26,7 @@ import {
   HeadingsContainer,
   InputContainer,
   InputFieldsContainer,
+  LinkText,
   MarginDiv,
   SubHeading
 } from './index.styled'
@@ -107,10 +109,14 @@ const Login: FC = memo(() => {
           handleSubmit={handleSubmit}
         />
       </ButtonContainer>
-      <LoginSubFooter>Forget your password?</LoginSubFooter>
+      <Link to="/">
+        <LoginSubFooter>Forget your password?</LoginSubFooter>
+      </Link>
       <LoginFooter>
         Don`t have an account?
-        <span> Register</span>
+        <Link to="/register">
+          <LinkText> Register</LinkText>
+        </Link>
       </LoginFooter>
     </Container>
   )

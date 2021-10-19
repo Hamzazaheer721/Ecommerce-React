@@ -82,6 +82,7 @@ export const MarginDiv = styled.div`
   visibility: hidden;
   height: 15px;
 `
+
 export const CheckboxContainer = styled.div`
   display: flex;
   align-items: baseline;
@@ -102,3 +103,7 @@ export const CheckboxPlaceholder = styled.p`
   font-size: 12px;
 `
 export const UserButton = styled(FontAwesomeIcon)``
+
+export const LinkText = styled.span`
+  color: black;
+`
