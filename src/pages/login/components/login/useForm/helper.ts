@@ -1,7 +1,7 @@
 import { isEmpty } from '../../../../../general/validations';
-import { IIinputformType, IInputformErrorsType } from './types';
+import { IInputformType, IInputformErrorsType } from './types';
 
-export const validateInputForm = (inputData: Omit<IIinputformType, 'remember'>) => {
+export const validateInputForm = (inputData: Omit<IInputformType, 'remember'>) => {
   const errors: IInputformErrorsType = {};
   const { username, password } = inputData;
 

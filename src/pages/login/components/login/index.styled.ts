@@ -84,7 +84,7 @@ export const MarginDiv = styled.div`
 `
 export const CheckboxContainer = styled.div`
   display: flex;
-  align-items: center;
+  align-items: baseline;
 `
 
 export const CustomCheckBox = styled.input`
