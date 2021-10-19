@@ -2,6 +2,7 @@
 /* eslint-disable operator-linebreak */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
+import { device } from '../../styles/devices';
 
 export const Label = styled.p<{ hasValue: boolean }>`
   color: #c5c5c5;
@@ -27,6 +28,28 @@ export const Label = styled.p<{ hasValue: boolean }>`
       opacity: 1;
       color: #999999;
    `}
+
+  @media ${device.mobile} {
+    font-size: 12px;
+    left: 2rem;
+    ${({ hasValue }) =>
+    hasValue &&
+    `
+      left: 0.5rem;
+      font-size: 0.8rem;
+   `}
+  }
+
+  @media ${device.tiny} {
+    font-size: 12px;
+    left:2rem;
+    ${({ hasValue }) =>
+    hasValue &&
+    `
+      left: 0.5rem;
+      font-size: 0.8rem;
+   `}
+  }
 `
 
 export const InputField = styled.input`
@@ -45,6 +68,22 @@ export const InputField = styled.input`
     background: linear-gradient(180deg, #f2f4ff 50%, white 50%);
     opacity: 1;
     color: ${(props) => props.theme.color.lightGray};
+  }
+
+  @media ${device.mobile} {
+    padding-left: 2.5rem;
+    :focus ~ ${Label} {
+      left: 0.5rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  @media ${device.tiny} {
+    padding-left: 2.5rem;
+    :focus ~ ${Label} {
+      left: 0.5rem;
+      font-size: 0.8rem;
+    }
   }
 `
 
@@ -83,6 +122,13 @@ export const Prefix = styled(FontAwesomeIcon)`
   top: 50%;
   transform: translateY(-50%);
   font-size: 1.4rem;
+
+  @media ${device.mobile} {
+    font-size: 1rem;
+  }
+  @media ${device.tiny} {
+    font-size: 1rem;
+  }
 `
 
 export const Suffix = styled(FontAwesomeIcon)`
@@ -92,4 +138,10 @@ export const Suffix = styled(FontAwesomeIcon)`
   font-size: 1.4rem;
   right: 1rem;
   width: 12px;
+  @media ${device.mobile} {
+    font-size: 1rem;
+  }
+  @media ${device.tiny} {
+    font-size: 1rem;
+  }
 `
