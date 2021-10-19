@@ -4,8 +4,10 @@ import {
   faUser
 } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { Link } from 'react-router-dom'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
+import ToastComponent from '../../../../components/toaster'
 import {
   LoginSubFooter,
   LoginHeader,
@@ -24,6 +26,7 @@ import {
   HeadingsContainer,
   InputContainer,
   InputFieldsContainer,
+  LinkText,
   MarginDiv,
   SubHeading
 } from './index.styled'
@@ -31,12 +34,13 @@ import {
 const Login: FC = memo(() => {
   // eslint-disable-next-line operator-linebreak
   const { handleSubmit, handleChange, errors, response } =
-    useFormLogin()
-  const { success, error } = response;
-  const { usernameError, passwordError } = errors
+    useFormLogin();
 
-  const userFieldRef = useRef<HTMLInputElement>(null)
-  const passwordFieldRef = useRef<HTMLInputElement>(null)
+  const { success, error } = response;
+  const { usernameError, passwordError } = errors;
+
+  const userFieldRef = useRef<HTMLInputElement>(null);
+  const passwordFieldRef = useRef<HTMLInputElement>(null);
 
   return (
     <Container>
@@ -46,8 +50,8 @@ const Login: FC = memo(() => {
           Please login to your account
         </SubHeading>
       </HeadingsContainer>
-      <h1>{success}</h1>
-      <h1>{error}</h1>
+      {success && <ToastComponent toastType="success" />}
+      {error && <ToastComponent toastType="error" />}
       <InputFieldsContainer>
         <InputContainer>
           <Input
@@ -105,10 +109,14 @@ const Login: FC = memo(() => {
           handleSubmit={handleSubmit}
         />
       </ButtonContainer>
-      <LoginSubFooter>Forget your password?</LoginSubFooter>
+      <Link to="/">
+        <LoginSubFooter>Forget your password?</LoginSubFooter>
+      </Link>
       <LoginFooter>
         Don`t have an account?
-        <span> Register</span>
+        <Link to="/register">
+          <LinkText> Register</LinkText>
+        </Link>
       </LoginFooter>
     </Container>
   )

@@ -60,6 +60,7 @@ export const useFormLogin = () => {
   )
 
   const makeApiCall = useCallback(async () => {
+    setErrors({})
     const updatedData: Omit<IInputformType, 'remember'> = produce(inputData, (draft) => {
       // eslint-disable-next-line no-param-reassign
       delete draft.remember
@@ -82,15 +83,14 @@ export const useFormLogin = () => {
           console.error(error.response.data)
         }
       })
-  }, [inputData, response])
+  }, [inputData, response, errors])
 
   const handleSubmit = useCallback(
     async (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
-      e.stopPropagation();
       const validateErrors = validateInputForm(inputData)
       setErrors(validateErrors)
-      if (!Object.keys(errors).length) makeApiCall()
+      if (!Object.keys(validateErrors).length && !Object.keys(errors).length) makeApiCall()
     },
     [inputData, errors]
   )
