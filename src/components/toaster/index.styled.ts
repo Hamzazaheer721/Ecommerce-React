@@ -30,7 +30,7 @@ export const CheckIcon = styled(FontAwesomeIcon)<IToastContainerProp>`
 
 export const TitleContainer = styled.div<ITitleContainerProp>`
   width: 100%;
-  padding-bottom: 20px;
+  padding-bottom: 12px;
   h2 {
     color: ${(props) => props.colors.statusColor};
     font-size: 16px;
