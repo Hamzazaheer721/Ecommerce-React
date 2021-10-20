@@ -1,5 +1,6 @@
 import { FC, memo } from 'react'
 import { faUser, faBuilding } from '@fortawesome/pro-light-svg-icons'
+import { Link } from 'react-router-dom'
 import {
   LoginHeader,
   LoginDescription,
@@ -18,18 +19,21 @@ const ViewComponent: FC = memo(() => (
     <LoginDescription>
       Its time to enjoy ultimate shoping experience through WhatsApp
     </LoginDescription>
-    <ButtonContainer>
-      <CustomButton label="Customer" icon={faUser} type="button" color="red" />
-    </ButtonContainer>
-    <SecondaryButtonContainer>
-      <CustomButton
-        label="Company"
-        icon={faBuilding}
-        type="button"
-        color="red"
-      />
-
-    </SecondaryButtonContainer>
+    <Link to="/register/customer">
+      <ButtonContainer>
+        <CustomButton label="Customer" icon={faUser} type="button" color="red" />
+      </ButtonContainer>
+    </Link>
+    <Link to="/register/company">
+      <SecondaryButtonContainer>
+        <CustomButton
+          label="Company"
+          icon={faBuilding}
+          type="button"
+          color="red"
+        />
+      </SecondaryButtonContainer>
+    </Link>
     <LoginFooter>
       Already on WhatsPays?
       <span> Login</span>

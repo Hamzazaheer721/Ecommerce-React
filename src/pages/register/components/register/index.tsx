@@ -5,6 +5,7 @@ import {
   faEnvelope
 } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { useLocation } from 'react-router-dom'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
 import {
@@ -33,7 +34,9 @@ const Register: FC = memo(() => {
   // const { handleSubmit, handleChange, errors } =
   //   useFormLogin()
   // const { usernameError, passwordError } = errors
-
+  const location = useLocation();
+  const isCustomer = location.pathname.includes('customer')
+  console.info('isCustomer : ', isCustomer)
   const fullNameFieldRef = useRef<HTMLInputElement>(null)
   const NumberFieldRef = useRef<HTMLInputElement>(null)
   const EmailFieldRef = useRef<HTMLInputElement>(null)
@@ -60,7 +63,7 @@ const Register: FC = memo(() => {
               fullNameFieldRef.current?.value
             }
             prefix={faUser}
-            // handleChange={handleChange}
+          // handleChange={handleChange}
           />
         </InputContainer>
         <MarginDiv />
@@ -75,7 +78,7 @@ const Register: FC = memo(() => {
               NumberFieldRef.current?.value
             }
             prefix={faWhatsapp}
-            // handleChange={handleChange}
+          // handleChange={handleChange}
           />
         </InputContainer>
 
@@ -96,7 +99,7 @@ const Register: FC = memo(() => {
               // eslint-disable-next-line operator-linebreak
               EmailFieldRef && EmailFieldRef.current?.value
             }
-            // handleChange={handleChange}
+          // handleChange={handleChange}
           />
         </InputContainer>
         <MarginDiv />
@@ -112,7 +115,7 @@ const Register: FC = memo(() => {
               passwordFieldRef &&
               passwordFieldRef.current?.value
             }
-            // handleChange={handleChange}
+          // handleChange={handleChange}
           />
         </InputContainer>
         {/* {passwordError ? (
@@ -125,7 +128,7 @@ const Register: FC = memo(() => {
           <CustomCheckBox
             type="checkbox"
             name="remember"
-            // onChange={handleChange}
+          // onChange={handleChange}
           />
           <CheckboxPlaceholder>
             Please accept the
@@ -139,7 +142,7 @@ const Register: FC = memo(() => {
           type="submit"
           label="Customer"
           icon={faUser}
-          // handleSubmit={handleSubmit}
+        // handleSubmit={handleSubmit}
         />
       </ButtonContainer>
       <LoginFooter>

@@ -1,4 +1,4 @@
-import { FC, memo, useRef } from 'react'
+import { FC, memo, useMemo } from 'react'
 import { faCheck, faTimes } from '@fortawesome/pro-light-svg-icons'
 import { faInfo } from '@fortawesome/free-solid-svg-icons'
 import { filterColor } from './helper'
@@ -17,27 +17,21 @@ interface IToastProps {
 }
 
 const ToastComponent: FC<IToastProps> = memo(({ toastType, description }: IToastProps) => {
-  // I will memoize it later
-  // const colors = useMemo(() => {
-  //   filterColor(toastType)
-  // }, [toastType])
-
-  const colorsRef = useRef<IColorObjectProp>(filterColor(toastType))
-
+  const colors: IColorObjectProp = useMemo(() => filterColor(toastType), [toastType])
   return (
-    <ToastContainer colors={colorsRef.current}>
+    <ToastContainer colors={colors}>
       <h2>
         {toastType === 'success' && (
-          <CheckIcon icon={faCheck} colors={colorsRef.current} />
+          <CheckIcon icon={faCheck} colors={colors} />
         )}
         {toastType === 'error' && (
-          <CheckIcon icon={faTimes} colors={colorsRef.current} />
+          <CheckIcon icon={faTimes} colors={colors} />
         )}
         {toastType === 'info' && (
-          <CheckIcon icon={faInfo} colors={colorsRef.current} />
+          <CheckIcon icon={faInfo} colors={colors} />
         )}
       </h2>
-      <TitleContainer colors={colorsRef.current}>
+      <TitleContainer colors={colors}>
         {toastType === 'success' && (
           <h2>
             Congratulation
