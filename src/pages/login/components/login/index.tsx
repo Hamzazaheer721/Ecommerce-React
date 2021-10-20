@@ -114,7 +114,7 @@ const Login: FC = memo(() => {
       </Link>
       <LoginFooter>
         Don`t have an account?
-        <Link to="/register">
+        <Link to="/get-started">
           <LinkText> Register</LinkText>
         </Link>
       </LoginFooter>

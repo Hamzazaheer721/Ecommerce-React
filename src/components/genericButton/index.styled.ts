@@ -10,7 +10,6 @@ export const IconStyler = styled(FontAwesomeIcon)`
   margin-right: 7px;
 `
 export const ButtonContainer = styled.div`
-  /* min-width: 64px; */
   height: 40px;
   min-width: 250px;
   .ant-btn {
@@ -31,7 +30,7 @@ export const ButtonContainer = styled.div`
 `
 export const SecondaryButtonContainer = styled.div`
   /* min-width: 64px; */
-  margin: 8% 0;
+  margin: 12px 0;
   height: 40px;
   min-width: 250px;
   .ant-btn {
@@ -46,7 +45,7 @@ export const SecondaryButtonContainer = styled.div`
     &:focus,
     &:active {
       color: ${(props) => props.theme.color.white};
-      background: linear-gradient(270deg, #1a87bb, #1b9bd7);
+      background: linear-gradient(270deg, #0c215a, #243d82);
     }
   }
 `

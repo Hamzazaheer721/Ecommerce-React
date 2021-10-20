@@ -6,12 +6,11 @@ import {
   LoginFooter
 } from '../../styles/typography'
 import { LoginViewContainer } from '../../styles/global'
+import CustomButton from '../../components/genericButton'
 import {
   ButtonContainer,
   SecondaryButtonContainer
 } from '../../components/genericButton/index.styled'
-import CustomButton from '../../components/genericButton'
-import ToastComponent from '../../components/toaster'
 
 const ViewComponent: FC = memo(() => (
   <LoginViewContainer>
@@ -19,19 +18,17 @@ const ViewComponent: FC = memo(() => (
     <LoginDescription>
       Its time to enjoy ultimate shoping experience through WhatsApp
     </LoginDescription>
-    <ToastComponent toastType="info" />
     <ButtonContainer>
       <CustomButton label="Customer" icon={faUser} type="button" color="red" />
     </ButtonContainer>
     <SecondaryButtonContainer>
-      <ButtonContainer>
-        <CustomButton
-          label="Company"
-          icon={faBuilding}
-          type="button"
-          color="red"
-        />
-      </ButtonContainer>
+      <CustomButton
+        label="Company"
+        icon={faBuilding}
+        type="button"
+        color="red"
+      />
+
     </SecondaryButtonContainer>
     <LoginFooter>
       Already on WhatsPays?
