@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {
   ChangeEvent,
   forwardRef,
@@ -17,6 +18,7 @@ import {
   InputContainer,
   InputField,
   Label,
+  PhoneInputField,
   Prefix,
   Suffix
 } from './index.styled'
@@ -28,6 +30,7 @@ interface InputProps {
   prefix?: IconProp
   suffix?: IconProp
   typePassword?: boolean
+  phoneField?: boolean
   // eslint-disable-next-line no-unused-vars
   handleChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
@@ -43,6 +46,7 @@ const Input = memo(
         typePassword = false,
         prefix,
         suffix,
+        phoneField,
         ...props
       },
       inputRef
@@ -64,40 +68,46 @@ const Input = memo(
       //   setValue(e.target.value)
       //   handleInputDebounce(e);
       // }, [_value])
-
       const handleEyeChange = useCallback(() => {
         setShowPassword((prevState) => !prevState)
       }, [showPassword])
 
       return (
         <InputContainer hasValue={!!value}>
-          <InputField
-            {...props}
-            name={name}
-            value={value}
-            type={
-              typePassword && !showPassword
-                ? 'password'
-                : 'text'
-            }
-            ref={(_ref) => {
-              if (_ref) {
-                (
-                  localRef as MutableRefObject<HTMLInputElement>
-                ).current = _ref
+          {!phoneField && (
+            <InputField
+              {...props}
+              name={name}
+              value={value}
+              type={
+                typePassword && !showPassword
+                  ? 'password'
+                  : 'text'
               }
-              if (inputRef) {
-                if (typeof inputRef === 'function') { inputRef(_ref) }
-                if (typeof inputRef === 'object') {
-                  // eslint-disable-next-line no-param-reassign
-                  inputRef.current = _ref
+              ref={(_ref) => {
+                if (_ref) {
+                  (
+                    localRef as MutableRefObject<HTMLInputElement>
+                  ).current = _ref
                 }
-              }
-            }}
-            onChange={handleChange}
-          />
-          {prefix && <Prefix icon={prefix} />}
-          <Label hasValue={!!value}>{label}</Label>
+                if (inputRef) {
+                  if (typeof inputRef === 'function') { inputRef(_ref) }
+                  if (typeof inputRef === 'object') {
+                    // eslint-disable-next-line no-param-reassign
+                    inputRef.current = _ref
+                  }
+                }
+              }}
+              onChange={handleChange}
+            />
+          )}
+          {
+            phoneField && (
+              <PhoneInputField placeholder="" country="pk" value={value} />
+            )
+          }
+          {prefix && <Prefix icon={prefix} phoneField={!!phoneField} />}
+          <Label hasValue={!!value} phoneField={!!phoneField}>{label}</Label>
           {typePassword && (
             <Suffix
               onClick={handleEyeChange}

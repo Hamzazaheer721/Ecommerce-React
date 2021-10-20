@@ -1,4 +1,4 @@
-import { FC, memo, useRef } from 'react'
+import { FC, memo, useRef, useState } from 'react'
 import {
   faKey,
   faUser,
@@ -41,7 +41,7 @@ const Register: FC = memo(() => {
 
   const fullNameFieldRef = useRef<HTMLInputElement>(null)
   const companyFieldRef = useRef<HTMLInputElement>(null);
-  const NumberFieldRef = useRef<HTMLInputElement>(null)
+  const [numberField] = useState<any>('')
   const EmailFieldRef = useRef<HTMLInputElement>(null)
   const passwordFieldRef = useRef<HTMLInputElement>(null)
 
@@ -90,15 +90,10 @@ const Register: FC = memo(() => {
 
         <InputContainer>
           <Input
-            ref={NumberFieldRef}
             label="WhatsApp Number"
-            name="username"
-            value={
-              NumberFieldRef
-              && NumberFieldRef.current?.value
-            }
+            phoneField
             prefix={faWhatsapp}
-          // handleChange={handleChange}
+            value={numberField}
           />
         </InputContainer>
         <MarginDiv />
@@ -146,7 +141,6 @@ const Register: FC = memo(() => {
           <CustomCheckBox
             type="checkbox"
             name="remember"
-          // onChange={handleChange}
           />
           <CheckboxPlaceholder>
             Please accept the

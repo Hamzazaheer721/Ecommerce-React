@@ -4,7 +4,7 @@ import { CustomButton, IconStyler } from './index.styled'
 
 interface IButtonProps {
   label: string
-  icon: IconProp
+  icon?: IconProp
   type?: 'button' | 'submit' | 'reset' | undefined
   // eslint-disable-next-line react/no-unused-prop-types
   color?: string
@@ -13,9 +13,19 @@ interface IButtonProps {
 }
 
 const Button: FC<IButtonProps> = memo(
-  ({ label, icon, type, handleSubmit }: IButtonProps) => (
-    <CustomButton htmlType={type} onClick={handleSubmit}>
-      <IconStyler icon={icon} />
+  ({
+    label,
+    icon,
+    type,
+    color,
+    handleSubmit
+  }: IButtonProps) => (
+    <CustomButton
+      htmlType={type}
+      color={color}
+      onClick={handleSubmit}
+    >
+      {icon && <IconStyler icon={icon} />}
       {label}
     </CustomButton>
   )
