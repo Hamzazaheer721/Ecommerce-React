@@ -1,28 +1,52 @@
 /* eslint-disable implicit-arrow-linebreak */
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { device } from '../../styles/devices'
 
 export const CardContainer = styled.div`
-  padding-right: 15px;
-  padding-left: 15px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  max-width: 350px;
-  display: inline-block;
+  width: 100%;
+  margin: 0 3px 5px 3px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 3px 5px #0000001a;
+
+  @media ${device.mobile} {
+    width: 100%;
+  }
+
+  @media ${device.tiny} {
+    width: 100%;
+  }
+`
+
+export const CardWrapper = styled.div`
+  padding: 0 10px;
+
+  @media ${device.desktop} {
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+  }
+
+  @media ${device.mobile} {
+    padding: 0 10px;
+  }
+
+  @media ${device.tiny} {
+    padding: 0 10px;
+  }
 `
 
 export const GroupContainer = styled.div`
   position: relative;
   border-radius: 7px;
   row-gap: 0.25rem;
-  /* cursor: pointer; */
 `
 
 export const HeaderArea = styled.div`
   width: 100%;
-  /* height: 12.5rem; */
-  /* min-height: 2.5rem; */
-  /* aspect-ratio: 1/1; this will in query */
   border-radius: 7px;
   overflow: hidden;
 `
@@ -30,7 +54,7 @@ export const HeaderArea = styled.div`
 export const SubHeaderArea = styled.div`
   display: flex;
   position: absolute;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   justify-content: between;
   width: 100%;
 `
@@ -43,39 +67,39 @@ export const BadgeArea = styled.span`
 export const BadgeAreaWraper = styled.div`
   background-color: ${(props) => props.theme.color.primary};
   padding: 2px 5px 2px 2px;
-  /* width: 30%; */
   white-space: nowrap;
-
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
 `
 
 export const IconArea = styled.div`
-  /* display: inline-flex; */
   padding-left: 1rem;
   padding-right: 1rem;
   float: right;
   width: 100%;
+  margin-top: -15px;
 `
 
 export const TimeArea = styled.div`
   position: absolute;
   right: 1rem;
-  bottom: 2rem;
-  /* bottom: 9rem; this for query */
+  bottom: 1rem;
   text-align: right;
   background-color: gray;
   background: rgba(0, 0, 0, 0.8);
   color: ${(props) => props.theme.color.primary};
   background-color: ${(props) =>
     props.theme.color.lightBlue};
-  border-radius: 3px;
   padding: 0 14px;
-  border-radius: 6px;
+  border-radius: 10px;
 `
 export const IconStyle = styled(FontAwesomeIcon)`
   font-size: 22px;
-  padding: 3px 5px 3px 5px;
+  width: 23px !important;
+  height: 23px !important;
+  text-align: center;
+  vertical-align: middle;
+  padding: 6px;
   background-color: white;
   margin-left: 3px;
   margin-right: 3px;
@@ -84,8 +108,8 @@ export const IconStyle = styled(FontAwesomeIcon)`
 `
 
 export const RatingIconStyle = styled(FontAwesomeIcon)`
-  font-size: 22px;
-  padding: 3px 5px 3px 5px;
+  font-size: 20px;
+  padding: 3px 3px 3px 5px;
   margin-left: 3px;
   margin-right: 3px;
   border-radius: 50%;
@@ -94,8 +118,6 @@ export const RatingIconStyle = styled(FontAwesomeIcon)`
 `
 
 export const IconContainer = styled.div`
-  /* padding: 3px; */
-  /* background-color: white; */
   float: right;
 `
 
@@ -103,18 +125,20 @@ export const CardImage = styled.img`
   object-fit: cover;
   width: 100%;
   height: 200px;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
 `
 export const ProfileContainer = styled.div`
   display: flex;
 `
 export const ProfileImage = styled.img`
   position: absolute;
-  width: 5rem;
-  margin-left: 1rem;
-  height: 5rem;
+  width: 70px;
+  margin-left: 0.8rem;
+  height: 70px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   top: 79%;
-  border-radius: 7px;
+  border-radius: 10px;
   flex: 5;
 `
 
@@ -129,13 +153,21 @@ export const ProductName = styled.h5`
   font-size: 16px;
   position: absolute;
   margin-top: 4px;
-  margin-left: 32%;
+  margin-left: 33%;
   flex: 8;
   font-weight: 600;
+
+  @media ${device.mobile} {
+    margin-left: 30%;
+  }
+
+  @media ${device.tiny} {
+    margin-left: 30%;
+  }
 `
 export const RatingArea = styled.span`
   display: inline-flex;
-  padding-right: 1rem;
+  padding-right: 0.6rem;
   padding-left: 1rem;
   position: absolute;
   right: 0;
@@ -145,28 +177,47 @@ export const Description = styled.p`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  padding: 0 15px;
+  margin-bottom: 0;
 `
 export const ButtonsContainer = styled.p`
   width: 100%;
+  padding: 10px;
+  text-align: left;
 `
 export const ShopButton = styled.button`
-  padding: 4px 25px;
-  background-color: ${(props) => props.theme.color.primary};
+  padding: 0 25px;
+  background: ${(props) =>
+    props.theme.gradientButton.primary};
   color: white;
   border: none;
-  border-radius: 25px;
+  border-radius: 20px;
+  height: 40px;
+  width: 120px;
   font-size: 16px;
   font-weight: 500;
+
+  @media ${device.mobile} {
+    height: 40px;
+    width: 140px;
+  }
+  @media ${device.tiny} {
+    height: 40px;
+    width: 140px;
+  }
 `
 
 export const WhatsAppButton = styled.button`
-  padding: 4px 25px;
-  background-color: ${(props) => props.theme.color.green};
+  padding: 0 4px;
+  background: ${(props) =>
+    props.theme.gradientButton.green};
   color: white;
   border: none;
   border-radius: 25px;
   font-size: 16px;
   font-weight: 500;
+  height: 40px;
+  width: 120px;
   float: right;
 `
 
