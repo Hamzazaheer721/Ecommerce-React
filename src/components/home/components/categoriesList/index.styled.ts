@@ -7,6 +7,7 @@ export const CategoriesContainer = styled.div`
   justify-content: space-evenly;
   /* border: 1px solid black; */
   margin: auto;
+  padding: 1rem 0 0.5rem 0;
 `
 
 export const CategoryContainer = styled.span`
@@ -19,9 +20,12 @@ export const CategoryContainer = styled.span`
 
 export const FashionCategoryIcon = styled(FontAwesomeIcon)`
   color: white;
-  padding: 14px;
+  width: 3.75rem !important;
+  height: 3.75rem !important;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
   border-radius: 50%;
-  font-size: 60px;
   background-color: ${(props) => props.theme.color.yellow};
 `
 export const CategoryLabel = styled.p`
@@ -32,23 +36,32 @@ export const CategoryLabel = styled.p`
 `
 export const FoodCategoryIcon = styled(FontAwesomeIcon)`
   color: white;
+  width: 60px !important;
+  height: 60px !important;
+  text-align: center;
+  vertical-align: middle;
   padding: 14px;
   border-radius: 50%;
-  font-size: 60px;
   background-color: ${(props) => props.theme.color.primary};
 `
 
 export const GroceryCategoryIcon = styled(FontAwesomeIcon)`
   color: white;
+  width: 60px !important;
+  height: 60px !important;
+  text-align: center;
+  vertical-align: middle;
   padding: 14px;
   border-radius: 50%;
-  font-size: 60px;
   background-color: ${(props) => props.theme.color.red};
 `
 export const MoreCategoryIcon = styled(FontAwesomeIcon)`
   color: white;
+  width: 60px !important;
+  height: 60px !important;
+  text-align: center;
+  vertical-align: middle;
   padding: 14px;
   border-radius: 50%;
-  font-size: 60px;
   background-color: ${(props) => props.theme.color.green};
 `

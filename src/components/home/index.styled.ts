@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  background-color: white;
+  /* background-color: white; */
 `
 export const WelcomeText = styled.h1`
   color: black;

@@ -1,20 +1,48 @@
 /* eslint-disable implicit-arrow-linebreak */
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { device } from '../../styles/devices'
 
 export const CardContainer = styled.div`
-  padding-right: 15px;
-  padding-left: 15px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  max-width: 350px;
-  display: inline-block;
+  width: 100%;
+  margin: 10px 3px;
+  background-color: white;
+  border-radius: 10px;
+
+  @media ${device.mobile} {
+    width: 100%;
+  }
+
+  @media ${device.tiny} {
+    width: 100%;
+  }
+`
+
+export const CardWrapper = styled.div`
+  padding: 0 20px;
+
+  @media ${device.desktop} {
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+  }
+
+  @media ${device.mobile} {
+    padding: 0 10px;
+  }
+
+  @media ${device.tiny} {
+    padding: 0 10px;
+  }
 `
 
 export const GroupContainer = styled.div`
   position: relative;
   border-radius: 7px;
   row-gap: 0.25rem;
+
   /* cursor: pointer; */
 `
 
@@ -30,7 +58,7 @@ export const HeaderArea = styled.div`
 export const SubHeaderArea = styled.div`
   display: flex;
   position: absolute;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   justify-content: between;
   width: 100%;
 `
@@ -56,12 +84,13 @@ export const IconArea = styled.div`
   padding-right: 1rem;
   float: right;
   width: 100%;
+  margin-top: -15px;
 `
 
 export const TimeArea = styled.div`
   position: absolute;
   right: 1rem;
-  bottom: 2rem;
+  bottom: 1rem;
   /* bottom: 9rem; this for query */
   text-align: right;
   background-color: gray;
@@ -69,13 +98,16 @@ export const TimeArea = styled.div`
   color: ${(props) => props.theme.color.primary};
   background-color: ${(props) =>
     props.theme.color.lightBlue};
-  border-radius: 3px;
   padding: 0 14px;
-  border-radius: 6px;
+  border-radius: 10px;
 `
 export const IconStyle = styled(FontAwesomeIcon)`
   font-size: 22px;
-  padding: 3px 5px 3px 5px;
+  width: 25px !important;
+  height: 25px !important;
+  text-align: center;
+  vertical-align: middle;
+  padding: 6px;
   background-color: white;
   margin-left: 3px;
   margin-right: 3px;
@@ -103,18 +135,20 @@ export const CardImage = styled.img`
   object-fit: cover;
   width: 100%;
   height: 200px;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
 `
 export const ProfileContainer = styled.div`
   display: flex;
 `
 export const ProfileImage = styled.img`
   position: absolute;
-  width: 5rem;
+  width: 70px;
   margin-left: 1rem;
-  height: 5rem;
+  height: 70px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   top: 79%;
-  border-radius: 7px;
+  border-radius: 10px;
   flex: 5;
 `
 
@@ -129,7 +163,7 @@ export const ProductName = styled.h5`
   font-size: 16px;
   position: absolute;
   margin-top: 4px;
-  margin-left: 32%;
+  margin-left: 30%;
   flex: 8;
   font-weight: 600;
 `
@@ -145,28 +179,51 @@ export const Description = styled.p`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  padding: 0 15px;
+  margin-bottom: 0;
 `
 export const ButtonsContainer = styled.p`
   width: 100%;
+  padding: 15px;
+  text-align: left;
 `
 export const ShopButton = styled.button`
-  padding: 4px 25px;
+  padding: 0 25px;
   background-color: ${(props) => props.theme.color.primary};
   color: white;
   border: none;
-  border-radius: 25px;
+  border-radius: 20px;
+  height: 40px;
+  width: 120px;
   font-size: 16px;
   font-weight: 500;
+
+  @media ${device.mobile} {
+    height: 40px;
+    width: 140px;
+  }
+  @media ${device.tiny} {
+    height: 40px;
+    width: 140px;
+  }
 `
 
 export const WhatsAppButton = styled.button`
-  padding: 4px 25px;
-  background-color: ${(props) => props.theme.color.green};
+  padding: 0 4px;
+  background: linear-gradient(
+    90deg,
+    rgba(37, 211, 102, 1) 0%,
+    rgba(28, 162, 77, 1) 100%
+  );
+  /* background-color: ${(props) =>
+    props.theme.color.green}; */
   color: white;
   border: none;
   border-radius: 25px;
   font-size: 16px;
   font-weight: 500;
+  height: 40px;
+  width: 120px;
   float: right;
 `
 
