@@ -38,5 +38,9 @@ export const defaultTheme: any = {
     aboutBannerBackground: '#F2F4FF',
     darkBlue: '#243D82',
     lightBlue: '#1C9CD8'
+  },
+  gradientButton: {
+    primary: 'linear-gradient(270deg, #1a87bb, #1b9bd7)',
+    secondary: 'linear-gradient(270deg, #0c215a, #243d82)'
   }
 }

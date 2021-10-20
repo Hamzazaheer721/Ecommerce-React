@@ -2,9 +2,12 @@ import { FC, memo, useRef } from 'react'
 import {
   faKey,
   faUser,
-  faEnvelope
+  faEnvelope,
+  faBuilding,
+  faCity
 } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { useLocation } from 'react-router-dom'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
 import {
@@ -33,8 +36,11 @@ const Register: FC = memo(() => {
   // const { handleSubmit, handleChange, errors } =
   //   useFormLogin()
   // const { usernameError, passwordError } = errors
+  const location = useLocation();
+  const isCustomerRef = useRef<boolean>(location.pathname.includes('customer'))
 
   const fullNameFieldRef = useRef<HTMLInputElement>(null)
+  const companyFieldRef = useRef<HTMLInputElement>(null);
   const NumberFieldRef = useRef<HTMLInputElement>(null)
   const EmailFieldRef = useRef<HTMLInputElement>(null)
   const passwordFieldRef = useRef<HTMLInputElement>(null)
@@ -55,37 +61,53 @@ const Register: FC = memo(() => {
             label="Full Name"
             name="username"
             value={
-              // eslint-disable-next-line operator-linebreak
-              fullNameFieldRef &&
-              fullNameFieldRef.current?.value
+              fullNameFieldRef
+              && fullNameFieldRef.current?.value
             }
             prefix={faUser}
-            // handleChange={handleChange}
+          // handleChange={handleChange}
           />
         </InputContainer>
         <MarginDiv />
+
+        {!isCustomerRef.current && (
+          <>
+            <InputContainer>
+              <Input
+                ref={companyFieldRef}
+                label="Company Name"
+                name="company"
+                value={
+                  companyFieldRef
+                  && companyFieldRef.current?.value
+                }
+                prefix={faCity}
+              />
+            </InputContainer>
+            <MarginDiv />
+          </>
+        )}
+
         <InputContainer>
           <Input
             ref={NumberFieldRef}
             label="WhatsApp Number"
             name="username"
             value={
-              // eslint-disable-next-line operator-linebreak
-              NumberFieldRef &&
-              NumberFieldRef.current?.value
+              NumberFieldRef
+              && NumberFieldRef.current?.value
             }
             prefix={faWhatsapp}
-            // handleChange={handleChange}
+          // handleChange={handleChange}
           />
         </InputContainer>
+        <MarginDiv />
 
         {/* {usernameError ? (
           <EmptyErrorState>{usernameError}</EmptyErrorState>
         ) : (
           <MarginDiv />
         )} */}
-        <MarginDiv />
-
         <InputContainer>
           <Input
             ref={EmailFieldRef}
@@ -93,10 +115,9 @@ const Register: FC = memo(() => {
             prefix={faEnvelope}
             name="password"
             value={
-              // eslint-disable-next-line operator-linebreak
               EmailFieldRef && EmailFieldRef.current?.value
             }
-            // handleChange={handleChange}
+          // handleChange={handleChange}
           />
         </InputContainer>
         <MarginDiv />
@@ -108,11 +129,10 @@ const Register: FC = memo(() => {
             typePassword
             name="password"
             value={
-              // eslint-disable-next-line operator-linebreak
-              passwordFieldRef &&
-              passwordFieldRef.current?.value
+              passwordFieldRef
+              && passwordFieldRef.current?.value
             }
-            // handleChange={handleChange}
+          // handleChange={handleChange}
           />
         </InputContainer>
         {/* {passwordError ? (
@@ -121,11 +141,12 @@ const Register: FC = memo(() => {
           <MarginDiv />
         )} */}
         <MarginDiv />
+
         <CheckboxContainer>
           <CustomCheckBox
             type="checkbox"
             name="remember"
-            // onChange={handleChange}
+          // onChange={handleChange}
           />
           <CheckboxPlaceholder>
             Please accept the
@@ -134,12 +155,12 @@ const Register: FC = memo(() => {
           </CheckboxPlaceholder>
         </CheckboxContainer>
       </InputFieldsContainer>
-      <ButtonContainer>
+      <ButtonContainer isPrimary={!!isCustomerRef.current}>
         <Button
           type="submit"
-          label="Customer"
-          icon={faUser}
-          // handleSubmit={handleSubmit}
+          label={isCustomerRef.current ? 'Customer' : 'Company'}
+          icon={isCustomerRef.current ? faUser : faBuilding}
+        // handleSubmit={handleSubmit}
         />
       </ButtonContainer>
       <LoginFooter>

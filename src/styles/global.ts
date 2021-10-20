@@ -18,7 +18,6 @@ export const LoginViewContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   min-height: 100vh;
-  padding: 0 42px;
 
   @media ${device.tablet} {
     width: 50%;
