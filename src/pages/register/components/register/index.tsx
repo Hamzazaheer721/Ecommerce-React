@@ -41,7 +41,7 @@ const Register: FC = memo(() => {
 
   const fullNameFieldRef = useRef<HTMLInputElement>(null)
   const companyFieldRef = useRef<HTMLInputElement>(null);
-  const NumberFieldRef = useRef<HTMLInputElement>(null)
+  const numberFieldRef = useRef<HTMLInputElement>(null)
   const EmailFieldRef = useRef<HTMLInputElement>(null)
   const passwordFieldRef = useRef<HTMLInputElement>(null)
 
@@ -90,15 +90,14 @@ const Register: FC = memo(() => {
 
         <InputContainer>
           <Input
-            ref={NumberFieldRef}
+            ref={numberFieldRef}
             label="WhatsApp Number"
-            name="username"
+            phoneField
             value={
-              NumberFieldRef
-              && NumberFieldRef.current?.value
+              numberFieldRef
+              && numberFieldRef.current?.value
             }
             prefix={faWhatsapp}
-          // handleChange={handleChange}
           />
         </InputContainer>
         <MarginDiv />
