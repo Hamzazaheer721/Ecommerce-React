@@ -12,31 +12,32 @@ import {
 } from './index.styled'
 
 interface IToastProps {
-  toastType: 'success' | 'error' | 'info'
+  toastType: 'success' | 'error' | 'info',
+  description?: string
 }
 
-const ToastComponent: FC<IToastProps> = memo(({ toastType }: IToastProps) => {
+const ToastComponent: FC<IToastProps> = memo(({ toastType, description }: IToastProps) => {
   // I will memoize it later
-  // const colorProp = useMemo(() => {
+  // const colors = useMemo(() => {
   //   filterColor(toastType)
   // }, [toastType])
 
-  const colorPropRef = useRef<IColorObjectProp>(filterColor(toastType))
+  const colorsRef = useRef<IColorObjectProp>(filterColor(toastType))
 
   return (
-    <ToastContainer colorProp={colorPropRef.current}>
+    <ToastContainer colors={colorsRef.current}>
       <h2>
         {toastType === 'success' && (
-          <CheckIcon icon={faCheck} colorProp={colorPropRef.current} />
+          <CheckIcon icon={faCheck} colors={colorsRef.current} />
         )}
         {toastType === 'error' && (
-          <CheckIcon icon={faTimes} colorProp={colorPropRef.current} />
+          <CheckIcon icon={faTimes} colors={colorsRef.current} />
         )}
         {toastType === 'info' && (
-          <CheckIcon icon={faInfo} colorProp={colorPropRef.current} />
+          <CheckIcon icon={faInfo} colors={colorsRef.current} />
         )}
       </h2>
-      <TitleContainer colorProp={colorPropRef.current}>
+      <TitleContainer colors={colorsRef.current}>
         {toastType === 'success' && (
           <h2>
             Congratulation
@@ -58,17 +59,28 @@ const ToastComponent: FC<IToastProps> = memo(({ toastType }: IToastProps) => {
 
         {toastType === 'success' && (
           <Description>
-            <span>Your Account has been successfully activated!</span>
+            {description}
+            {!description && <span>Your Account has been successfully activated!</span>}
           </Description>
         )}
         {toastType === 'error' && (
           <Description>
-            <span>Password </span>
-            doesn`t match!
+            {description}
+            {!description && (
+              <>
+                <span>Password </span>
+                {' '}
+                doesn`t match!
+                {' '}
+              </>
+            )}
           </Description>
         )}
         {toastType === 'info' && (
-          <Description>Enter your New Password!</Description>
+          <Description>
+            {description}
+            {!description && <>Enter your New Password!</>}
+          </Description>
         )}
       </TitleContainer>
     </ToastContainer>

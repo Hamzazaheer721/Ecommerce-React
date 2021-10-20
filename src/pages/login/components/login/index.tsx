@@ -50,8 +50,8 @@ const Login: FC = memo(() => {
           Please login to your account
         </SubHeading>
       </HeadingsContainer>
-      {success && <ToastComponent toastType="success" />}
-      {error && <ToastComponent toastType="error" />}
+      {success && <ToastComponent toastType="success" description={success} />}
+      {error && <ToastComponent toastType="error" description={error} />}
       <InputFieldsContainer>
         <InputContainer>
           <Input
