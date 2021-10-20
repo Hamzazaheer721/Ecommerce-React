@@ -11,7 +11,10 @@ interface ITitleContainerProp {
 }
 
 export const ToastContainer = styled.div<IToastContainerProp>`
-  background-color: ${(props) => props.colors.backgroundColor};
+  background-color: ${(props) =>
+    // eslint-disable-next-line implicit-arrow-linebreak
+    props.colors.backgroundColor};
+  border: 0.3px solid ${(props) => props.colors.statusColor};
   border-radius: 8px;
   width: 100%;
   margin-bottom: 10%;
@@ -20,10 +23,16 @@ export const ToastContainer = styled.div<IToastContainerProp>`
   display: flex;
 `
 
-export const CheckIcon = styled(FontAwesomeIcon)<IToastContainerProp>`
+export const CheckIcon = styled(
+  FontAwesomeIcon
+)<IToastContainerProp>`
   background-color: ${(props) => props.colors.statusColor};
-  padding: 0 3px;
-  font-size: 22px;
+  width: 20px !important;
+  height: 20px !important;
+  text-align: center;
+  vertical-align: middle;
+  padding: 4px;
+  font-size: 18px;
   border-radius: 50%;
   color: white;
 `
