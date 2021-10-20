@@ -3,7 +3,8 @@ import {
   faKey,
   faUser,
   faEnvelope,
-  faBuilding
+  faBuilding,
+  faCity
 } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { useLocation } from 'react-router-dom'
@@ -39,6 +40,7 @@ const Register: FC = memo(() => {
   const isCustomerRef = useRef<boolean>(location.pathname.includes('customer'))
 
   const fullNameFieldRef = useRef<HTMLInputElement>(null)
+  const companyFieldRef = useRef<HTMLInputElement>(null);
   const NumberFieldRef = useRef<HTMLInputElement>(null)
   const EmailFieldRef = useRef<HTMLInputElement>(null)
   const passwordFieldRef = useRef<HTMLInputElement>(null)
@@ -67,6 +69,24 @@ const Register: FC = memo(() => {
           />
         </InputContainer>
         <MarginDiv />
+
+        {!isCustomerRef.current && (
+          <>
+            <InputContainer>
+              <Input
+                ref={companyFieldRef}
+                label="Company Name"
+                name="company"
+                value={
+                  companyFieldRef
+                  && companyFieldRef.current?.value
+                }
+                prefix={faCity}
+              />
+            </InputContainer>
+            <MarginDiv />
+          </>
+        )}
 
         <InputContainer>
           <Input
