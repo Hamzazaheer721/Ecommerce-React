@@ -23,12 +23,15 @@ const CategoriesComponent = () => (
       </CategoryContainer>
       <CategoryContainer>
         <FoodCategoryIcon icon={faUtensils} />
+        <CategoryLabel>Food</CategoryLabel>
       </CategoryContainer>
       <CategoryContainer>
         <GroceryCategoryIcon icon={faShoppingBag} />
+        <CategoryLabel>Grocery</CategoryLabel>
       </CategoryContainer>
       <CategoryContainer>
         <MoreCategoryIcon icon={faListUl} />
+        <CategoryLabel>More</CategoryLabel>
       </CategoryContainer>
     </CategoriesContainer>
   </>
