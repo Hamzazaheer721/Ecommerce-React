@@ -7,7 +7,7 @@ export const CategoriesContainer = styled.div`
   justify-content: space-evenly;
   /* border: 1px solid black; */
   margin: auto;
-  padding: 1rem 0 0.5rem 0;
+  padding: 0.8rem 0 0.5rem 0;
 `
 
 export const CategoryContainer = styled.span`
@@ -29,9 +29,9 @@ export const FashionCategoryIcon = styled(FontAwesomeIcon)`
   background-color: ${(props) => props.theme.color.yellow};
 `
 export const CategoryLabel = styled.p`
-  margin-top: 8px;
+  margin-top: 7px;
   margin-bottom: 0;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
 `
 export const FoodCategoryIcon = styled(FontAwesomeIcon)`

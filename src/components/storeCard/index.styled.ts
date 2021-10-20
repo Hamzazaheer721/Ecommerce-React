@@ -5,9 +5,10 @@ import { device } from '../../styles/devices'
 
 export const CardContainer = styled.div`
   width: 100%;
-  margin: 10px 3px;
+  margin: 0 3px 5px 3px;
   background-color: white;
   border-radius: 10px;
+  box-shadow: 0px 3px 5px #0000001a;
 
   @media ${device.mobile} {
     width: 100%;
@@ -19,7 +20,7 @@ export const CardContainer = styled.div`
 `
 
 export const CardWrapper = styled.div`
-  padding: 0 20px;
+  padding: 0 10px;
 
   @media ${device.desktop} {
     display: inline-block;
@@ -103,8 +104,8 @@ export const TimeArea = styled.div`
 `
 export const IconStyle = styled(FontAwesomeIcon)`
   font-size: 22px;
-  width: 25px !important;
-  height: 25px !important;
+  width: 23px !important;
+  height: 23px !important;
   text-align: center;
   vertical-align: middle;
   padding: 6px;
@@ -116,8 +117,8 @@ export const IconStyle = styled(FontAwesomeIcon)`
 `
 
 export const RatingIconStyle = styled(FontAwesomeIcon)`
-  font-size: 22px;
-  padding: 3px 5px 3px 5px;
+  font-size: 20px;
+  padding: 3px 3px 3px 5px;
   margin-left: 3px;
   margin-right: 3px;
   border-radius: 50%;
@@ -144,7 +145,7 @@ export const ProfileContainer = styled.div`
 export const ProfileImage = styled.img`
   position: absolute;
   width: 70px;
-  margin-left: 1rem;
+  margin-left: 0.8rem;
   height: 70px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   top: 79%;
@@ -163,13 +164,21 @@ export const ProductName = styled.h5`
   font-size: 16px;
   position: absolute;
   margin-top: 4px;
-  margin-left: 30%;
+  margin-left: 33%;
   flex: 8;
   font-weight: 600;
+
+  @media ${device.mobile} {
+    margin-left: 30%;
+  }
+
+  @media ${device.tiny} {
+    margin-left: 30%;
+  }
 `
 export const RatingArea = styled.span`
   display: inline-flex;
-  padding-right: 1rem;
+  padding-right: 0.6rem;
   padding-left: 1rem;
   position: absolute;
   right: 0;
@@ -184,12 +193,13 @@ export const Description = styled.p`
 `
 export const ButtonsContainer = styled.p`
   width: 100%;
-  padding: 15px;
+  padding: 10px;
   text-align: left;
 `
 export const ShopButton = styled.button`
   padding: 0 25px;
-  background-color: ${(props) => props.theme.color.primary};
+  background: ${(props) =>
+    props.theme.gradientButton.primary};
   color: white;
   border: none;
   border-radius: 20px;
@@ -210,13 +220,8 @@ export const ShopButton = styled.button`
 
 export const WhatsAppButton = styled.button`
   padding: 0 4px;
-  background: linear-gradient(
-    90deg,
-    rgba(37, 211, 102, 1) 0%,
-    rgba(28, 162, 77, 1) 100%
-  );
-  /* background-color: ${(props) =>
-    props.theme.color.green}; */
+  background: ${(props) =>
+    props.theme.gradientButton.green};
   color: white;
   border: none;
   border-radius: 25px;
