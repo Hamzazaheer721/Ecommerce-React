@@ -1,6 +1,10 @@
 import { FC, memo } from 'react'
-import { faUser, faBuilding } from '@fortawesome/pro-light-svg-icons'
+import {
+  faUser,
+  faBuilding
+} from '@fortawesome/pro-light-svg-icons'
 import { Link } from 'react-router-dom'
+import CustomizeModal from '../../components/modal'
 import {
   LoginHeader,
   LoginDescription,
@@ -17,11 +21,17 @@ const ViewComponent: FC = memo(() => (
   <LoginViewContainer>
     <LoginHeader>Get Started Free</LoginHeader>
     <LoginDescription>
-      Its time to enjoy ultimate shoping experience through WhatsApp
+      Its time to enjoy ultimate shoping experience through
+      WhatsApp
     </LoginDescription>
     <Link to="/register/customer">
       <ButtonContainer>
-        <CustomButton label="Customer" icon={faUser} type="button" color="red" />
+        <CustomButton
+          label="Customer"
+          icon={faUser}
+          type="button"
+          color="red"
+        />
       </ButtonContainer>
     </Link>
     <Link to="/register/company">
@@ -34,6 +44,7 @@ const ViewComponent: FC = memo(() => (
         />
       </SecondaryButtonContainer>
     </Link>
+    <CustomizeModal />
     <LoginFooter>
       Already on WhatsPays?
       <span> Login</span>
