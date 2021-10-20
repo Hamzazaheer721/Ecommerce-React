@@ -42,7 +42,7 @@ export const Label = styled.p<{ hasValue: boolean, phoneField?: boolean }>`
   }
   @media ${device.tiny} {
     font-size: 12px;
-    left: ${({ phoneField }) => (phoneField ? '3rem' : '2.2rem')};
+    left: ${({ phoneField }) => (phoneField ? '4.5rem' : '2.2rem')};
     ${({ hasValue }) =>
     hasValue &&
     `

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {
   ChangeEvent,
   forwardRef,
@@ -67,7 +68,6 @@ const Input = memo(
       //   setValue(e.target.value)
       //   handleInputDebounce(e);
       // }, [_value])
-
       const handleEyeChange = useCallback(() => {
         setShowPassword((prevState) => !prevState)
       }, [showPassword])
@@ -103,7 +103,7 @@ const Input = memo(
           )}
           {
             phoneField && (
-              <PhoneInputField placeholder="" country="pk" />
+              <PhoneInputField placeholder="" country="pk" value={value} />
             )
           }
           {prefix && <Prefix icon={prefix} phoneField={!!phoneField} />}
