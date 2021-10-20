@@ -43,15 +43,10 @@ export const GroupContainer = styled.div`
   position: relative;
   border-radius: 7px;
   row-gap: 0.25rem;
-
-  /* cursor: pointer; */
 `
 
 export const HeaderArea = styled.div`
   width: 100%;
-  /* height: 12.5rem; */
-  /* min-height: 2.5rem; */
-  /* aspect-ratio: 1/1; this will in query */
   border-radius: 7px;
   overflow: hidden;
 `
@@ -72,15 +67,12 @@ export const BadgeArea = styled.span`
 export const BadgeAreaWraper = styled.div`
   background-color: ${(props) => props.theme.color.primary};
   padding: 2px 5px 2px 2px;
-  /* width: 30%; */
   white-space: nowrap;
-
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
 `
 
 export const IconArea = styled.div`
-  /* display: inline-flex; */
   padding-left: 1rem;
   padding-right: 1rem;
   float: right;
@@ -92,7 +84,6 @@ export const TimeArea = styled.div`
   position: absolute;
   right: 1rem;
   bottom: 1rem;
-  /* bottom: 9rem; this for query */
   text-align: right;
   background-color: gray;
   background: rgba(0, 0, 0, 0.8);
@@ -127,8 +118,6 @@ export const RatingIconStyle = styled(FontAwesomeIcon)`
 `
 
 export const IconContainer = styled.div`
-  /* padding: 3px; */
-  /* background-color: white; */
   float: right;
 `
 
