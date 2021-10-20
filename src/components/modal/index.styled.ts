@@ -22,12 +22,15 @@ export const Title = styled.p`
   margin-bottom: 0;
 `
 export const DoneButton = styled.button`
-  padding: 4px 25px;
-  background-color: ${(props) => props.theme.color.green};
+  background: ${(props) =>
+    // eslint-disable-next-line implicit-arrow-linebreak
+    props.theme.gradientButton.green};
   color: white;
   border: none;
-  border-radius: 25px;
+  border-radius: 20px;
   font-size: 16px;
   font-weight: 500;
-  float: right;
+  height: 40px;
+  width: 156px;
+  padding: 0;
 `
