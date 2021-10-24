@@ -36,7 +36,7 @@ const useForm = () => {
   const handleSubmit = useCallback(
     async (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
-      console.info(registerData)
+      // console.info(registerData)
     },
     [registerData]
   )
