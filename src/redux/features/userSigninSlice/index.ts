@@ -35,16 +35,16 @@ export const loginUser = createAsyncThunk(('user-signin/loginUser'), async ({ us
 
 export interface ILoginUserTypes {
   user?: Partial<IUserLoginRtnData>
-  loading?: boolean,
-  success?: boolean,
-  error?: boolean,
-  message?: string
+  // loading?: boolean,
+  // success?: boolean,
+  // error?: boolean,
+  // message?: string
 }
 export const initialState: ILoginUserTypes = {
-  user: {},
-  loading: false,
-  success: false,
-  error: false
+  user: {}
+  // loading: false,
+  // success: false,
+  // error: false
 }
 // interface IIntialStateProp {
 //   value : ILoginUserTypes

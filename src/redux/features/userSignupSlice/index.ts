@@ -55,4 +55,4 @@ export const userSignupSlice = createSlice({
   }
 })
 
-export const userActions = userSignupSlice.actions
+export const signupActions = userSignupSlice.actions

@@ -22,7 +22,7 @@ export const userSignup = createAsyncThunk<
     if (response.status === 400) return thunkAPI.rejectWithValue(response.data)
     return response.data
   } catch (err: any) {
-    const error: AxiosError<any> = err // cast the error for access
+    const error: AxiosError<IRegisterRtn> = err // cast the error for access
     if (!error.response) {
       throw err
     }
