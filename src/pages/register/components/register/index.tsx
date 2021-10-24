@@ -84,7 +84,7 @@ const Register: FC = memo(() => {
         <InputContainer>
           <Input
             label="WhatsApp Number"
-            phoneField
+            phonefield
             prefix={faWhatsapp}
             value={phone}
             handlePhoneChange={handlePhoneChange}

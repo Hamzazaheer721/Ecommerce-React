@@ -10,14 +10,14 @@ import 'react-phone-input-2/lib/style.css'
 
 export const Label = styled.p<{
   hasValue: boolean
-  phoneField?: boolean
+  phonefield?: boolean
 }>`
   color: #c5c5c5;
   font-size: 1rem;
   position: absolute;
   opacity: 0.6;
-  left: ${({ phoneField }) =>
-    phoneField ? '6.5rem' : '3rem'};
+  left: ${({ phonefield }) =>
+    phonefield ? '6.5rem' : '3rem'};
   pointer-events: none;
   transition: all 0.22s;
   top: 50%;
@@ -39,8 +39,8 @@ export const Label = styled.p<{
 
   @media ${device.mobile} {
     font-size: 12px;
-    left: ${({ phoneField }) =>
-      phoneField ? '4.8rem' : '2.2rem'};
+    left: ${({ phonefield }) =>
+      phonefield ? '4.8rem' : '2.2rem'};
     ${({ hasValue }) =>
       hasValue &&
       `
@@ -50,8 +50,8 @@ export const Label = styled.p<{
   }
   @media ${device.tiny} {
     font-size: 12px;
-    left: ${({ phoneField }) =>
-      phoneField ? '4.5rem' : '2.2rem'};
+    left: ${({ phonefield }) =>
+      phonefield ? '4.5rem' : '2.2rem'};
     ${({ hasValue }) =>
       hasValue &&
       `
@@ -195,15 +195,15 @@ export const InputContainer = styled.div<{
 `
 
 export const Prefix = styled(FontAwesomeIcon)<{
-  phoneField?: boolean
+  phonefield?: boolean
 }>`
   position: absolute;
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
   font-size: 1.4rem;
-  ${({ phoneField }) =>
-    phoneField &&
+  ${({ phonefield }) =>
+    phonefield &&
     `
     z-index: 2;
   `}

@@ -25,8 +25,7 @@ export const validateName = (name : string) => {
 
 // phone number check
 export const validatePhoneNumber = (phone_number : string) => {
-  if (phone_number.length < 10) return false;
-  const re = /^[a-zA-Z0-9\-().\s]{10,15}$/;
+  const re = /^[a-zA-Z0-9\-().\s]{7,15}$/;
   return re.test(phone_number);
 };
 

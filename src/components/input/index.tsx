@@ -34,7 +34,7 @@ interface InputProps {
   prefix?: IconProp
   suffix?: IconProp
   typePassword?: boolean
-  phoneField?: boolean
+  phonefield?: boolean
   // eslint-disable-next-line no-unused-vars
   handleChange?: (e: ChangeEvent<HTMLInputElement>) => void
   handlePhoneChange?: (
@@ -56,7 +56,7 @@ const Input = memo(
         typePassword = false,
         prefix,
         suffix,
-        phoneField,
+        phonefield,
         handlePhoneChange,
         ...props
       },
@@ -85,7 +85,7 @@ const Input = memo(
 
       return (
         <InputContainer hasValue={!!value}>
-          {!phoneField && (
+          {!phonefield && (
             <InputField
               {...props}
               name={name}
@@ -110,7 +110,7 @@ const Input = memo(
               onChange={handleChange}
             />
           )}
-          {phoneField && (
+          {phonefield && (
             <PhoneInputField
               placeholder=""
               country="pk"
@@ -118,8 +118,8 @@ const Input = memo(
               onChange={handlePhoneChange}
             />
           )}
-          {prefix && <Prefix icon={prefix} phoneField={!!phoneField} />}
-          <Label hasValue={!!value} phoneField={!!phoneField}>
+          {prefix && <Prefix icon={prefix} phonefield={!!phonefield} />}
+          <Label hasValue={!!value} phonefield={!!phonefield}>
             {label}
           </Label>
           {typePassword && (
