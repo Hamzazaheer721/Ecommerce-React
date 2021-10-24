@@ -22,7 +22,8 @@ const useForm = () => {
         })
     },
     [registerData]
-  )
+  );
+
   return { registerData, handleChange }
 }
 

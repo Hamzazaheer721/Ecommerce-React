@@ -1,4 +1,4 @@
-import { FC, memo, useRef, useState } from 'react'
+import { FC, memo, useRef } from 'react'
 import {
   faKey,
   faUser,
@@ -35,13 +35,14 @@ const Register: FC = memo(() => {
   const location = useLocation();
   const isCustomerRef = useRef<boolean>(location.pathname.includes('customer'))
 
-  const nameRef = useRef<HTMLInputElement>(null)
-  const companyFieldRef = useRef<HTMLInputElement>(null);
-  const [numberField] = useState<any>('')
-  const EmailFieldRef = useRef<HTMLInputElement>(null)
-  const passwordFieldRef = useRef<HTMLInputElement>(null)
+  const { handleChange, registerData } = useForm();
+  const { phone } = registerData;
 
-  const { handleChange } = useForm();
+  const nameRef = useRef<HTMLInputElement>(null)
+  const storeNameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null)
+  const passwordRef = useRef<HTMLInputElement>(null)
+
   return (
     <Container>
       <HeadingsContainer>
@@ -71,14 +72,15 @@ const Register: FC = memo(() => {
           <>
             <InputContainer>
               <Input
-                ref={companyFieldRef}
+                ref={storeNameRef}
                 label="Company Name"
-                name="company"
+                name="store_name"
                 value={
-                  companyFieldRef
-                  && companyFieldRef.current?.value
+                  storeNameRef
+                  && storeNameRef.current?.value
                 }
                 prefix={faCity}
+                handleChange={handleChange}
               />
             </InputContainer>
             <MarginDiv />
@@ -90,7 +92,7 @@ const Register: FC = memo(() => {
             label="WhatsApp Number"
             phoneField
             prefix={faWhatsapp}
-            value={numberField}
+            value={phone}
           />
         </InputContainer>
         <MarginDiv />
@@ -102,29 +104,29 @@ const Register: FC = memo(() => {
         )} */}
         <InputContainer>
           <Input
-            ref={EmailFieldRef}
+            ref={emailRef}
             label="Email"
             prefix={faEnvelope}
-            name="password"
+            name="email"
             value={
-              EmailFieldRef && EmailFieldRef.current?.value
+              emailRef && emailRef.current?.value
             }
-          // handleChange={handleChange}
+            handleChange={handleChange}
           />
         </InputContainer>
         <MarginDiv />
         <InputContainer>
           <Input
-            ref={passwordFieldRef}
+            ref={passwordRef}
             label="Password"
             prefix={faKey}
             typePassword
             name="password"
             value={
-              passwordFieldRef
-              && passwordFieldRef.current?.value
+              passwordRef
+              && passwordRef.current?.value
             }
-          // handleChange={handleChange}
+            handleChange={handleChange}
           />
         </InputContainer>
         {/* {passwordError ? (
