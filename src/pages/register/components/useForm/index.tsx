@@ -25,7 +25,7 @@ const useForm = () => {
       setRegisterData({
         ...registerData,
         phone: _val,
-        country_code: _data.countryCode
+        country_code: _data.dialCode
       })
     },
     [registerData]
