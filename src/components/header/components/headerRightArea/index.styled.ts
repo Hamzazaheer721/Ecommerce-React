@@ -61,7 +61,7 @@ export const ProfileImage = styled.img`
   border-radius: 50%;
   width: 1.6rem;
   margin-left: 4px;
-  margin-top: -8px;
+  margin-top: -6px;
   cursor: pointer;
 `
 export const ButtonContainer = styled.div`

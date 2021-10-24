@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { device } from '../../styles/devices'
 
 export const Container = styled.div`
-  /* background-color: white; */
+  background-color: #f4f4f5;
 `
 
 export const CardsContainer = styled.div`
