@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, memo } from 'react'
 import {
   faHomeAlt,
   faShoppingCart,
@@ -13,7 +13,7 @@ import {
   QRImageContainer
 } from './index.styled'
 
-const FooterTray = () => {
+const FooterTray = memo(() => {
   const focusDiv = useRef<any>()
 
   useEffect(() => {
@@ -31,6 +31,6 @@ const FooterTray = () => {
       <IconsStyle icon={faComments} />
     </Container>
   )
-}
+})
 
 export default FooterTray

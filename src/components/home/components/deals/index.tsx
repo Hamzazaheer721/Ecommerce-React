@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import { Container, DealImage } from './index.styled'
@@ -22,7 +23,7 @@ const responsive = {
   }
 }
 
-const Deals = () => (
+const Deals = memo(() => (
   <>
     <Container>
       <Carousel responsive={responsive}>
@@ -41,5 +42,5 @@ const Deals = () => (
       </Carousel>
     </Container>
   </>
-)
+))
 export default Deals
