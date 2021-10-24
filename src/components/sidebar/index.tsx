@@ -1,18 +1,11 @@
 /* eslint-disable react/require-default-props */
-import {
-  useState,
-  memo,
-  useContext,
-  useCallback
-} from 'react'
-import {
-  faBars,
-  faTimes
-} from '@fortawesome/pro-light-svg-icons'
+import { useState, memo, useContext, useCallback } from 'react'
+import { faBars, faTimes } from '@fortawesome/pro-light-svg-icons'
 import { ThemeContext } from 'styled-components'
 import MenuComponent from './components/menu'
 import LogoutButtonComponent from './components/logoutButton'
 import AboutWhatsPaysComponent from './components/aboutWhatsPays'
+import SocialIcons from './components/socialIcons'
 import Icon from '../icon'
 import 'antd/dist/antd.css'
 import {
@@ -21,7 +14,9 @@ import {
   CrossIcon,
   HeaderArea,
   HeaderAreaImage,
-  HeaderAreaH1
+  HeaderAreaH1,
+  WatiImage,
+  ContainerImage
 } from './index.styled'
 
 const SidebarComponent = memo(() => {
@@ -38,11 +33,7 @@ const SidebarComponent = memo(() => {
 
   return (
     <>
-      <Icon
-        onClick={showDrawer}
-        icon={faBars}
-        color={theme.color.primary}
-      />
+      <Icon onClick={showDrawer} icon={faBars} color={theme.color.primary} />
       <CustomDrawer
         placement="left"
         closable={false}
@@ -51,10 +42,7 @@ const SidebarComponent = memo(() => {
       >
         <Header>
           <CrossIcon onClick={onClose}>
-            <Icon
-              icon={faTimes}
-              color={theme.color.primary}
-            />
+            <Icon icon={faTimes} color={theme.color.primary} />
           </CrossIcon>
           <br />
           <HeaderArea>
@@ -69,6 +57,10 @@ const SidebarComponent = memo(() => {
         <MenuComponent />
         <LogoutButtonComponent />
         <AboutWhatsPaysComponent />
+        <SocialIcons />
+        <ContainerImage>
+          <WatiImage src="/images/wati-logo.png" />
+        </ContainerImage>
       </CustomDrawer>
     </>
   )

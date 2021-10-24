@@ -22,8 +22,8 @@ export const CustomDrawer = styled(Drawer)`
 
   .ant-drawer-content {
     border-radius: 0px 15px 15px 0px;
-    background: ${(props) => props.theme.color.white} 0% 0%
-      no-repeat padding-box;
+    background: ${(props) => props.theme.color.white} 0% 0% no-repeat
+      padding-box;
   }
 `
 export const Header = styled.p`
@@ -36,11 +36,7 @@ export const Header = styled.p`
 
 export const CrossIcon = styled.div`
   float: right;
-  padding: 4px 5px 1px 5px;
-  background-color: white;
-  border-radius: 50%;
   cursor: pointer;
-  font-size: 10px;
 `
 
 export const HeaderArea = styled.p`
@@ -99,4 +95,12 @@ export const ArrowLeftIcon = styled(FontAwesomeIcon)`
     }
   }
 `
-export default {}
+
+export const WatiImage = styled.img`
+  width: 85%;
+`
+export const ContainerImage = styled.div`
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+`

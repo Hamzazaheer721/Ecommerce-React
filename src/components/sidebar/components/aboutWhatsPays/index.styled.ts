@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const AboutWhatsPaysContainer = styled.div`
   padding: 14px 0;
@@ -9,14 +8,20 @@ export const AboutWhatsPaysContainer = styled.div`
   text-align: center;
   font-size: 14px;
   font-weight: 700;
+  span {
+    font-size: 16px;
+    font-weight: 700;
+    vertical-align: middle;
+  }
 `
 
-export const PIcon = styled(FontAwesomeIcon)`
-  margin: 0 5px;
-`
 export const WhatsText = styled.span`
   color: ${(props) => props.theme.sidebarColor.darkBlue};
 `
 export const PaysText = styled.span`
   color: ${(props) => props.theme.sidebarColor.lightBlue};
+`
+
+export const WhatsPaysImage = styled.img`
+  width: 50%;
 `
