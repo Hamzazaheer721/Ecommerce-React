@@ -5,7 +5,7 @@ export const Container = styled.div`
   text-align: center;
 `
 export const DealImage = styled.img`
-  width: 222px;
+  /* width: 222px; */
   height: 123px;
   box-shadow: 0px 3px 10px #00000014;
   border-radius: 10px;
