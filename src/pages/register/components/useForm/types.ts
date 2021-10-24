@@ -21,3 +21,13 @@ export interface IRegisterCompanyType {
 }
 
 export type IRegisterType = IRegisterCompanyType | IRegisterCustomerType;
+
+export interface IRegisterErrors {
+  nameError: string
+  phoneError: string
+  storeNameError: string
+  emailError: string
+  passwordError: string
+}
+
+export type IRegisterErrorType = IRegisterErrors | {}
