@@ -17,7 +17,7 @@ import {
 } from '../../../../styles/typography'
 
 // import { useFormLogin } from './useForm'
-
+import useForm from '../useForm'
 import {
   ButtonContainer,
   CheckboxContainer,
@@ -32,19 +32,16 @@ import {
 } from './index.styled'
 
 const Register: FC = memo(() => {
-  // eslint-disable-next-line operator-linebreak
-  // const { handleSubmit, handleChange, errors } =
-  //   useFormLogin()
-  // const { usernameError, passwordError } = errors
   const location = useLocation();
   const isCustomerRef = useRef<boolean>(location.pathname.includes('customer'))
 
-  const fullNameFieldRef = useRef<HTMLInputElement>(null)
+  const nameRef = useRef<HTMLInputElement>(null)
   const companyFieldRef = useRef<HTMLInputElement>(null);
   const [numberField] = useState<any>('')
   const EmailFieldRef = useRef<HTMLInputElement>(null)
   const passwordFieldRef = useRef<HTMLInputElement>(null)
 
+  const { handleChange } = useForm();
   return (
     <Container>
       <HeadingsContainer>
@@ -57,15 +54,15 @@ const Register: FC = memo(() => {
       <InputFieldsContainer>
         <InputContainer>
           <Input
-            ref={fullNameFieldRef}
+            ref={nameRef}
             label="Full Name"
-            name="username"
+            name="name"
             value={
-              fullNameFieldRef
-              && fullNameFieldRef.current?.value
+              nameRef
+              && nameRef.current?.value
             }
             prefix={faUser}
-          // handleChange={handleChange}
+            handleChange={handleChange}
           />
         </InputContainer>
         <MarginDiv />
