@@ -4,7 +4,7 @@ export const initialState: IRegisterType = {
   name: '',
   phone: '',
   country_code: '',
-  userType: 'company',
+  userType: 'visitor',
   store_name: '',
   checkbox: false,
   email: '',

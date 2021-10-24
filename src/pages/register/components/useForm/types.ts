@@ -3,6 +3,7 @@ export interface IRegisterCustomerType {
   phone: string
   country_code: string
   userType: 'visitor'
+  store_name: ''
   checkbox: boolean
   email: string
   password: string
