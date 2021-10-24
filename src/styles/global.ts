@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
 `
 export const LoginViewContainer = styled.div`
   margin: 0 auto;
-  width: 30%;
+  width: 35%;
   text-align: center;
   display: flex;
   justify-content: center;
