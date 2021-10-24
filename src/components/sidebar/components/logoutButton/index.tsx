@@ -8,7 +8,7 @@ const LogoutButtonComponent = memo(() => (
     <WrapContainer>
       <LogoutButton>
         <FontAwesomeIcon icon={faSignOut} style={{ marginRight: '4px' }} />
-        Logoout
+        Logout
       </LogoutButton>
     </WrapContainer>
   </>
