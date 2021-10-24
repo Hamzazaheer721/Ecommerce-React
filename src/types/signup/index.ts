@@ -31,3 +31,8 @@ export interface IRegisterErrors {
 }
 
 export type IRegisterErrorType = IRegisterErrors | {}
+
+export interface IRegisterRtn {
+  success: string
+  message: string
+}

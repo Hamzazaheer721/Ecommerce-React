@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-// import { userSignupSlice } from '../features/userSignupSlice';
 import logger from 'redux-logger'
+import { userSignupSlice } from '../features/userSignupSlice';
 import { userSigninSlice } from '../features/userSigninSlice/index';
 
 export const store = configureStore({
   reducer: {
-    user: userSigninSlice.reducer
+    user: userSigninSlice.reducer,
+    registerUser: userSignupSlice.reducer
   },
   middleware: (getDefaultMiddleware) =>
     // eslint-disable-next-line implicit-arrow-linebreak

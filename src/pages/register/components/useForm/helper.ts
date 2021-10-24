@@ -6,7 +6,7 @@ import {
   validatePassword,
   isEmail
 } from '../../../../general/validations'
-import { IRegisterErrors, IRegisterType } from './types'
+import { IRegisterErrors, IRegisterType } from '../../../../types/signup'
 
 export const initialState: IRegisterType = {
   name: '',
@@ -19,7 +19,10 @@ export const initialState: IRegisterType = {
   password: ''
 }
 
-export const errorChecks = (registerData: IRegisterType) => {
+export const errorChecks = (
+  registerData: IRegisterType,
+  isCustomer: 'visitor' | 'company'
+) => {
   const errors: Partial<IRegisterErrors> = {}
   const { name, phone, store_name, email, password } = registerData
 
@@ -29,15 +32,17 @@ export const errorChecks = (registerData: IRegisterType) => {
     errors.nameError = 'Please enter a valid full name'
   }
 
-  if (isEmpty(store_name)) {
-    errors.storeNameError = 'Please enter your Company name'
-  } else if (!validateCompany(store_name)) {
-    errors.storeNameError = 'Please enter a valid company name'
+  if (isCustomer === 'company') {
+    if (isEmpty(store_name)) {
+      errors.storeNameError = 'Please enter your Company name'
+    } else if (!validateCompany(store_name)) {
+      errors.storeNameError = 'Please enter a valid company name'
+    }
   }
 
   if (isEmpty(phone)) {
     errors.phoneError = 'Please enter your Whatsapp number'
-  } else if (!validatePhoneNumber(store_name)) {
+  } else if (!validatePhoneNumber(phone)) {
     errors.phoneError = 'Please enter a valid Whatsapp number'
   }
 
