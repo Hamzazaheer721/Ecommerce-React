@@ -20,6 +20,13 @@ import {
   Suffix
 } from './index.styled'
 
+interface CountryData {
+  name: string
+  dialCode: string
+  countryCode: string
+  format: string
+}
+
 interface InputProps {
   label?: string
   value?: string
@@ -30,7 +37,12 @@ interface InputProps {
   phoneField?: boolean
   // eslint-disable-next-line no-unused-vars
   handleChange?: (e: ChangeEvent<HTMLInputElement>) => void
-  handlePhoneChange?: any
+  handlePhoneChange?: (
+    value: string,
+    data: {} | CountryData,
+    event: ChangeEvent<HTMLInputElement>,
+    formattedValue: string
+  ) => void
 }
 
 const Input = memo(
