@@ -22,10 +22,12 @@ const useForm = () => {
 
   const handlePhoneChange = useCallback(
     (_val, _data) => {
+      const { dialCode } = _data
       setRegisterData({
         ...registerData,
         phone: _val,
-        country_code: _data.dialCode
+        // eslint-disable-next-line prefer-template
+        country_code: '+' + dialCode
       })
     },
     [registerData]
