@@ -22,6 +22,7 @@ module.exports = {
   },
   rules: {
     semi: 0,
+    indent: 'off',
     'react/jsx-filename-extension': [
       1,
       {

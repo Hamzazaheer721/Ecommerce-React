@@ -32,14 +32,14 @@ import {
 } from './index.styled'
 
 const Register: FC = memo(() => {
-  const location = useLocation();
+  const location = useLocation()
   const isCustomerRef = useRef<boolean>(location.pathname.includes('customer'))
 
-  const { handleChange, registerData } = useForm();
-  const { phone } = registerData;
+  const { handleChange, registerData, handleSubmit } = useForm()
+  const { phone } = registerData
 
   const nameRef = useRef<HTMLInputElement>(null)
-  const storeNameRef = useRef<HTMLInputElement>(null);
+  const storeNameRef = useRef<HTMLInputElement>(null)
   const emailRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
 
@@ -48,8 +48,7 @@ const Register: FC = memo(() => {
       <HeadingsContainer>
         <LoginHeader>Get Started Free</LoginHeader>
         <SubHeading>
-          Its time to enjoy ultimate shopping experience
-          through WhatsApp
+          Its time to enjoy ultimate shopping experience through WhatsApp
         </SubHeading>
       </HeadingsContainer>
       <InputFieldsContainer>
@@ -58,10 +57,7 @@ const Register: FC = memo(() => {
             ref={nameRef}
             label="Full Name"
             name="name"
-            value={
-              nameRef
-              && nameRef.current?.value
-            }
+            value={nameRef && nameRef.current?.value}
             prefix={faUser}
             handleChange={handleChange}
           />
@@ -75,10 +71,7 @@ const Register: FC = memo(() => {
                 ref={storeNameRef}
                 label="Company Name"
                 name="store_name"
-                value={
-                  storeNameRef
-                  && storeNameRef.current?.value
-                }
+                value={storeNameRef && storeNameRef.current?.value}
                 prefix={faCity}
                 handleChange={handleChange}
               />
@@ -108,9 +101,7 @@ const Register: FC = memo(() => {
             label="Email"
             prefix={faEnvelope}
             name="email"
-            value={
-              emailRef && emailRef.current?.value
-            }
+            value={emailRef && emailRef.current?.value}
             handleChange={handleChange}
           />
         </InputContainer>
@@ -122,10 +113,7 @@ const Register: FC = memo(() => {
             prefix={faKey}
             typePassword
             name="password"
-            value={
-              passwordRef
-              && passwordRef.current?.value
-            }
+            value={passwordRef && passwordRef.current?.value}
             handleChange={handleChange}
           />
         </InputContainer>
@@ -137,10 +125,7 @@ const Register: FC = memo(() => {
         <MarginDiv />
 
         <CheckboxContainer>
-          <CustomCheckBox
-            type="checkbox"
-            name="remember"
-          />
+          <CustomCheckBox type="checkbox" name="remember" />
           <CheckboxPlaceholder>
             Please accept the
             <span> term and conditions </span>
@@ -153,7 +138,7 @@ const Register: FC = memo(() => {
           type="submit"
           label={isCustomerRef.current ? 'Customer' : 'Company'}
           icon={isCustomerRef.current ? faUser : faBuilding}
-        // handleSubmit={handleSubmit}
+          handleSubmit={handleSubmit}
         />
       </ButtonContainer>
       <LoginFooter>
