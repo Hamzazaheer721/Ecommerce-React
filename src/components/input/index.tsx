@@ -10,10 +10,7 @@ import {
 } from 'react'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 // import debounce from 'lodash/debounce'
-import {
-  faEye,
-  faEyeSlash
-} from '@fortawesome/pro-light-svg-icons'
+import { faEye, faEyeSlash } from '@fortawesome/pro-light-svg-icons'
 import {
   InputContainer,
   InputField,
@@ -33,6 +30,7 @@ interface InputProps {
   phoneField?: boolean
   // eslint-disable-next-line no-unused-vars
   handleChange?: (e: ChangeEvent<HTMLInputElement>) => void
+  handlePhoneChange?: any
 }
 
 const Input = memo(
@@ -47,6 +45,7 @@ const Input = memo(
         prefix,
         suffix,
         phoneField,
+        handlePhoneChange,
         ...props
       },
       inputRef
@@ -79,19 +78,17 @@ const Input = memo(
               {...props}
               name={name}
               value={value}
-              type={
-                typePassword && !showPassword
-                  ? 'password'
-                  : 'text'
-              }
+              type={typePassword && !showPassword ? 'password' : 'text'}
               ref={(_ref) => {
                 if (_ref) {
-                  (
-                    localRef as MutableRefObject<HTMLInputElement>
-                  ).current = _ref
+                  // eslint-disable-next-line no-extra-semi
+                  ;(localRef as MutableRefObject<HTMLInputElement>).current =
+                    _ref
                 }
                 if (inputRef) {
-                  if (typeof inputRef === 'function') { inputRef(_ref) }
+                  if (typeof inputRef === 'function') {
+                    inputRef(_ref)
+                  }
                   if (typeof inputRef === 'object') {
                     // eslint-disable-next-line no-param-reassign
                     inputRef.current = _ref
@@ -101,22 +98,25 @@ const Input = memo(
               onChange={handleChange}
             />
           )}
-          {
-            phoneField && (
-              <PhoneInputField placeholder="" country="pk" value={value} />
-            )
-          }
+          {phoneField && (
+            <PhoneInputField
+              placeholder=""
+              country="pk"
+              value={value}
+              onChange={handlePhoneChange}
+            />
+          )}
           {prefix && <Prefix icon={prefix} phoneField={!!phoneField} />}
-          <Label hasValue={!!value} phoneField={!!phoneField}>{label}</Label>
+          <Label hasValue={!!value} phoneField={!!phoneField}>
+            {label}
+          </Label>
           {typePassword && (
             <Suffix
               onClick={handleEyeChange}
               icon={!showPassword ? faEye : faEyeSlash}
             />
           )}
-          {!typePassword && suffix && (
-            <Suffix icon={suffix} />
-          )}
+          {!typePassword && suffix && <Suffix icon={suffix} />}
         </InputContainer>
       )
     }
