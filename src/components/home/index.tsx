@@ -4,6 +4,7 @@ import { Container, CardsContainer } from './index.styled'
 import StoreCardComponent from '../storeCard'
 import CategoriesComponent from './components/categoriesList'
 import DealsComponent from './components/deals'
+import FooterTray from './components/footerTray'
 
 const HomeComponent: FC<{}> = () => (
   <Container>
@@ -13,6 +14,7 @@ const HomeComponent: FC<{}> = () => (
     <CardsContainer>
       <StoreCardComponent />
     </CardsContainer>
+    <FooterTray />
   </Container>
 )
 
