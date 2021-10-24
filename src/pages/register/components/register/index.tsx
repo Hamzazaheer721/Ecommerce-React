@@ -35,7 +35,8 @@ const Register: FC = memo(() => {
   const location = useLocation()
   const isCustomerRef = useRef<boolean>(location.pathname.includes('customer'))
 
-  const { handleChange, registerData, handleSubmit } = useForm()
+  const { handleChange, registerData, handleSubmit, handlePhoneChange } =
+    useForm()
   const { phone } = registerData
 
   const nameRef = useRef<HTMLInputElement>(null)
@@ -86,6 +87,7 @@ const Register: FC = memo(() => {
             phoneField
             prefix={faWhatsapp}
             value={phone}
+            handlePhoneChange={handlePhoneChange}
           />
         </InputContainer>
         <MarginDiv />

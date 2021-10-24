@@ -20,6 +20,17 @@ const useForm = () => {
     [registerData]
   )
 
+  const handlePhoneChange = useCallback(
+    (_val, _data) => {
+      setRegisterData({
+        ...registerData,
+        phone: _val,
+        country_code: _data.countryCode
+      })
+    },
+    [registerData]
+  )
+
   const handleSubmit = useCallback(
     async (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
@@ -28,7 +39,12 @@ const useForm = () => {
     [registerData]
   )
 
-  return { registerData, handleChange, handleSubmit }
+  return {
+    registerData,
+    handleChange,
+    handleSubmit,
+    handlePhoneChange
+  }
 }
 
 export default useForm

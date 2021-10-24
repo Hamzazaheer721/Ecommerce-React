@@ -23,6 +23,18 @@ module.exports = {
   rules: {
     semi: 0,
     indent: 'off',
+    'linebreak-style': 0,
+    'object-curly-spacing': 'off',
+    'operator-linebreak': [
+      1,
+      'after',
+      {
+        overrides: {
+          '?': 'ignore',
+          ':': 'ignore'
+        }
+      }
+    ],
     'react/jsx-filename-extension': [
       1,
       {
@@ -45,7 +57,6 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     camelcase: 'off',
     '@typescript-eslint/camelcase': 'off',
-    'linebreak-style': 0,
     'import/extensions': [
       'error',
       'ignorePackages',
