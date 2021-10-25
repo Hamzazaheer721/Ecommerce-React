@@ -75,7 +75,8 @@ const useForm = () => {
     handleChange,
     errors,
     handleSubmit,
-    handlePhoneChange
+    handlePhoneChange,
+    isCustomer
   }
 }
 

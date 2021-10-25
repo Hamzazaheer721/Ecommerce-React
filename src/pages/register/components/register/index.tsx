@@ -1,4 +1,4 @@
-import { FC, memo, useMemo, useRef } from 'react'
+import { FC, memo, useRef } from 'react'
 import {
   faKey,
   faUser,
@@ -7,7 +7,6 @@ import {
   faCity
 } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
-import { useLocation } from 'react-router-dom'
 import useForm from '../useForm'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
@@ -31,25 +30,19 @@ import {
 import ToastComponent from '../../../../components/toaster'
 
 const Register: FC = memo(() => {
-  const location = useLocation()
-
-  const isCustomer = useMemo<boolean>(
-    () => location.pathname.includes('customer'),
-    [location]
-  )
-
   const {
     handleChange,
     registerData,
     registerState,
     handleSubmit,
     handlePhoneChange,
-    errors
+    errors,
+    isCustomer
   } = useForm()
   const { phone } = registerData
+  const { success, message } = registerState
   const { nameError, phoneError, storeNameError, emailError, passwordError } =
     errors
-  const { success, message } = registerState
 
   const nameRef = useRef<HTMLInputElement>(null)
   const storeNameRef = useRef<HTMLInputElement>(null)
@@ -86,7 +79,7 @@ const Register: FC = memo(() => {
         ) : (
           <MarginDiv />
         )}
-        {!isCustomer && (
+        {isCustomer === 'company' && (
           <>
             <InputContainer>
               <Input
