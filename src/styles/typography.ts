@@ -34,7 +34,7 @@ export const LoginSubFooter = styled.p`
 
 export const EmptyErrorState = styled.p`
   font-size: 14px;
-  margin: 3px 0;
+  margin: 5px 0;
   color: red;
 `
 
