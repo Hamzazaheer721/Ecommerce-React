@@ -8,11 +8,12 @@ export const userSignupSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(userSignup.fulfilled, (state, action) => {
-      if (action.payload) {
+    builder.addCase(userSignup.fulfilled, (state, { payload }) => {
+      if (payload) {
         state.loading = false
-        state.message = action.payload.message
-        state.success = action.payload.success
+        state.message = payload.message
+        state.success = payload.success
+        state.user = payload.user
       }
     })
     .addCase(userSignup.pending, (state) => {

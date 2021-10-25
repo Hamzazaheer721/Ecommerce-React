@@ -3,6 +3,7 @@ import {
   useState,
   useCallback,
   useMemo,
+  useEffect,
   ChangeEvent,
   MouseEvent,
   useRef
@@ -30,7 +31,13 @@ const useForm = () => {
 
   const redirectTimeInterval = useRef<NodeJS.Timer>()
   const history = useHistory()
-  console.info(history, redirectTimeInterval)
+
+  useEffect(
+    () => () => {
+      redirectTimeInterval.current && clearTimeout(redirectTimeInterval.current)
+    },
+    []
+  )
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -61,11 +68,19 @@ const useForm = () => {
     [registerData]
   )
 
+  const giveDelay = useCallback(() => {
+    redirectTimeInterval.current = setInterval(() => {
+      history.push('/activation-code')
+      redirectTimeInterval.current = undefined
+    }, 5000)
+  }, [history, redirectTimeInterval])
+
   const makeApiCall = useCallback(async () => {
     const data = produce(registerData, (draft) => {
       draft.user_type = isCustomer
     })
     dispatch(userSignup(data))
+    giveDelay()
   }, [registerData])
 
   const handleSubmit = useCallback(
