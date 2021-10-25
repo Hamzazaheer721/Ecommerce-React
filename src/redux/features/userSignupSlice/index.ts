@@ -1,34 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit'
-import { IRegisterType } from '../../../types/signup'
 import { userSignup } from './apiActions'
-
-type IUserStateType = {
-  user: IRegisterType
-  loading: boolean
-  success: string
-  error: string
-  message: string
-}
-
-const initialValue: IRegisterType = {
-  name: '',
-  phone: '',
-  country_code: '',
-  user_type: 'visitor',
-  store_name: '',
-  checkbox: false,
-  email: '',
-  password: ''
-}
-
-const initialState: IUserStateType = {
-  user: initialValue,
-  loading: false,
-  success: '',
-  error: '',
-  message: ''
-}
+import { initialState } from './helper'
 
 export const userSignupSlice = createSlice({
   name: 'signup',
