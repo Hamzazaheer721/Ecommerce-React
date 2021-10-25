@@ -1,10 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
 import storage from 'redux-persist/lib/storage'
-import { combineReducers } from 'redux';
-import { persistReducer } from 'redux-persist';
-import { userSignupSlice } from '../features/userSignupSlice';
-import { userSigninSlice } from '../features/userSigninSlice/index';
+import { combineReducers } from 'redux'
+import {
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER
+} from 'redux-persist'
+import { userSignupSlice } from '../features/userSignupSlice'
+import { userSigninSlice } from '../features/userSigninSlice/index'
 
 const reducers = combineReducers({
   user: userSigninSlice.reducer,
@@ -21,7 +29,11 @@ const persistedReducer = persistReducer(persistConfig, reducers)
 
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+      }
+    }).concat(logger)
 })
 
 export type RootState = ReturnType<typeof store.getState>
