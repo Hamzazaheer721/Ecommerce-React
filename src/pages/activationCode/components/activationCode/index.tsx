@@ -4,6 +4,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
+import useForm from './useForm'
 // import ToastComponent from '../../../components/toaster'
 import {
   LoginSubFooter,
@@ -26,7 +27,7 @@ import {
 
 const ActivationCode: FC = memo(() => {
   const activationCodeRef = useRef<HTMLInputElement>(null)
-
+  const { email } = useForm()
   return (
     <Container>
       <HeadingsContainer>
@@ -56,7 +57,7 @@ const ActivationCode: FC = memo(() => {
           <Input
             label="Email Address"
             name="email"
-            value="email"
+            value={email}
             prefix={faWhatsapp}
             // handleChange={handleChange}
           />
