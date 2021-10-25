@@ -1,28 +1,57 @@
-import { useMemo, useEffect, useCallback, useState, ChangeEvent } from 'react'
+import {
+  useMemo,
+  useEffect,
+  useCallback,
+  useState,
+  ChangeEvent,
+  MouseEvent
+} from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { RootState } from '../../../../../redux/store'
-import { initialState } from './helper'
+import { checkError, initialState } from './helper'
 import { IActivationErrorType, IActivationType } from './types'
 
 const useForm = () => {
   const history = useHistory()
 
-  const [activationData] = useState<IActivationType>(initialState)
+  const [activationData, setActivationData] =
+    useState<IActivationType>(initialState)
+  const { activation_code } = activationData
+  const [error, setError] = useState<Partial<IActivationErrorType>>({})
 
-  const [error] = useState<Partial<IActivationErrorType>>({})
   const registerState = useSelector((state: RootState) => state.registerUser)
-  const email = useMemo(() => registerState.user.email, [registerState])
+  const email = useMemo(() => {
+    setActivationData({ ...activationData, email: registerState.user.email })
+    return registerState.user.email
+  }, [registerState])
 
   useEffect(() => {
-    !registerState.user.email && history.goBack()
+    // !registerState.user.email && history.goBack()
+    console.info(history)
   }, [])
 
-  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    console.info(e)
-  }, [])
+  const handleChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target
+      setActivationData({ ...activationData, [name]: value })
+    },
+    [activationData]
+  )
 
-  const handleSubmit = useCallback(() => {}, [])
+  const makeApiCall = useCallback(async () => {}, [])
+
+  const handleSubmit = useCallback(
+    (e: MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault()
+      const errorCheck = checkError(activation_code)
+      setError(errorCheck)
+      !Object.keys(errorCheck).length &&
+        !Object.keys(error).length &&
+        makeApiCall()
+    },
+    [activationData]
+  )
 
   return { email, handleSubmit, handleChange, error, activationData }
 }

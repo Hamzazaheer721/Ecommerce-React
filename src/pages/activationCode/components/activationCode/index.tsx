@@ -27,7 +27,7 @@ import {
 
 const ActivationCode: FC = memo(() => {
   const activationCodeRef = useRef<HTMLInputElement>(null)
-  const { email } = useForm()
+  const { email, handleChange } = useForm()
   return (
     <Container>
       <HeadingsContainer>
@@ -49,12 +49,13 @@ const ActivationCode: FC = memo(() => {
             name="activationcode"
             value={activationCodeRef && activationCodeRef.current?.value}
             prefix={faCode}
-            // handleChange={handleChange}
+            handleChange={handleChange}
           />
         </InputContainer>
         <MarginDiv />
         <InputContainer>
           <Input
+            readOnly
             label="Email Address"
             name="email"
             value={email}
