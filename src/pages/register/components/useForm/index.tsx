@@ -98,8 +98,7 @@ const useForm = () => {
       e.preventDefault()
       const updatedErrors = errorChecks(registerData, isCustomer)
       setErrors(updatedErrors)
-      const _empty = isObjectEmpty(updatedErrors)
-      _empty && makeApiCall()
+      isObjectEmpty(updatedErrors) && makeApiCall()
     },
     [registerData, errors]
   )

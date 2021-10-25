@@ -10,8 +10,9 @@ import {
   LoginSubFooter,
   LoginHeader,
   LoginFooter,
-  LoginDescription
-  // EmptyErrorState
+  LoginDescription,
+  EmptyErrorState,
+  MarginDiv
 } from '../../../../styles/typography'
 
 import {
@@ -20,14 +21,14 @@ import {
   HeadingsContainer,
   InputContainer,
   InputFieldsContainer,
-  LinkText,
-  MarginDiv
+  LinkText
   // SubHeading
 } from './index.styled'
 
 const ActivationCode: FC = memo(() => {
   const activationCodeRef = useRef<HTMLInputElement>(null)
-  const { email, handleChange } = useForm()
+  const { email, handleChange, handleSubmit, error } = useForm()
+  const { activationCodeError } = error
   return (
     <Container>
       <HeadingsContainer>
@@ -46,13 +47,17 @@ const ActivationCode: FC = memo(() => {
           <Input
             ref={activationCodeRef}
             label="Activation Code"
-            name="activationcode"
+            name="activation_code"
             value={activationCodeRef && activationCodeRef.current?.value}
             prefix={faCode}
             handleChange={handleChange}
           />
         </InputContainer>
-        <MarginDiv />
+        {activationCodeError ? (
+          <EmptyErrorState>{activationCodeError}</EmptyErrorState>
+        ) : (
+          <MarginDiv />
+        )}
         <InputContainer>
           <Input
             readOnly
@@ -60,21 +65,15 @@ const ActivationCode: FC = memo(() => {
             name="email"
             value={email}
             prefix={faWhatsapp}
-            // handleChange={handleChange}
           />
         </InputContainer>
-        {/* {usernameError ? (
-          <EmptyErrorState>{usernameError}</EmptyErrorState>
-        ) : (
-          <MarginDiv />
-        )} */}
       </InputFieldsContainer>
       <ButtonContainer>
         <Button
           type="submit"
           label="Login"
           icon={faUser}
-          // handleSubmit={handleSubmit}
+          handleSubmit={handleSubmit}
         />
       </ButtonContainer>
       <Link to="/">

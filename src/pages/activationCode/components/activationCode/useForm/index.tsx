@@ -12,6 +12,7 @@ import { RootState } from '../../../../../redux/store'
 import { clearMessageStates } from '../../../../../redux/features/userSignupSlice'
 import { checkError, initialState } from './helper'
 import { IActivationErrorType, IActivationType } from './types'
+import { isObjectEmpty } from '../../../../../general/helper'
 
 const useForm = () => {
   const dispatch = useDispatch()
@@ -42,18 +43,16 @@ const useForm = () => {
     [activationData]
   )
 
-  const makeApiCall = useCallback(async () => {}, [])
+  const makeApiCall = useCallback(() => {}, [activationData])
 
   const handleSubmit = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
       const errorCheck = checkError(activation_code)
       setError(errorCheck)
-      !Object.keys(errorCheck).length &&
-        !Object.keys(error).length &&
-        makeApiCall()
+      isObjectEmpty(errorCheck) && makeApiCall()
     },
-    [activationData]
+    [activationData, error]
   )
 
   return { email, handleSubmit, handleChange, error, activationData }
