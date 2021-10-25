@@ -51,9 +51,7 @@ const useForm = () => {
   useEffect(() => {
     if (registerState) {
       const { success, message } = registerState
-      if (success && message) {
-        giveDelay()
-      }
+      success && message && giveDelay()
     }
   }, [registerState])
 
