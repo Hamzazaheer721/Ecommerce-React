@@ -6,13 +6,15 @@ import {
   ChangeEvent,
   MouseEvent
 } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { RootState } from '../../../../../redux/store'
+import { clearMessageStates } from '../../../../../redux/features/userSignupSlice'
 import { checkError, initialState } from './helper'
 import { IActivationErrorType, IActivationType } from './types'
 
 const useForm = () => {
+  const dispatch = useDispatch()
   const history = useHistory()
 
   const [activationData, setActivationData] =
@@ -23,12 +25,13 @@ const useForm = () => {
 
   const registerState = useSelector((state: RootState) => state.registerUser)
   const email = useMemo(() => {
-    setActivationData({ ...activationData, email: registerState.user.email })
-    return registerState.user.email
+    setActivationData({ ...activationData, email: registerState.email })
+    return registerState.email
   }, [registerState])
 
   useEffect(() => {
-    !registerState.user.email && history.goBack()
+    registerState.message && dispatch(clearMessageStates())
+    !registerState.email && history.goBack()
   }, [])
 
   const handleChange = useCallback(

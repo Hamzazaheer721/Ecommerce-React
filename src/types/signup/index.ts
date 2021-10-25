@@ -33,6 +33,6 @@ export interface IRegisterErrors {
 export type IRegisterErrorType = Partial<IRegisterErrors>
 
 export interface IRegisterRtn {
-  success: string
+  success: boolean
   message: string
 }

@@ -1,20 +1,8 @@
-import { IRegisterType } from '../../../types/signup'
-import { IUserStateType } from './types'
+import { ISignUpStateType } from './types'
 
-export const initialValue: IRegisterType = {
-  name: '',
-  phone: '',
-  country_code: '',
-  user_type: 'visitor',
-  store_name: '',
-  checkbox: false,
+export const initialState: ISignUpStateType = {
   email: '',
-  password: ''
-}
-
-export const initialState: IUserStateType = {
-  user: initialValue,
   loading: false,
-  success: '',
+  success: false,
   message: ''
 }

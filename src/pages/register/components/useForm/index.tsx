@@ -17,6 +17,8 @@ import { initialState, errorChecks } from './helper'
 import { IRegisterErrorType, IRegisterType } from '../../../../types/signup'
 
 const useForm = () => {
+  const history = useHistory()
+
   const [registerData, setRegisterData] = useState<IRegisterType>(initialState)
   const [errors, setErrors] = useState<IRegisterErrorType>({})
 
@@ -30,7 +32,6 @@ const useForm = () => {
   )
 
   const redirectTimeInterval = useRef<NodeJS.Timer>()
-  const history = useHistory()
 
   useEffect(
     () => () => {
@@ -69,7 +70,7 @@ const useForm = () => {
   )
 
   const giveDelay = useCallback(() => {
-    redirectTimeInterval.current = setInterval(() => {
+    redirectTimeInterval.current = setTimeout(() => {
       history.push('/activation-code')
       redirectTimeInterval.current = undefined
     }, 5000)

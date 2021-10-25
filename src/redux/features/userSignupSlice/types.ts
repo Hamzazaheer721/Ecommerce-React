@@ -1,8 +1,6 @@
-import { IRegisterType } from '../../../types/signup'
-
-export type IUserStateType = {
-  user: IRegisterType
+export type ISignUpStateType = {
+  email: string
   loading: boolean
-  success: string
+  success: boolean
   message: string
 }
