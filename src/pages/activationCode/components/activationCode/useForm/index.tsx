@@ -18,6 +18,7 @@ const useForm = () => {
   const [activationData, setActivationData] =
     useState<IActivationType>(initialState)
   const { activation_code } = activationData
+
   const [error, setError] = useState<Partial<IActivationErrorType>>({})
 
   const registerState = useSelector((state: RootState) => state.registerUser)
@@ -27,8 +28,7 @@ const useForm = () => {
   }, [registerState])
 
   useEffect(() => {
-    // !registerState.user.email && history.goBack()
-    console.info(history)
+    !registerState.user.email && history.goBack()
   }, [])
 
   const handleChange = useCallback(
