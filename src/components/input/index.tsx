@@ -118,8 +118,8 @@ const Input = memo(
               onChange={handlePhoneChange}
             />
           )}
-          {prefix && <Prefix icon={prefix} phonefield={!!phonefield} />}
-          <Label hasValue={!!value} phonefield={!!phonefield}>
+          {prefix && <Prefix icon={prefix} $phonefield={!!phonefield} />}
+          <Label hasValue={!!value} $phonefield={!!phonefield}>
             {label}
           </Label>
           {typePassword && (

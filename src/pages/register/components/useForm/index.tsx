@@ -1,13 +1,6 @@
 /* eslint-disable no-param-reassign */
 import produce from 'immer'
-import {
-  useState,
-  useCallback,
-  useEffect,
-  useMemo,
-  ChangeEvent,
-  MouseEvent
-} from 'react'
+import { useState, useCallback, useMemo, ChangeEvent, MouseEvent } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { userSignup } from '../../../../redux/features/userSignupSlice/apiActions'
@@ -22,10 +15,6 @@ const useForm = () => {
 
   const dispatch = useDispatch()
   const registerState = useSelector((state: RootState) => state.registerUser)
-
-  useEffect(() => {
-    console.info('state has been changed', registerState)
-  }, [registerState])
 
   const location = useLocation()
   const isCustomer = useMemo(
@@ -64,7 +53,7 @@ const useForm = () => {
 
   const makeApiCall = useCallback(async () => {
     const data = produce(registerData, (draft) => {
-      draft.userType = isCustomer
+      draft.user_type = isCustomer
     })
     dispatch(userSignup(data))
     setLoading(true)
@@ -82,6 +71,7 @@ const useForm = () => {
 
   return {
     registerData,
+    registerState,
     handleChange,
     handleSubmit,
     handlePhoneChange

@@ -12,7 +12,7 @@ export const initialState: IRegisterType = {
   name: '',
   phone: '',
   country_code: '',
-  userType: 'visitor',
+  user_type: 'visitor',
   store_name: '',
   checkbox: false,
   email: '',

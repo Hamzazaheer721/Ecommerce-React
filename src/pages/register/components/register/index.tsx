@@ -127,7 +127,11 @@ const Register: FC = memo(() => {
         <MarginDiv />
 
         <CheckboxContainer>
-          <CustomCheckBox type="checkbox" name="remember" />
+          <CustomCheckBox
+            type="checkbox"
+            name="checkbox"
+            onChange={handleChange}
+          />
           <CheckboxPlaceholder>
             Please accept the
             <span> term and conditions </span>
