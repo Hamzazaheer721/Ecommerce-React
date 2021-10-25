@@ -28,6 +28,7 @@ import {
   InputFieldsContainer,
   SubHeading
 } from './index.styled'
+import ToastComponent from '../../../../components/toaster'
 
 const Register: FC = memo(() => {
   const location = useLocation()
@@ -36,6 +37,7 @@ const Register: FC = memo(() => {
   const {
     handleChange,
     registerData,
+    registerState,
     handleSubmit,
     handlePhoneChange,
     errors
@@ -43,6 +45,7 @@ const Register: FC = memo(() => {
   const { phone } = registerData
   const { nameError, phoneError, storeNameError, emailError, passwordError } =
     errors
+  const { success, message } = registerState
 
   const nameRef = useRef<HTMLInputElement>(null)
   const storeNameRef = useRef<HTMLInputElement>(null)
@@ -57,6 +60,12 @@ const Register: FC = memo(() => {
           Its time to enjoy ultimate shopping experience through WhatsApp
         </SubHeading>
       </HeadingsContainer>
+      {success && message && (
+        <ToastComponent toastType="success" description={message} />
+      )}
+      {!success && message && (
+        <ToastComponent toastType="error" description={message} />
+      )}
       <InputFieldsContainer>
         <InputContainer>
           <Input
@@ -73,7 +82,6 @@ const Register: FC = memo(() => {
         ) : (
           <MarginDiv />
         )}
-
         {!isCustomerRef.current && (
           <>
             <InputContainer>
@@ -86,14 +94,13 @@ const Register: FC = memo(() => {
                 handleChange={handleChange}
               />
             </InputContainer>
+            {storeNameError ? (
+              <EmptyErrorState>{storeNameError}</EmptyErrorState>
+            ) : (
+              <MarginDiv />
+            )}
           </>
         )}
-        {!isCustomerRef.current && storeNameError ? (
-          <EmptyErrorState>{storeNameError}</EmptyErrorState>
-        ) : (
-          <MarginDiv />
-        )}
-
         <InputContainer>
           <Input
             label="WhatsApp Number"
@@ -108,7 +115,6 @@ const Register: FC = memo(() => {
         ) : (
           <MarginDiv />
         )}
-
         <InputContainer>
           <Input
             ref={emailRef}
@@ -124,7 +130,6 @@ const Register: FC = memo(() => {
         ) : (
           <MarginDiv />
         )}
-
         <InputContainer>
           <Input
             ref={passwordRef}
@@ -141,7 +146,6 @@ const Register: FC = memo(() => {
         ) : (
           <MarginDiv />
         )}
-
         <CheckboxContainer>
           <CustomCheckBox
             type="checkbox"

@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
-import produce from 'immer'
 import { useState, useCallback, useMemo, ChangeEvent, MouseEvent } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import produce from 'immer'
 import { userSignup } from '../../../../redux/features/userSignupSlice/apiActions'
 import { RootState } from '../../../../redux/store'
 import { initialState, errorChecks } from './helper'
@@ -11,7 +11,6 @@ import { IRegisterErrorType, IRegisterType } from '../../../../types/signup'
 const useForm = () => {
   const [registerData, setRegisterData] = useState<IRegisterType>(initialState)
   const [errors, setErrors] = useState<IRegisterErrorType>({})
-  const [, setLoading] = useState<boolean>(false)
 
   const dispatch = useDispatch()
   const registerState = useSelector((state: RootState) => state.registerUser)
@@ -56,7 +55,6 @@ const useForm = () => {
       draft.user_type = isCustomer
     })
     dispatch(userSignup(data))
-    setLoading(true)
   }, [registerData])
 
   const handleSubmit = useCallback(
@@ -64,7 +62,9 @@ const useForm = () => {
       e.preventDefault()
       const updatedErrors = errorChecks(registerData, isCustomer)
       setErrors(updatedErrors)
-      makeApiCall()
+      !Object.keys(errors).length &&
+        !Object.keys(updatedErrors).length &&
+        makeApiCall()
     },
     [registerData, errors]
   )
