@@ -73,6 +73,7 @@ const useForm = () => {
     registerData,
     registerState,
     handleChange,
+    errors,
     handleSubmit,
     handlePhoneChange
   }

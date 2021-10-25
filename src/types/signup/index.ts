@@ -30,7 +30,7 @@ export interface IRegisterErrors {
   passwordError: string
 }
 
-export type IRegisterErrorType = IRegisterErrors | {}
+export type IRegisterErrorType = Partial<IRegisterErrors>
 
 export interface IRegisterRtn {
   success: string

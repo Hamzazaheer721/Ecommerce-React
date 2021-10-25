@@ -8,16 +8,15 @@ import {
 } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { useLocation } from 'react-router-dom'
+import useForm from '../useForm'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
 import {
   LoginHeader,
-  LoginFooter
-  // EmptyErrorState
+  LoginFooter,
+  EmptyErrorState,
+  MarginDiv
 } from '../../../../styles/typography'
-
-// import { useFormLogin } from './useForm'
-import useForm from '../useForm'
 import {
   ButtonContainer,
   CheckboxContainer,
@@ -27,7 +26,6 @@ import {
   HeadingsContainer,
   InputContainer,
   InputFieldsContainer,
-  MarginDiv,
   SubHeading
 } from './index.styled'
 
@@ -35,9 +33,16 @@ const Register: FC = memo(() => {
   const location = useLocation()
   const isCustomerRef = useRef<boolean>(location.pathname.includes('customer'))
 
-  const { handleChange, registerData, handleSubmit, handlePhoneChange } =
-    useForm()
+  const {
+    handleChange,
+    registerData,
+    handleSubmit,
+    handlePhoneChange,
+    errors
+  } = useForm()
   const { phone } = registerData
+  const { nameError, phoneError, storeNameError, emailError, passwordError } =
+    errors
 
   const nameRef = useRef<HTMLInputElement>(null)
   const storeNameRef = useRef<HTMLInputElement>(null)
@@ -63,7 +68,11 @@ const Register: FC = memo(() => {
             handleChange={handleChange}
           />
         </InputContainer>
-        <MarginDiv />
+        {nameError ? (
+          <EmptyErrorState>{nameError}</EmptyErrorState>
+        ) : (
+          <MarginDiv />
+        )}
 
         {!isCustomerRef.current && (
           <>
@@ -77,8 +86,12 @@ const Register: FC = memo(() => {
                 handleChange={handleChange}
               />
             </InputContainer>
-            <MarginDiv />
           </>
+        )}
+        {!isCustomerRef.current && storeNameError ? (
+          <EmptyErrorState>{storeNameError}</EmptyErrorState>
+        ) : (
+          <MarginDiv />
         )}
 
         <InputContainer>
@@ -90,13 +103,12 @@ const Register: FC = memo(() => {
             handlePhoneChange={handlePhoneChange}
           />
         </InputContainer>
-        <MarginDiv />
-
-        {/* {usernameError ? (
-          <EmptyErrorState>{usernameError}</EmptyErrorState>
+        {phoneError ? (
+          <EmptyErrorState>{phoneError}</EmptyErrorState>
         ) : (
           <MarginDiv />
-        )} */}
+        )}
+
         <InputContainer>
           <Input
             ref={emailRef}
@@ -107,7 +119,12 @@ const Register: FC = memo(() => {
             handleChange={handleChange}
           />
         </InputContainer>
-        <MarginDiv />
+        {emailError ? (
+          <EmptyErrorState>{emailError}</EmptyErrorState>
+        ) : (
+          <MarginDiv />
+        )}
+
         <InputContainer>
           <Input
             ref={passwordRef}
@@ -119,12 +136,11 @@ const Register: FC = memo(() => {
             handleChange={handleChange}
           />
         </InputContainer>
-        {/* {passwordError ? (
+        {passwordError ? (
           <EmptyErrorState>{passwordError}</EmptyErrorState>
         ) : (
           <MarginDiv />
-        )} */}
-        <MarginDiv />
+        )}
 
         <CheckboxContainer>
           <CustomCheckBox
