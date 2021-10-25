@@ -1,9 +1,5 @@
 import { FC, memo, useRef } from 'react'
-import {
-  faKey,
-  faUser,
-  faCode
-} from '@fortawesome/pro-light-svg-icons'
+import { faUser, faCode } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom'
 import Button from '../../../../components/genericButton'
@@ -19,10 +15,7 @@ import {
 
 import {
   ButtonContainer,
-  CheckboxContainer,
-  CheckboxPlaceholder,
   Container,
-  CustomCheckBox,
   HeadingsContainer,
   InputContainer,
   InputFieldsContainer,
@@ -32,23 +25,13 @@ import {
 } from './index.styled'
 
 const ActivationCode: FC = memo(() => {
-  // eslint-disable-next-line operator-linebreak
-  // const { handleSubmit, handleChange, errors, response } =
-  //   useFormLogin()
-
-  // const { success, error } = response
-  // const { usernameError, passwordError } = errors
-
-  const userFieldRef = useRef<HTMLInputElement>(null)
-  const passwordFieldRef = useRef<HTMLInputElement>(null)
+  const activationCodeRef = useRef<HTMLInputElement>(null)
 
   return (
     <Container>
       <HeadingsContainer>
         <LoginHeader>Welcome Back</LoginHeader>
-        <LoginDescription>
-          Enter your activation code!
-        </LoginDescription>
+        <LoginDescription>Enter your activation code!</LoginDescription>
       </HeadingsContainer>
       {/* {success && (
         <ToastComponent
@@ -56,21 +39,14 @@ const ActivationCode: FC = memo(() => {
           description={success}
         />
       )} */}
-      {/* {error && (
-        <ToastComponent
-          toastType="error"
-          description={error}
-        />
-      )} */}
+
       <InputFieldsContainer>
         <InputContainer>
           <Input
-            ref={userFieldRef}
+            ref={activationCodeRef}
             label="Activation Code"
             name="activationcode"
-            value={
-              userFieldRef && userFieldRef.current?.value
-            }
+            value={activationCodeRef && activationCodeRef.current?.value}
             prefix={faCode}
             // handleChange={handleChange}
           />
@@ -78,12 +54,9 @@ const ActivationCode: FC = memo(() => {
         <MarginDiv />
         <InputContainer>
           <Input
-            ref={userFieldRef}
-            label="WhatsApp Number/Email"
-            name="username"
-            value={
-              userFieldRef && userFieldRef.current?.value
-            }
+            label="Email Address"
+            name="email"
+            value="email"
             prefix={faWhatsapp}
             // handleChange={handleChange}
           />
@@ -93,38 +66,6 @@ const ActivationCode: FC = memo(() => {
         ) : (
           <MarginDiv />
         )} */}
-        <MarginDiv />
-        <InputContainer>
-          <Input
-            ref={passwordFieldRef}
-            label="Password"
-            prefix={faKey}
-            typePassword
-            name="password"
-            value={
-              // eslint-disable-next-line operator-linebreak
-              passwordFieldRef &&
-              passwordFieldRef.current?.value
-            }
-            // handleChange={handleChange}
-          />
-        </InputContainer>
-        {/* {passwordError ? (
-          <EmptyErrorState>{passwordError}</EmptyErrorState>
-        ) : (
-          <MarginDiv />
-        )} */}
-        <MarginDiv />
-        <CheckboxContainer>
-          <CustomCheckBox
-            type="checkbox"
-            name="remember"
-            // onChange={handleChange}
-          />
-          <CheckboxPlaceholder>
-            Remember me
-          </CheckboxPlaceholder>
-        </CheckboxContainer>
       </InputFieldsContainer>
       <ButtonContainer>
         <Button
@@ -135,9 +76,7 @@ const ActivationCode: FC = memo(() => {
         />
       </ButtonContainer>
       <Link to="/">
-        <LoginSubFooter>
-          Forget your password?
-        </LoginSubFooter>
+        <LoginSubFooter>Forget your password?</LoginSubFooter>
       </Link>
       <LoginFooter>
         Don`t have an account?
