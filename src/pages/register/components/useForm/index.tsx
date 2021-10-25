@@ -15,6 +15,7 @@ import { userSignup } from '../../../../redux/features/userSignupSlice/apiAction
 import { RootState } from '../../../../redux/store'
 import { initialState, errorChecks } from './helper'
 import { IRegisterErrorType, IRegisterType } from '../../../../types/signup'
+import { isObjectEmpty } from '../../../../general/helper'
 
 const useForm = () => {
   const history = useHistory()
@@ -39,6 +40,22 @@ const useForm = () => {
     },
     []
   )
+
+  const giveDelay = useCallback(() => {
+    redirectTimeInterval.current = setTimeout(() => {
+      history.push('/activation-code')
+      redirectTimeInterval.current = undefined
+    }, 5000)
+  }, [history, redirectTimeInterval])
+
+  useEffect(() => {
+    if (registerState) {
+      const { success, message } = registerState
+      if (success && message) {
+        giveDelay()
+      }
+    }
+  }, [registerState])
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -69,29 +86,20 @@ const useForm = () => {
     [registerData]
   )
 
-  const giveDelay = useCallback(() => {
-    redirectTimeInterval.current = setTimeout(() => {
-      history.push('/activation-code')
-      redirectTimeInterval.current = undefined
-    }, 5000)
-  }, [history, redirectTimeInterval])
-
   const makeApiCall = useCallback(async () => {
     const data = produce(registerData, (draft) => {
       draft.user_type = isCustomer
     })
     dispatch(userSignup(data))
-    giveDelay()
-  }, [registerData])
+  }, [registerData, errors])
 
   const handleSubmit = useCallback(
     async (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
       const updatedErrors = errorChecks(registerData, isCustomer)
       setErrors(updatedErrors)
-      !Object.keys(errors).length &&
-        !Object.keys(updatedErrors).length &&
-        makeApiCall()
+      const _empty = isObjectEmpty(updatedErrors)
+      _empty && makeApiCall()
     },
     [registerData, errors]
   )
