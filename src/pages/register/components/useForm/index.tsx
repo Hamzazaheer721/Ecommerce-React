@@ -16,7 +16,7 @@ const useForm = () => {
   const registerState = useSelector((state: RootState) => state.registerUser)
 
   const location = useLocation()
-  const isCustomer = useMemo(
+  const isCustomer = useMemo<'visitor' | 'company'>(
     () => (location.pathname.includes('customer') ? 'visitor' : 'company'),
     [location]
   )

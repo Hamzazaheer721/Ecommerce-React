@@ -1,4 +1,4 @@
-import { FC, memo, useRef } from 'react'
+import { FC, memo, useMemo, useRef } from 'react'
 import {
   faKey,
   faUser,
@@ -32,7 +32,11 @@ import ToastComponent from '../../../../components/toaster'
 
 const Register: FC = memo(() => {
   const location = useLocation()
-  const isCustomerRef = useRef<boolean>(location.pathname.includes('customer'))
+
+  const isCustomer = useMemo<boolean>(
+    () => location.pathname.includes('customer'),
+    [location]
+  )
 
   const {
     handleChange,
@@ -82,7 +86,7 @@ const Register: FC = memo(() => {
         ) : (
           <MarginDiv />
         )}
-        {!isCustomerRef.current && (
+        {!isCustomer && (
           <>
             <InputContainer>
               <Input
@@ -159,11 +163,11 @@ const Register: FC = memo(() => {
           </CheckboxPlaceholder>
         </CheckboxContainer>
       </InputFieldsContainer>
-      <ButtonContainer isPrimary={!!isCustomerRef.current}>
+      <ButtonContainer isPrimary={!!isCustomer}>
         <Button
           type="submit"
-          label={isCustomerRef.current ? 'Customer' : 'Company'}
-          icon={isCustomerRef.current ? faUser : faBuilding}
+          label={isCustomer ? 'Customer' : 'Company'}
+          icon={isCustomer ? faUser : faBuilding}
           handleSubmit={handleSubmit}
         />
       </ButtonContainer>
