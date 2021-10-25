@@ -16,6 +16,5 @@ export const initialState: IUserStateType = {
   user: initialValue,
   loading: false,
   success: '',
-  error: '',
   message: ''
 }
