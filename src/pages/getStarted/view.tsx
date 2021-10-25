@@ -1,15 +1,13 @@
 /* eslint-disable no-undef */
 import { FC, memo } from 'react'
-import {
-  faUser,
-  faBuilding
-} from '@fortawesome/pro-light-svg-icons'
+import { faUser, faBuilding } from '@fortawesome/pro-light-svg-icons'
 import { Link } from 'react-router-dom'
 
 import {
   LoginHeader,
   LoginDescription,
-  LoginFooter
+  LoginFooter,
+  LinkSpan
 } from '../../styles/typography'
 import { LoginViewContainer } from '../../styles/global'
 import CustomButton from '../../components/genericButton'
@@ -22,8 +20,7 @@ const ViewComponent: FC = memo(() => (
   <LoginViewContainer>
     <LoginHeader>Get Started Free</LoginHeader>
     <LoginDescription>
-      Its time to enjoy ultimate shoping experience through
-      WhatsApp
+      Its time to enjoy ultimate shoping experience through WhatsApp
     </LoginDescription>
     <Link to="/register/customer">
       <ButtonContainer>
@@ -47,7 +44,9 @@ const ViewComponent: FC = memo(() => (
     </Link>
     <LoginFooter>
       Already on WhatsPays?
-      <span> Login</span>
+      <Link to="/login">
+        <LinkSpan> login</LinkSpan>
+      </Link>
     </LoginFooter>
   </LoginViewContainer>
 ))

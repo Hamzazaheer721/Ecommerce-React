@@ -42,3 +42,7 @@ export const MarginDiv = styled.div<{$height?: string}>`
   visibility: hidden;
   height: ${({$height}) => $height || '15px'};
 `
+
+export const LinkSpan = styled.span`
+  color: ${(props) => props.theme.color.black}
+`
