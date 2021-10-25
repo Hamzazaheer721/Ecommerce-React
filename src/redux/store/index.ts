@@ -1,16 +1,27 @@
 import { configureStore } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
+import storage from 'redux-persist/lib/storage'
+import { combineReducers } from 'redux';
+import { persistReducer } from 'redux-persist';
 import { userSignupSlice } from '../features/userSignupSlice';
 import { userSigninSlice } from '../features/userSigninSlice/index';
 
+const reducers = combineReducers({
+  user: userSigninSlice.reducer,
+  registerUser: userSignupSlice.reducer
+})
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['registerUser'] // only registerUser will be persisted
+}
+
+const persistedReducer = persistReducer(persistConfig, reducers)
+
 export const store = configureStore({
-  reducer: {
-    user: userSigninSlice.reducer,
-    registerUser: userSignupSlice.reducer
-  },
-  middleware: (getDefaultMiddleware) =>
-    // eslint-disable-next-line implicit-arrow-linebreak
-    getDefaultMiddleware().concat(logger)
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
 })
 
 export type RootState = ReturnType<typeof store.getState>
