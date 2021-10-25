@@ -1,6 +1,13 @@
 /* eslint-disable no-param-reassign */
-import { useState, useCallback, useMemo, ChangeEvent, MouseEvent } from 'react'
-import { useLocation } from 'react-router-dom'
+import {
+  useState,
+  useCallback,
+  useMemo,
+  ChangeEvent,
+  MouseEvent,
+  useRef
+} from 'react'
+import { useLocation, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import produce from 'immer'
 import { userSignup } from '../../../../redux/features/userSignupSlice/apiActions'
@@ -20,6 +27,10 @@ const useForm = () => {
     () => (location.pathname.includes('customer') ? 'visitor' : 'company'),
     [location]
   )
+
+  const redirectTimeInterval = useRef<NodeJS.Timer>()
+  const history = useHistory()
+  console.info(history, redirectTimeInterval)
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
