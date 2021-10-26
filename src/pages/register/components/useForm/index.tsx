@@ -1,37 +1,59 @@
 /* eslint-disable no-param-reassign */
-import produce from 'immer'
 import {
   useState,
   useCallback,
-  useEffect,
   useMemo,
+  useEffect,
   ChangeEvent,
-  MouseEvent
+  MouseEvent,
+  useRef
 } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import produce from 'immer'
 import { userSignup } from '../../../../redux/features/userSignupSlice/apiActions'
 import { RootState } from '../../../../redux/store'
 import { initialState, errorChecks } from './helper'
 import { IRegisterErrorType, IRegisterType } from '../../../../types/signup'
+import { isObjectEmpty } from '../../../../general/helper'
 
 const useForm = () => {
+  const history = useHistory()
+
   const [registerData, setRegisterData] = useState<IRegisterType>(initialState)
   const [errors, setErrors] = useState<IRegisterErrorType>({})
-  const [, setLoading] = useState<boolean>(false)
 
   const dispatch = useDispatch()
   const registerState = useSelector((state: RootState) => state.registerUser)
 
-  useEffect(() => {
-    console.info('state has been changed', registerState)
-  }, [registerState])
-
   const location = useLocation()
-  const isCustomer = useMemo(
+  const isCustomer = useMemo<'visitor' | 'company'>(
     () => (location.pathname.includes('customer') ? 'visitor' : 'company'),
     [location]
   )
+
+  const redirectTimeInterval = useRef<NodeJS.Timer>()
+
+  useEffect(
+    () => () => {
+      redirectTimeInterval.current && clearTimeout(redirectTimeInterval.current)
+    },
+    []
+  )
+
+  const giveDelay = useCallback(() => {
+    redirectTimeInterval.current = setTimeout(() => {
+      history.push('/activation-code')
+      redirectTimeInterval.current = undefined
+    }, 5000)
+  }, [history, redirectTimeInterval])
+
+  useEffect(() => {
+    if (registerState) {
+      const { success, message } = registerState
+      success && message && giveDelay()
+    }
+  }, [registerState])
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -64,27 +86,29 @@ const useForm = () => {
 
   const makeApiCall = useCallback(async () => {
     const data = produce(registerData, (draft) => {
-      draft.userType = isCustomer
+      draft.user_type = isCustomer
     })
     dispatch(userSignup(data))
-    setLoading(true)
-  }, [registerData])
+  }, [registerData, errors])
 
   const handleSubmit = useCallback(
     async (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
       const updatedErrors = errorChecks(registerData, isCustomer)
       setErrors(updatedErrors)
-      makeApiCall()
+      isObjectEmpty(updatedErrors) && makeApiCall()
     },
     [registerData, errors]
   )
 
   return {
     registerData,
+    registerState,
     handleChange,
+    errors,
     handleSubmit,
-    handlePhoneChange
+    handlePhoneChange,
+    isCustomer
   }
 }
 

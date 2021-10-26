@@ -1,54 +1,39 @@
 import { FC, memo, useRef } from 'react'
-import {
-  faKey,
-  faUser,
-  faCode
-} from '@fortawesome/pro-light-svg-icons'
+import { faUser, faCode } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
+import useForm from './useForm'
 // import ToastComponent from '../../../components/toaster'
 import {
   LoginSubFooter,
   LoginHeader,
   LoginFooter,
-  LoginDescription
-  // EmptyErrorState
+  LoginDescription,
+  EmptyErrorState,
+  MarginDiv
 } from '../../../../styles/typography'
 
 import {
   ButtonContainer,
-  CheckboxContainer,
-  CheckboxPlaceholder,
   Container,
-  CustomCheckBox,
   HeadingsContainer,
   InputContainer,
   InputFieldsContainer,
-  LinkText,
-  MarginDiv
+  LinkText
   // SubHeading
 } from './index.styled'
 
 const ActivationCode: FC = memo(() => {
-  // eslint-disable-next-line operator-linebreak
-  // const { handleSubmit, handleChange, errors, response } =
-  //   useFormLogin()
-
-  // const { success, error } = response
-  // const { usernameError, passwordError } = errors
-
-  const userFieldRef = useRef<HTMLInputElement>(null)
-  const passwordFieldRef = useRef<HTMLInputElement>(null)
-
+  const activationCodeRef = useRef<HTMLInputElement>(null)
+  const { email, handleChange, handleSubmit, error } = useForm()
+  const { activationCodeError } = error
   return (
     <Container>
       <HeadingsContainer>
         <LoginHeader>Welcome Back</LoginHeader>
-        <LoginDescription>
-          Enter your activation code!
-        </LoginDescription>
+        <LoginDescription>Enter your activation code!</LoginDescription>
       </HeadingsContainer>
       {/* {success && (
         <ToastComponent
@@ -56,88 +41,43 @@ const ActivationCode: FC = memo(() => {
           description={success}
         />
       )} */}
-      {/* {error && (
-        <ToastComponent
-          toastType="error"
-          description={error}
-        />
-      )} */}
+
       <InputFieldsContainer>
         <InputContainer>
           <Input
-            ref={userFieldRef}
+            ref={activationCodeRef}
             label="Activation Code"
-            name="activationcode"
-            value={
-              userFieldRef && userFieldRef.current?.value
-            }
+            name="activation_code"
+            value={activationCodeRef && activationCodeRef.current?.value}
             prefix={faCode}
-            // handleChange={handleChange}
+            handleChange={handleChange}
           />
         </InputContainer>
-        <MarginDiv />
+        {activationCodeError ? (
+          <EmptyErrorState>{activationCodeError}</EmptyErrorState>
+        ) : (
+          <MarginDiv />
+        )}
         <InputContainer>
           <Input
-            ref={userFieldRef}
-            label="WhatsApp Number/Email"
-            name="username"
-            value={
-              userFieldRef && userFieldRef.current?.value
-            }
+            readOnly
+            label="Email Address"
+            name="email"
+            value={email}
             prefix={faWhatsapp}
-            // handleChange={handleChange}
           />
         </InputContainer>
-        {/* {usernameError ? (
-          <EmptyErrorState>{usernameError}</EmptyErrorState>
-        ) : (
-          <MarginDiv />
-        )} */}
-        <MarginDiv />
-        <InputContainer>
-          <Input
-            ref={passwordFieldRef}
-            label="Password"
-            prefix={faKey}
-            typePassword
-            name="password"
-            value={
-              // eslint-disable-next-line operator-linebreak
-              passwordFieldRef &&
-              passwordFieldRef.current?.value
-            }
-            // handleChange={handleChange}
-          />
-        </InputContainer>
-        {/* {passwordError ? (
-          <EmptyErrorState>{passwordError}</EmptyErrorState>
-        ) : (
-          <MarginDiv />
-        )} */}
-        <MarginDiv />
-        <CheckboxContainer>
-          <CustomCheckBox
-            type="checkbox"
-            name="remember"
-            // onChange={handleChange}
-          />
-          <CheckboxPlaceholder>
-            Remember me
-          </CheckboxPlaceholder>
-        </CheckboxContainer>
       </InputFieldsContainer>
       <ButtonContainer>
         <Button
           type="submit"
           label="Login"
           icon={faUser}
-          // handleSubmit={handleSubmit}
+          handleSubmit={handleSubmit}
         />
       </ButtonContainer>
       <Link to="/">
-        <LoginSubFooter>
-          Forget your password?
-        </LoginSubFooter>
+        <LoginSubFooter>Forget your password?</LoginSubFooter>
       </Link>
       <LoginFooter>
         Don`t have an account?

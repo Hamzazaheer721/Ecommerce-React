@@ -2,7 +2,7 @@ export interface IRegisterCustomerType {
   name: string
   phone: string
   country_code: string
-  userType: 'visitor'
+  user_type: 'visitor'
   store_name: ''
   checkbox: boolean
   email: string
@@ -13,7 +13,7 @@ export interface IRegisterCompanyType {
   name: string
   phone: string
   country_code: string
-  userType: 'company'
+  user_type: 'company'
   store_name: string
   checkbox: boolean
   email: string
@@ -30,9 +30,9 @@ export interface IRegisterErrors {
   passwordError: string
 }
 
-export type IRegisterErrorType = IRegisterErrors | {}
+export type IRegisterErrorType = Partial<IRegisterErrors>
 
 export interface IRegisterRtn {
-  success: string
+  success: boolean
   message: string
 }

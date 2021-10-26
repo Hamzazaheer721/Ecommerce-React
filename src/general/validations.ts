@@ -23,6 +23,12 @@ export const validateName = (name : string) => {
   return re.test(name);
 };
 
+// code check
+export const validateActivationCode = (code : string) => {
+  const re = /^[a-zA-Z0-9]{6}$/;
+  return re.test(code);
+};
+
 // phone number check
 export const validatePhoneNumber = (phone_number : string) => {
   const re = /^[a-zA-Z0-9\-().\s]{7,15}$/;

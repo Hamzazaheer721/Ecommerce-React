@@ -28,15 +28,16 @@ interface CountryData {
 }
 
 interface InputProps {
-  label?: string
-  value?: string
-  name?: string
-  prefix?: IconProp
-  suffix?: IconProp
-  typePassword?: boolean
-  phonefield?: boolean
+  label: string
+  value: string
+  name: string
+  prefix: IconProp
+  suffix: IconProp
+  typePassword: boolean
+  phonefield: boolean
+  readOnly: boolean
   // eslint-disable-next-line no-unused-vars
-  handleChange?: (e: ChangeEvent<HTMLInputElement>) => void
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void
   handlePhoneChange?: (
     value: string,
     data: {} | CountryData,
@@ -46,7 +47,7 @@ interface InputProps {
 }
 
 const Input = memo(
-  forwardRef<HTMLInputElement, InputProps>(
+  forwardRef<HTMLInputElement, Partial<InputProps>>(
     (
       {
         label,
@@ -57,6 +58,7 @@ const Input = memo(
         prefix,
         suffix,
         phonefield,
+        readOnly,
         handlePhoneChange,
         ...props
       },
@@ -87,6 +89,7 @@ const Input = memo(
         <InputContainer hasValue={!!value}>
           {!phonefield && (
             <InputField
+              readOnly={readOnly}
               {...props}
               name={name}
               value={value}
@@ -118,8 +121,8 @@ const Input = memo(
               onChange={handlePhoneChange}
             />
           )}
-          {prefix && <Prefix icon={prefix} phonefield={!!phonefield} />}
-          <Label hasValue={!!value} phonefield={!!phonefield}>
+          {prefix && <Prefix icon={prefix} $phonefield={!!phonefield} />}
+          <Label hasValue={!!value} $phonefield={!!phonefield}>
             {label}
           </Label>
           {typePassword && (

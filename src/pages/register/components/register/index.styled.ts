@@ -78,10 +78,7 @@ export const InputFieldsContainer = styled.div`
   margin-bottom: 20px;
   width: 100%;
 `
-export const MarginDiv = styled.div`
-  visibility: hidden;
-  height: 15px;
-`
+
 export const CheckboxContainer = styled.div`
   display: flex;
   align-items: baseline;

@@ -1,13 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 // import { AxiosResponse } from 'axios';
 import { AxiosError } from 'axios';
+import { IRegisterType, IRegisterRtn} from '../../../types/signup/index';
 import { SERVER_IP } from '../../../config/constants';
 import { Instance } from '../../../config/axios';
-import { IRegisterRtn, IRegisterType } from '../../../types/signup';
+import { ISignUpStateType } from './types';
 
 export const userSignup = createAsyncThunk<
   // return type of payload creator
-  IRegisterRtn,
+  ISignUpStateType,
   // first arguement to the payload creator, in our case its user,
   // we could skip the type of it in later part
   IRegisterType,
@@ -20,7 +21,7 @@ export const userSignup = createAsyncThunk<
       user
     )
     if (response.status === 400) return thunkAPI.rejectWithValue(response.data)
-    return response.data
+    return { ...response.data, email: user.email}
   } catch (err: any) {
     const error: AxiosError<IRegisterRtn> = err // cast the error for access
     if (!error.response) {
