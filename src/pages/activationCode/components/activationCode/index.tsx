@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
 import useForm from './useForm'
-// import ToastComponent from '../../../../components/toaster'
+import ToastComponent from '../../../../components/toaster'
 import {
   LoginSubFooter,
   LoginHeader,
@@ -26,7 +26,8 @@ import {
 
 const ActivationCode: FC = memo(() => {
   const activationCodeRef = useRef<HTMLInputElement>(null)
-  const { email, handleChange, handleSubmit, error } = useForm()
+  const { email, handleChange, handleSubmit, error, success, message } =
+    useForm()
   const { activationCodeError } = error
   return (
     <Container>
@@ -34,8 +35,9 @@ const ActivationCode: FC = memo(() => {
         <LoginHeader>Welcome Back</LoginHeader>
         <LoginDescription>Enter your activation code!</LoginDescription>
       </HeadingsContainer>
-      {/* {success && <ToastComponent toastType="success" description={message} />}
-      {!success && <ToastComponent toastType="error" description={message} />} */}
+      {!success && message && (
+        <ToastComponent toastType="error" description={message} />
+      )}
       <InputFieldsContainer>
         <InputContainer>
           <Input

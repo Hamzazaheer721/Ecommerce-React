@@ -8,12 +8,18 @@ import {
 } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import produce from 'immer'
+import { IActivationThunkArgType } from '../../../../../redux/features/activationSlice/types'
 import { RootState } from '../../../../../redux/store'
-import { clearMessageStates } from '../../../../../redux/features/userSignupSlice'
+import {
+  clearAllStates,
+  clearMessageStates
+} from '../../../../../redux/features/userSignupSlice'
 import { checkError, initialState } from './helper'
 import { IActivationErrorType, IActivationType } from './types'
 import { isObjectEmpty } from '../../../../../general/helper'
 import { activateAccount } from '../../../../../redux/features/activationSlice/apiAction'
+import { addUserAction } from '../../../../../redux/features/userSigninSlice'
 
 const useForm = () => {
   const dispatch = useDispatch()
@@ -26,8 +32,9 @@ const useForm = () => {
   const [error, setError] = useState<Partial<IActivationErrorType>>({})
 
   const registerState = useSelector((state: RootState) => state.registerUser)
+  const loginState = useSelector((state: RootState) => state.user)
   const activationState = useSelector((state: RootState) => state.activation)
-  const { loading, message } = activationState
+  const { loading, message, success, user } = activationState
 
   const email = useMemo(() => {
     setActivationData({ ...activationData, email: registerState.email })
@@ -39,9 +46,17 @@ const useForm = () => {
     !registerState.email && history.goBack()
   }, [])
 
+  const dispatchUser = useCallback(() => {
+    user &&
+      dispatch(addUserAction(user)) &&
+      history.push('/') &&
+      dispatch(clearAllStates())
+  }, [activationState, loginState])
+
   useEffect(() => {
-    message && !loading && history.push('/login')
-  }, [activationState])
+    // message && !loading && history.push('/login')
+    success && message && !loading && dispatchUser()
+  }, [activationState, loginState])
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -52,7 +67,15 @@ const useForm = () => {
   )
 
   const makeApiCall = useCallback(async () => {
-    dispatch(activateAccount(activationData))
+    const newData: IActivationThunkArgType = produce(
+      activationData,
+      (draft) => {
+        // eslint-disable-next-line no-param-reassign
+        draft.activation_code = draft.activation_code.toUpperCase()
+        return draft
+      }
+    )
+    dispatch(activateAccount(newData))
   }, [activationData, loading])
 
   const handleSubmit = useCallback(
@@ -70,7 +93,9 @@ const useForm = () => {
     handleSubmit,
     handleChange,
     error,
-    activationData
+    activationData,
+    success,
+    message
   }
 }
 

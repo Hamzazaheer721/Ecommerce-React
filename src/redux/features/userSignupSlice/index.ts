@@ -11,6 +11,12 @@ export const userSignupSlice = createSlice({
       state.message = '';
       state.loading = false;
       state.success = false;
+    },
+    clearAllStates: (state) => {
+      state.message = '';
+      state.loading = false;
+      state.success = false;
+      state.email = ''
     }
   },
   extraReducers: (builder) => {
@@ -35,4 +41,4 @@ export const userSignupSlice = createSlice({
   }
 })
 
-export const {clearMessageStates} = userSignupSlice.actions;
+export const {clearMessageStates, clearAllStates} = userSignupSlice.actions;
