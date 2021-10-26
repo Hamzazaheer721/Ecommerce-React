@@ -51,7 +51,7 @@ const useForm = () => {
       dispatch(addUserAction(user)) &&
       history.push('/') &&
       dispatch(clearAllStates())
-  }, [activationState, loginState])
+  }, [activationState, loginState, registerState])
 
   useEffect(() => {
     // message && !loading && history.push('/login')
