@@ -18,6 +18,7 @@ import {
   WatiImage,
   ContainerImage
 } from './index.styled'
+import AppComponent from './components/apps'
 
 const SidebarComponent = memo(() => {
   const [visible, setVisible] = useState<boolean>(false)
@@ -58,6 +59,7 @@ const SidebarComponent = memo(() => {
         <LogoutButtonComponent />
         <AboutWhatsPaysComponent />
         <SocialIcons />
+        <AppComponent />
         <ContainerImage>
           <WatiImage src="/images/wati-logo.png" />
         </ContainerImage>
