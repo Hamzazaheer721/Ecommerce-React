@@ -22,12 +22,38 @@ export const CardContainer = styled.div`
 export const CardWrapper = styled.div`
   padding: 0 10px;
 
+  @media ${device.desktop1080p} {
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+  }
+
   @media ${device.desktop} {
     display: inline-block;
     text-align: center;
     justify-content: center;
     align-items: center;
     width: 25%;
+  }
+
+  @media ${device.laptop} {
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 33.334%;
+    padding: 0 10px;
+  }
+
+  @media ${device.tablet} {
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    padding: 0 10px;
   }
 
   @media ${device.mobile} {
@@ -88,8 +114,7 @@ export const TimeArea = styled.div`
   background-color: gray;
   background: rgba(0, 0, 0, 0.8);
   color: ${(props) => props.theme.color.primary};
-  background-color: ${(props) =>
-    props.theme.color.lightBlue};
+  background-color: ${(props) => props.theme.color.lightBlue};
   padding: 0 14px;
   border-radius: 10px;
 `
@@ -133,9 +158,9 @@ export const ProfileContainer = styled.div`
 `
 export const ProfileImage = styled.img`
   position: absolute;
-  width: 70px;
+  width: 65px;
   margin-left: 0.8rem;
-  height: 70px;
+  height: 65px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   top: 79%;
   border-radius: 10px;
@@ -187,8 +212,7 @@ export const ButtonsContainer = styled.p`
 `
 export const ShopButton = styled.button`
   padding: 0 25px;
-  background: ${(props) =>
-    props.theme.gradientButton.primary};
+  background: ${(props) => props.theme.gradientButton.primary};
   color: white;
   border: none;
   border-radius: 20px;
@@ -203,14 +227,13 @@ export const ShopButton = styled.button`
   }
   @media ${device.tiny} {
     height: 40px;
-    width: 140px;
+    width: 117px;
   }
 `
 
 export const WhatsAppButton = styled.button`
   padding: 0 4px;
-  background: ${(props) =>
-    props.theme.gradientButton.green};
+  background: ${(props) => props.theme.gradientButton.green};
   color: white;
   border: none;
   border-radius: 25px;

@@ -15,6 +15,6 @@ export const DealImage = styled.img`
     width: 100px;
   }
   @media ${device.tiny} {
-    width: 0px;
+    width: 70px;
   }
 `
