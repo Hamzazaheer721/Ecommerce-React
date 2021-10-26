@@ -29,6 +29,7 @@ module.exports = {
     semi: 0,
     indent: 'off',
     'linebreak-style': 0,
+    'no-param-reassign': 0,
     'object-curly-spacing': 'off',
     'operator-linebreak': [
       1,

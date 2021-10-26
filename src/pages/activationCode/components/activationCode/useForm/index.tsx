@@ -54,7 +54,6 @@ const useForm = () => {
   }, [activationState, loginState, registerState])
 
   useEffect(() => {
-    // message && !loading && history.push('/login')
     success && message && !loading && dispatchUser()
   }, [activationState, loginState])
 
