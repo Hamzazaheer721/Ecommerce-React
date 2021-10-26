@@ -26,8 +26,15 @@ import {
 
 const ActivationCode: FC = memo(() => {
   const activationCodeRef = useRef<HTMLInputElement>(null)
-  const { email, handleChange, handleSubmit, error, success, message } =
-    useForm()
+  const {
+    email,
+    handleChange,
+    handleSubmit,
+    error,
+    success,
+    message,
+    handleClick
+  } = useForm()
   const { activationCodeError } = error
 
   return (
@@ -41,6 +48,7 @@ const ActivationCode: FC = memo(() => {
           toastType="error"
           description={message}
           linkType="resend"
+          handleClick={handleClick}
         />
       )}
       <InputFieldsContainer>

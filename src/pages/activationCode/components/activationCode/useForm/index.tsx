@@ -90,9 +90,12 @@ const useForm = () => {
     [activationData, error]
   )
 
+  const handleClick = useCallback(() => {}, [])
+
   return {
     email,
     handleSubmit,
+    handleClick,
     handleChange,
     error,
     activationData,
