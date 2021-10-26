@@ -18,14 +18,16 @@ interface IToastProps {
   toastType: 'success' | 'error' | 'info'
   description?: string
   linkType?: 'send' | 'resend'
+  handleClick?: () => void
 }
 
 const ToastComponent: FC<IToastProps> = memo(
-  ({ toastType, description, linkType }: IToastProps) => {
+  ({ toastType, description, linkType, handleClick }: IToastProps) => {
     const colors: IColorObjectProp = useMemo(
       () => filterColor(toastType),
       [toastType]
     )
+
     return (
       <ToastContainer colors={colors}>
         <LeftContainer>
@@ -63,10 +65,14 @@ const ToastComponent: FC<IToastProps> = memo(
                   </>
                 )}
                 {linkType === 'send' && (
-                  <LinkText>Send Activation Link</LinkText>
+                  <LinkText onClick={handleClick}>
+                    Send Activation Link
+                  </LinkText>
                 )}
                 {linkType === 'resend' && (
-                  <LinkText>Resend Activation Link</LinkText>
+                  <LinkText onClick={handleClick}>
+                    Resend Activation Link
+                  </LinkText>
                 )}
               </Description>
             </>

@@ -5,6 +5,7 @@ const initialValue = {
   statusColor: '',
   backgroundColor: ''
 }
+
 export const filterColor = (toastType: string) => {
   const colorObj: IColorObjectProp = initialValue
   switch (toastType) {

@@ -69,10 +69,7 @@ const Login: FC = memo(() => {
             prefix={faKey}
             typePassword
             name="password"
-            value={
-              // eslint-disable-next-line operator-linebreak
-              passwordFieldRef && passwordFieldRef.current?.value
-            }
+            value={passwordFieldRef && passwordFieldRef.current?.value}
             handleChange={handleChange}
           />
         </InputContainer>
@@ -98,7 +95,7 @@ const Login: FC = memo(() => {
           handleSubmit={handleSubmit}
         />
       </ButtonContainer>
-      <Link to="/">
+      <Link to="/forgot-password">
         <LoginSubFooter>Forget your password?</LoginSubFooter>
       </Link>
       <LoginFooter>

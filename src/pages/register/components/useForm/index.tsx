@@ -16,6 +16,7 @@ import { RootState } from '../../../../redux/store'
 import { initialState, errorChecks } from './helper'
 import { IRegisterErrorType, IRegisterType } from '../../../../types/signup'
 import { isObjectEmpty } from '../../../../general/helper'
+import { clearAllStates } from '../../../../redux/features/userSignupSlice'
 
 const useForm = () => {
   const history = useHistory()
@@ -34,6 +35,10 @@ const useForm = () => {
 
   const redirectTimeInterval = useRef<NodeJS.Timer>()
 
+  useEffect(() => {
+    dispatch(clearAllStates())
+  }, [])
+
   useEffect(
     () => () => {
       redirectTimeInterval.current && clearTimeout(redirectTimeInterval.current)
@@ -42,10 +47,10 @@ const useForm = () => {
   )
 
   const giveDelay = useCallback(() => {
-    // redirectTimeInterval.current = setTimeout(() => {
-    //   history.push('/activation-code')
-    //   redirectTimeInterval.current = undefined
-    // }, 5000)
+    redirectTimeInterval.current = setTimeout(() => {
+      history.push('/activation-code')
+      redirectTimeInterval.current = undefined
+    }, 5000)
   }, [history, redirectTimeInterval])
 
   useEffect(() => {

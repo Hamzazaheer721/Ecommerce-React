@@ -67,7 +67,8 @@ export const Description = styled.div`
 `
 
 export const LinkText = styled.h3`
-  font-size: 16px;
+  font-size: 12px;
+  font-weight: 700;
   text-decoration: underline;
   color: black;
   margin-top: 0;
