@@ -76,10 +76,14 @@ const ToastComponent: FC<IToastProps> = memo(
                 )}
               </Description>
               <Description>
-                {linkType === 'resend' && <LinkText>resend link here</LinkText>}
+                {linkType === 'resend' && (
+                  <LinkText>(Resend activation link?)</LinkText>
+                )}
               </Description>
               <Description>
-                {linkType === 'send' && <LinkText>send link here</LinkText>}
+                {linkType === 'send' && (
+                  <LinkText>(Send activation link?)</LinkText>
+                )}
               </Description>
             </div>
           )}
