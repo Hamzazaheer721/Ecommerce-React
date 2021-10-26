@@ -13,6 +13,7 @@ import { clearMessageStates } from '../../../../../redux/features/userSignupSlic
 import { checkError, initialState } from './helper'
 import { IActivationErrorType, IActivationType } from './types'
 import { isObjectEmpty } from '../../../../../general/helper'
+import { activateAccount } from '../../../../../redux/features/activationSlice/apiAction'
 
 const useForm = () => {
   const dispatch = useDispatch()
@@ -25,6 +26,9 @@ const useForm = () => {
   const [error, setError] = useState<Partial<IActivationErrorType>>({})
 
   const registerState = useSelector((state: RootState) => state.registerUser)
+  const activationState = useSelector((state: RootState) => state.activation)
+  const { loading, message } = activationState
+
   const email = useMemo(() => {
     setActivationData({ ...activationData, email: registerState.email })
     return registerState.email
@@ -35,6 +39,10 @@ const useForm = () => {
     !registerState.email && history.goBack()
   }, [])
 
+  useEffect(() => {
+    message && !loading && history.push('/login')
+  }, [activationState])
+
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       const { name, value } = e.target
@@ -43,7 +51,9 @@ const useForm = () => {
     [activationData]
   )
 
-  const makeApiCall = useCallback(() => {}, [activationData])
+  const makeApiCall = useCallback(async () => {
+    dispatch(activateAccount(activationData))
+  }, [activationData, loading])
 
   const handleSubmit = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
@@ -55,7 +65,13 @@ const useForm = () => {
     [activationData, error]
   )
 
-  return { email, handleSubmit, handleChange, error, activationData }
+  return {
+    email,
+    handleSubmit,
+    handleChange,
+    error,
+    activationData
+  }
 }
 
 export default useForm

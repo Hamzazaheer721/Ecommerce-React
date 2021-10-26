@@ -36,4 +36,3 @@ export const userSignupSlice = createSlice({
 })
 
 export const {clearMessageStates} = userSignupSlice.actions;
-export const signupActions = userSignupSlice.actions

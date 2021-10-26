@@ -21,27 +21,26 @@ import {
   IResponseMessageType
 } from './types'
 import { RootState } from '../../../../../redux/store'
+import { isObjectEmpty } from '../../../../../general/helper'
 
 export const useFormLogin = () => {
   const dispatch = useDispatch()
 
-  const [inputData, setInputData] = useState<IInputformType>(IInputformInitialValue)
+  const [inputData, setInputData] = useState<IInputformType>(
+    IInputformInitialValue
+  )
   const { remember } = inputData
 
   const [errors, setErrors] = useState<IInputformErrorsType>({})
 
   const [response, setResponse] = useState<IResponseMessageType>({})
 
-  const { user } = useSelector(
-    (state: RootState) => state.user
-  )
+  const { user } = useSelector((state: RootState) => state.user)
+  // const {loading, success, message} = useSelector((state: RootState) => state.activation)
 
   useEffect(() => {
     if (user && remember) {
-      localStorage.setItem(
-        'token',
-        JSON.stringify(user.auth_token)
-      )
+      localStorage.setItem('token', JSON.stringify(user.auth_token))
       localStorage.setItem('user', JSON.stringify(user))
     }
   }, [user, remember])
@@ -51,25 +50,24 @@ export const useFormLogin = () => {
       const { name, value } = e.target
       name === 'remember'
         ? setInputData({
-          ...inputData,
-          [name]: e.target.checked
-        })
+            ...inputData,
+            [name]: e.target.checked
+          })
         : setInputData({ ...inputData, [name]: value })
     },
     [inputData]
   )
 
   const makeApiCall = useCallback(async () => {
-    setErrors({})
-    const updatedData: Omit<IInputformType, 'remember'> = produce(inputData, (draft) => {
-      // eslint-disable-next-line no-param-reassign
-      delete draft.remember
-      return draft
-    })
-    await Instance.post<any>(
-      `${SERVER_IP}/user/login`,
-      updatedData
+    const updatedData: Omit<IInputformType, 'remember'> = produce(
+      inputData,
+      (draft) => {
+        // eslint-disable-next-line no-param-reassign
+        delete draft.remember
+        return draft
+      }
     )
+    await Instance.post<any>(`${SERVER_IP}/user/login`, updatedData)
       .then((res: AxiosResponse<IUserLoginRtnResponse>) => {
         if (res.data) {
           dispatch(addUserAction(res.data.data))
@@ -90,7 +88,7 @@ export const useFormLogin = () => {
       e.preventDefault()
       const validateErrors = validateInputForm(inputData)
       setErrors(validateErrors)
-      if (!Object.keys(validateErrors).length && !Object.keys(errors).length) makeApiCall()
+      isObjectEmpty(validateErrors) && makeApiCall()
     },
     [inputData, errors]
   )
