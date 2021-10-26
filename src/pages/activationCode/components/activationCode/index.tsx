@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
 import useForm from './useForm'
-// import ToastComponent from '../../../components/toaster'
+// import ToastComponent from '../../../../components/toaster'
 import {
   LoginSubFooter,
   LoginHeader,
@@ -22,7 +22,6 @@ import {
   InputContainer,
   InputFieldsContainer,
   LinkText
-  // SubHeading
 } from './index.styled'
 
 const ActivationCode: FC = memo(() => {
@@ -35,13 +34,8 @@ const ActivationCode: FC = memo(() => {
         <LoginHeader>Welcome Back</LoginHeader>
         <LoginDescription>Enter your activation code!</LoginDescription>
       </HeadingsContainer>
-      {/* {success && (
-        <ToastComponent
-          toastType="success"
-          description={success}
-        />
-      )} */}
-
+      {/* {success && <ToastComponent toastType="success" description={message} />}
+      {!success && <ToastComponent toastType="error" description={message} />} */}
       <InputFieldsContainer>
         <InputContainer>
           <Input
