@@ -178,7 +178,7 @@ export const ProductName = styled.h5`
   font-size: 16px;
   position: absolute;
   margin-top: 4px;
-  margin-left: 33%;
+  margin-left: 31%;
   flex: 8;
   font-weight: 600;
 
