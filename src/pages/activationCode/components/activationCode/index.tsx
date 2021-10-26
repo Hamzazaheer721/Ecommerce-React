@@ -36,6 +36,7 @@ const ActivationCode: FC = memo(() => {
       </HeadingsContainer>
       {/* {success && <ToastComponent toastType="success" description={message} />}
       {!success && <ToastComponent toastType="error" description={message} />} */}
+
       <InputFieldsContainer>
         <InputContainer>
           <Input
