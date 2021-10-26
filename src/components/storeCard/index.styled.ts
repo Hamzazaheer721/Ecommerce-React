@@ -211,7 +211,7 @@ export const ButtonsContainer = styled.p`
   text-align: left;
 `
 export const ShopButton = styled.button`
-  padding: 0 25px;
+  padding: 0 4px;
   background: ${(props) => props.theme.gradientButton.primary};
   color: white;
   border: none;
@@ -222,12 +222,12 @@ export const ShopButton = styled.button`
   font-weight: 500;
 
   @media ${device.mobile} {
-    height: 40px;
-    width: 140px;
+    height: 43px;
+    width: 48%;
   }
   @media ${device.tiny} {
     height: 40px;
-    width: 117px;
+    width: 132px;
   }
 `
 
@@ -242,6 +242,15 @@ export const WhatsAppButton = styled.button`
   height: 40px;
   width: 120px;
   float: right;
+
+  @media ${device.mobile} {
+    height: 43px;
+    width: 48%;
+  }
+  @media ${device.tiny} {
+    height: 40px;
+    width: 132px;
+  }
 `
 
 export const ButtonIcon = styled(FontAwesomeIcon)`
