@@ -23,9 +23,7 @@ export const ToastContainer = styled.div<IToastContainerProp>`
   display: flex;
 `
 
-export const CheckIcon = styled(
-  FontAwesomeIcon
-)<IToastContainerProp>`
+export const CheckIcon = styled(FontAwesomeIcon)<IToastContainerProp>`
   background-color: ${(props) => props.colors.statusColor};
   width: 20px !important;
   height: 20px !important;
@@ -65,4 +63,12 @@ export const Description = styled.div`
   span {
     font-weight: 600;
   }
+`
+
+export const LinkText = styled.h3`
+  font-size: 16px;
+  text-decoration: underline;
+  color: black;
+  margin-top: 0;
+  margin-bottom: 0;
 `

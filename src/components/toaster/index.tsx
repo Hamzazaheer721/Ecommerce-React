@@ -8,17 +8,18 @@ import {
   CheckIcon,
   TitleContainer,
   CrossIcon,
-  Description
+  Description,
+  LinkText
 } from './index.styled'
 
 interface IToastProps {
   toastType: 'success' | 'error' | 'info'
   description?: string
-  resendLink?: boolean
+  linkType?: 'send' | 'resend'
 }
 
 const ToastComponent: FC<IToastProps> = memo(
-  ({ toastType, description, resendLink }: IToastProps) => {
+  ({ toastType, description, linkType }: IToastProps) => {
     const colors: IColorObjectProp = useMemo(
       () => filterColor(toastType),
       [toastType]
@@ -35,18 +36,13 @@ const ToastComponent: FC<IToastProps> = memo(
           {toastType === 'info' && <CheckIcon icon={faInfo} colors={colors} />}
         </h2>
         <TitleContainer colors={colors}>
-          {resendLink === true && (
+          {linkType === 'send' && (
             <h2>
-              link here
+              send link here
               <CrossIcon icon={faTimes} />
             </h2>
           )}
-          {toastType === 'success' && (
-            <h2>
-              Congratulation
-              <CrossIcon icon={faTimes} />
-            </h2>
-          )}
+
           {toastType === 'error' && (
             <h2>
               Error
@@ -69,15 +65,23 @@ const ToastComponent: FC<IToastProps> = memo(
             </Description>
           )}
           {toastType === 'error' && (
-            <Description>
-              {description}
-              {!description && (
-                <>
-                  <span>Password </span>
-                  doesn`t match!
-                </>
-              )}
-            </Description>
+            <div>
+              <Description>
+                {description}
+                {!description && (
+                  <>
+                    <span>Password </span>
+                    doesn`t match!
+                  </>
+                )}
+              </Description>
+              <Description>
+                {linkType === 'resend' && <LinkText>resend link here</LinkText>}
+              </Description>
+              <Description>
+                {linkType === 'send' && <LinkText>send link here</LinkText>}
+              </Description>
+            </div>
           )}
           {toastType === 'info' && (
             <Description>
