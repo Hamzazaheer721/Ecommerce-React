@@ -6,10 +6,12 @@ import { IColorObjectProp } from './types'
 import {
   ToastContainer,
   Icon,
-  TitleContainer,
+  RightContainer,
   CrossIcon,
   Description,
-  LinkText
+  LinkText,
+  LeftContainer,
+  Heading
 } from './index.styled'
 
 interface IToastProps {
@@ -26,18 +28,18 @@ const ToastComponent: FC<IToastProps> = memo(
     )
     return (
       <ToastContainer colors={colors}>
-        <h2>
+        <LeftContainer>
           {toastType === 'success' && <Icon icon={faCheck} colors={colors} />}
           {toastType === 'error' && <Icon icon={faTimes} colors={colors} />}
           {toastType === 'info' && <Icon icon={faInfo} colors={colors} />}
-        </h2>
-        <TitleContainer colors={colors}>
+        </LeftContainer>
+        <RightContainer colors={colors}>
           {toastType === 'success' && (
             <>
-              <h2>
+              <Heading>
                 Congratulation
                 <CrossIcon icon={faTimes} />
-              </h2>
+              </Heading>
               <Description>
                 {description}
                 {!description && (
@@ -48,10 +50,10 @@ const ToastComponent: FC<IToastProps> = memo(
           )}
           {toastType === 'error' && (
             <>
-              <h2>
+              <Heading>
                 Error
                 <CrossIcon icon={faTimes} />
-              </h2>
+              </Heading>
               <Description>
                 {description}
                 {!description && (
@@ -71,17 +73,17 @@ const ToastComponent: FC<IToastProps> = memo(
           )}
           {toastType === 'info' && (
             <>
-              <h2>
+              <Heading>
                 Info
                 <CrossIcon icon={faTimes} />
-              </h2>
+              </Heading>
               <Description>
                 {description}
                 {!description && <>Enter your New Password!</>}
               </Description>
             </>
           )}
-        </TitleContainer>
+        </RightContainer>
       </ToastContainer>
     )
   }

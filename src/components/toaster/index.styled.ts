@@ -35,8 +35,8 @@ export const Icon = styled(FontAwesomeIcon)<IToastContainerProp>`
   border-radius: 50%;
   color: white;
 `
-
-export const TitleContainer = styled.div<ITitleContainerProp>`
+export const Heading = styled.h2``
+export const RightContainer = styled.div<ITitleContainerProp>`
   width: 100%;
   padding-bottom: 12px;
   h2 {
