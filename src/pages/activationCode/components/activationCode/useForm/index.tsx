@@ -43,7 +43,7 @@ const useForm = () => {
     [activationData]
   )
 
-  const makeApiCall = useCallback(() => {}, [activationData])
+  const makeApiCall = useCallback(async () => {}, [activationData])
 
   const handleSubmit = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {

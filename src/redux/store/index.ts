@@ -13,10 +13,12 @@ import {
 } from 'redux-persist'
 import { userSignupSlice } from '../features/userSignupSlice'
 import { userSigninSlice } from '../features/userSigninSlice/index'
+import { activationSlice } from '../features/activationSlice'
 
 const reducers = combineReducers({
   user: userSigninSlice.reducer,
-  registerUser: userSignupSlice.reducer
+  registerUser: userSignupSlice.reducer,
+  activation: activationSlice.reducer
 })
 
 const persistConfig = {
