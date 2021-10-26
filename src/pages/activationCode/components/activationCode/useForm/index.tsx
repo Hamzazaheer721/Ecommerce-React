@@ -41,11 +41,13 @@ const useForm = () => {
     return registerState.email
   }, [registerState])
 
+  // keeping online message in state for activation page and going back if email doesn't exist
   useEffect(() => {
     registerState.message && dispatch(clearMessageStates())
     !registerState.email && history.goBack()
   }, [])
 
+  // dispatching user in redux and clearing all registerStates after going to home page
   const dispatchUser = useCallback(() => {
     user &&
       dispatch(addUserAction(user)) &&
@@ -53,6 +55,7 @@ const useForm = () => {
       dispatch(clearAllStates())
   }, [activationState, loginState, registerState])
 
+  // dispatching user if we have success message
   useEffect(() => {
     success && message && !loading && dispatchUser()
   }, [activationState, loginState])
@@ -65,11 +68,11 @@ const useForm = () => {
     [activationData]
   )
 
+  // submitting activation page data
   const makeApiCall = useCallback(async () => {
     const newData: IActivationThunkArgType = produce(
       activationData,
       (draft) => {
-        // eslint-disable-next-line no-param-reassign
         draft.activation_code = draft.activation_code.toUpperCase()
         return draft
       }
