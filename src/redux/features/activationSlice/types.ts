@@ -6,7 +6,7 @@ export interface IActivationThunkArgType {
 }
 
 export interface IActivationPayloadRtn {
-  user: IUserLoginRtnData;
+  data: IUserLoginRtnData;
   success: string
   message: string
 }

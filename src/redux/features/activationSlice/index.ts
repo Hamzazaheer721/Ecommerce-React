@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit'
 import { activateAccount } from './apiAction'
 import { initialState } from './helper'
@@ -13,7 +12,7 @@ export const activationSlice = createSlice({
         const { payload } = action
         state.message = payload.message
         state.success = payload.success
-        state.user = payload.user;
+        state.user = payload.data;
         state.loading = false
       })
       .addCase(activateAccount.pending, (state) => {
