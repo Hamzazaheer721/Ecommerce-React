@@ -12,7 +12,7 @@ export const activationSlice = createSlice({
         const { payload } = action
         state.message = payload.message
         state.success = payload.success
-        state.user = payload.data;
+        state.user = payload.data
         state.loading = false
       })
       .addCase(activateAccount.pending, (state) => {
