@@ -5,7 +5,7 @@ import { filterColor } from './helper'
 import { IColorObjectProp } from './types'
 import {
   ToastContainer,
-  CheckIcon,
+  Icon,
   TitleContainer,
   CrossIcon,
   Description,
@@ -27,45 +27,31 @@ const ToastComponent: FC<IToastProps> = memo(
     return (
       <ToastContainer colors={colors}>
         <h2>
-          {toastType === 'success' && (
-            <CheckIcon icon={faCheck} colors={colors} />
-          )}
-          {toastType === 'error' && (
-            <CheckIcon icon={faTimes} colors={colors} />
-          )}
-          {toastType === 'info' && <CheckIcon icon={faInfo} colors={colors} />}
+          {toastType === 'success' && <Icon icon={faCheck} colors={colors} />}
+          {toastType === 'error' && <Icon icon={faTimes} colors={colors} />}
+          {toastType === 'info' && <Icon icon={faInfo} colors={colors} />}
         </h2>
         <TitleContainer colors={colors}>
-          {linkType === 'send' && (
-            <h2>
-              send link here
-              <CrossIcon icon={faTimes} />
-            </h2>
-          )}
-
-          {toastType === 'error' && (
-            <h2>
-              Error
-              <CrossIcon icon={faTimes} />
-            </h2>
-          )}
-          {toastType === 'info' && (
-            <h2>
-              Info
-              <CrossIcon icon={faTimes} />
-            </h2>
-          )}
-
           {toastType === 'success' && (
-            <Description>
-              {description}
-              {!description && (
-                <span>Your Account has been successfully activated!</span>
-              )}
-            </Description>
+            <>
+              <h2>
+                Congratulation
+                <CrossIcon icon={faTimes} />
+              </h2>
+              <Description>
+                {description}
+                {!description && (
+                  <span>Your Account has been successfully activated!</span>
+                )}
+              </Description>
+            </>
           )}
           {toastType === 'error' && (
-            <div>
+            <>
+              <h2>
+                Error
+                <CrossIcon icon={faTimes} />
+              </h2>
               <Description>
                 {description}
                 {!description && (
@@ -74,24 +60,26 @@ const ToastComponent: FC<IToastProps> = memo(
                     doesn`t match!
                   </>
                 )}
-              </Description>
-              <Description>
-                {linkType === 'resend' && (
-                  <LinkText>(Resend activation link?)</LinkText>
-                )}
-              </Description>
-              <Description>
                 {linkType === 'send' && (
-                  <LinkText>(Send activation link?)</LinkText>
+                  <LinkText>Send Activation Link</LinkText>
+                )}
+                {linkType === 'resend' && (
+                  <LinkText>Resend Activation Link</LinkText>
                 )}
               </Description>
-            </div>
+            </>
           )}
           {toastType === 'info' && (
-            <Description>
-              {description}
-              {!description && <>Enter your New Password!</>}
-            </Description>
+            <>
+              <h2>
+                Info
+                <CrossIcon icon={faTimes} />
+              </h2>
+              <Description>
+                {description}
+                {!description && <>Enter your New Password!</>}
+              </Description>
+            </>
           )}
         </TitleContainer>
       </ToastContainer>

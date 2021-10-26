@@ -42,10 +42,10 @@ const useForm = () => {
   )
 
   const giveDelay = useCallback(() => {
-    redirectTimeInterval.current = setTimeout(() => {
-      history.push('/activation-code')
-      redirectTimeInterval.current = undefined
-    }, 5000)
+    // redirectTimeInterval.current = setTimeout(() => {
+    //   history.push('/activation-code')
+    //   redirectTimeInterval.current = undefined
+    // }, 5000)
   }, [history, redirectTimeInterval])
 
   useEffect(() => {

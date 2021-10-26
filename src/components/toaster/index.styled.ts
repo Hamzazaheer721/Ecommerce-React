@@ -22,8 +22,9 @@ export const ToastContainer = styled.div<IToastContainerProp>`
   padding: 5px 10px;
   display: flex;
 `
-
-export const CheckIcon = styled(FontAwesomeIcon)<IToastContainerProp>`
+export const LeftContainer = styled.h2`
+`
+export const Icon = styled(FontAwesomeIcon)<IToastContainerProp>`
   background-color: ${(props) => props.colors.statusColor};
   width: 18px !important;
   height: 18px !important;
