@@ -23,6 +23,7 @@ import {
   MarginDiv
   // SubHeading
 } from './index.styled'
+import ToastComponent from '../../../../components/toaster'
 
 const ActivationCode: FC = memo(() => {
   // eslint-disable-next-line operator-linebreak
@@ -54,15 +55,18 @@ const ActivationCode: FC = memo(() => {
           description={error}
         />
       )} */}
+
+      <ToastComponent
+        toastType="info"
+        description="Enter your WhatsApp Number or Email Address"
+      />
       <InputFieldsContainer>
         <InputContainer>
           <Input
             ref={userFieldRef}
             label="WhatsApp Number/Email"
             name="username"
-            value={
-              userFieldRef && userFieldRef.current?.value
-            }
+            value={userFieldRef && userFieldRef.current?.value}
             prefix={faWhatsapp}
             // handleChange={handleChange}
           />

@@ -1,8 +1,5 @@
 import { FC, memo, useRef } from 'react'
-import {
-  faKey,
-  faUser
-} from '@fortawesome/pro-light-svg-icons'
+import { faKey, faUser } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom'
 import Button from '../../../../components/genericButton'
@@ -33,22 +30,19 @@ import {
 
 const Login: FC = memo(() => {
   // eslint-disable-next-line operator-linebreak
-  const { handleSubmit, handleChange, errors, response } =
-    useFormLogin();
+  const { handleSubmit, handleChange, errors, response } = useFormLogin()
 
-  const { success, error } = response;
-  const { usernameError, passwordError } = errors;
+  const { success, error } = response
+  const { usernameError, passwordError } = errors
 
-  const userFieldRef = useRef<HTMLInputElement>(null);
-  const passwordFieldRef = useRef<HTMLInputElement>(null);
+  const userFieldRef = useRef<HTMLInputElement>(null)
+  const passwordFieldRef = useRef<HTMLInputElement>(null)
 
   return (
     <Container>
       <HeadingsContainer>
         <LoginHeader>Welcome Back</LoginHeader>
-        <SubHeading>
-          Please login to your account
-        </SubHeading>
+        <SubHeading>Please login to your account</SubHeading>
       </HeadingsContainer>
       {success && <ToastComponent toastType="success" description={success} />}
       {error && <ToastComponent toastType="error" description={error} />}
@@ -58,9 +52,7 @@ const Login: FC = memo(() => {
             ref={userFieldRef}
             label="WhatsApp Number/Email"
             name="username"
-            value={
-              userFieldRef && userFieldRef.current?.value
-            }
+            value={userFieldRef && userFieldRef.current?.value}
             prefix={faWhatsapp}
             handleChange={handleChange}
           />
@@ -79,8 +71,7 @@ const Login: FC = memo(() => {
             name="password"
             value={
               // eslint-disable-next-line operator-linebreak
-              passwordFieldRef &&
-              passwordFieldRef.current?.value
+              passwordFieldRef && passwordFieldRef.current?.value
             }
             handleChange={handleChange}
           />
@@ -96,9 +87,7 @@ const Login: FC = memo(() => {
             name="remember"
             onChange={handleChange}
           />
-          <CheckboxPlaceholder>
-            Remember me
-          </CheckboxPlaceholder>
+          <CheckboxPlaceholder>Remember me</CheckboxPlaceholder>
         </CheckboxContainer>
       </InputFieldsContainer>
       <ButtonContainer>

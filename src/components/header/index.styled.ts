@@ -8,7 +8,8 @@ export const HeaderContainer = styled.div`
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 `
 export const HeaderIconContainer = styled.div`
-  flex-grow: 1;
+  flex-grow: 0.8;
+  text-align: center;
 `
 
 export const HeaderInputContainer = styled.div`
