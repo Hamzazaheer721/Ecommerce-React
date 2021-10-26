@@ -29,6 +29,7 @@ const ActivationCode: FC = memo(() => {
   const { email, handleChange, handleSubmit, error, success, message } =
     useForm()
   const { activationCodeError } = error
+
   return (
     <Container>
       <HeadingsContainer>
