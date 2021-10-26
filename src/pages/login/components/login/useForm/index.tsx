@@ -36,6 +36,7 @@ export const useFormLogin = () => {
   const [response, setResponse] = useState<IResponseMessageType>({})
 
   const { user } = useSelector((state: RootState) => state.user)
+  // const {loading, success, message} = useSelector((state: RootState) => state.activation)
 
   useEffect(() => {
     if (user && remember) {
