@@ -8,6 +8,14 @@ export const Container = styled.div`
 export const CardsContainer = styled.div`
   padding: 0 3rem;
 
+  @media ${device.laptop} {
+    padding: 0;
+  }
+
+  @media ${device.tablet} {
+    padding: 0;
+  }
+
   @media ${device.mobile} {
     padding: 0;
   }
