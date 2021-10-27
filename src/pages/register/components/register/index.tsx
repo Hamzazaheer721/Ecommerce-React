@@ -1,4 +1,4 @@
-import { FC, memo, useRef } from 'react'
+import { FC, memo } from 'react'
 import {
   faKey,
   faUser,
@@ -37,17 +37,16 @@ const Register: FC = memo(() => {
     handleSubmit,
     handlePhoneChange,
     errors,
-    isCustomer
+    isCustomer,
+    nameRef,
+    storeNameRef,
+    emailRef,
+    passwordRef
   } = useForm()
   const { phone } = registerData
   const { success, message } = registerState
   const { nameError, phoneError, storeNameError, emailError, passwordError } =
     errors
-
-  const nameRef = useRef<HTMLInputElement>(null)
-  const storeNameRef = useRef<HTMLInputElement>(null)
-  const emailRef = useRef<HTMLInputElement>(null)
-  const passwordRef = useRef<HTMLInputElement>(null)
 
   return (
     <Container>
