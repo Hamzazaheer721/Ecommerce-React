@@ -1,10 +1,12 @@
 import { FC, memo, useRef } from 'react'
 import { faKey, faUser } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
 import ToastComponent from '../../../../components/toaster'
+import { toggleModalStates } from '../../../../redux/features/modalSlice'
 import { useFormLogin } from './useForm'
 import {
   LoginSubFooter,
@@ -27,6 +29,9 @@ import {
 } from './index.styled'
 
 const Login: FC = memo(() => {
+  const dispatch = useDispatch()
+
+  // eslint-disable-next-line operator-linebreak
   const { handleSubmit, handleChange, errors, response } = useFormLogin()
   const { success, error } = response
   const { usernameError, passwordError } = errors
@@ -37,7 +42,11 @@ const Login: FC = memo(() => {
   return (
     <Container>
       <HeadingsContainer>
-        <LoginHeader>Welcome Back</LoginHeader>
+        <LoginHeader
+          onClick={() => dispatch(toggleModalStates({ modalType: 'discount' }))}
+        >
+          Welcome Back
+        </LoginHeader>
         <SubHeading>Please login to your account</SubHeading>
       </HeadingsContainer>
       {success && <ToastComponent toastType="success" description={success} />}

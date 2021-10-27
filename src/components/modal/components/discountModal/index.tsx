@@ -1,18 +1,46 @@
-import { Modal } from 'antd'
 import { useSelector, useDispatch } from 'react-redux'
-import { ModalContentContainer, DoneButton } from './index.styled'
+import { faMoneyBill } from '@fortawesome/pro-light-svg-icons'
+import { Select } from 'antd'
+
+import {
+  ModalContentContainer,
+  DoneButton,
+  CustomizeModal,
+  Title,
+  InputContainer,
+  SelectField,
+  Label,
+  Prefix
+} from './index.styled'
 import { RootState } from '../../../../redux/store'
 import { toggleModalStates } from '../../../../redux/features/modalSlice'
+
+const { Option } = Select
 
 const CustomizeDiscountModal = () => {
   const dispatch = useDispatch()
 
   const { modalVisibility } = useSelector((state: RootState) => state.modal)
   return (
-    <Modal footer={null} closable={false} visible={modalVisibility}>
-      {' '}
+    <CustomizeModal
+      width={300}
+      footer={null}
+      closable={false}
+      visible={modalVisibility}
+    >
       <ModalContentContainer>
-        discount modal
+        <Title>Add Discount</Title>
+
+        <InputContainer>
+          <SelectField>
+            <Option value="Amount">Amount</Option>
+            <Option value="Discount">Discount</Option>
+          </SelectField>
+
+          <Prefix icon={faMoneyBill} />
+          <Label>Type</Label>
+        </InputContainer>
+
         <DoneButton
           type="button"
           onClick={() => dispatch(toggleModalStates({ modalType: 'discount' }))}
@@ -20,7 +48,7 @@ const CustomizeDiscountModal = () => {
           OK
         </DoneButton>
       </ModalContentContainer>
-    </Modal>
+    </CustomizeModal>
   )
 }
 
