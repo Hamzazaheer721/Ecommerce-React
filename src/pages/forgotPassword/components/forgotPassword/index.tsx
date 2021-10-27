@@ -1,10 +1,9 @@
-import { FC, memo, useRef } from 'react'
+import { FC, memo } from 'react'
 import { faArrowRight } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
-// import ToastComponent from '../../../components/toaster'
 import {
   LoginHeader,
   LoginFooter,
@@ -12,7 +11,7 @@ import {
   // EmptyErrorState
 } from '../../../../styles/typography'
 import { LoginViewContainer } from '../../../../styles/global'
-
+import useForm from './useForm'
 import {
   ButtonContainer,
   // Container,
@@ -26,14 +25,7 @@ import {
 import ToastComponent from '../../../../components/toaster'
 
 const ActivationCode: FC = memo(() => {
-  // eslint-disable-next-line operator-linebreak
-  // const { handleSubmit, handleChange, errors, response } =
-  //   useFormLogin()
-
-  // const { success, error } = response
-  // const { usernameError, passwordError } = errors
-
-  const userFieldRef = useRef<HTMLInputElement>(null)
+  const { usernameRef } = useForm()
 
   return (
     <LoginViewContainer>
@@ -43,30 +35,19 @@ const ActivationCode: FC = memo(() => {
           Using the form below to activate your account
         </LoginDescription>
       </HeadingsContainer>
-      {/* {success && (
-        <ToastComponent
-          toastType="success"
-          description={success}
-        />
-      )} */}
-      {/* {error && (
-        <ToastComponent
-          toastType="error"
-          description={error}
-        />
-      )} */}
 
       <ToastComponent
         toastType="info"
         description="Enter your WhatsApp Number or Email Address"
       />
+
       <InputFieldsContainer>
         <InputContainer>
           <Input
-            ref={userFieldRef}
+            ref={usernameRef}
             label="WhatsApp Number/Email"
             name="username"
-            value={userFieldRef && userFieldRef.current?.value}
+            value={usernameRef && usernameRef.current?.value}
             prefix={faWhatsapp}
             // handleChange={handleChange}
           />
@@ -88,7 +69,7 @@ const ActivationCode: FC = memo(() => {
       <ButtonContainer>
         <Button
           type="submit"
-          label="Sunmit"
+          label="Submit"
           icon={faArrowRight}
           // handleSubmit={handleSubmit}
         />
