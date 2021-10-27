@@ -1,6 +1,6 @@
 import { Modal } from 'antd'
 import { useSelector, useDispatch } from 'react-redux'
-import { ModalContentContainer } from './index.styled'
+import { ModalContentContainer, DoneButton } from './index.styled'
 import { RootState } from '../../../../redux/store'
 import { toggleModalStates } from '../../../../redux/features/modalSlice'
 
@@ -11,10 +11,14 @@ const CustomizeDiscountModal = () => {
   return (
     <Modal footer={null} closable={false} visible={modalVisibility}>
       {' '}
-      <ModalContentContainer
-        onClick={() => dispatch(toggleModalStates({ modalType: 'discount' }))}
-      >
+      <ModalContentContainer>
         discount modal
+        <DoneButton
+          type="button"
+          onClick={() => dispatch(toggleModalStates({ modalType: 'discount' }))}
+        >
+          OK
+        </DoneButton>
       </ModalContentContainer>
     </Modal>
   )

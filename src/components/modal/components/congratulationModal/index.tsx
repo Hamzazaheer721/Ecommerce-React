@@ -12,10 +12,15 @@ import {
   NotificationIcon,
   ModalContentContainer,
   Title,
-  DoneButton
+  DoneButton,
+  Description
 } from './index.styled'
 
-const CustomizeModal: FC = memo(() => {
+interface IModapProps {
+  description?: string
+}
+
+const CustomizeModal: FC<IModapProps> = memo(({ description }: IModapProps) => {
   const dispatch = useDispatch()
   const { modalVisibility } = useSelector((state: RootState) => state.modal)
   return (
@@ -24,7 +29,13 @@ const CustomizeModal: FC = memo(() => {
         <ModalContentContainer>
           <NotificationIcon icon={faCheck} />
           <Title>Done</Title>
-          <p>Reset Code/Link has been sent on your WhatsApp and Email.</p>
+          <Description>
+            {description ? (
+              <>{description}</>
+            ) : (
+              <>Reset Code/Link has been sent on your WhatsApp and Email.</>
+            )}
+          </Description>
           <DoneButton
             type="button"
             onClick={() =>

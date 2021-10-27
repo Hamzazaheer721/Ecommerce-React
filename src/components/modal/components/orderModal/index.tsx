@@ -115,7 +115,7 @@ const OrderModal = () => {
         </RefundContainer>
         <DoneButton
           type="button"
-          onClick={() => dispatch(toggleModalStates({ modalType: 'success' }))}
+          onClick={() => dispatch(toggleModalStates({ modalType: 'order' }))}
         >
           OK
         </DoneButton>

@@ -21,6 +21,9 @@ export const Title = styled.p`
   margin-top: 10px;
   margin-bottom: 0;
 `
+
+export const Description = styled.p``
+
 export const DoneButton = styled.button`
   background: ${(props) =>
     // eslint-disable-next-line implicit-arrow-linebreak
