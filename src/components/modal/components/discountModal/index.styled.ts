@@ -6,6 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { device } from '../../../../styles/devices'
 
 export const ModalContentContainer = styled.div``
+export const ButtonContainer = styled.div`
+  width: 100%;
+  text-align: center;
+`
 export const DoneButton = styled.button`
   background: ${(props) =>
     // eslint-disable-next-line implicit-arrow-linebreak
@@ -99,8 +103,13 @@ export const SelectField = styled(Select)`
   width: 100%;
   height: 100%;
   background-color: transparent;
-  padding-left: 1.5rem;
+  /* padding-left: 1.5rem; */
   box-shadow: none !important;
+
+  .ant-select-selection-item {
+    margin-left: 20px !important;
+    margin-top: 3px;
+  }
 
   .ant-select-selector {
     border: none !important;

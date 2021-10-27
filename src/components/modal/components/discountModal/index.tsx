@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-curly-newline */
+/* eslint-disable implicit-arrow-linebreak */
 import { useSelector, useDispatch } from 'react-redux'
 import { faMoneyBill } from '@fortawesome/pro-light-svg-icons'
 import { Select } from 'antd'
@@ -10,7 +12,8 @@ import {
   InputContainer,
   SelectField,
   Label,
-  Prefix
+  Prefix,
+  ButtonContainer
 } from './index.styled'
 import { RootState } from '../../../../redux/store'
 import { toggleModalStates } from '../../../../redux/features/modalSlice'
@@ -27,12 +30,13 @@ const CustomizeDiscountModal = () => {
       footer={null}
       closable={false}
       visible={modalVisibility}
+      centered
     >
       <ModalContentContainer>
         <Title>Add Discount</Title>
 
         <InputContainer>
-          <SelectField>
+          <SelectField defaultValue="Amount">
             <Option value="Amount">Amount</Option>
             <Option value="Discount">Discount</Option>
           </SelectField>
@@ -40,13 +44,16 @@ const CustomizeDiscountModal = () => {
           <Prefix icon={faMoneyBill} />
           <Label>Type</Label>
         </InputContainer>
-
-        <DoneButton
-          type="button"
-          onClick={() => dispatch(toggleModalStates({ modalType: 'discount' }))}
-        >
-          OK
-        </DoneButton>
+        <ButtonContainer>
+          <DoneButton
+            type="button"
+            onClick={() =>
+              dispatch(toggleModalStates({ modalType: 'discount' }))
+            }
+          >
+            OK
+          </DoneButton>
+        </ButtonContainer>
       </ModalContentContainer>
     </CustomizeModal>
   )
