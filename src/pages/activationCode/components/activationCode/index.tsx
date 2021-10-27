@@ -1,6 +1,5 @@
 import { FC, memo } from 'react'
-import { faUser, faCode } from '@fortawesome/pro-light-svg-icons'
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { faUser, faCode, faEnvelope } from '@fortawesome/pro-light-svg-icons'
 import { Link } from 'react-router-dom'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
@@ -83,7 +82,7 @@ const ActivationCode: FC = memo(() => {
             label="Email Address"
             name="email"
             value={email}
-            prefix={faWhatsapp}
+            prefix={faEnvelope}
           />
         </InputContainer>
       </InputFieldsContainer>
@@ -95,7 +94,7 @@ const ActivationCode: FC = memo(() => {
           handleSubmit={handleSubmit}
         />
       </ButtonContainer>
-      <Link to="/forgot-password">
+      <Link to="/">
         <LoginSubFooter>Forget your password?</LoginSubFooter>
       </Link>
       <LoginFooter>

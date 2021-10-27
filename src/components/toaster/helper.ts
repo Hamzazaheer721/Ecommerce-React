@@ -25,3 +25,7 @@ export const filterColor = (toastType: string) => {
       return colorObj
   }
 }
+
+export const htmlTexts = {
+  forgotPassword: 'Enter your WhatsApp Number or Email Address'
+}

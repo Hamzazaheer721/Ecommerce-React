@@ -1,7 +1,7 @@
 import { FC, memo, useMemo, MouseEvent } from 'react'
 import { faCheck, faTimes } from '@fortawesome/pro-light-svg-icons'
 import { faInfo } from '@fortawesome/free-solid-svg-icons'
-import { filterColor } from './helper'
+import { filterColor, htmlTexts } from './helper'
 import { IColorObjectProp } from './types'
 import {
   ToastContainer,
@@ -28,7 +28,6 @@ const ToastComponent: FC<IToastProps> = memo(
       () => filterColor(toastType),
       [toastType]
     )
-
     return (
       <ToastContainer colors={colors}>
         <LeftContainer>
@@ -46,7 +45,7 @@ const ToastComponent: FC<IToastProps> = memo(
               <Description>
                 {description}
                 {!description && (
-                  <span>Your Account has been successfully activated!</span>
+                  <>Your Account has been successfully activated!</>
                 )}
               </Description>
             </>
@@ -85,8 +84,25 @@ const ToastComponent: FC<IToastProps> = memo(
                 <CrossIcon icon={faTimes} />
               </Heading>
               <Description>
-                {description}
-                {!description && <>Enter your New Password!</>}
+                {description ? (
+                  <>
+                    {description.trim().toLowerCase() ===
+                    htmlTexts.forgotPassword.trim().toLowerCase() ? (
+                      <>
+                        Enter your
+                        <b> WhatsApp Number </b>
+                        or
+                        <b> Email Address</b>
+                      </>
+                    ) : (
+                      { description }
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <> Enter your New Password</>
+                  </>
+                )}
               </Description>
             </>
           )}
