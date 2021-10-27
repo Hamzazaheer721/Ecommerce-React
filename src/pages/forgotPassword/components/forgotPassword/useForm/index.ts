@@ -16,7 +16,6 @@ const useForm = () => {
   const [username, setUsername] = useState<string>('')
   const [error, setError] = useState<IForgotPasswordErrorsType>({})
   const {usernameError} = error;
-  console.info(username)
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       e.preventDefault()
