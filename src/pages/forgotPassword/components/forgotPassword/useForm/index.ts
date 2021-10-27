@@ -11,11 +11,13 @@ const useForm = () => {
 
   const { success: forgotPasswordSuccess, message: forgotPasswordMessage } =
     useSelector((state: RootState) => state.forgotPassword)
+
   const usernameRef = useRef<HTMLInputElement>(null)
 
   const [username, setUsername] = useState<string>('')
   const [error, setError] = useState<IForgotPasswordErrorsType>({})
   const {usernameError} = error;
+
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       e.preventDefault()
