@@ -1,11 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice} from '@reduxjs/toolkit'
 import { activateAccount } from './apiAction'
 import { initialState } from './helper'
 
 export const activationSlice = createSlice({
   name: 'activation',
   initialState,
-  reducers: {},
+  reducers: {
+    clearActivationMessageStates: (state) => {
+      state.message = ''
+      state.success = false
+      state.loading = false
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(activateAccount.fulfilled, (state, action) => {
@@ -26,3 +32,5 @@ export const activationSlice = createSlice({
       })
   }
 })
+
+export const {clearActivationMessageStates} = activationSlice.actions;

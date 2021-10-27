@@ -7,17 +7,17 @@ export interface IActivationThunkArgType {
 
 export interface IActivationPayloadRtn {
   data: IUserLoginRtnData;
-  success: string
+  success: boolean
   message: string
 }
 
 export interface IActivationErrorRtn {
-  success: string
+  success: boolean
   message: string
 }
 
 export interface IActivationStateType {
-  success: string
+  success: boolean
   message: string
   loading: boolean
   user?: IUserLoginRtnData

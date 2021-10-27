@@ -15,12 +15,14 @@ import { userSignupSlice } from '../features/userSignupSlice'
 import { userSigninSlice } from '../features/userSigninSlice/index'
 import { activationSlice } from '../features/activationSlice'
 import { ModalSlice } from '../features/modalSlice'
+import { resendActivationLinkSlice } from '../features/resendActivationLinkSlice'
 
 const reducers = combineReducers({
   user: userSigninSlice.reducer,
   registerUser: userSignupSlice.reducer,
   activation: activationSlice.reducer,
-  modal: ModalSlice.reducer
+  modal: ModalSlice.reducer,
+  resendActivation: resendActivationLinkSlice.reducer
 })
 
 const persistConfig = {

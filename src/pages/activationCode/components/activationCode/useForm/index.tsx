@@ -1,14 +1,17 @@
 import {
+  useRef,
   useMemo,
-  useEffect,
-  useCallback,
   useState,
-  ChangeEvent,
-  MouseEvent
+  useEffect,
+  MouseEvent,
+  useCallback,
+  ChangeEvent
 } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import produce from 'immer'
+import { clearResendStates } from '../../../../../redux/features/resendActivationLinkSlice'
+import { clearActivationMessageStates } from '../../../../../redux/features/activationSlice'
 import { IActivationThunkArgType } from '../../../../../redux/features/activationSlice/types'
 import { RootState } from '../../../../../redux/store'
 import {
@@ -20,6 +23,7 @@ import { IActivationErrorType, IActivationType } from './types'
 import { isObjectEmpty } from '../../../../../general/helper'
 import { activateAccount } from '../../../../../redux/features/activationSlice/apiAction'
 import { addUserAction } from '../../../../../redux/features/userSigninSlice'
+import { resendActivationCode } from '../../../../../redux/features/resendActivationLinkSlice/apiAction'
 
 const useForm = () => {
   const dispatch = useDispatch()
@@ -35,6 +39,14 @@ const useForm = () => {
   const loginState = useSelector((state: RootState) => state.user)
   const activationState = useSelector((state: RootState) => state.activation)
   const { loading, message, success, user } = activationState
+  const resendState = useSelector((state: RootState) => state.resendActivation)
+  const {
+    loading: resendStateLoading,
+    message: resendStateMessage,
+    success: resendStateSuccess
+  } = resendState
+
+  const activationCodeRef = useRef<HTMLInputElement>(null)
 
   const email = useMemo(() => {
     setActivationData({ ...activationData, email: registerState.email })
@@ -73,24 +85,32 @@ const useForm = () => {
     const newData: IActivationThunkArgType = produce(
       activationData,
       (draft) => {
-        draft.activation_code = draft.activation_code.toUpperCase()
+        draft.activation_code = draft.activation_code.toUpperCase().trim()
         return draft
       }
     )
     dispatch(activateAccount(newData))
+    dispatch(clearResendStates())
   }, [activationData, loading])
 
   const handleSubmit = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
-      const errorCheck = checkError(activation_code)
+      const errorCheck = checkError(activation_code.trim())
       setError(errorCheck)
       isObjectEmpty(errorCheck) && makeApiCall()
     },
     [activationData, error]
   )
 
-  const handleClick = useCallback(() => {}, [])
+  const handleClick = useCallback(
+    (e: MouseEvent<HTMLHeadingElement>) => {
+      e.preventDefault()
+      dispatch(resendActivationCode(email))
+      dispatch(clearActivationMessageStates())
+    },
+    [email]
+  )
 
   return {
     email,
@@ -100,7 +120,11 @@ const useForm = () => {
     error,
     activationData,
     success,
-    message
+    message,
+    resendStateLoading,
+    resendStateMessage,
+    resendStateSuccess,
+    activationCodeRef
   }
 }
 
