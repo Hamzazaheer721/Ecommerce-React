@@ -16,13 +16,15 @@ import { userSigninSlice } from '../features/userSigninSlice/index'
 import { activationSlice } from '../features/activationSlice'
 import { ModalSlice } from '../features/modalSlice'
 import { resendActivationLinkSlice } from '../features/resendActivationLinkSlice'
+import { forgotPasswordSlice } from '../features/forgotPasswordSlice'
 
 const reducers = combineReducers({
   user: userSigninSlice.reducer,
   registerUser: userSignupSlice.reducer,
   activation: activationSlice.reducer,
   modal: ModalSlice.reducer,
-  resendActivation: resendActivationLinkSlice.reducer
+  resendActivation: resendActivationLinkSlice.reducer,
+  forgotPassword: forgotPasswordSlice.reducer
 })
 
 const persistConfig = {
