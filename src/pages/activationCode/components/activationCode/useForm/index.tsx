@@ -73,7 +73,7 @@ const useForm = () => {
     const newData: IActivationThunkArgType = produce(
       activationData,
       (draft) => {
-        draft.activation_code = draft.activation_code.toUpperCase()
+        draft.activation_code = draft.activation_code.toUpperCase().trim()
         return draft
       }
     )
@@ -83,14 +83,16 @@ const useForm = () => {
   const handleSubmit = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
-      const errorCheck = checkError(activation_code)
+      const errorCheck = checkError(activation_code.trim())
       setError(errorCheck)
       isObjectEmpty(errorCheck) && makeApiCall()
     },
     [activationData, error]
   )
 
-  const handleClick = useCallback(() => {}, [])
+  const handleClick = useCallback((e: MouseEvent<HTMLHeadingElement>) => {
+    e.preventDefault()
+  }, [])
 
   return {
     email,

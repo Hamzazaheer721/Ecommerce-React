@@ -1,4 +1,4 @@
-import { FC, memo, useMemo } from 'react'
+import { FC, memo, useMemo, MouseEvent } from 'react'
 import { faCheck, faTimes } from '@fortawesome/pro-light-svg-icons'
 import { faInfo } from '@fortawesome/free-solid-svg-icons'
 import { filterColor } from './helper'
@@ -18,7 +18,8 @@ interface IToastProps {
   toastType: 'success' | 'error' | 'info'
   description?: string
   linkType?: 'send' | 'resend'
-  handleClick?: () => void
+  // eslint-disable-next-line no-unused-vars
+  handleClick?: (e: MouseEvent<HTMLHeadingElement>) => void
 }
 
 const ToastComponent: FC<IToastProps> = memo(

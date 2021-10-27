@@ -48,12 +48,13 @@ module.exports = {
       }
     ],
     'comma-dangle': ['error', 'never'],
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': ['error'],
     'react/react-in-jsx-scope': 'off',
     'import/prefer-default-export': 'off',
     'no-use-before-define': 'off',
     'no-underscore-dangle': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
-    '@typescript-eslint/no-shadow': ['error'],
     'object-curly-newline': ['off', { multiline: true }],
     'no-unused-expressions': [
       'error',
