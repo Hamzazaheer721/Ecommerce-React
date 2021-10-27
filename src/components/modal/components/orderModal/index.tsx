@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { useState, useEffect, useContext } from 'react'
+import { useState, useContext, memo } from 'react'
 import {
   faPause,
   faClipboardCheck,
@@ -30,10 +30,8 @@ import { toggleModalStates } from '../../../../redux/features/modalSlice'
 
 import { RootState } from '../../../../redux/store'
 import { IOrderModalStatusType } from './types'
-// import { toggleModalStates } from '../../../../redux/features/modalSlice'
 
-const OrderModal = () => {
-  // const dispatch = useDispatch()
+const OrderModal = memo(() => {
   const dispatch = useDispatch()
 
   const { modalVisibility } = useSelector((state: RootState) => state.modal)
@@ -47,9 +45,6 @@ const OrderModal = () => {
   }
   const theme = useContext(ThemeContext)
 
-  useEffect(() => {
-    console.info(buttonState)
-  }, [buttonState])
   return (
     <CustomizeModal
       width={300}
@@ -58,7 +53,6 @@ const OrderModal = () => {
       visible={modalVisibility}
     >
       <ModalContentContainer>
-        {/* // onClick={() => dispatch(toggleModalStates({ modalType: 'order' }))} */}
         <Title>Select the order status</Title>
         <PendingContainer
           color="red"
@@ -122,6 +116,6 @@ const OrderModal = () => {
       </ModalContentContainer>
     </CustomizeModal>
   )
-}
+})
 
 export default OrderModal
