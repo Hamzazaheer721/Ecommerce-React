@@ -9,6 +9,8 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import produce from 'immer'
+import { clearResendStates } from '../../../../../redux/features/resendActivationLinkSlice'
+import { clearActivationMessageStates } from '../../../../../redux/features/activationSlice'
 import { IActivationThunkArgType } from '../../../../../redux/features/activationSlice/types'
 import { RootState } from '../../../../../redux/store'
 import {
@@ -40,7 +42,7 @@ const useForm = () => {
   const {
     loading: resendStateLoading,
     message: resendStateMessage,
-    sucess: resendStateSuccess
+    success: resendStateSuccess
   } = resendState
 
   const email = useMemo(() => {
@@ -88,6 +90,7 @@ const useForm = () => {
       }
     )
     dispatch(activateAccount(newData))
+    dispatch(clearResendStates())
   }, [activationData, loading])
 
   const handleSubmit = useCallback(
@@ -104,6 +107,7 @@ const useForm = () => {
     (e: MouseEvent<HTMLHeadingElement>) => {
       e.preventDefault()
       dispatch(resendActivationCode(email))
+      dispatch(clearActivationMessageStates())
     },
     [email]
   )

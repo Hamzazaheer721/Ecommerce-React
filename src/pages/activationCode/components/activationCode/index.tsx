@@ -57,6 +57,9 @@ const ActivationCode: FC = memo(() => {
       {!resendStateLoading && resendStateSuccess && resendStateMessage && (
         <ToastComponent toastType="success" description={resendStateMessage} />
       )}
+      {!resendStateLoading && !resendStateSuccess && resendStateMessage && (
+        <ToastComponent toastType="error" description={resendStateMessage} />
+      )}
       <InputFieldsContainer>
         <InputContainer>
           <Input

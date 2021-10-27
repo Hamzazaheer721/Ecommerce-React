@@ -2,6 +2,6 @@ import { IResendActivationLinkInitialStateType } from './types';
 
 export const initialState : IResendActivationLinkInitialStateType = {
   message: '',
-  sucess: '',
+  success: false,
   loading: false
 }

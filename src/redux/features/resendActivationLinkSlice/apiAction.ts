@@ -12,7 +12,7 @@ export const resendActivationCode = createAsyncThunk<
   'resend/resendActivationCode',
   async (username, thunkAPI) => {
     try {
-      const response = await Instance.post<any>(`${SERVER_IP}/user/resend_code`, username);
+      const response = await Instance.post<any>(`${SERVER_IP}/user/resend_code`, {username});
       return response.data;
     } catch (err: any) {
       const error: AxiosError<IResendActivationErrorRtn> = err;

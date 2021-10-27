@@ -1,5 +1,5 @@
 export interface IResendActivationLinkInitialStateType {
-  sucess: string
+  success: boolean
   message: string
   loading: boolean
 }
@@ -7,13 +7,13 @@ export interface IResendActivationLinkInitialStateType {
 export interface IResendActivationPayloadRtn {
   message: string
   data?: []
-  success: string
+  success: boolean
 }
 
 export interface IResendActivationErrorRtn {
   message : string
   data? : []
-  success: string
+  success: boolean
 }
 
 // export interface IResendActivationPayloadArg{

@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice} from '@reduxjs/toolkit'
 import { activateAccount } from './apiAction'
 import { initialState } from './helper'
 
@@ -6,12 +6,10 @@ export const activationSlice = createSlice({
   name: 'activation',
   initialState,
   reducers: {
-    updateActivationMessageState: (
-      state,
-      { payload }: PayloadAction<{ message: string; success: boolean }>
-    ) => {
-      state.message = payload.message
-      state.success = payload.success
+    clearActivationMessageStates: (state) => {
+      state.message = ''
+      state.success = false
+      state.loading = false
     }
   },
   extraReducers: (builder) => {
@@ -35,4 +33,4 @@ export const activationSlice = createSlice({
   }
 })
 
-export const {updateActivationMessageState} = activationSlice.actions;
+export const {clearActivationMessageStates} = activationSlice.actions;
