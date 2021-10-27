@@ -8,6 +8,8 @@ export const LogoutButton = styled.button`
   color: white;
   background-color: #ff3e2c;
   border: none;
+    cursor: pointer;
+
   @media ${device.tablet} {
   }
 `
