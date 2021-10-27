@@ -1,10 +1,11 @@
 import {
+  useRef,
   useMemo,
-  useEffect,
-  useCallback,
   useState,
-  ChangeEvent,
-  MouseEvent
+  useEffect,
+  MouseEvent,
+  useCallback,
+  ChangeEvent
 } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
@@ -44,6 +45,8 @@ const useForm = () => {
     message: resendStateMessage,
     success: resendStateSuccess
   } = resendState
+
+  const activationCodeRef = useRef<HTMLInputElement>(null)
 
   const email = useMemo(() => {
     setActivationData({ ...activationData, email: registerState.email })
@@ -123,7 +126,8 @@ const useForm = () => {
     message,
     resendStateLoading,
     resendStateMessage,
-    resendStateSuccess
+    resendStateSuccess,
+    activationCodeRef
   }
 }
 

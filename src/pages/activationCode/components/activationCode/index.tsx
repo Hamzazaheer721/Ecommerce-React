@@ -1,4 +1,4 @@
-import { FC, memo, useRef } from 'react'
+import { FC, memo } from 'react'
 import { faUser, faCode } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom'
@@ -25,7 +25,6 @@ import {
 } from './index.styled'
 
 const ActivationCode: FC = memo(() => {
-  const activationCodeRef = useRef<HTMLInputElement>(null)
   const {
     email,
     handleChange,
@@ -36,7 +35,8 @@ const ActivationCode: FC = memo(() => {
     handleClick,
     resendStateLoading,
     resendStateMessage,
-    resendStateSuccess
+    resendStateSuccess,
+    activationCodeRef
   } = useForm()
   const { activationCodeError } = error
 
