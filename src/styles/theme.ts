@@ -43,5 +43,12 @@ export const defaultTheme: any = {
     primary: 'linear-gradient(270deg, #1a87bb, #1b9bd7)',
     secondary: 'linear-gradient(270deg, #0c215a, #243d82)',
     green: 'linear-gradient(90deg, #25D366, #1CA24D)'
+  },
+  modalColor: {
+    skyBlue: '#1B9BD7',
+    purple: '#A462E0',
+    green: '#25D366',
+    orange: '#FF3E2C',
+    yellow: '#FFB818 '
   }
 }

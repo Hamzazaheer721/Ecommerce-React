@@ -1,11 +1,16 @@
 /* eslint-disable no-console */
-import { Modal } from 'antd'
+import { useState, useEffect, useContext } from 'react'
 import {
   faPause,
   faClipboardCheck,
-  faBoxOpen
+  faBoxOpen,
+  faBoxCheck,
+  faTimes,
+  faMoneyBillWave
 } from '@fortawesome/pro-light-svg-icons'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { ThemeContext } from 'styled-components'
+
 import {
   ModalContentContainer,
   Title,
@@ -14,54 +19,108 @@ import {
   BorderLine,
   PendingContainer,
   ConfirmedContainer,
-  ProcessingContainer
+  ProcessingContainer,
+  CompletedContainer,
+  CancelledContainer,
+  RefundContainer,
+  CustomizeModal,
+  DoneButton
 } from './index.styled'
+import { toggleModalStates } from '../../../../redux/features/modalSlice'
+
 import { RootState } from '../../../../redux/store'
-// import { IOrderModalStatusType } from './types'
+import { IOrderModalStatusType } from './types'
 // import { toggleModalStates } from '../../../../redux/features/modalSlice'
 
 const OrderModal = () => {
   // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   const { modalVisibility } = useSelector((state: RootState) => state.modal)
 
-  const statusHandler = (status: string) => {
-    // eslint-disable-next-line prefer-template
-    console.log('status : ' + status)
-  }
+  const [buttonState, setButtonState] = useState<IOrderModalStatusType>({
+    statusType: ''
+  })
 
+  const handleChange = (_val: IOrderModalStatusType) => {
+    setButtonState(_val)
+  }
+  const theme = useContext(ThemeContext)
+
+  useEffect(() => {
+    console.info(buttonState)
+  }, [buttonState])
   return (
-    <Modal footer={null} closable={false} visible={modalVisibility}>
+    <CustomizeModal
+      width={300}
+      footer={null}
+      closable={false}
+      visible={modalVisibility}
+    >
       <ModalContentContainer>
         {/* // onClick={() => dispatch(toggleModalStates({ modalType: 'order' }))} */}
         <Title>Select the order status</Title>
         <PendingContainer
-          colors="red"
-          onClick={() => statusHandler('pendding')}
+          color="red"
+          onClick={() => handleChange({ statusType: 'pending' })}
+          isSelected={buttonState.statusType === 'pending'}
         >
           <Icon icon={faPause} />
           <Status>Pending</Status>
         </PendingContainer>
         <BorderLine />
         <ConfirmedContainer
-          colors="red"
-          onClick={() => statusHandler('pendding')}
+          color={theme.modalColor.skyBlue}
+          onClick={() => handleChange({ statusType: 'confirmed' })}
+          isSelected={buttonState.statusType === 'confirmed'}
         >
           <Icon icon={faClipboardCheck} />
           <Status>Confirmed</Status>
         </ConfirmedContainer>
         <BorderLine />
-
         <ProcessingContainer
-          colors="red"
-          onClick={() => statusHandler('pendding')}
+          color={theme.modalColor.purple}
+          onClick={() => handleChange({ statusType: 'processing' })}
+          isSelected={buttonState.statusType === 'processing'}
         >
           <Icon icon={faBoxOpen} />
           <Status>Processing</Status>
         </ProcessingContainer>
         <BorderLine />
+        <CompletedContainer
+          color={theme.modalColor.green}
+          onClick={() => handleChange({ statusType: 'completed' })}
+          isSelected={buttonState.statusType === 'completed'}
+        >
+          <Icon icon={faBoxCheck} />
+          <Status>Completed</Status>
+        </CompletedContainer>
+        <BorderLine />
+        <CancelledContainer
+          color={theme.modalColor.orange}
+          onClick={() => handleChange({ statusType: 'cancelled' })}
+          isSelected={buttonState.statusType === 'cancelled'}
+        >
+          <Icon icon={faTimes} />
+          <Status>Cancelled</Status>
+        </CancelledContainer>
+        <BorderLine />
+        <RefundContainer
+          color={theme.color.yellow}
+          onClick={() => handleChange({ statusType: 'refund' })}
+          isSelected={buttonState.statusType === 'refund'}
+        >
+          <Icon icon={faMoneyBillWave} />
+          <Status>Refund</Status>
+        </RefundContainer>
+        <DoneButton
+          type="button"
+          onClick={() => dispatch(toggleModalStates({ modalType: 'success' }))}
+        >
+          OK
+        </DoneButton>
       </ModalContentContainer>
-    </Modal>
+    </CustomizeModal>
   )
 }
 
