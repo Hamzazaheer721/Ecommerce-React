@@ -1,11 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { activateAccount } from './apiAction'
 import { initialState } from './helper'
 
 export const activationSlice = createSlice({
   name: 'activation',
   initialState,
-  reducers: {},
+  reducers: {
+    updateActivationMessageState: (
+      state,
+      { payload }: PayloadAction<{ message: string; success: boolean }>
+    ) => {
+      state.message = payload.message
+      state.success = payload.success
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(activateAccount.fulfilled, (state, action) => {
@@ -26,3 +34,5 @@ export const activationSlice = createSlice({
       })
   }
 })
+
+export const {updateActivationMessageState} = activationSlice.actions;

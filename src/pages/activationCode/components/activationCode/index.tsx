@@ -33,7 +33,10 @@ const ActivationCode: FC = memo(() => {
     error,
     success,
     message,
-    handleClick
+    handleClick,
+    resendStateLoading,
+    resendStateMessage,
+    resendStateSuccess
   } = useForm()
   const { activationCodeError } = error
 
@@ -50,6 +53,9 @@ const ActivationCode: FC = memo(() => {
           linkType="resend"
           handleClick={handleClick}
         />
+      )}
+      {!resendStateLoading && resendStateSuccess && resendStateMessage && (
+        <ToastComponent toastType="success" description={resendStateMessage} />
       )}
       <InputFieldsContainer>
         <InputContainer>

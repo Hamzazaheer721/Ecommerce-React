@@ -18,7 +18,7 @@ export const IActivationUserInitialState = {
 
 export const initialState: IActivationStateType = {
   message: '',
-  success: '',
+  success: false,
   loading: false,
   user: IActivationUserInitialState
 }

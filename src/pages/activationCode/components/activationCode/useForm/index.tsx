@@ -20,6 +20,7 @@ import { IActivationErrorType, IActivationType } from './types'
 import { isObjectEmpty } from '../../../../../general/helper'
 import { activateAccount } from '../../../../../redux/features/activationSlice/apiAction'
 import { addUserAction } from '../../../../../redux/features/userSigninSlice'
+import { resendActivationCode } from '../../../../../redux/features/resendActivationLinkSlice/apiAction'
 
 const useForm = () => {
   const dispatch = useDispatch()
@@ -35,6 +36,12 @@ const useForm = () => {
   const loginState = useSelector((state: RootState) => state.user)
   const activationState = useSelector((state: RootState) => state.activation)
   const { loading, message, success, user } = activationState
+  const resendState = useSelector((state: RootState) => state.resendActivation)
+  const {
+    loading: resendStateLoading,
+    message: resendStateMessage,
+    sucess: resendStateSuccess
+  } = resendState
 
   const email = useMemo(() => {
     setActivationData({ ...activationData, email: registerState.email })
@@ -59,6 +66,9 @@ const useForm = () => {
   useEffect(() => {
     success && message && !loading && dispatchUser()
   }, [activationState, loginState])
+
+  // updating the error message for the activation screen if error has been sent
+  useEffect(() => {}, [])
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -90,9 +100,13 @@ const useForm = () => {
     [activationData, error]
   )
 
-  const handleClick = useCallback((e: MouseEvent<HTMLHeadingElement>) => {
-    e.preventDefault()
-  }, [])
+  const handleClick = useCallback(
+    (e: MouseEvent<HTMLHeadingElement>) => {
+      e.preventDefault()
+      dispatch(resendActivationCode(email))
+    },
+    [email]
+  )
 
   return {
     email,
@@ -102,7 +116,10 @@ const useForm = () => {
     error,
     activationData,
     success,
-    message
+    message,
+    resendStateLoading,
+    resendStateMessage,
+    resendStateSuccess
   }
 }
 

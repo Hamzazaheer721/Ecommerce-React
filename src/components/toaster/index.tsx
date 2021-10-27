@@ -72,7 +72,7 @@ const ToastComponent: FC<IToastProps> = memo(
                 )}
                 {linkType === 'resend' && (
                   <LinkText onClick={handleClick}>
-                    Resend Activation Link
+                    (Resend Activation Link?)
                   </LinkText>
                 )}
               </Description>
