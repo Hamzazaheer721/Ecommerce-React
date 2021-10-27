@@ -1,13 +1,20 @@
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit'
+import { IModalStateType } from './types'
+
 import { initialState } from './helper'
 
 export const ModalSlice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
-    toggleModalStates: (state) => {
+    toggleModalStates: (
+      state,
+      action: PayloadAction<Pick<IModalStateType, 'modalType'>>
+    ) => {
+      const { payload } = action
       state.modalVisibility = !state.modalVisibility
+      state.modalType = payload.modalType
     }
   }
 })

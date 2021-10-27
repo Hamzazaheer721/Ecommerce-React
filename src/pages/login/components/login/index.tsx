@@ -42,7 +42,9 @@ const Login: FC = memo(() => {
   return (
     <Container>
       <HeadingsContainer>
-        <LoginHeader onClick={() => dispatch(toggleModalStates())}>
+        <LoginHeader
+          onClick={() => dispatch(toggleModalStates({ modalType: 'order' }))}
+        >
           Welcome Back
         </LoginHeader>
         <SubHeading>Please login to your account</SubHeading>
