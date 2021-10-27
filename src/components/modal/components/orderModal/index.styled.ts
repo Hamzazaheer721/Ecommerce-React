@@ -3,7 +3,6 @@
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Modal } from 'antd'
-import { device } from '../../../../styles/devices'
 
 interface IGenericProps {
   color: string
@@ -18,12 +17,6 @@ export const ModalContentContainer = styled.div`
 export const CustomizeModal = styled(Modal)`
   .ant-modal-content {
     border-radius: 20px;
-  }
-
-  @media ${device.mobile} {
-    .ant-modal {
-      padding: 0 40px !important;
-    }
   }
 `
 export const Title = styled.p`
@@ -52,8 +45,6 @@ export const BorderLine = styled.div`
 `
 export const PendingContainer = styled.div<IGenericProps>`
   display: inline-block;
-  /* background-color: ${({ isSelected, color }) =>
-    isSelected ? color : '#00000'}; */
 
   ${Icon} {
     background-color: ${({ isSelected, color }) => (isSelected ? color : '')};
