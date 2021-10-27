@@ -46,13 +46,12 @@ const useForm = () => {
     success: resendStateSuccess
   } = resendState
 
+  const activationCodeRef = useRef<HTMLInputElement>(null)
+
   const includeResendInMessage = useMemo<boolean>(
     () => message.includes('The activation code has been expired.'),
     [message]
   )
-
-  const activationCodeRef = useRef<HTMLInputElement>(null)
-
   const email = useMemo(() => {
     setActivationData({ ...activationData, email: registerState.email })
     return registerState.email

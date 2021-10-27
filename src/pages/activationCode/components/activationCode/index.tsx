@@ -95,7 +95,7 @@ const ActivationCode: FC = memo(() => {
           handleSubmit={handleSubmit}
         />
       </ButtonContainer>
-      <Link to="/">
+      <Link to="/forgot-password">
         <LoginSubFooter>Forget your password?</LoginSubFooter>
       </Link>
       <LoginFooter>
