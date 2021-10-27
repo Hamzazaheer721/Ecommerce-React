@@ -10,11 +10,14 @@ export const ModalSlice = createSlice({
   reducers: {
     toggleModalStates: (
       state,
-      action: PayloadAction<Pick<IModalStateType, 'modalType'>>
+      action: PayloadAction<Omit<IModalStateType, 'modalVisibility'>>
     ) => {
       const { payload } = action
       state.modalVisibility = !state.modalVisibility
       state.modalType = payload.modalType
+      if (payload.description) {
+        state.description = payload.description
+      }
     }
   }
 })

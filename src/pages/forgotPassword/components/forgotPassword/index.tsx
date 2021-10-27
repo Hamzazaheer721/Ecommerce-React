@@ -1,39 +1,36 @@
-import { FC, memo, useRef } from 'react'
+import { FC, memo } from 'react'
 import { faArrowRight } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
-// import ToastComponent from '../../../components/toaster'
 import {
   LoginHeader,
   LoginFooter,
-  LoginDescription
-  // EmptyErrorState
+  LoginDescription,
+  EmptyErrorState,
+  MarginDiv
 } from '../../../../styles/typography'
 import { LoginViewContainer } from '../../../../styles/global'
-
+import useForm from './useForm'
 import {
   ButtonContainer,
-  // Container,
   HeadingsContainer,
   InputContainer,
   InputFieldsContainer,
-  LinkText,
-  MarginDiv
-  // SubHeading
+  LinkText
 } from './index.styled'
 import ToastComponent from '../../../../components/toaster'
 
 const ActivationCode: FC = memo(() => {
-  // eslint-disable-next-line operator-linebreak
-  // const { handleSubmit, handleChange, errors, response } =
-  //   useFormLogin()
-
-  // const { success, error } = response
-  // const { usernameError, passwordError } = errors
-
-  const userFieldRef = useRef<HTMLInputElement>(null)
+  const {
+    usernameRef,
+    usernameError,
+    handleChange,
+    handleSubmit,
+    forgotPasswordMessage,
+    forgotPasswordSuccess
+  } = useForm()
 
   return (
     <LoginViewContainer>
@@ -43,57 +40,39 @@ const ActivationCode: FC = memo(() => {
           Using the form below to activate your account
         </LoginDescription>
       </HeadingsContainer>
-      {/* {success && (
+      {forgotPasswordMessage && !forgotPasswordSuccess ? (
+        <ToastComponent toastType="error" description={forgotPasswordMessage} />
+      ) : (
         <ToastComponent
-          toastType="success"
-          description={success}
+          toastType="info"
+          description="Enter your WhatsApp Number or Email Address"
         />
-      )} */}
-      {/* {error && (
-        <ToastComponent
-          toastType="error"
-          description={error}
-        />
-      )} */}
-
-      <ToastComponent
-        toastType="info"
-        description="Enter your WhatsApp Number or Email Address"
-      />
+      )}
       <InputFieldsContainer>
         <InputContainer>
           <Input
-            ref={userFieldRef}
+            ref={usernameRef}
             label="WhatsApp Number/Email"
             name="username"
-            value={userFieldRef && userFieldRef.current?.value}
+            value={usernameRef && usernameRef.current?.value}
             prefix={faWhatsapp}
-            // handleChange={handleChange}
+            handleChange={handleChange}
           />
         </InputContainer>
-        {/* {usernameError ? (
+        {usernameError ? (
           <EmptyErrorState>{usernameError}</EmptyErrorState>
         ) : (
           <MarginDiv />
-        )} */}
-        <MarginDiv />
-
-        {/* {passwordError ? (
-          <EmptyErrorState>{passwordError}</EmptyErrorState>
-        ) : (
-          <MarginDiv />
-        )} */}
-        <MarginDiv />
+        )}
       </InputFieldsContainer>
       <ButtonContainer>
         <Button
           type="submit"
-          label="Sunmit"
+          label="Submit"
           icon={faArrowRight}
-          // handleSubmit={handleSubmit}
+          handleSubmit={handleSubmit}
         />
       </ButtonContainer>
-
       <LoginFooter>
         Already on WhatsPays?
         <Link to="/get-started">
