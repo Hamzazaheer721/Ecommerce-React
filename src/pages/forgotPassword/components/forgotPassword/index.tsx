@@ -7,25 +7,30 @@ import Input from '../../../../components/input'
 import {
   LoginHeader,
   LoginFooter,
-  LoginDescription
-  // EmptyErrorState
+  LoginDescription,
+  EmptyErrorState,
+  MarginDiv
 } from '../../../../styles/typography'
 import { LoginViewContainer } from '../../../../styles/global'
 import useForm from './useForm'
 import {
   ButtonContainer,
-  // Container,
   HeadingsContainer,
   InputContainer,
   InputFieldsContainer,
-  LinkText,
-  MarginDiv
-  // SubHeading
+  LinkText
 } from './index.styled'
 import ToastComponent from '../../../../components/toaster'
 
 const ActivationCode: FC = memo(() => {
-  const { usernameRef } = useForm()
+  const {
+    usernameRef,
+    usernameError,
+    handleChange,
+    handleSubmit,
+    forgotPasswordMessage,
+    forgotPasswordSuccess
+  } = useForm()
 
   return (
     <LoginViewContainer>
@@ -35,12 +40,14 @@ const ActivationCode: FC = memo(() => {
           Using the form below to activate your account
         </LoginDescription>
       </HeadingsContainer>
-
-      <ToastComponent
-        toastType="info"
-        description="Enter your WhatsApp Number or Email Address"
-      />
-
+      {forgotPasswordMessage && !forgotPasswordSuccess ? (
+        <ToastComponent toastType="error" description={forgotPasswordMessage} />
+      ) : (
+        <ToastComponent
+          toastType="info"
+          description="Enter your WhatsApp Number or Email Address"
+        />
+      )}
       <InputFieldsContainer>
         <InputContainer>
           <Input
@@ -49,32 +56,23 @@ const ActivationCode: FC = memo(() => {
             name="username"
             value={usernameRef && usernameRef.current?.value}
             prefix={faWhatsapp}
-            // handleChange={handleChange}
+            handleChange={handleChange}
           />
         </InputContainer>
-        {/* {usernameError ? (
+        {usernameError ? (
           <EmptyErrorState>{usernameError}</EmptyErrorState>
         ) : (
           <MarginDiv />
-        )} */}
-        <MarginDiv />
-
-        {/* {passwordError ? (
-          <EmptyErrorState>{passwordError}</EmptyErrorState>
-        ) : (
-          <MarginDiv />
-        )} */}
-        <MarginDiv />
+        )}
       </InputFieldsContainer>
       <ButtonContainer>
         <Button
           type="submit"
           label="Submit"
           icon={faArrowRight}
-          // handleSubmit={handleSubmit}
+          handleSubmit={handleSubmit}
         />
       </ButtonContainer>
-
       <LoginFooter>
         Already on WhatsPays?
         <Link to="/get-started">

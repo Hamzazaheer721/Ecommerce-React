@@ -10,7 +10,7 @@ export const forgotPassword = createAsyncThunk<
   {rejectValue : IForgotPasswordErrorRtn}
 >('forgot/forgotPassword', async (username, thunkAPI) => {
   try {
-    const response = await Instance.post<any>(`${SERVER_IP}/user/forgot_password`, username);
+    const response = await Instance.post<any>(`${SERVER_IP}/user/forgot_password`, {username});
     return response.data;
   } catch (err: any) {
     const error : AxiosError<any> = err;
