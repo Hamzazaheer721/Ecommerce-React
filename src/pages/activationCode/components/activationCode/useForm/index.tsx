@@ -72,9 +72,6 @@ const useForm = () => {
     success && message && !loading && dispatchUser()
   }, [activationState, loginState])
 
-  // updating the error message for the activation screen if error has been sent
-  useEffect(() => {}, [])
-
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       const { name, value } = e.target
