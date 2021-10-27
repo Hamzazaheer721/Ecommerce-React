@@ -22,8 +22,9 @@ export const ToastContainer = styled.div<IToastContainerProp>`
   padding: 5px 10px;
   display: flex;
 `
-
-export const CheckIcon = styled(FontAwesomeIcon)<IToastContainerProp>`
+export const LeftContainer = styled.h2`
+`
+export const Icon = styled(FontAwesomeIcon)<IToastContainerProp>`
   background-color: ${(props) => props.colors.statusColor};
   width: 18px !important;
   height: 18px !important;
@@ -34,8 +35,8 @@ export const CheckIcon = styled(FontAwesomeIcon)<IToastContainerProp>`
   border-radius: 50%;
   color: white;
 `
-
-export const TitleContainer = styled.div<ITitleContainerProp>`
+export const Heading = styled.h2``
+export const RightContainer = styled.div<ITitleContainerProp>`
   width: 100%;
   padding-bottom: 12px;
   h2 {
@@ -66,7 +67,8 @@ export const Description = styled.div`
 `
 
 export const LinkText = styled.h3`
-  font-size: 16px;
+  font-size: 12px;
+  font-weight: 700;
   text-decoration: underline;
   color: black;
   margin-top: 0;

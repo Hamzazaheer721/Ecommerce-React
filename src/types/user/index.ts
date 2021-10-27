@@ -15,12 +15,14 @@ export type IUserLoginRtnData = {
   auth_token : string,
   id: string,
   is_user_deactivated: string,
-  message: string,
+  message: string
   name: string,
   stores: IStoreType[],
   user_status: number,
   user_type: string,
   wp_num_inc_code: string
+  image?: string,
+  email?: string,
 }
 
 export type IUserLoginRtnResponse = {

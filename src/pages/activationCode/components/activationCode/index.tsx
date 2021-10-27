@@ -26,9 +26,17 @@ import {
 
 const ActivationCode: FC = memo(() => {
   const activationCodeRef = useRef<HTMLInputElement>(null)
-  const { email, handleChange, handleSubmit, error, success, message } =
-    useForm()
+  const {
+    email,
+    handleChange,
+    handleSubmit,
+    error,
+    success,
+    message,
+    handleClick
+  } = useForm()
   const { activationCodeError } = error
+
   return (
     <Container>
       <HeadingsContainer>
@@ -36,7 +44,12 @@ const ActivationCode: FC = memo(() => {
         <LoginDescription>Enter your activation code!</LoginDescription>
       </HeadingsContainer>
       {!success && message && (
-        <ToastComponent toastType="error" description={message} />
+        <ToastComponent
+          toastType="error"
+          description={message}
+          linkType="resend"
+          handleClick={handleClick}
+        />
       )}
       <InputFieldsContainer>
         <InputContainer>

@@ -5,67 +5,57 @@ import { filterColor } from './helper'
 import { IColorObjectProp } from './types'
 import {
   ToastContainer,
-  CheckIcon,
-  TitleContainer,
+  Icon,
+  RightContainer,
   CrossIcon,
   Description,
-  LinkText
+  LinkText,
+  LeftContainer,
+  Heading
 } from './index.styled'
 
 interface IToastProps {
   toastType: 'success' | 'error' | 'info'
   description?: string
   linkType?: 'send' | 'resend'
+  handleClick?: () => void
 }
 
 const ToastComponent: FC<IToastProps> = memo(
-  ({ toastType, description, linkType }: IToastProps) => {
+  ({ toastType, description, linkType, handleClick }: IToastProps) => {
     const colors: IColorObjectProp = useMemo(
       () => filterColor(toastType),
       [toastType]
     )
+
     return (
       <ToastContainer colors={colors}>
-        <h2>
+        <LeftContainer>
+          {toastType === 'success' && <Icon icon={faCheck} colors={colors} />}
+          {toastType === 'error' && <Icon icon={faTimes} colors={colors} />}
+          {toastType === 'info' && <Icon icon={faInfo} colors={colors} />}
+        </LeftContainer>
+        <RightContainer colors={colors}>
           {toastType === 'success' && (
-            <CheckIcon icon={faCheck} colors={colors} />
+            <>
+              <Heading>
+                Congratulation
+                <CrossIcon icon={faTimes} />
+              </Heading>
+              <Description>
+                {description}
+                {!description && (
+                  <span>Your Account has been successfully activated!</span>
+                )}
+              </Description>
+            </>
           )}
           {toastType === 'error' && (
-            <CheckIcon icon={faTimes} colors={colors} />
-          )}
-          {toastType === 'info' && <CheckIcon icon={faInfo} colors={colors} />}
-        </h2>
-        <TitleContainer colors={colors}>
-          {linkType === 'send' && (
-            <h2>
-              send link here
-              <CrossIcon icon={faTimes} />
-            </h2>
-          )}
-
-          {toastType === 'error' && (
-            <h2>
-              Error
-              <CrossIcon icon={faTimes} />
-            </h2>
-          )}
-          {toastType === 'info' && (
-            <h2>
-              Info
-              <CrossIcon icon={faTimes} />
-            </h2>
-          )}
-
-          {toastType === 'success' && (
-            <Description>
-              {description}
-              {!description && (
-                <span>Your Account has been successfully activated!</span>
-              )}
-            </Description>
-          )}
-          {toastType === 'error' && (
-            <div>
+            <>
+              <Heading>
+                Error
+                <CrossIcon icon={faTimes} />
+              </Heading>
               <Description>
                 {description}
                 {!description && (
@@ -74,26 +64,32 @@ const ToastComponent: FC<IToastProps> = memo(
                     doesn`t match!
                   </>
                 )}
-              </Description>
-              <Description>
-                {linkType === 'resend' && (
-                  <LinkText>(Resend activation link?)</LinkText>
-                )}
-              </Description>
-              <Description>
                 {linkType === 'send' && (
-                  <LinkText>(Send activation link?)</LinkText>
+                  <LinkText onClick={handleClick}>
+                    Send Activation Link
+                  </LinkText>
+                )}
+                {linkType === 'resend' && (
+                  <LinkText onClick={handleClick}>
+                    Resend Activation Link
+                  </LinkText>
                 )}
               </Description>
-            </div>
+            </>
           )}
           {toastType === 'info' && (
-            <Description>
-              {description}
-              {!description && <>Enter your New Password!</>}
-            </Description>
+            <>
+              <Heading>
+                Info
+                <CrossIcon icon={faTimes} />
+              </Heading>
+              <Description>
+                {description}
+                {!description && <>Enter your New Password!</>}
+              </Description>
+            </>
           )}
-        </TitleContainer>
+        </RightContainer>
       </ToastContainer>
     )
   }

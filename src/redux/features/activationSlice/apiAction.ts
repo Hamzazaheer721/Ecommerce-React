@@ -17,12 +17,8 @@ export const activateAccount = createAsyncThunk<
         `${SERVER_IP}/user/verify`,
         data
       )
-      const returnData: IActivationPayloadRtn = {
-        ...response.data,
-        user: response.data.data
-      }
-      if (response.status === 400) return thunkAPI.rejectWithValue(returnData)
-      return { ...response.data, user: response.data.data }
+      if (response.status === 400) return thunkAPI.rejectWithValue(response.data)
+      return response.data
     } catch (err: any) {
       const error: AxiosError<IActivationPayloadRtn> = err
       if (!error.response) throw err

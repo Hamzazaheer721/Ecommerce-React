@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { createSlice} from '@reduxjs/toolkit'
 import { userSignup } from './apiActions'
 import { initialState } from './helper'
