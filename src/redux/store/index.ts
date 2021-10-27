@@ -37,9 +37,7 @@ const persistedReducer = persistReducer(persistConfig, reducers)
 
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
-    // eslint-disable-next-line implicit-arrow-linebreak
-    getDefaultMiddleware({
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
       }

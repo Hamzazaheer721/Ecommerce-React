@@ -31,6 +31,7 @@ module.exports = {
     'linebreak-style': 0,
     'no-param-reassign': 0,
     'object-curly-spacing': 'off',
+    'arrow-body-style': ['error', 'as-needed'],
     'operator-linebreak': [
       1,
       'after',
