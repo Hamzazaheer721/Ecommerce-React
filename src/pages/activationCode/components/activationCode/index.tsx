@@ -1,6 +1,5 @@
 import { FC, memo } from 'react'
-import { faUser, faCode } from '@fortawesome/pro-light-svg-icons'
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { faUser, faCode, faEnvelope } from '@fortawesome/pro-light-svg-icons'
 import { Link } from 'react-router-dom'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
@@ -36,7 +35,8 @@ const ActivationCode: FC = memo(() => {
     resendStateLoading,
     resendStateMessage,
     resendStateSuccess,
-    activationCodeRef
+    activationCodeRef,
+    includeResendInMessage
   } = useForm()
   const { activationCodeError } = error
 
@@ -50,7 +50,7 @@ const ActivationCode: FC = memo(() => {
         <ToastComponent
           toastType="error"
           description={message}
-          linkType="resend"
+          linkType={includeResendInMessage ? 'resend' : undefined}
           handleClick={handleClick}
         />
       )}
@@ -82,7 +82,7 @@ const ActivationCode: FC = memo(() => {
             label="Email Address"
             name="email"
             value={email}
-            prefix={faWhatsapp}
+            prefix={faEnvelope}
           />
         </InputContainer>
       </InputFieldsContainer>

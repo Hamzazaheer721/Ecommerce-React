@@ -32,6 +32,10 @@ const useForm = () => {
     () => (location.pathname.includes('customer') ? 'visitor' : 'company'),
     [location]
   )
+  const nameRef = useRef<HTMLInputElement>(null)
+  const storeNameRef = useRef<HTMLInputElement>(null)
+  const emailRef = useRef<HTMLInputElement>(null)
+  const passwordRef = useRef<HTMLInputElement>(null)
 
   const redirectTimeInterval = useRef<NodeJS.Timer>()
 
@@ -113,7 +117,11 @@ const useForm = () => {
     errors,
     handleSubmit,
     handlePhoneChange,
-    isCustomer
+    isCustomer,
+    nameRef,
+    storeNameRef,
+    emailRef,
+    passwordRef
   }
 }
 
