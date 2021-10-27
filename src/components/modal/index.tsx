@@ -6,11 +6,13 @@ import DiscountModal from './components/discountModal'
 import OrderModal from './components/orderModal'
 
 const ModalView: FC = memo(() => {
-  const { modalType } = useSelector((state: RootState) => state.modal)
+  const { modalType, description } = useSelector(
+    (state: RootState) => state.modal
+  )
 
   switch (modalType) {
     case 'success':
-      return <SuccessModal />
+      return <SuccessModal description={description} />
     case 'discount':
       return <DiscountModal />
     case 'order':

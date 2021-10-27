@@ -25,7 +25,7 @@ const CustomizeModal: FC<IModapProps> = memo(({ description }: IModapProps) => {
   const { modalVisibility } = useSelector((state: RootState) => state.modal)
   return (
     <>
-      <Modal footer={null} closable={false} visible={modalVisibility}>
+      <Modal centered footer={null} closable={false} visible={modalVisibility}>
         <ModalContentContainer>
           <NotificationIcon icon={faCheck} />
           <Title>Done</Title>

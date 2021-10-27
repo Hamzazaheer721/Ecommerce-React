@@ -1,7 +1,15 @@
-import { useRef, useState, useCallback, ChangeEvent, MouseEvent } from 'react'
+import {
+  useRef,
+  useState,
+  useCallback,
+  useEffect,
+  ChangeEvent,
+  MouseEvent
+} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { isObjectEmpty } from '../../../../../general/helper'
 import { forgotPassword } from '../../../../../redux/features/forgotPasswordSlice/apiAction'
+import { toggleModalStates } from '../../../../../redux/features/modalSlice'
 import { RootState } from '../../../../../redux/store'
 import { validateError } from './helper'
 import { IForgotPasswordErrorsType } from './types'
@@ -16,7 +24,18 @@ const useForm = () => {
 
   const [username, setUsername] = useState<string>('')
   const [error, setError] = useState<IForgotPasswordErrorsType>({})
-  const {usernameError} = error;
+  const { usernameError } = error
+
+  useEffect(() => {
+    forgotPasswordSuccess &&
+      forgotPasswordMessage &&
+      dispatch(
+        toggleModalStates({
+          modalType: 'success',
+          description: forgotPasswordMessage
+        })
+      )
+  }, [forgotPasswordMessage, forgotPasswordSuccess])
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
