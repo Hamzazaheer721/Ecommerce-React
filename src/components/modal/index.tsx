@@ -1,53 +1,22 @@
-import { useState, memo, FC } from 'react'
-import { Modal, Button } from 'antd'
-import 'antd/dist/antd.css'
-import { faCheck } from '@fortawesome/pro-light-svg-icons'
-import {
-  NotificationIcon,
-  ModalContentContainer,
-  Title,
-  DoneButton
-} from './index.styled'
+import { memo, FC } from 'react'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../redux/store'
+import SuccessModal from './components/congratulationModal'
+import DiscountModal from './components/discountModal'
+import OrderModal from './components/orderModal'
 
-interface IModalProps {
-  openModal: boolean
-  closeModal: () => void
-}
+const ModalView: FC = memo(() => {
+  const { modalType } = useSelector((state: RootState) => state.modal)
 
-const CustomizeModal: FC<IModalProps> = memo(
-  ({ openModal, closeModal }: IModalProps) => {
-    // eslint-disable-next-line operator-linebreak
-    const [, setIsModalVisible] = useState(false)
-
-    const showModal = () => {
-      setIsModalVisible(openModal)
-    }
-
-    return (
-      <>
-        <Button type="primary" onClick={showModal}>
-          Open Modal
-        </Button>
-        <Modal
-          footer={null}
-          closable={false}
-          visible={openModal}
-          onOk={closeModal}
-        >
-          <ModalContentContainer>
-            <NotificationIcon icon={faCheck} />
-            <Title>Done</Title>
-            <p>
-              Reset Code/Link has been sent on your WhatsApp
-              and Email.
-            </p>
-            <DoneButton type="button" onClick={closeModal}>
-              OK
-            </DoneButton>
-          </ModalContentContainer>
-        </Modal>
-      </>
-    )
+  switch (modalType) {
+    case 'success':
+      return <SuccessModal />
+    case 'discount':
+      return <DiscountModal />
+    case 'order':
+      return <OrderModal />
+    default:
+      return null
   }
-)
-export default CustomizeModal
+})
+export default ModalView
