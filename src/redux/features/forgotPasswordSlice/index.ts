@@ -36,4 +36,7 @@ export const forgotPasswordSlice = createSlice({
   }
 })
 
-export const { clearForgotPaswordSliceAllStates } = forgotPasswordSlice.actions
+export const {
+  clearForgotPaswordSliceAllStates,
+  clearForgotPaswordSliceHelperStates
+} = forgotPasswordSlice.actions

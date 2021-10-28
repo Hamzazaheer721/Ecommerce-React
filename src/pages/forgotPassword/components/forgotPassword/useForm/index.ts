@@ -8,6 +8,7 @@ import {
 } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { isObjectEmpty } from '../../../../../general/helper'
+import { clearForgotPaswordSliceHelperStates } from '../../../../../redux/features/forgotPasswordSlice'
 import { forgotPassword } from '../../../../../redux/features/forgotPasswordSlice/apiAction'
 import { openModal } from '../../../../../redux/features/modalSlice'
 import { RootState } from '../../../../../redux/store'
@@ -36,6 +37,7 @@ const useForm = () => {
           nextScreen: '/reset-password'
         })
       )
+      dispatch(clearForgotPaswordSliceHelperStates())
   }, [forgotPasswordMessage, forgotPasswordSuccess])
 
   const handleChange = useCallback(
