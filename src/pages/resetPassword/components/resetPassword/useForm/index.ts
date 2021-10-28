@@ -35,7 +35,9 @@ const useForm = () => {
 
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
-  }, [])
+    const {name, value } = e.target;
+    setResetPasswordData({...resetPasswordData, [name]: value})
+  }, [resetPasswordData])
 
   const handleSubmit = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
