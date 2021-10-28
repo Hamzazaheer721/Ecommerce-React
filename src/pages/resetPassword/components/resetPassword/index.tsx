@@ -1,9 +1,10 @@
 import { FC, memo } from 'react'
 import { faKey, faUnlockAlt, faCode } from '@fortawesome/pro-light-svg-icons'
 import { Link } from 'react-router-dom'
-import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
-
+import Button from '../../../../components/genericButton'
+import ToastComponent from '../../../../components/toaster'
+import useForm from './useForm'
 import {
   LoginHeader,
   LoginFooter,
@@ -11,7 +12,6 @@ import {
   MarginDiv,
   EmptyErrorState
 } from '../../../../styles/typography'
-import useForm from './useForm'
 import {
   ButtonContainer,
   Container,
@@ -20,7 +20,6 @@ import {
   InputFieldsContainer,
   LinkText
 } from './index.styled'
-import ToastComponent from '../../../../components/toaster'
 
 const ActivationCode: FC = memo(() => {
   const {
