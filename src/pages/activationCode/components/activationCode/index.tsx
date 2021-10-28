@@ -13,10 +13,10 @@ import {
   EmptyErrorState,
   MarginDiv
 } from '../../../../styles/typography'
+import { LoginViewContainer } from '../../../../styles/global'
 
 import {
   ButtonContainer,
-  Container,
   HeadingsContainer,
   InputContainer,
   InputFieldsContainer,
@@ -41,7 +41,7 @@ const ActivationCode: FC = memo(() => {
   const { activationCodeError } = error
 
   return (
-    <Container>
+    <LoginViewContainer>
       <HeadingsContainer>
         <LoginHeader>Welcome Back</LoginHeader>
         <LoginDescription>Enter your activation code!</LoginDescription>
@@ -103,7 +103,7 @@ const ActivationCode: FC = memo(() => {
           <LinkText> Register</LinkText>
         </Link>
       </LoginFooter>
-    </Container>
+    </LoginViewContainer>
   )
 })
 

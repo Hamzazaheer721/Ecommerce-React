@@ -1,6 +1,4 @@
-import styled, {
-  createGlobalStyle
-} from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import { device } from './devices'
 
 export const GlobalStyle = createGlobalStyle`
@@ -27,12 +25,12 @@ export const LoginViewContainer = styled.div`
 
   @media ${device.mobile} {
     width: 100%;
-    padding: 0 60px;
+    padding: 0 50px;
   }
 
   @media ${device.tiny} {
     width: 100%;
-    padding: 0 60px;
+    padding: 0 25px;
   }
 `
 export const InputFieldsContainer = styled.div`

@@ -20,7 +20,6 @@ import {
   ButtonContainer,
   CheckboxContainer,
   CheckboxPlaceholder,
-  Container,
   CustomCheckBox,
   HeadingsContainer,
   InputContainer,
@@ -28,6 +27,7 @@ import {
   SubHeading
 } from './index.styled'
 import ToastComponent from '../../../../components/toaster'
+import { LoginViewContainer } from '../../../../styles/global'
 
 const Register: FC = memo(() => {
   const {
@@ -49,7 +49,7 @@ const Register: FC = memo(() => {
     errors
 
   return (
-    <Container>
+    <LoginViewContainer>
       <HeadingsContainer>
         <LoginHeader>Get Started Free</LoginHeader>
         <SubHeading>
@@ -167,7 +167,7 @@ const Register: FC = memo(() => {
         Already on WhatsPays?
         <span> Login</span>
       </LoginFooter>
-    </Container>
+    </LoginViewContainer>
   )
 })
 

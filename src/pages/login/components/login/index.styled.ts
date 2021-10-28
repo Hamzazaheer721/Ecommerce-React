@@ -14,14 +14,17 @@ export const Container = styled.div`
 
   @media ${device.tablet} {
     width: 50%;
+    padding: 0 2.5rem;
   }
 
   @media ${device.mobile} {
     width: 100%;
+    padding: 0 55px;
   }
 
   @media ${device.tiny} {
     width: 100%;
+    padding: 0 55px;
   }
 `
 
