@@ -43,6 +43,7 @@ export const InputContainer = styled.div`
   border-radius: 8px;
   transition: 0.4s;
   padding: 5px;
+  margin-bottom: 15px;
 
   p {
     top: 0;
@@ -76,6 +77,25 @@ export const Prefix = styled(FontAwesomeIcon)`
     font-size: 1rem;
   }
 `
+
+export const Suffix = styled.span`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.6rem;
+  right: 0.8rem;
+  width: 22px;
+  color: ${(props) => props.theme.color.lightGray};
+
+  @media ${device.mobile} {
+    font-size: 1rem;
+  }
+
+  @media ${device.tiny} {
+    font-size: 1rem;
+  }
+`
+
 export const Label = styled.p`
   color: #c5c5c5;
   font-size: 1rem;
@@ -108,7 +128,7 @@ export const SelectField = styled(Select)`
 
   .ant-select-selection-item {
     margin-left: 20px !important;
-    margin-top: 3px;
+    margin-top: 1.5px;
   }
 
   .ant-select-selector {
@@ -121,6 +141,44 @@ export const SelectField = styled(Select)`
     :focus {
       outline: none;
     }
+    /* border: 1px solid red !important; */
+  }
+
+  ${Label} {
+    top: 0;
+    left: 0.8rem;
+    font-size: 0.8rem;
+    /* background: linear-gradient(180deg, #f2f4ff 50%, white 50%); */
+    opacity: 1;
+    color: ${(props) => props.theme.color.lightGray};
+  }
+
+  @media ${device.mobile} {
+    padding-left: 2.5rem;
+    :focus ~ ${Label} {
+      left: 0.5rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  @media ${device.tiny} {
+    padding-left: 2.5rem;
+    :focus ~ ${Label} {
+      left: 0.5rem;
+      font-size: 0.8rem;
+    }
+  }
+`
+export const InputField = styled.input`
+  outline: none;
+  border: none;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  /* padding-left: 1.5rem; */
+  box-shadow: none !important;
+padding:8px 0 8px 31px
+
     /* border: 1px solid red !important; */
   }
 

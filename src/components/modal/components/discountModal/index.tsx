@@ -13,17 +13,25 @@ import {
   SelectField,
   Label,
   Prefix,
-  ButtonContainer
+  ButtonContainer,
+  InputField,
+  Suffix
 } from './index.styled'
 import { RootState } from '../../../../redux/store'
 import { toggleModalStates } from '../../../../redux/features/modalSlice'
+import useForm from './useForm'
 
 const { Option } = Select
 
+// function handleChange(value: any) {
+//   console.log(`selected ${value}`)
+// }
 const CustomizeDiscountModal = () => {
   const dispatch = useDispatch()
 
   const { modalVisibility } = useSelector((state: RootState) => state.modal)
+
+  const { handleChange, discountType } = useForm()
   return (
     <CustomizeModal
       width={300}
@@ -36,13 +44,20 @@ const CustomizeDiscountModal = () => {
         <Title>Add Discount</Title>
 
         <InputContainer>
-          <SelectField defaultValue="Amount">
+          <SelectField defaultValue="Amount" onChange={handleChange}>
             <Option value="Amount">Amount</Option>
-            <Option value="Discount">Discount</Option>
+            <Option value="Percentage">Percentage</Option>
           </SelectField>
 
           <Prefix icon={faMoneyBill} />
           <Label>Type</Label>
+        </InputContainer>
+        <InputContainer>
+          <InputField />
+
+          <Prefix icon={faMoneyBill} />
+          <Label>Value</Label>
+          <Suffix>{discountType === 'Percentage' ? 'PER' : 'PKR'}</Suffix>
         </InputContainer>
         <ButtonContainer>
           <DoneButton
