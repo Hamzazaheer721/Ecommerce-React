@@ -16,15 +16,13 @@ export const Label = styled.p<{
   font-size: 1rem;
   position: absolute;
   opacity: 0.6;
-  left: ${({ $phonefield }) =>
-    $phonefield ? '6.5rem' : '3rem'};
+  left: ${({ $phonefield }) => ($phonefield ? '6.5rem' : '3rem')};
   pointer-events: none;
   transition: all 0.22s;
   top: 50%;
   transform: translateY(-50%);
   display: block;
-  transition: top 200ms ease-in, left 200ms ease-in,
-    font-size 200ms ease-in;
+  transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
   padding: 0 7px;
   ${({ hasValue }) =>
     hasValue &&
@@ -39,8 +37,7 @@ export const Label = styled.p<{
 
   @media ${device.mobile} {
     font-size: 12px;
-    left: ${({ $phonefield }) =>
-      $phonefield ? '4.8rem' : '2.2rem'};
+    left: ${({ $phonefield }) => ($phonefield ? '6.4rem' : '2.2rem')};
     ${({ hasValue }) =>
       hasValue &&
       `
@@ -50,8 +47,7 @@ export const Label = styled.p<{
   }
   @media ${device.tiny} {
     font-size: 12px;
-    left: ${({ $phonefield }) =>
-      $phonefield ? '4.5rem' : '2.2rem'};
+    left: ${({ $phonefield }) => ($phonefield ? '4.5rem' : '2.2rem')};
     ${({ hasValue }) =>
       hasValue &&
       `
@@ -75,11 +71,7 @@ export const InputField = styled.input`
     top: 0;
     left: 0.8rem;
     font-size: 0.8rem;
-    background: linear-gradient(
-      180deg,
-      #f2f4ff 50%,
-      white 50%
-    );
+    background: linear-gradient(180deg, #f2f4ff 50%, white 50%);
     opacity: 1;
     color: ${(props) => props.theme.color.lightGray};
   }
@@ -175,11 +167,7 @@ export const InputContainer = styled.div<{
       top: 0;
       left: 0.8rem;
       font-size: 0.8rem;
-      background: linear-gradient(
-        180deg,
-        #f2f4ff 50%,
-        white 50%
-      );
+      background: linear-gradient(180deg, #f2f4ff 50%, white 50%);
       opacity: 1;
       color: ${(props) => props.theme.color.lightGray};
     }
