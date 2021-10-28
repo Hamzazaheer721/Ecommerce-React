@@ -30,7 +30,7 @@ const reducers = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['registerUser'] // only registerUser will be persisted
+  whitelist: ['registerUser', 'forgotPassword'] // only registerUser will be persisted
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers)

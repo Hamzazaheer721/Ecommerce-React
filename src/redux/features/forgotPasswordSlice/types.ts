@@ -6,6 +6,12 @@ export interface IForgotPasswordStateType {
   data?: any
 }
 
-export type IForgotPasswordPayloadRtn = Omit<IForgotPasswordStateType, 'loading'>
+export type IForgotPasswordPayloadRtn = Omit<
+  IForgotPasswordStateType,
+  'loading'
+>
 
-export type IForgotPasswordErrorRtn = Omit<IForgotPasswordStateType, 'loading' | 'username' | 'data'>
+export type IForgotPasswordErrorRtn = Omit<
+  IForgotPasswordStateType,
+  'loading' | 'username' | 'data'
+>

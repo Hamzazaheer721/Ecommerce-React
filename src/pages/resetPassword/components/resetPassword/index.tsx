@@ -1,45 +1,38 @@
-import { FC, memo, useRef } from 'react'
-import {
-  faKey,
-  faUnlockAlt,
-  faCode
-} from '@fortawesome/pro-light-svg-icons'
+import { FC, memo } from 'react'
+import { faKey, faUnlockAlt, faCode } from '@fortawesome/pro-light-svg-icons'
 import { Link } from 'react-router-dom'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
-// import ToastComponent from '../../../components/toaster'
+
 import {
   LoginHeader,
   LoginFooter,
-  LoginDescription
-  // EmptyErrorState
+  LoginDescription,
+  MarginDiv,
+  EmptyErrorState
 } from '../../../../styles/typography'
-
+import useForm from './useForm'
 import {
   ButtonContainer,
-  CheckboxContainer,
-  CheckboxPlaceholder,
   Container,
-  CustomCheckBox,
   HeadingsContainer,
   InputContainer,
   InputFieldsContainer,
-  LinkText,
-  MarginDiv
-  // SubHeading
+  LinkText
 } from './index.styled'
+import ToastComponent from '../../../../components/toaster'
 
 const ActivationCode: FC = memo(() => {
-  // eslint-disable-next-line operator-linebreak
-  // const { handleSubmit, handleChange, errors, response } =
-  //   useFormLogin()
-
-  // const { success, error } = response
-  // const { usernameError, passwordError } = errors
-
-  const userFieldRef = useRef<HTMLInputElement>(null)
-  const passwordFieldRef = useRef<HTMLInputElement>(null)
-
+  const {
+    activationRef,
+    passwordRef,
+    confirmPasswordRef,
+    handleSubmit,
+    handleChange,
+    passwordError,
+    confirmationPasswordError,
+    activationCodeError
+  } = useForm()
   return (
     <Container>
       <HeadingsContainer>
@@ -50,91 +43,64 @@ const ActivationCode: FC = memo(() => {
           to activate your account
         </LoginDescription>
       </HeadingsContainer>
-      {/* {success && (
-        <ToastComponent
-          toastType="success"
-          description={success}
-        />
-      )} */}
-      {/* {error && (
-        <ToastComponent
-          toastType="error"
-          description={error}
-        />
-      )} */}
+
+      <ToastComponent toastType="info" description="Enter your New Password" />
+
       <InputFieldsContainer>
         <InputContainer>
           <Input
-            ref={userFieldRef}
+            ref={activationRef}
             label="Activation Code"
             name="activationcode"
-            value={
-              userFieldRef && userFieldRef.current?.value
-            }
+            value={activationRef && activationRef.current?.value}
             prefix={faCode}
-            // handleChange={handleChange}
+            handleChange={handleChange}
           />
         </InputContainer>
-        <MarginDiv />
+        {activationCodeError ? (
+          <EmptyErrorState>{activationCodeError}</EmptyErrorState>
+        ) : (
+          <MarginDiv />
+        )}
         <InputContainer>
           <Input
-            ref={passwordFieldRef}
+            ref={passwordRef}
             label="Password"
             prefix={faKey}
             typePassword
             name="password"
-            value={
-              // eslint-disable-next-line operator-linebreak
-              passwordFieldRef &&
-              passwordFieldRef.current?.value
-            }
-            // handleChange={handleChange}
+            value={passwordRef && passwordRef.current?.value}
+            handleChange={handleChange}
           />
         </InputContainer>
-        {/* {usernameError ? (
-          <EmptyErrorState>{usernameError}</EmptyErrorState>
+        {passwordError ? (
+          <EmptyErrorState>{passwordError}</EmptyErrorState>
         ) : (
           <MarginDiv />
-        )} */}
-        <MarginDiv />
+        )}
         <InputContainer>
           <Input
-            ref={passwordFieldRef}
+            ref={confirmPasswordRef}
             label="Confirm Password"
             prefix={faKey}
             typePassword
             name="password"
-            value={
-              // eslint-disable-next-line operator-linebreak
-              passwordFieldRef &&
-              passwordFieldRef.current?.value
-            }
-            // handleChange={handleChange}
+            value={confirmPasswordRef && confirmPasswordRef.current?.value}
+            handleChange={handleChange}
           />
         </InputContainer>
-        {/* {passwordError ? (
-          <EmptyErrorState>{passwordError}</EmptyErrorState>
+        {confirmationPasswordError ? (
+          <EmptyErrorState>{confirmationPasswordError}</EmptyErrorState>
         ) : (
           <MarginDiv />
-        )} */}
-        <MarginDiv />
-        <CheckboxContainer>
-          <CustomCheckBox
-            type="checkbox"
-            name="remember"
-            // onChange={handleChange}
-          />
-          <CheckboxPlaceholder>
-            Remember me
-          </CheckboxPlaceholder>
-        </CheckboxContainer>
+        )}
       </InputFieldsContainer>
       <ButtonContainer>
         <Button
           type="submit"
           label="Reset Password"
           icon={faUnlockAlt}
-          // handleSubmit={handleSubmit}
+          handleSubmit={handleSubmit}
         />
       </ButtonContainer>
 

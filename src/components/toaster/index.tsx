@@ -95,7 +95,17 @@ const ToastComponent: FC<IToastProps> = memo(
                         <b> Email Address</b>
                       </>
                     ) : (
-                      { description }
+                      <>
+                        {description.trim().toLowerCase() ===
+                        htmlTexts.resetPassword.trim().toLowerCase() ? (
+                          <>
+                            Enter your
+                            <b> New Password</b>
+                          </>
+                        ) : (
+                          { description }
+                        )}
+                      </>
                     )}
                   </>
                 ) : (
