@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { Modal, Select } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 import { device } from '../../../../styles/devices'
 
 export const ModalContentContainer = styled.div``
@@ -100,7 +99,6 @@ export const Label = styled.p`
   font-size: 1rem;
   position: absolute;
   opacity: 0.6;
-
   pointer-events: none;
   transition: all 0.22s;
   top: 50%;
@@ -122,7 +120,6 @@ export const SelectField = styled(Select)`
   width: 100%;
   height: 100%;
   background-color: transparent;
-  /* padding-left: 1.5rem; */
   box-shadow: none !important;
 
   .ant-select-selection-item {
@@ -140,14 +137,12 @@ export const SelectField = styled(Select)`
     :focus {
       outline: none;
     }
-    /* border: 1px solid red !important; */
   }
 
   ${Label} {
     top: 0;
     left: 0.8rem;
     font-size: 0.8rem;
-    /* background: linear-gradient(180deg, #f2f4ff 50%, white 50%); */
     opacity: 1;
     color: ${(props) => props.theme.color.lightGray};
   }
@@ -175,10 +170,7 @@ export const InputField = styled.input`
   height: 100%;
   background-color: transparent;
   box-shadow: none !important;
-padding:8px 0 8px 31px
-
-  }
-
+  padding: 8px 0 8px 31px;
   ${Label} {
     top: 0;
     left: 0.8rem;
