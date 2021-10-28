@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Modal, Select } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -175,18 +174,15 @@ export const InputField = styled.input`
   width: 100%;
   height: 100%;
   background-color: transparent;
-  /* padding-left: 1.5rem; */
   box-shadow: none !important;
 padding:8px 0 8px 31px
 
-    /* border: 1px solid red !important; */
   }
 
   ${Label} {
     top: 0;
     left: 0.8rem;
     font-size: 0.8rem;
-    /* background: linear-gradient(180deg, #f2f4ff 50%, white 50%); */
     opacity: 1;
     color: ${(props) => props.theme.color.lightGray};
   }

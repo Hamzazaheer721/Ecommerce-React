@@ -21,10 +21,9 @@ import {
 import { RootState } from '../../../../redux/store'
 import { openModal } from '../../../../redux/features/modalSlice'
 
-const { Option } = Select
-
 const DiscountModal = memo(() => {
   const dispatch = useDispatch()
+  const { Option } = Select
 
   const { modalVisibility } = useSelector((state: RootState) => state.modal)
 
