@@ -30,8 +30,11 @@ const ActivationCode: FC = memo(() => {
     handleChange,
     passwordError,
     confirmationPasswordError,
-    activationCodeError
+    activationCodeError,
+    resetPasswordMessage,
+    resetPasswordSuccess
   } = useForm()
+
   return (
     <Container>
       <HeadingsContainer>
@@ -42,15 +45,21 @@ const ActivationCode: FC = memo(() => {
           to activate your account
         </LoginDescription>
       </HeadingsContainer>
-
-      <ToastComponent toastType="info" description="Enter your New Password" />
+      {resetPasswordMessage && !resetPasswordSuccess ? (
+        <ToastComponent toastType="error" description={resetPasswordMessage} />
+      ) : (
+        <ToastComponent
+          toastType="info"
+          description="Enter your New Password!"
+        />
+      )}
 
       <InputFieldsContainer>
         <InputContainer>
           <Input
             ref={activationRef}
             label="Activation Code"
-            name="activationcode"
+            name="activation_code"
             value={activationRef && activationRef.current?.value}
             prefix={faCode}
             handleChange={handleChange}
@@ -83,7 +92,7 @@ const ActivationCode: FC = memo(() => {
             label="Confirm Password"
             prefix={faKey}
             typePassword
-            name="password"
+            name="password_confirmation"
             value={confirmPasswordRef && confirmPasswordRef.current?.value}
             handleChange={handleChange}
           />

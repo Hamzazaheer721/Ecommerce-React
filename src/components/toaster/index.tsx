@@ -100,7 +100,7 @@ const ToastComponent: FC<IToastProps> = memo(
                         htmlTexts.resetPassword.trim().toLowerCase() ? (
                           <>
                             Enter your
-                            <b> New Password</b>
+                            <b> New Password!</b>
                           </>
                         ) : (
                           { description }

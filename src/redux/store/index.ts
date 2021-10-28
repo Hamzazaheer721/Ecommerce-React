@@ -17,6 +17,7 @@ import { activationSlice } from '../features/activationSlice'
 import { ModalSlice } from '../features/modalSlice'
 import { resendActivationLinkSlice } from '../features/resendActivationLinkSlice'
 import { forgotPasswordSlice } from '../features/forgotPasswordSlice'
+import { resetPasswordSlice } from '../features/resetPasswordSlice'
 
 const reducers = combineReducers({
   user: userSigninSlice.reducer,
@@ -24,7 +25,8 @@ const reducers = combineReducers({
   activation: activationSlice.reducer,
   modal: ModalSlice.reducer,
   resendActivation: resendActivationLinkSlice.reducer,
-  forgotPassword: forgotPasswordSlice.reducer
+  forgotPassword: forgotPasswordSlice.reducer,
+  resetPassword: resetPasswordSlice.reducer
 })
 
 const persistConfig = {

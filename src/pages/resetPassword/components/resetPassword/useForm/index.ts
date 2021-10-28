@@ -1,3 +1,4 @@
+import produce from 'immer'
 import {
   useRef,
   useState,
@@ -9,6 +10,8 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { isObjectEmpty } from '../../../../../general/helper'
+import { openModal } from '../../../../../redux/features/modalSlice'
+import { clearAllResetPasswordSliceStates } from '../../../../../redux/features/resetPasswordSlice'
 import { resetPassword } from '../../../../../redux/features/resetPasswordSlice/apiAction'
 import { RootState } from '../../../../../redux/store'
 import { IResetPasswordInitialState, validateErrors } from './helper'
@@ -16,7 +19,7 @@ import { IResetPasswordErrorTypes, IResetPasswordStateTypes } from './types'
 
 const useForm = () => {
   const history = useHistory()
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const [resetPasswordData, setResetPasswordData] =
     useState<IResetPasswordStateTypes>(IResetPasswordInitialState)
   const [errors, setErrors] = useState<Partial<IResetPasswordErrorTypes>>({})
@@ -24,30 +27,53 @@ const useForm = () => {
     errors
 
   const { username } = useSelector((state: RootState) => state.forgotPassword)
-
-  useEffect(() => {
-    !username && history.goBack()
-  }, [])
+  const { message: resetPasswordMessage, success: resetPasswordSuccess } =
+    useSelector((state: RootState) => state.resetPassword)
 
   const activationRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
   const confirmPasswordRef = useRef<HTMLInputElement>(null)
 
-  const makeApiCall = useCallback(() => {
-    dispatch(resetPassword(resetPasswordData))
-  }, [errors])
+  useEffect(() => {
+    !username && history.goBack()
+  }, [])
 
-  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault()
-    const {name, value } = e.target;
-    setResetPasswordData({...resetPasswordData, [name]: value})
-  }, [resetPasswordData])
+  useEffect(() => {
+    resetPasswordSuccess &&
+      resetPasswordMessage &&
+      dispatch(
+        openModal({
+          modalType: 'success',
+          description: resetPasswordMessage,
+          nextScreen: '/login'
+        })
+      ) &&
+      dispatch(clearAllResetPasswordSliceStates())
+  }, [resetPasswordMessage, resetPasswordSuccess])
+
+  const makeApiCall = useCallback(() => {
+    const updatedData = produce(resetPasswordData, (draft) => {
+      draft.username = username;
+      draft.activation_code = draft.activation_code.trim().toUpperCase();
+      return draft;
+    })
+    dispatch(resetPassword(updatedData))
+  }, [errors, resetPasswordData, username])
+
+  const handleChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      e.preventDefault()
+      const { name, value } = e.target
+      setResetPasswordData({ ...resetPasswordData, [name]: value })
+    },
+    [resetPasswordData]
+  )
 
   const handleSubmit = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
       const checkErrors = validateErrors(resetPasswordData)
-      setErrors(errors)
+      setErrors(checkErrors)
       isObjectEmpty(checkErrors) && makeApiCall()
     },
     [errors, resetPasswordData]
@@ -64,7 +90,9 @@ const useForm = () => {
     handleSubmit,
     passwordError,
     confirmationPasswordError,
-    activationCodeError
+    activationCodeError,
+    resetPasswordMessage,
+    resetPasswordSuccess
   }
 }
 
