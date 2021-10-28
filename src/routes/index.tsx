@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { memo } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Register from '../pages/register/components/register'
@@ -21,6 +22,7 @@ const RouterComponent = memo(() => (
       <Route exact path="/activation-code" component={ActivationCode} />
       <Route exact path="/forgot-password" component={ForgotPassword} />
       <Route exact path="/reset-password" component={ResetPassword} />
+      <Route exact path="/reset-password/:userId" component={ResetPassword} />
     </Switch>
   </Router>
 ))

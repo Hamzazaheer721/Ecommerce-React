@@ -2,13 +2,15 @@ import produce from 'immer'
 import {
   useRef,
   useState,
+  useMemo,
   useCallback,
   useEffect,
   MouseEvent,
   ChangeEvent
 } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
+
 import { isObjectEmpty } from '../../../../../general/helper'
 import { openModal } from '../../../../../redux/features/modalSlice'
 import { clearAllResetPasswordSliceStates } from '../../../../../redux/features/resetPasswordSlice'
@@ -20,6 +22,10 @@ import { IResetPasswordErrorTypes, IResetPasswordStateTypes } from './types'
 const useForm = () => {
   const history = useHistory()
   const dispatch = useDispatch()
+
+  const { userId } = useParams<{ userId: string }>()
+  const hasParams = useMemo<boolean>(() => !!userId, [userId])
+
   const [resetPasswordData, setResetPasswordData] =
     useState<IResetPasswordStateTypes>(IResetPasswordInitialState)
   const [errors, setErrors] = useState<Partial<IResetPasswordErrorTypes>>({})
@@ -80,8 +86,9 @@ const useForm = () => {
   )
 
   return {
-    resetPasswordData,
     errors,
+    hasParams,
+    resetPasswordData,
     setResetPasswordData,
     activationRef,
     passwordRef,
