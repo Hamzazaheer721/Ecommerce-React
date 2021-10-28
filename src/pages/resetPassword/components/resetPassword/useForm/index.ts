@@ -1,13 +1,14 @@
 import {
   useRef,
   useState,
+  useMemo,
   useCallback,
   useEffect,
   MouseEvent,
   ChangeEvent
 } from 'react'
 import { useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { isObjectEmpty } from '../../../../../general/helper'
 import { RootState } from '../../../../../redux/store'
 import { IResetPasswordInitialState, validateErrors } from './helper'
@@ -15,6 +16,10 @@ import { IResetPasswordErrorTypes, IResetPasswordStateTypes } from './types'
 
 const useForm = () => {
   const history = useHistory()
+
+  const { userId } = useParams<{ userId: string }>()
+  const hasParams = useMemo<boolean>(() => !!userId, [userId])
+
   const [resetPasswordData, setResetPasswordData] =
     useState<IResetPasswordStateTypes>(IResetPasswordInitialState)
   const [errors, setErrors] = useState<Partial<IResetPasswordErrorTypes>>({})
@@ -48,8 +53,9 @@ const useForm = () => {
   )
 
   return {
-    resetPasswordData,
     errors,
+    hasParams,
+    resetPasswordData,
     setResetPasswordData,
     activationRef,
     passwordRef,

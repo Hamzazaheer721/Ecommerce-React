@@ -32,6 +32,7 @@ const useForm = () => {
     () => (location.pathname.includes('customer') ? 'visitor' : 'company'),
     [location]
   )
+
   const nameRef = useRef<HTMLInputElement>(null)
   const storeNameRef = useRef<HTMLInputElement>(null)
   const emailRef = useRef<HTMLInputElement>(null)

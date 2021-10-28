@@ -22,7 +22,7 @@ const RouterComponent = memo(() => (
       <Route exact path="/activation-code" component={ActivationCode} />
       <Route exact path="/forgot-password" component={ForgotPassword} />
       <Route exact path="/reset-password" component={ResetPassword} />
-      <Route exact path="/reset-password/:id" component={ResetPassword} />
+      <Route exact path="/reset-password/:userId" component={ResetPassword} />
     </Switch>
   </Router>
 ))
