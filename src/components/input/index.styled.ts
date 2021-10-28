@@ -36,7 +36,7 @@ export const Label = styled.p<{
    `}
 
   @media ${device.mobile} {
-    font-size: 12px;
+    font-size: 14px;
     left: ${({ $phonefield }) => ($phonefield ? '5.6rem' : '2.2rem')};
     ${({ hasValue }) =>
       hasValue &&
@@ -46,7 +46,7 @@ export const Label = styled.p<{
    `}
   }
   @media ${device.tiny} {
-    font-size: 12px;
+    font-size: 14px;
     left: ${({ $phonefield }) => ($phonefield ? '5.3rem' : '2.2rem')};
     ${({ hasValue }) =>
       hasValue &&
@@ -104,7 +104,6 @@ export const InputContainer = styled.div<{
   border-radius: 8px;
   transition: 0.4s;
   padding: 13px;
-  margin-bottom: 8px;
 
   input:-webkit-autofill,
   input:-webkit-autofill:focus,
