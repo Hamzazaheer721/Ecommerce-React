@@ -83,25 +83,6 @@ export const MarginDiv = styled.div`
   height: 15px;
 `
 
-export const CheckboxContainer = styled.div`
-  display: flex;
-  align-items: baseline;
-`
-
-export const CustomCheckBox = styled.input`
-  margin: 0;
-  box-shadow: 0px 3px 6px #00000029;
-  border: 0.5px solid #4e98e2;
-  border-radius: 3px;
-`
-export const CheckboxPlaceholder = styled.p`
-  color: #606060;
-  text-align: left;
-  letter-spacing: 0px;
-  padding-left: 6px;
-  padding-top: 10px;
-  font-size: 12px;
-`
 export const UserButton = styled(FontAwesomeIcon)``
 
 export const LinkText = styled.span`

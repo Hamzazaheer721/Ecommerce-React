@@ -4,3 +4,10 @@ export interface IResetPasswordStateTypes {
   password_confirmation: string
   username: string
 }
+
+export interface IResetPasswordErrorTypes {
+  activationCodeError: string
+  passwordError : string
+  confirmationPasswordError: string
+  usernameError: string
+}
