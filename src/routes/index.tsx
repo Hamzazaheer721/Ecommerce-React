@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Register from '../pages/register/components/register'
 import getStarted from '../pages/getStarted'
@@ -6,9 +7,11 @@ import Login from '../pages/login'
 import ActivationCode from '../pages/activationCode'
 import ForgotPassword from '../pages/forgotPassword'
 import ResetPassword from '../pages/resetPassword'
+import CustomizeModal from '../components/modal'
 
-const RouterComponent = () => (
+const RouterComponent = memo(() => (
   <Router>
+    <CustomizeModal />
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/login" component={Login} />
@@ -20,5 +23,5 @@ const RouterComponent = () => (
       <Route exact path="/reset-password" component={ResetPassword} />
     </Switch>
   </Router>
-)
+))
 export default RouterComponent

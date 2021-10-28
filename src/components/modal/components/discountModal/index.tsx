@@ -1,10 +1,11 @@
+import { memo } from 'react'
 import { Modal } from 'antd'
 import { useSelector, useDispatch } from 'react-redux'
 import { ModalContentContainer, DoneButton } from './index.styled'
 import { RootState } from '../../../../redux/store'
-import { toggleModalStates } from '../../../../redux/features/modalSlice'
+import { openModal } from '../../../../redux/features/modalSlice'
 
-const CustomizeDiscountModal = () => {
+const DiscountModal = memo(() => {
   const dispatch = useDispatch()
 
   const { modalVisibility } = useSelector((state: RootState) => state.modal)
@@ -15,13 +16,13 @@ const CustomizeDiscountModal = () => {
         discount modal
         <DoneButton
           type="button"
-          onClick={() => dispatch(toggleModalStates({ modalType: 'discount' }))}
+          onClick={() => dispatch(openModal({ modalType: 'discount' }))}
         >
           OK
         </DoneButton>
       </ModalContentContainer>
     </Modal>
   )
-}
+})
 
-export default CustomizeDiscountModal
+export default DiscountModal
