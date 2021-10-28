@@ -26,7 +26,7 @@ export const Container = styled.div`
 
   @media ${device.tiny} {
     width: 100%;
-    padding: 0 55px;
+    padding: 0 15px;
   }
 `
 

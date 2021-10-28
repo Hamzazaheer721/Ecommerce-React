@@ -47,7 +47,7 @@ export const Label = styled.p<{
   }
   @media ${device.tiny} {
     font-size: 12px;
-    left: ${({ $phonefield }) => ($phonefield ? '4.5rem' : '2.2rem')};
+    left: ${({ $phonefield }) => ($phonefield ? '5.3rem' : '2.2rem')};
     ${({ hasValue }) =>
       hasValue &&
       `
@@ -186,6 +186,12 @@ export const InputContainer = styled.div<{
 
   @media ${device.tiny} {
     font-size: 1rem;
+    .selected-flag {
+      padding-left: 1.2rem;
+    }
+    .form-control {
+      margin-left: 0;
+    }
   }
 `
 
