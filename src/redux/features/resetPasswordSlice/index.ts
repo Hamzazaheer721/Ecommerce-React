@@ -5,7 +5,13 @@ import { initialState } from './helper'
 export const resetPasswordSlice = createSlice({
   name: 'reset',
   initialState,
-  reducers: {},
+  reducers: {
+    clearAllResetPasswordSliceStates: (state) => {
+      state.loading = false;
+      state.success = false;
+      state.message = '';
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(resetPassword.fulfilled, (state, {payload}) => {
       state.loading = false;
@@ -24,3 +30,5 @@ export const resetPasswordSlice = createSlice({
     })
   }
 })
+
+export const {clearAllResetPasswordSliceStates} = resetPasswordSlice.actions;
