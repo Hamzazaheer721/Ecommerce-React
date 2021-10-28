@@ -16,6 +16,8 @@ export const QRImage = styled.img`
   width: 50px;
   height: 50px;
   margin-top: -50px;
+  border-radius: 50%;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 `
 export const QRImageContainer = styled.div``
 export const Container = styled.div`

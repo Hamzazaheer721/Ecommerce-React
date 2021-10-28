@@ -175,6 +175,8 @@ export const InputContainer = styled.div<{
 
   @media ${device.mobile} {
     font-size: 1rem;
+    padding: 10px;
+
     .selected-flag {
       padding-left: 1.5rem;
     }
@@ -185,6 +187,8 @@ export const InputContainer = styled.div<{
 
   @media ${device.tiny} {
     font-size: 1rem;
+    padding: 10px;
+
     .selected-flag {
       padding-left: 1.2rem;
     }
