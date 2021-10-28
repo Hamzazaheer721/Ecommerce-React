@@ -6,15 +6,17 @@ import {
   MouseEvent,
   ChangeEvent
 } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { isObjectEmpty } from '../../../../../general/helper'
+import { resetPassword } from '../../../../../redux/features/resetPasswordSlice/apiAction'
 import { RootState } from '../../../../../redux/store'
 import { IResetPasswordInitialState, validateErrors } from './helper'
 import { IResetPasswordErrorTypes, IResetPasswordStateTypes } from './types'
 
 const useForm = () => {
   const history = useHistory()
+  const dispatch = useDispatch();
   const [resetPasswordData, setResetPasswordData] =
     useState<IResetPasswordStateTypes>(IResetPasswordInitialState)
   const [errors, setErrors] = useState<Partial<IResetPasswordErrorTypes>>({})
@@ -31,7 +33,9 @@ const useForm = () => {
   const passwordRef = useRef<HTMLInputElement>(null)
   const confirmPasswordRef = useRef<HTMLInputElement>(null)
 
-  const makeApiCall = useCallback(() => {}, [])
+  const makeApiCall = useCallback(() => {
+    dispatch(resetPassword(resetPasswordData))
+  }, [errors])
 
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()

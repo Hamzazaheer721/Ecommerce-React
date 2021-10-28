@@ -36,7 +36,7 @@ const useForm = () => {
           description: forgotPasswordMessage,
           nextScreen: '/reset-password'
         })
-      )
+      ) &&
       dispatch(clearForgotPaswordSliceHelperStates())
   }, [forgotPasswordMessage, forgotPasswordSuccess])
 
