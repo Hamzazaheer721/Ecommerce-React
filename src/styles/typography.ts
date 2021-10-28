@@ -7,7 +7,7 @@ export const LoginHeader = styled.h3`
   font-weight: 600;
   white-space: nowrap;
   margin-bottom: 0;
-  margin-top: 10%;
+  margin-top: 5%;
 `
 
 export const LoginDescription = styled.p`
@@ -18,16 +18,17 @@ export const LoginDescription = styled.p`
 `
 export const LoginFooter = styled.p`
   font-size: 14px;
-  margin-top: 15%;
+  margin-top: 30px;
   white-space: nowrap;
   span {
     font-weight: 700;
+    cursor: pointer;
   }
 `
 
 export const LoginSubFooter = styled.p`
   font-size: 14px;
-  margin-top: 5%;
+  margin-top: 15%;
   text-decoration: underline;
   color: black;
 `
@@ -38,11 +39,11 @@ export const EmptyErrorState = styled.p`
   color: red;
 `
 
-export const MarginDiv = styled.div<{$height?: string}>`
+export const MarginDiv = styled.div<{ $height?: string }>`
   visibility: hidden;
-  height: ${({$height}) => $height || '15px'};
+  height: ${({ $height }) => $height || '15px'};
 `
 
 export const LinkSpan = styled.span`
-  color: ${(props) => props.theme.color.black}
+  color: ${(props) => props.theme.color.black};
 `

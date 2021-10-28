@@ -12,11 +12,11 @@ import {
   LoginFooter,
   EmptyErrorState
 } from '../../../../styles/typography'
+import { LoginViewContainer } from '../../../../styles/global'
 import {
   ButtonContainer,
   CheckboxContainer,
   CheckboxPlaceholder,
-  Container,
   CustomCheckBox,
   HeadingsContainer,
   InputContainer,
@@ -36,7 +36,7 @@ const Login: FC = memo(() => {
   const passwordFieldRef = useRef<HTMLInputElement>(null)
 
   return (
-    <Container>
+    <LoginViewContainer>
       <HeadingsContainer>
         <LoginHeader>Welcome Back</LoginHeader>
         <SubHeading>Please login to your account</SubHeading>
@@ -101,7 +101,7 @@ const Login: FC = memo(() => {
           <LinkText> Register</LinkText>
         </Link>
       </LoginFooter>
-    </Container>
+    </LoginViewContainer>
   )
 })
 

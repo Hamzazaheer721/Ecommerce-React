@@ -36,8 +36,8 @@ export const Label = styled.p<{
    `}
 
   @media ${device.mobile} {
-    font-size: 12px;
-    left: ${({ $phonefield }) => ($phonefield ? '6.4rem' : '2.2rem')};
+    font-size: 14px;
+    left: ${({ $phonefield }) => ($phonefield ? '5.6rem' : '2.2rem')};
     ${({ hasValue }) =>
       hasValue &&
       `
@@ -46,8 +46,8 @@ export const Label = styled.p<{
    `}
   }
   @media ${device.tiny} {
-    font-size: 12px;
-    left: ${({ $phonefield }) => ($phonefield ? '4.5rem' : '2.2rem')};
+    font-size: 14px;
+    left: ${({ $phonefield }) => ($phonefield ? '5.3rem' : '2.2rem')};
     ${({ hasValue }) =>
       hasValue &&
       `
@@ -103,7 +103,7 @@ export const InputContainer = styled.div<{
   background-color: ${(props) => props.theme.color.white};
   border-radius: 8px;
   transition: 0.4s;
-  padding: 14px;
+  padding: 13px;
 
   input:-webkit-autofill,
   input:-webkit-autofill:focus,
@@ -175,10 +175,22 @@ export const InputContainer = styled.div<{
 
   @media ${device.mobile} {
     font-size: 1rem;
+    .selected-flag {
+      padding-left: 1.5rem;
+    }
+    .form-control {
+      margin-left: 0.3rem;
+    }
   }
 
   @media ${device.tiny} {
     font-size: 1rem;
+    .selected-flag {
+      padding-left: 1.2rem;
+    }
+    .form-control {
+      margin-left: 0;
+    }
   }
 `
 
