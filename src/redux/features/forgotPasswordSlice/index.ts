@@ -10,6 +10,11 @@ export const forgotPasswordSlice = createSlice({
       state.loading = false
       state.message = ''
       state.success = false
+    },
+    clearForgotPaswordSliceHelperStates: (state) => {
+      state.loading = false
+      state.message = ''
+      state.success = false
     }
   },
   extraReducers: (builder) => {
@@ -18,6 +23,7 @@ export const forgotPasswordSlice = createSlice({
         state.loading = false
         state.message = payload.message
         state.success = payload.success
+        state.username = payload.username
       })
       .addCase(forgotPassword.pending, (state) => {
         state.loading = true
