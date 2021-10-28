@@ -8,18 +8,23 @@ export const ModalSlice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
-    toggleModalStates: (
+    openModal: (
       state,
       action: PayloadAction<Omit<IModalStateType, 'modalVisibility'>>
     ) => {
       const { payload } = action
       state.modalVisibility = !state.modalVisibility
       state.modalType = payload.modalType
-      if (payload.description) {
-        state.description = payload.description
-      }
+      if (payload.description) state.description = payload.description
+      if (payload.nextScreen) state.nextScreen = payload.nextScreen
+    },
+    closeModal: (state) => {
+      state.description = ''
+      state.modalType = ''
+      state.modalVisibility = false
+      state.nextScreen = ''
     }
   }
 })
 
-export const { toggleModalStates } = ModalSlice.actions
+export const { openModal, closeModal } = ModalSlice.actions

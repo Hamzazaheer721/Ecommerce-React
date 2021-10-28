@@ -9,7 +9,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { isObjectEmpty } from '../../../../../general/helper'
 import { forgotPassword } from '../../../../../redux/features/forgotPasswordSlice/apiAction'
-import { toggleModalStates } from '../../../../../redux/features/modalSlice'
+import { openModal } from '../../../../../redux/features/modalSlice'
 import { RootState } from '../../../../../redux/store'
 import { validateError } from './helper'
 import { IForgotPasswordErrorsType } from './types'
@@ -30,9 +30,10 @@ const useForm = () => {
     forgotPasswordSuccess &&
       forgotPasswordMessage &&
       dispatch(
-        toggleModalStates({
+        openModal({
           modalType: 'success',
-          description: forgotPasswordMessage
+          description: forgotPasswordMessage,
+          nextScreen: '/reset-password'
         })
       )
   }, [forgotPasswordMessage, forgotPasswordSuccess])

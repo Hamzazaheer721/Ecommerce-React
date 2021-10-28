@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
 import ToastComponent from '../../../../components/toaster'
-import { toggleModalStates } from '../../../../redux/features/modalSlice'
+import { openModal } from '../../../../redux/features/modalSlice'
 import { useFormLogin } from './useForm'
 import {
   LoginSubFooter,
@@ -43,7 +43,7 @@ const Login: FC = memo(() => {
     <Container>
       <HeadingsContainer>
         <LoginHeader
-          onClick={() => dispatch(toggleModalStates({ modalType: 'discount' }))}
+          onClick={() => dispatch(openModal({ modalType: 'discount' }))}
         >
           Welcome Back
         </LoginHeader>

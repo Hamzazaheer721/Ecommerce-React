@@ -1,8 +1,9 @@
-/* eslint-disable react/jsx-curly-newline */
-/* eslint-disable implicit-arrow-linebreak */
+import { memo } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { faMoneyBill } from '@fortawesome/pro-light-svg-icons'
 import { Select } from 'antd'
+
+import useForm from './useForm'
 
 import {
   ModalContentContainer,
@@ -18,15 +19,11 @@ import {
   Suffix
 } from './index.styled'
 import { RootState } from '../../../../redux/store'
-import { toggleModalStates } from '../../../../redux/features/modalSlice'
-import useForm from './useForm'
+import { openModal } from '../../../../redux/features/modalSlice'
 
 const { Option } = Select
 
-// function handleChange(value: any) {
-//   console.log(`selected ${value}`)
-// }
-const CustomizeDiscountModal = () => {
+const DiscountModal = memo(() => {
   const dispatch = useDispatch()
 
   const { modalVisibility } = useSelector((state: RootState) => state.modal)
@@ -62,9 +59,7 @@ const CustomizeDiscountModal = () => {
         <ButtonContainer>
           <DoneButton
             type="button"
-            onClick={() =>
-              dispatch(toggleModalStates({ modalType: 'discount' }))
-            }
+            onClick={() => dispatch(openModal({ modalType: 'discount' }))}
           >
             OK
           </DoneButton>
@@ -72,6 +67,6 @@ const CustomizeDiscountModal = () => {
       </ModalContentContainer>
     </CustomizeModal>
   )
-}
+})
 
-export default CustomizeDiscountModal
+export default DiscountModal

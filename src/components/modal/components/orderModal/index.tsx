@@ -26,10 +26,10 @@ import {
   CustomizeModal,
   DoneButton
 } from './index.styled'
-import { toggleModalStates } from '../../../../redux/features/modalSlice'
 
 import { RootState } from '../../../../redux/store'
 import { IOrderModalStatusType } from './types'
+import { openModal } from '../../../../redux/features/modalSlice'
 
 const OrderModal = memo(() => {
   const dispatch = useDispatch()
@@ -109,7 +109,7 @@ const OrderModal = memo(() => {
         </RefundContainer>
         <DoneButton
           type="button"
-          onClick={() => dispatch(toggleModalStates({ modalType: 'order' }))}
+          onClick={() => dispatch(openModal({ modalType: 'order' }))}
         >
           OK
         </DoneButton>
