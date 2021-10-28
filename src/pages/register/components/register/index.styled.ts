@@ -1,3 +1,5 @@
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable no-confusing-arrow */
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { device } from '../../../../styles/devices'
@@ -14,14 +16,17 @@ export const Container = styled.div`
 
   @media ${device.tablet} {
     width: 50%;
+    padding: 0 55px;
   }
 
   @media ${device.mobile} {
     width: 100%;
+    padding: 0 55px;
   }
 
   @media ${device.tiny} {
     width: 100%;
+    padding: 0 55px;
   }
 `
 
@@ -31,13 +36,15 @@ export const InputContainer = styled.div`
   border: none;
   outline: none;
 `
-export const ButtonContainer = styled.div<{isPrimary : boolean, theme : any}>`
-
+export const ButtonContainer = styled.div<{ isPrimary: boolean; theme: any }>`
   height: 40px;
   width: 100%;
   .ant-btn {
     color: ${(props) => props.theme.color.white};
-    background: ${({ isPrimary, theme }) => (isPrimary ? theme.gradientButton.primary : theme.gradientButton.secondary)};
+    background: ${({ isPrimary, theme }) =>
+      isPrimary
+        ? theme.gradientButton.primary
+        : theme.gradientButton.secondary};
     border: none;
     border-radius: 20px;
     width: 100%;
@@ -47,7 +54,10 @@ export const ButtonContainer = styled.div<{isPrimary : boolean, theme : any}>`
     &:focus,
     &:active {
       color: ${(props) => props.theme.color.white};
-      background: ${({ isPrimary, theme }) => (isPrimary ? theme.gradientButton.primary : theme.gradientButton.secondary)};
+      background: ${({ isPrimary, theme }) =>
+        isPrimary
+          ? theme.gradientButton.primary
+          : theme.gradientButton.secondary};
     }
   }
 `
@@ -100,6 +110,7 @@ export const CheckboxPlaceholder = styled.p`
   font-size: 12px;
   span {
     color: ${(props) => props.theme.color.primary};
+    cursor: pointer;
   }
 `
 export const UserButton = styled(FontAwesomeIcon)``
