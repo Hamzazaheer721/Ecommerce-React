@@ -23,6 +23,7 @@ import {
 
 const ActivationCode: FC = memo(() => {
   const {
+    hasParams,
     activationRef,
     passwordRef,
     confirmPasswordRef,
@@ -55,16 +56,18 @@ const ActivationCode: FC = memo(() => {
       )}
 
       <InputFieldsContainer>
-        <InputContainer>
-          <Input
-            ref={activationRef}
-            label="Activation Code"
-            name="activation_code"
-            value={activationRef && activationRef.current?.value}
-            prefix={faCode}
-            handleChange={handleChange}
-          />
-        </InputContainer>
+        {!hasParams && (
+          <InputContainer>
+            <Input
+              ref={activationRef}
+              label="Activation Code"
+              name="activation_code"
+              value={activationRef && activationRef.current?.value}
+              prefix={faCode}
+              handleChange={handleChange}
+            />
+          </InputContainer>
+        )}
         {activationCodeError ? (
           <EmptyErrorState>{activationCodeError}</EmptyErrorState>
         ) : (

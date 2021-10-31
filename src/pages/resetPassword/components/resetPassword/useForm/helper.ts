@@ -9,7 +9,8 @@ export const IResetPasswordInitialState: IResetPasswordStateTypes = {
   username: '',
   activation_code: '',
   password: '',
-  password_confirmation: ''
+  password_confirmation: '',
+  userId: ''
 }
 
 export const validateErrors = (
@@ -18,9 +19,9 @@ export const validateErrors = (
   const errors: Partial<IResetPasswordErrorTypes> = {}
   const { activation_code, password, password_confirmation } = resetPasswordData
 
-  if (isEmpty(activation_code.trim().toUpperCase())) {
+  if (activation_code && isEmpty(activation_code.trim().toUpperCase())) {
     errors.activationCodeError = 'Please enter a activation code'
-  } else if (!validateActivationCode(activation_code.trim().toUpperCase())) {
+  } else if (activation_code && !validateActivationCode(activation_code.trim().toUpperCase())) {
     errors.activationCodeError = 'Please enter a valid activation code'
   }
 

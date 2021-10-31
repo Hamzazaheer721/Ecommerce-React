@@ -14,10 +14,14 @@ import { useHistory, useParams } from 'react-router-dom'
 import { isObjectEmpty } from '../../../../../general/helper'
 import { openModal } from '../../../../../redux/features/modalSlice'
 import { clearAllResetPasswordSliceStates } from '../../../../../redux/features/resetPasswordSlice'
-import { resetPassword } from '../../../../../redux/features/resetPasswordSlice/apiAction'
+import { resetPassword, resetPasswordWithLink } from '../../../../../redux/features/resetPasswordSlice/apiAction'
 import { RootState } from '../../../../../redux/store'
 import { IResetPasswordInitialState, validateErrors } from './helper'
-import { IResetPasswordErrorTypes, IResetPasswordStateTypes } from './types'
+import {
+  IResetPasswordErrorTypes,
+  IResetPasswordLinkStateTypes,
+  IResetPasswordStateTypes
+} from './types'
 
 const useForm = () => {
   const history = useHistory()
@@ -58,13 +62,30 @@ const useForm = () => {
   }, [resetPasswordMessage, resetPasswordSuccess])
 
   const makeApiCall = useCallback(() => {
-    const updatedData = produce(resetPasswordData, (draft) => {
-      draft.username = username;
-      draft.activation_code = draft.activation_code.trim().toUpperCase();
-      return draft;
-    })
-    dispatch(resetPassword(updatedData))
-  }, [errors, resetPasswordData, username])
+    if (!hasParams) {
+      const updatedData: Omit<IResetPasswordStateTypes, 'userId'> = produce(
+        resetPasswordData,
+        (draft) => {
+          draft.username = username
+          draft.activation_code = draft.activation_code?.trim().toUpperCase()
+          delete draft.userId
+          return draft
+        }
+      )
+      dispatch(resetPassword(updatedData))
+    } else {
+      const updatedData: IResetPasswordLinkStateTypes = produce(
+        resetPasswordData,
+        (draft) => {
+          draft.userId = userId
+          delete draft.activation_code
+          delete draft.username
+          return draft
+        }
+      )
+      dispatch(resetPasswordWithLink(updatedData))
+    }
+  }, [resetPasswordData, hasParams])
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {

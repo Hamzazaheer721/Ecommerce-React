@@ -10,10 +10,11 @@ export interface IResetPasswordSliceStateType {
 }
 
 export interface IResetPasswordPayloadArgs {
-  activation_code: string
+  activation_code?: string
   password: string
   password_confirmation: string
-  username: string
+  username?: string
+  userId?: string
 }
 
 export type IResetPasswordPayloadRtn = IResetPasswordErrorRtn
