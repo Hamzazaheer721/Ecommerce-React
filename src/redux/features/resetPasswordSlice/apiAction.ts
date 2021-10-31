@@ -11,10 +11,7 @@ import {
 
 export const resetPassword = createAsyncThunk<
   IResetPasswordPayloadRtn,
-  Pick<
-    IResetPasswordPayloadArgs,
-    'password' | 'password_confirmation' | 'activation_code' | 'username'
-  >,
+  Omit<IResetPasswordPayloadArgs, 'userId'>,
   { rejectValue: IResetPasswordErrorRtn }
 >('reset/resetPassword', async (resetPasswordObj, thunkAPI) => {
   try {

@@ -28,7 +28,6 @@ export const resetPasswordSlice = createSlice({
       state.message = payload!.message;
       state.success = payload!.success;
     })
-
     .addCase(resetPasswordWithLink.fulfilled, (state, {payload}) => {
       state.loading = false;
       state.success = payload.success;
