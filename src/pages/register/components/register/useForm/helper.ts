@@ -5,8 +5,8 @@ import {
   validatePhoneNumber,
   validatePassword,
   isEmail
-} from '../../../../general/validations'
-import { IRegisterErrors, IRegisterType } from '../../../../types/signup'
+} from '../../../../../general/validations'
+import { IRegisterErrors, IRegisterType } from '../../../../../types/signup'
 
 export const initialState: IRegisterType = {
   name: '',

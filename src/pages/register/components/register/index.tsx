@@ -7,7 +7,7 @@ import {
   faCity
 } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
-import useForm from '../useForm'
+import useForm from './useForm'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
 import {
@@ -56,9 +56,6 @@ const Register: FC = memo(() => {
           Its time to enjoy ultimate shopping experience through WhatsApp
         </SubHeading>
       </HeadingsContainer>
-      {success && message && (
-        <ToastComponent toastType="success" description={message} />
-      )}
       {!success && message && (
         <ToastComponent toastType="error" description={message} />
       )}
