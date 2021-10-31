@@ -56,9 +56,6 @@ const Register: FC = memo(() => {
           Its time to enjoy ultimate shopping experience through WhatsApp
         </SubHeading>
       </HeadingsContainer>
-      {success && message && (
-        <ToastComponent toastType="success" description={message} />
-      )}
       {!success && message && (
         <ToastComponent toastType="error" description={message} />
       )}

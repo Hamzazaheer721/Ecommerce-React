@@ -8,7 +8,7 @@ import {
   MouseEvent,
   useRef
 } from 'react'
-import { useLocation, useHistory } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import produce from 'immer'
 import { userSignup } from '../../../../../redux/features/userSignupSlice/apiActions'
@@ -16,16 +16,17 @@ import { RootState } from '../../../../../redux/store'
 import { initialState, errorChecks } from './helper'
 import { IRegisterErrorType, IRegisterType } from '../../../../../types/signup'
 import { isObjectEmpty } from '../../../../../general/helper'
-import { clearAllStates } from '../../../../../redux/features/userSignupSlice'
+import { clearMessageStates } from '../../../../../redux/features/userSignupSlice'
+import { openModal } from '../../../../../redux/features/modalSlice'
 
 const useForm = () => {
-  const history = useHistory()
-
   const [registerData, setRegisterData] = useState<IRegisterType>(initialState)
   const [errors, setErrors] = useState<IRegisterErrorType>({})
 
   const dispatch = useDispatch()
   const registerState = useSelector((state: RootState) => state.registerUser)
+  const { message: registerStateMessage, success: registerStateSuccess } =
+    registerState
 
   const location = useLocation()
   const isCustomer = useMemo<'visitor' | 'company'>(
@@ -38,31 +39,21 @@ const useForm = () => {
   const emailRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
 
-  const redirectTimeInterval = useRef<NodeJS.Timer>()
-
   useEffect(() => {
-    dispatch(clearAllStates())
+    dispatch(clearMessageStates())
   }, [])
 
-  useEffect(
-    () => () => {
-      redirectTimeInterval.current && clearTimeout(redirectTimeInterval.current)
-    },
-    []
-  )
-
-  const giveDelay = useCallback(() => {
-    redirectTimeInterval.current = setTimeout(() => {
-      history.push('/activation-code')
-      redirectTimeInterval.current = undefined
-    }, 5000)
-  }, [history, redirectTimeInterval])
-
   useEffect(() => {
-    if (registerState) {
-      const { success, message } = registerState
-      success && message && giveDelay()
-    }
+    registerStateMessage &&
+      registerStateSuccess &&
+      dispatch(
+        openModal({
+          modalType: 'success',
+          description: registerStateMessage,
+          nextScreen: '/activation-code'
+        })
+      ) &&
+      dispatch(clearMessageStates())
   }, [registerState])
 
   const handleChange = useCallback(
