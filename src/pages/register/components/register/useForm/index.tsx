@@ -11,12 +11,12 @@ import {
 import { useLocation, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import produce from 'immer'
-import { userSignup } from '../../../../redux/features/userSignupSlice/apiActions'
-import { RootState } from '../../../../redux/store'
+import { userSignup } from '../../../../../redux/features/userSignupSlice/apiActions'
+import { RootState } from '../../../../../redux/store'
 import { initialState, errorChecks } from './helper'
-import { IRegisterErrorType, IRegisterType } from '../../../../types/signup'
-import { isObjectEmpty } from '../../../../general/helper'
-import { clearAllStates } from '../../../../redux/features/userSignupSlice'
+import { IRegisterErrorType, IRegisterType } from '../../../../../types/signup'
+import { isObjectEmpty } from '../../../../../general/helper'
+import { clearAllStates } from '../../../../../redux/features/userSignupSlice'
 
 const useForm = () => {
   const history = useHistory()

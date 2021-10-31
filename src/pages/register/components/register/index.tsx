@@ -7,7 +7,7 @@ import {
   faCity
 } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
-import useForm from '../useForm'
+import useForm from './useForm'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
 import {
