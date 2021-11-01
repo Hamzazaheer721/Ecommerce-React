@@ -12,7 +12,6 @@ import { addUserAction } from '../../../../../redux/features/userSigninSlice'
 import { IUserLoginRtnResponse } from '../../../../../types/user'
 import { SERVER_IP } from '../../../../../config/constants'
 import { Instance } from '../../../../../config/axios'
-// import { loginUser } from '../../../../../redux/features/userSigninSlice';
 import { validateInputForm } from './helper'
 import {
   IInputformType,
@@ -62,7 +61,6 @@ export const useFormLogin = () => {
     const updatedData: Omit<IInputformType, 'remember'> = produce(
       inputData,
       (draft) => {
-        // eslint-disable-next-line no-param-reassign
         delete draft.remember
         return draft
       }
