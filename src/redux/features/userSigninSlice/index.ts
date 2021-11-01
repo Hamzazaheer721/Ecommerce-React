@@ -1,10 +1,12 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice} from '@reduxjs/toolkit';
+import { addUser } from './caseReducers';
 import { IUserLoginRtnData } from '../../../types/user';
 
 export interface ILoginUserTypes {
   user?: Partial<IUserLoginRtnData>
 
 }
+
 export const initialState: ILoginUserTypes = {
   user: {}
 }
@@ -13,10 +15,8 @@ export const userSigninSlice = createSlice({
   name: 'user-signin',
   initialState,
   reducers: {
-    addUserAction: (state = initialState, action: PayloadAction<IUserLoginRtnData>) => {
-      const { payload } = action;
-      state.user = payload;
-    }
+    addUser
   }
 })
-export const { addUserAction } = userSigninSlice.actions;
+
+export const { addUser: addUserAction } = userSigninSlice.actions;
