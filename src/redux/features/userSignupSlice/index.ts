@@ -20,12 +20,10 @@ export const userSignupSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(userSignup.fulfilled, (state, { payload }) => {
-      if (payload) {
         state.loading = false
         state.message = payload.message
         state.success = payload.success
         state.email = payload.email
-      }
     })
     .addCase(userSignup.pending, (state) => {
       state.loading = true
@@ -33,7 +31,7 @@ export const userSignupSlice = createSlice({
     .addCase(userSignup.rejected, (state, { payload }) => {
       if (payload) {
         state.loading = false
-        state.message = payload?.message
+        state.message = payload.message
         state.success = payload.success;
       }
     })
