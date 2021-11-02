@@ -109,8 +109,14 @@ export const InputContainer = styled.div<{
    /* Used for positioning flag when it is used outside */
   ${({store}) => store && `
     .react-tel-input{
-     top: 3px;
-    }
+      top: 3px;
+      @media ${device.tiny}{
+        top: 0px
+      }
+      @media ${device.mobile}{
+        top: 0px
+      }
+    }  
   `}
 
   ${({ hasValue }) => hasValue &&
