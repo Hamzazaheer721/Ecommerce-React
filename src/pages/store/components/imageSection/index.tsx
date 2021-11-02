@@ -1,5 +1,8 @@
 import { FC, memo } from 'react'
+import { ImageSectionContainer } from './index.styled'
 
-const ImageSection: FC = memo(() => <h1>image Section</h1>)
+const ImageSection: FC = memo(() => (
+  <ImageSectionContainer>image Section</ImageSectionContainer>
+))
 
 export default ImageSection
