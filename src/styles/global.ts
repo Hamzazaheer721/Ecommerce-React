@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     min-height: 100%;
     font-family: "Roboto", sans-serif;
     background-color: #F2F4FF;
+    font-size: 16px;
   }
 `
 export const LoginViewContainer = styled.div`

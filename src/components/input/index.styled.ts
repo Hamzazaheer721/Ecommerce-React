@@ -1,7 +1,3 @@
-/* eslint-disable indent */
-/* eslint-disable no-confusing-arrow */
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable operator-linebreak */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
 import PhoneInput from 'react-phone-input-2'
@@ -24,8 +20,7 @@ export const Label = styled.p<{
   display: block;
   transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
   padding: 0 7px;
-  ${({ hasValue }) =>
-    hasValue &&
+  ${({ hasValue }) => hasValue &&
     `
       top: 0;
       left: 0.8rem;
@@ -38,18 +33,16 @@ export const Label = styled.p<{
   @media ${device.mobile} {
     font-size: 14px;
     left: ${({ $phonefield }) => ($phonefield ? '5.6rem' : '2.2rem')};
-    ${({ hasValue }) =>
-      hasValue &&
+    ${({ hasValue }) => hasValue &&
       `
       left: 0.5rem;
       font-size: 0.8rem;
    `}
   }
   @media ${device.tiny} {
-    font-size: 14px;
+    font-size: 11.5px;
     left: ${({ $phonefield }) => ($phonefield ? '5.3rem' : '2.2rem')};
-    ${({ hasValue }) =>
-      hasValue &&
+    ${({ hasValue }) => hasValue &&
       `
       left: 0.5rem;
       font-size: 0.8rem;
@@ -94,7 +87,8 @@ export const InputField = styled.input`
 `
 
 export const InputContainer = styled.div<{
-  hasValue: boolean
+  hasValue: boolean,
+  store?: boolean
 }>`
   height: 100%;
   width: 100%;
@@ -112,12 +106,25 @@ export const InputContainer = styled.div<{
     /* -webkit-text-fill-color: #0b233b; */
   }
 
-  ${({ hasValue }) =>
-    hasValue &&
+   /* Used for positioning flag when it is used outside */
+  ${({store}) => store && `
+    .react-tel-input{
+      top: 3px;
+      @media ${device.tiny}{
+        top: 0px
+      }
+      @media ${device.mobile}{
+        top: 0px
+      }
+    }  
+  `}
+
+  ${({ hasValue }) => hasValue &&
     `
     border: 1px solid black;
   `}
 
+  
   .react-tel-form, .form-control {
     border: none;
     height: 100%;
@@ -202,8 +209,7 @@ export const Prefix = styled(FontAwesomeIcon)<{
   top: 50%;
   transform: translateY(-50%);
   font-size: 1.4rem;
-  ${({ $phonefield }) =>
-    $phonefield &&
+  ${({ $phonefield }) => $phonefield &&
     `
     z-index: 2;
   `}

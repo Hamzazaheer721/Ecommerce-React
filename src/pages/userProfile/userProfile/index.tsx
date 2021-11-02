@@ -55,7 +55,7 @@ const UserProfile = memo(() => (
 
       <InputFieldsContainer>
         <InputContainer>
-          <Input label="WhatsApp Number" phonefield prefix={faWhatsapp} />
+          <Input label="WhatsApp Number" store phonefield prefix={faWhatsapp} />
         </InputContainer>
         <InputContainer>
           <Input label="Password" prefix={faKey} typePassword />
