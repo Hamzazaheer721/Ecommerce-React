@@ -44,6 +44,7 @@ interface InputProps {
     event: ChangeEvent<HTMLInputElement>,
     formattedValue: string
   ) => void
+  store?: boolean
 }
 
 const Input = memo(
@@ -60,6 +61,7 @@ const Input = memo(
         phonefield,
         readOnly,
         handlePhoneChange,
+        store,
         ...props
       },
       inputRef
@@ -86,7 +88,7 @@ const Input = memo(
       }, [showPassword])
 
       return (
-        <InputContainer hasValue={!!value}>
+        <InputContainer hasValue={!!value} store={!!store}>
           {!phonefield && (
             <InputField
               readOnly={readOnly}
