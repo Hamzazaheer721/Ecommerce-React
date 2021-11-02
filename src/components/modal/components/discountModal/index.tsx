@@ -44,13 +44,12 @@ const DiscountModal = memo(() => {
             <Option value="Amount">Amount</Option>
             <Option value="Percentage">Percentage</Option>
           </SelectField>
-
           <Prefix icon={faMoneyBill} />
           <Label>Type</Label>
         </InputContainer>
+
         <InputContainer>
           <InputField />
-
           <Prefix icon={faMoneyBill} />
           <Label>Value</Label>
           <Suffix>{discountType === 'Percentage' ? 'PER' : 'PKR'}</Suffix>

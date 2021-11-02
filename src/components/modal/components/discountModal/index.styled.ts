@@ -60,6 +60,7 @@ export const InputContainer = styled.div`
     font-size: 1rem;
   }
 `
+
 export const Prefix = styled(FontAwesomeIcon)`
   position: absolute;
   left: 0.5rem;
