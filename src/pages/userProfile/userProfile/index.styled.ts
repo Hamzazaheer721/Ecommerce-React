@@ -64,10 +64,21 @@ export const LinkText = styled.h4`
   margin-top: 10px;
   cursor: pointer;
 `
-export const KeyIcon = styled(FontAwesomeIcon)`
+
+export const DeleteLinkText = styled.h4`
+  color: ${(props) => props.theme.color.red};
+  margin-top: 10px;
+  cursor: pointer;
+`
+export const LinkIcon = styled(FontAwesomeIcon)`
   color: ${(props) => props.theme.color.primary};
   margin-right: 5px;
   cursor: pointer;
+`
+export const SimpoleIcon = styled(FontAwesomeIcon)`
+  margin-right: 5px;
+  cursor: pointer;
+  color: black;
 `
 
 export const AddressPaymentContainer = styled.div`

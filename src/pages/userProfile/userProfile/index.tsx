@@ -6,7 +6,8 @@ import {
   faKeySkeleton,
   faMapMarkerAlt,
   faMapMarkedAlt,
-  faMoneyCheckEdit
+  faMoneyCheckEdit,
+  faUserMinus
 } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
@@ -18,7 +19,7 @@ import {
   InputFieldsContainer,
   Title,
   LinkText,
-  KeyIcon,
+  LinkIcon,
   AddressPaymentContainer,
   MapIcon,
   AddressPaymentTitle,
@@ -29,7 +30,9 @@ import {
   MapImage,
   SelectiveCardContainer,
   CardImage,
-  CardTitle
+  CardTitle,
+  SimpoleIcon,
+  DeleteLinkText
 } from './index.styled'
 import ProfileImage from '../profileImage'
 import Input from '../../../components/input'
@@ -59,7 +62,7 @@ const UserProfile = memo(() => (
         </InputContainer>
       </InputFieldsContainer>
       <LinkText>
-        <KeyIcon icon={faKeySkeleton} />
+        <LinkIcon icon={faKeySkeleton} />
         Change Password
       </LinkText>
       <AddressPaymentContainer>
@@ -72,7 +75,7 @@ const UserProfile = memo(() => (
         </StreetAddress>
         <MapImage src="/images/map.png" />
         <LinkText>
-          <KeyIcon icon={faMapMarkedAlt} />
+          <LinkIcon icon={faMapMarkedAlt} />
           Manage Address
         </LinkText>
       </AddressPaymentContainer>
@@ -91,10 +94,18 @@ const UserProfile = memo(() => (
           </CardTitle>
         </SelectiveCardContainer>
         <LinkText>
-          <KeyIcon icon={faMoneyCheckEdit} />
+          <LinkIcon icon={faMoneyCheckEdit} />
           Manage Payment Method
         </LinkText>
       </AddressPaymentContainer>
+      <LinkText>
+        <SimpoleIcon icon={faUserMinus} />
+        Deactivate Account
+      </LinkText>
+      <DeleteLinkText>
+        <SimpoleIcon icon={faUser} />
+        Deactivate Account
+      </DeleteLinkText>
     </RightContainer>
   </Container>
 ))
