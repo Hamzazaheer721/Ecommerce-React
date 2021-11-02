@@ -1,5 +1,10 @@
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
-import { faUser } from '@fortawesome/pro-light-svg-icons'
+import {
+  faBuilding,
+  faBurgerSoda,
+  faCreditCardFront,
+  faUser
+} from '@fortawesome/pro-light-svg-icons'
 import { FC, memo } from 'react'
 import Input from '../../../../components/input'
 import {
@@ -30,16 +35,23 @@ const FieldsSection: FC = memo(() => {
         </InputContainer>
 
         <InputContainer>
-          <Input prefix={faUser} label="Bussiness Profile" />
+          <Input prefix={faCreditCardFront} label="Bussiness URL" />
         </InputContainer>
       </InputsContainer>
 
       <InputsContainer>
         <InputContainer>
-          <Input />
+          <Input prefix={faBurgerSoda} label="Industry" />
         </InputContainer>
+
         <InputContainer>
-          <Input />
+          <Input prefix={faBuilding} label="Industry Type" />
+        </InputContainer>
+      </InputsContainer>
+
+      <InputsContainer>
+        <InputContainer>
+          <Input prefix={faBuilding} label="About Bussiness" />
         </InputContainer>
       </InputsContainer>
     </FieldsSectionContainer>

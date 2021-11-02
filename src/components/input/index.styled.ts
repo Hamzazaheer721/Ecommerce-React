@@ -106,6 +106,13 @@ export const InputContainer = styled.div<{
     /* -webkit-text-fill-color: #0b233b; */
   }
 
+   /* Used for positioning flag when it is used outside */
+  ${({store}) => store && `
+    .react-tel-input{
+     top: 3px;
+    }
+  `}
+
   ${({ hasValue }) => hasValue &&
     `
     border: 1px solid black;
@@ -149,15 +156,6 @@ export const InputContainer = styled.div<{
   .country-list::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
-
-  /* Used for positioning flag when it is used outside */
-  ${({store}) => store && `
-    .react-tel-input{
-      transform: translate(-50%, -50%);
-      top: 50%;
-      left: 50%;
-    }
-  `}
 
   &:focus,
   &:focus-within,

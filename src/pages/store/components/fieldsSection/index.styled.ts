@@ -24,9 +24,8 @@ export const SingleInputContainer = styled.div`
 export const InputContainer = styled.div<{single? : boolean}>`
   border: none;
   outline: none;
-  flex: 1 1 40%;
+  flex: 1 1 45%;
   @media ${device.mobile}{
     flex: 1 1 100%;
   }
-  
 `
