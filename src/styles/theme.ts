@@ -50,5 +50,8 @@ export const defaultTheme: any = {
     green: '#25D366',
     orange: '#FF3E2C',
     yellow: '#FFB818 '
+  },
+  storeColor: {
+    lightBlue: '#DFF5FF'
   }
 }
