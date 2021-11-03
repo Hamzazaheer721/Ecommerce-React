@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { memo } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Register from '../pages/register/components/register'
