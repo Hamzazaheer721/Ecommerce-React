@@ -1,16 +1,17 @@
+/* eslint-disable react/no-unused-prop-types */
 import { memo } from 'react'
 import {
-  GoogleMap,
+  Marker,
   withScriptjs,
   withGoogleMap,
-  Marker
+  GoogleMap
 } from 'react-google-maps'
 import { IPositionStateType } from '../types'
 
 type IAsyncMapProps = {
   zoom: number
   mapPosition: IPositionStateType
-  draggable: boolean
+  draggable?: boolean
   markerPosition: IPositionStateType
 }
 
@@ -20,7 +21,10 @@ const AsyncMap = withScriptjs(
       <GoogleMap defaultZoom={zoom} defaultCenter={mapPosition}>
         <Marker
           draggable={draggable}
-          position={{ lat: markerPosition.lat, lng: markerPosition.lng }}
+          position={{
+            lat: markerPosition.lat,
+            lng: markerPosition.lng
+          }}
         />
       </GoogleMap>
     ))
