@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { faImages } from '@fortawesome/pro-light-svg-icons'
 import { Upload } from 'antd'
+import { UploadChangeParam, UploadFile } from 'antd/lib/upload/interface'
 
 import {
   Container,
@@ -11,7 +12,7 @@ import {
 } from './index.styled'
 
 const CoverImages = () => {
-  const [fileList] = useState([
+  const [fileListState] = useState([
     {
       uid: '-1',
       name: 'image.png',
@@ -19,6 +20,12 @@ const CoverImages = () => {
       url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
     }
   ])
+
+  const onChange = (info: UploadChangeParam<UploadFile<any>>) => {
+    const { fileList } = info
+    console.info(fileList)
+    // setFileListState(fileList)
+  }
 
   const onPreview = async (file: any) => {
     let src = file.url
@@ -48,11 +55,11 @@ const CoverImages = () => {
         <Upload
           action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
           listType="picture-card"
-          // fileList={fileList}
-          // onChange={onChange}
+          // fileList={fileListState}
+          onChange={onChange}
           onPreview={onPreview}
         >
-          {fileList.length < 5 && '+ Upload'}
+          {fileListState.length < 5 && '+ Upload'}
         </Upload>
       </ImagesContainer>
     </Container>
