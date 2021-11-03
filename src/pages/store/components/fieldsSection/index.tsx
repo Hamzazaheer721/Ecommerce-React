@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/pro-light-svg-icons'
 import { FC, memo } from 'react'
 import Input from '../../../../components/input'
+import Select from '../../../../components/select'
 import {
   FieldsSectionContainer,
   InputContainer,
@@ -41,11 +42,11 @@ const FieldsSection: FC = memo(() => {
 
       <InputsContainer>
         <InputContainer>
-          <Input prefix={faBurgerSoda} label="Industry" />
+          <Select prefix={faBurgerSoda} label="Industry" />
         </InputContainer>
 
         <InputContainer>
-          <Input prefix={faBuilding} label="Industry Type" />
+          <Select prefix={faBuilding} label="Industry Type" />
         </InputContainer>
       </InputsContainer>
 

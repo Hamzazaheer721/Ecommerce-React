@@ -1,6 +1,6 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FC, memo } from 'react'
-import { InputContainer, Label, Prefix, SelectField } from './index.styled'
+import { SelectContainer, Label, Prefix, SelectField } from './index.styled'
 
 interface ISelectProps {
   handleChange?: (
@@ -10,13 +10,19 @@ interface ISelectProps {
     option: any
   ) => void
   prefix?: IconProp
+  label?: string
 }
-const Select: FC<ISelectProps> = memo(({ prefix, handleChange }) => (
-  <InputContainer>
-    <SelectField defaultValue="Amount" onChange={handleChange} />
-    {prefix && <Prefix icon={prefix} />}
-    <Label>Type</Label>
-  </InputContainer>
-))
+const Select: FC<ISelectProps> = memo(({ prefix, handleChange, label }) => {
+  const { Option } = SelectField
+  return (
+    <SelectContainer>
+      <SelectField defaultValue="Amount" onChange={handleChange}>
+        <Option value=""> Amount</Option>
+      </SelectField>
+      {prefix && <Prefix icon={prefix} />}
+      <Label>{label}</Label>
+    </SelectContainer>
+  )
+})
 
 export default Select

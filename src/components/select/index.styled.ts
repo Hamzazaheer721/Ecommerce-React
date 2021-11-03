@@ -24,7 +24,7 @@ export const Label = styled.p`
   }
 `
 
-export const InputContainer = styled.div`
+export const SelectContainer = styled.div`
   height: 100%;
   width: 100%;
   position: relative;
@@ -42,6 +42,7 @@ export const InputContainer = styled.div`
     background: white;
     opacity: 1;
     color: ${(props) => props.theme.color.lightGray};
+    background: linear-gradient(180deg, #F2F4FF 50%, white 50%);
   }
 
   @media ${device.mobile} {
@@ -55,7 +56,7 @@ export const InputContainer = styled.div`
 
 export const Prefix = styled(FontAwesomeIcon)`
   position: absolute;
-  left: 0.5rem;
+  left: 0.9rem;
   top: 50%;
   transform: translateY(-50%);
   font-size: 1rem;
@@ -68,6 +69,7 @@ export const Prefix = styled(FontAwesomeIcon)`
     font-size: 1rem;
   }
 `
+
 export const SelectField = styled(Select)`
   outline: none;
   border: none;
@@ -82,9 +84,13 @@ export const SelectField = styled(Select)`
   }
 
   .ant-select-selector {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border: none !important;
     box-shadow: none !important;
-
+    padding-left: 1.9rem !important;
+    
     :focus {
       outline: none;
     }
@@ -107,6 +113,9 @@ export const SelectField = styled(Select)`
       left: 0.5rem;
       font-size: 0.8rem;
     }
+    .ant-select-selector{
+      padding-left: 0.1rem !important;
+    }
   }
 
   @media ${device.tiny} {
@@ -114,6 +123,9 @@ export const SelectField = styled(Select)`
     :focus ~ ${Label} {
       left: 0.5rem;
       font-size: 0.8rem;
+    }
+    .ant-select-selector{
+      padding-left: 0.1rem !important;
     }
   }
 `
