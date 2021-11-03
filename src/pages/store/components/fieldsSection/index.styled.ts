@@ -3,7 +3,6 @@ import { device } from '../../../../styles/devices';
 
 export const FieldsSectionContainer = styled.div`
   flex: 1 1 75%;
-  background-color: bisque;
   display: flex;
   flex-direction: column;
   padding: 10px 20px 0 20px;
