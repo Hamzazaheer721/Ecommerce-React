@@ -1,12 +1,16 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
+import { Input } from 'antd'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PhoneInput from 'react-phone-input-2'
 import { device } from '../../styles/devices'
 import 'react-phone-input-2/lib/style.css'
 
+const { TextArea } = Input
+
 export const Label = styled.p<{
   hasValue: boolean
   $phonefield?: boolean
+  $textArea?: boolean
 }>`
   color: #c5c5c5;
   font-size: 1rem;
@@ -15,7 +19,7 @@ export const Label = styled.p<{
   left: ${({ $phonefield }) => ($phonefield ? '6.5rem' : '3rem')};
   pointer-events: none;
   transition: all 0.22s;
-  top: 50%;
+  top: ${({$textArea}) => ($textArea ? '1.8rem' : '50%')};
   transform: translateY(-50%);
   display: block;
   transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
@@ -51,6 +55,40 @@ export const Label = styled.p<{
 `
 export const PhoneInputField = styled(PhoneInput)``
 
+export const TextAreaField = styled(TextArea)`
+  outline: none;
+  border: none;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  padding-left: 3rem;
+  padding-right: 3rem;
+
+  :focus ~ ${Label} {
+    top: 0;
+    left: 0.8rem;
+    font-size: 0.8rem;
+    background: linear-gradient(180deg, #f2f4ff 50%, white 50%);
+    opacity: 1;
+    color: ${(props) => props.theme.color.lightGray};
+  }
+
+  @media ${device.mobile} {
+    padding-left: 2.5rem;
+    :focus ~ ${Label} {
+      left: 0.5rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  @media ${device.tiny} {
+    padding-left: 2.5rem;
+    :focus ~ ${Label} {
+      left: 0.5rem;
+      font-size: 0.8rem;
+    }
+  }
+`
 export const InputField = styled.input`
   outline: none;
   border: none;
@@ -87,7 +125,7 @@ export const InputField = styled.input`
 `
 
 export const InputContainer = styled.div<{
-  hasValue: boolean,
+  hasValue: boolean
   store?: boolean
 }>`
   height: 100%;
@@ -106,8 +144,9 @@ export const InputContainer = styled.div<{
     /* -webkit-text-fill-color: #0b233b; */
   }
 
-   /* Used for positioning flag when it is used outside */
-  ${({store}) => store && `
+  /* Used for positioning flag when it is used outside */
+  ${({ store }) => store &&
+    `
     .react-tel-input{
       top: 3px;
       @media ${device.tiny}{
@@ -124,8 +163,15 @@ export const InputContainer = styled.div<{
     border: 1px solid black;
   `}
 
-  
-  .react-tel-form, .form-control {
+  .ant-input:focus, 
+  .ant-input-focused {
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+
+  .react-tel-form,
+  .form-control {
     border: none;
     height: 100%;
     width: 100%;
@@ -203,10 +249,11 @@ export const InputContainer = styled.div<{
 
 export const Prefix = styled(FontAwesomeIcon)<{
   $phonefield?: boolean
+  $textArea?: boolean
 }>`
   position: absolute;
   left: 1rem;
-  top: 50%;
+  top: ${({$textArea}) => ($textArea ? '1.8rem' : '50%')};
   transform: translateY(-50%);
   font-size: 1.4rem;
   ${({ $phonefield }) => $phonefield &&
@@ -242,18 +289,18 @@ export const Suffix = styled(FontAwesomeIcon)`
 export const SuffixText = styled.div`
   position: absolute;
   top: 50%;
-  right: 30%;
-  transform: translate(-50%, -50%);
+  right: 40%;
+  transform: translateY(-50%);
   font-size: 0.9rem;
   color: ${(props) => props.theme.color.black};
   font-weight: bold;
   width: 12px;
 
   @media ${device.mobile} {
-    font-size: 1rem;
+    font-size: 0.72rem;
   }
 
   @media ${device.tiny} {
-    font-size: 1rem;
+    font-size: 0.72rem;
   }
 `

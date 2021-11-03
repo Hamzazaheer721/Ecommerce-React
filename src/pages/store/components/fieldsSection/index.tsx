@@ -56,7 +56,7 @@ const FieldsSection: FC = memo(() => {
 
       <InputsContainer>
         <InputContainer>
-          <Input prefix={faBuilding} label="About Bussiness" />
+          <Input prefix={faBuilding} label="About Bussiness" textArea />
         </InputContainer>
       </InputsContainer>
     </FieldsSectionContainer>
