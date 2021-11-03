@@ -1,11 +1,7 @@
-import { useState, useEffect, memo, FC, useMemo } from 'react'
-import {
-  GoogleMap,
-  withScriptjs,
-  withGoogleMap,
-  Marker
-} from 'react-google-maps'
+import { useState, useEffect, memo, FC } from 'react'
+
 import { GOOGLE_MAP_URL } from '../../config/constants'
+import AsyncMap from './components'
 import { IMapProps, IPositionStateType } from './types'
 
 const Map: FC<IMapProps> = memo(
@@ -14,28 +10,12 @@ const Map: FC<IMapProps> = memo(
       lat: propsLat,
       lng: propsLong
     })
-    const [dragable] = useState<boolean>(false)
+    const [draggable] = useState<boolean>(true)
 
     const [markerPosition, setMarkerPosition] = useState<IPositionStateType>({
       lat: propsLat,
       lng: propsLong
     })
-
-    const AsyncMap = useMemo(
-      () =>
-        // eslint-disable-next-line implicit-arrow-linebreak
-        withScriptjs(
-          withGoogleMap(() => (
-            <GoogleMap defaultZoom={zoom} defaultCenter={mapPosition}>
-              <Marker
-                draggable={dragable}
-                position={{ lat: markerPosition.lat, lng: markerPosition.lng }}
-              />
-            </GoogleMap>
-          ))
-        ),
-      []
-    )
 
     useEffect(() => {
       setMapPosition({
@@ -55,6 +35,10 @@ const Map: FC<IMapProps> = memo(
           loadingElement={<div style={{ height: '100%' }} />}
           containerElement={<div style={{ height }} />}
           mapElement={<div style={{ height: '100%' }} />}
+          zoom={zoom}
+          markerPosition={markerPosition}
+          draggable={draggable}
+          mapPosition={mapPosition}
         />
       </div>
     )
