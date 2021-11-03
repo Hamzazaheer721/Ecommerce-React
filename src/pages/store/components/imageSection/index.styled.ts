@@ -9,6 +9,10 @@ export const ImagesContainer = styled.div`
   text-align: right;
   margin-top: 10px;
 
+  @media ${device.tablet} {
+    text-align: center;
+  }
+
   @media ${device.mobile} {
     text-align: center;
   }
