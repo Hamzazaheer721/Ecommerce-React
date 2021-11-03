@@ -10,6 +10,7 @@ import {
   faUserMinus
 } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import MapComponent from '../../../components/map'
 
 import {
   Container,
@@ -27,7 +28,7 @@ import {
   StreetAddress,
   Address,
   OfficeTitle,
-  MapImage,
+  // MapImage,
   SelectiveCardContainer,
   CardImage,
   CardTitle,
@@ -73,7 +74,8 @@ const UserProfile = memo(() => (
           <OfficeTitle>Office</OfficeTitle>
           <Address>341-E2, Johar Town, Lahore </Address>
         </StreetAddress>
-        <MapImage src="/images/map.png" />
+        {/* <MapImage src="/images/map.png" /> */}
+        <MapComponent />
         <LinkText>
           <LinkIcon icon={faMapMarkedAlt} />
           Manage Address
