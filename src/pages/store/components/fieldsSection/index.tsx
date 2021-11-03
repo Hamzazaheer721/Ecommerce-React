@@ -14,6 +14,7 @@ import {
   InputsContainer,
   SingleInputContainer
 } from './index.styled'
+import CoverImages from '../coverImagesSection'
 
 const FieldsSection: FC = memo(() => (
   <FieldsSectionContainer>
@@ -48,6 +49,12 @@ const FieldsSection: FC = memo(() => (
     <InputsContainer>
       <InputContainer>
         <Input prefix={faBuilding} label="About Bussiness" textArea />
+      </InputContainer>
+    </InputsContainer>
+
+    <InputsContainer>
+      <InputContainer>
+        <CoverImages />
       </InputContainer>
     </InputsContainer>
   </FieldsSectionContainer>
