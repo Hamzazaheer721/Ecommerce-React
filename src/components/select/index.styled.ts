@@ -1,7 +1,7 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Select from 'antd/es/select';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Select from 'antd/es/select'
 import styled from 'styled-components'
-import { device } from '../../styles/devices';
+import { device } from '../../styles/devices'
 
 export const Label = styled.p`
   color: #c5c5c5;
@@ -42,7 +42,7 @@ export const SelectContainer = styled.div`
     background: white;
     opacity: 1;
     color: ${(props) => props.theme.color.lightGray};
-    background: linear-gradient(180deg, #F2F4FF 50%, white 50%);
+    background: linear-gradient(180deg, #f2f4ff 50%, white 50%);
   }
 
   @media ${device.mobile} {
@@ -79,7 +79,7 @@ export const SelectField = styled(Select)`
   box-shadow: none !important;
 
   .ant-select-selection-item {
-    margin-left: 20px !important;
+    margin-left: 10px !important;
     margin-top: 1.5px;
   }
 
@@ -90,7 +90,7 @@ export const SelectField = styled(Select)`
     border: none !important;
     box-shadow: none !important;
     padding-left: 1.9rem !important;
-    
+
     :focus {
       outline: none;
     }
@@ -108,13 +108,15 @@ export const SelectField = styled(Select)`
   }
 
   @media ${device.mobile} {
-    padding-left: 2.5rem;
     :focus ~ ${Label} {
       left: 0.5rem;
       font-size: 0.8rem;
     }
-    .ant-select-selector{
+    .ant-select-selector {
       padding-left: 0.1rem !important;
+    }
+    .ant-select-selection-item {
+      margin-left: 35px !important;
     }
   }
 
@@ -124,7 +126,7 @@ export const SelectField = styled(Select)`
       left: 0.5rem;
       font-size: 0.8rem;
     }
-    .ant-select-selector{
+    .ant-select-selector {
       padding-left: 0.1rem !important;
     }
   }
