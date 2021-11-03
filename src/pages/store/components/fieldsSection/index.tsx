@@ -15,42 +15,52 @@ import {
   SingleInputContainer
 } from './index.styled'
 
-const FieldsSection: FC = memo(() => (
-  <FieldsSectionContainer>
-    <SingleInputContainer>
-      <Input prefix={faUser} label="Bussiness Profile" />
-    </SingleInputContainer>
+const FieldsSection: FC = memo(() => {
+  console.log('fieldsSection')
+  return (
+    <FieldsSectionContainer>
+      <SingleInputContainer>
+        <Input prefix={faUser} label="Bussiness Profile" />
+      </SingleInputContainer>
 
-    <InputsContainer>
-      <InputContainer>
-        <Input label="WhatsApp Number" phonefield prefix={faWhatsapp} store />
-      </InputContainer>
+      <InputsContainer>
+        <InputContainer>
+          <Input
+            label="WhatsApp Number"
+            phonefield
+            prefix={faWhatsapp}
+            store
+            // value={phone}
+            // handlePhoneChange={handlePhoneChange}
+          />
+        </InputContainer>
 
-      <InputContainer>
-        <Input
-          prefix={faCreditCardFront}
-          label="Bussiness URL"
-          suffixText=".whatspays.com"
-        />
-      </InputContainer>
-    </InputsContainer>
+        <InputContainer>
+          <Input
+            prefix={faCreditCardFront}
+            label="Bussiness URL"
+            suffixText=".whatspays.com"
+          />
+        </InputContainer>
+      </InputsContainer>
 
-    <InputsContainer>
-      <InputContainer>
-        <Select prefix={faBurgerSoda} label="Industry" />
-      </InputContainer>
+      <InputsContainer>
+        <InputContainer>
+          <Select prefix={faBurgerSoda} label="Industry" />
+        </InputContainer>
 
-      <InputContainer>
-        <Select prefix={faBuilding} label="Industry Type" />
-      </InputContainer>
-    </InputsContainer>
+        <InputContainer>
+          <Select prefix={faBuilding} label="Industry Type" />
+        </InputContainer>
+      </InputsContainer>
 
-    <InputsContainer>
-      <InputContainer>
-        <Input prefix={faBuilding} label="About Bussiness" textArea />
-      </InputContainer>
-    </InputsContainer>
-  </FieldsSectionContainer>
-))
+      <InputsContainer>
+        <InputContainer>
+          <Input prefix={faBuilding} label="About Bussiness" textArea />
+        </InputContainer>
+      </InputsContainer>
+    </FieldsSectionContainer>
+  )
+})
 
 export default FieldsSection
