@@ -36,7 +36,11 @@ const FieldsSection: FC = memo(() => {
         </InputContainer>
 
         <InputContainer>
-          <Input prefix={faCreditCardFront} label="Bussiness URL" />
+          <Input
+            prefix={faCreditCardFront}
+            label="Bussiness URL"
+            suffixText=".whatspays.com"
+          />
         </InputContainer>
       </InputsContainer>
 

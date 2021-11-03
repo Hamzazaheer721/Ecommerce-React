@@ -238,3 +238,21 @@ export const Suffix = styled(FontAwesomeIcon)`
     font-size: 1rem;
   }
 `
+export const SuffixText = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 30%;
+  transform: translate(-50%, -50%);
+  font-size: 0.9rem;
+  color: ${(props) => props.theme.color.black};
+  font-weight: bold;
+  width: 12px;
+
+  @media ${device.mobile} {
+    font-size: 1rem;
+  }
+
+  @media ${device.tiny} {
+    font-size: 1rem;
+  }
+`

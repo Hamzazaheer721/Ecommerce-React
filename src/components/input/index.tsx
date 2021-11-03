@@ -17,7 +17,8 @@ import {
   Label,
   PhoneInputField,
   Prefix,
-  Suffix
+  Suffix,
+  SuffixText
 } from './index.styled'
 
 interface CountryData {
@@ -45,6 +46,7 @@ interface InputProps {
     formattedValue: string
   ) => void
   store?: boolean
+  suffixText?: string
 }
 
 const Input = memo(
@@ -62,6 +64,7 @@ const Input = memo(
         readOnly,
         handlePhoneChange,
         store,
+        suffixText,
         ...props
       },
       inputRef
@@ -134,6 +137,7 @@ const Input = memo(
             />
           )}
           {!typePassword && suffix && <Suffix icon={suffix} />}
+          {!typePassword && suffixText && <SuffixText>{suffixText}</SuffixText>}
         </InputContainer>
       )
     }
