@@ -3,7 +3,8 @@ import {
   faBuilding,
   faBurgerSoda,
   faCreditCardFront,
-  faUser
+  faUser,
+  faSave
 } from '@fortawesome/pro-light-svg-icons'
 import { FC, memo } from 'react'
 import Input from '../../../../components/input'
@@ -12,9 +13,14 @@ import {
   FieldsSectionContainer,
   InputContainer,
   InputsContainer,
-  SingleInputContainer
+  SingleInputContainer,
+  CheckboxContainer,
+  CustomCheckBox,
+  CheckboxPlaceholder,
+  ButtonContainer
 } from './index.styled'
 import CoverImages from '../coverImagesSection'
+import Button from '../../../../components/button'
 
 const FieldsSection: FC = memo(() => (
   <FieldsSectionContainer>
@@ -57,6 +63,30 @@ const FieldsSection: FC = memo(() => (
         <CoverImages />
       </InputContainer>
     </InputsContainer>
+
+    <InputsContainer>
+      <InputContainer>
+        <CheckboxContainer>
+          <CustomCheckBox
+            type="checkbox"
+            name="remember"
+            // onChange={handleChange}
+          />
+          <CheckboxPlaceholder>
+            I`ve read and understod the
+            <span> Terms & Conditions </span>
+            of WhatsPays
+          </CheckboxPlaceholder>
+        </CheckboxContainer>
+      </InputContainer>
+    </InputsContainer>
+    <ButtonContainer>
+      <InputsContainer>
+        <InputContainer>
+          <Button icon={faSave} text="Save" />
+        </InputContainer>
+      </InputsContainer>
+    </ButtonContainer>
   </FieldsSectionContainer>
 ))
 

@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Upload } from 'antd'
+import { device } from '../../../../styles/devices'
 
 export const Container = styled.div`
   border: 0.5px solid #dddddd;
   border-radius: 8px;
-  padding: 10px;
+  padding: 15px;
   background: #ffffff 0% 0% no-repeat padding-box;
 `
 export const TitleContainer = styled.div`
@@ -28,3 +30,22 @@ export const Title = styled.p`
   }
 `
 export const ImagesContainer = styled.div``
+
+export const UploadImage = styled(Upload)`
+  @media ${device.mobile} {
+    .ant-upload-list-picture-card-container {
+      width: 47% !important;
+    }
+    .ant-upload.ant-upload-select-picture-card {
+      width: 47%;
+    }
+  }
+  @media ${device.tiny} {
+    .ant-upload-list-picture-card-container {
+      width: 46% !important;
+    }
+    .ant-upload.ant-upload-select-picture-card {
+      width: 46%;
+    }
+  }
+`

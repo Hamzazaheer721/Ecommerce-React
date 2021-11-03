@@ -1,12 +1,20 @@
-import { memo } from 'react'
-import { faListAlt } from '@fortawesome/pro-light-svg-icons'
+import { memo, FC } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
+
 import { PrimaryButton } from './index.styled'
 
-const ButtonComponent = memo(() => (
-  <PrimaryButton style={{ backgroundColor: '#1B90C7' }}>
-    <FontAwesomeIcon icon={faListAlt} style={{ marginRight: '5px' }} />
-    View All
-  </PrimaryButton>
-))
+interface IButtonProps {
+  icon: IconProp
+  text: String
+}
+
+const ButtonComponent: FC<IButtonProps> = memo(
+  ({ icon, text }: IButtonProps) => (
+    <PrimaryButton style={{ backgroundColor: '#1B90C7' }}>
+      <FontAwesomeIcon icon={icon} style={{ marginRight: '5px' }} />
+      {text}
+    </PrimaryButton>
+  )
+)
 export default ButtonComponent

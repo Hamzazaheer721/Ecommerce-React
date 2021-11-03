@@ -2,10 +2,7 @@
 import { memo, useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import { Menu, Dropdown } from 'antd'
-import {
-  faSearch,
-  faBell
-} from '@fortawesome/pro-light-svg-icons'
+import { faSearch, faBell, faList } from '@fortawesome/pro-light-svg-icons'
 import ButtonComponent from '../../../button'
 import NotificationComponent from './newNotification'
 import { userNotifications } from './Helper'
@@ -68,7 +65,7 @@ const NotificationsMenu = (
     })}
     {userNotifications.length >= 3 && (
       <ButtonContainer>
-        <ButtonComponent />
+        <ButtonComponent icon={faList} text="View All" />
       </ButtonContainer>
     )}
   </CustomMenu>
@@ -81,10 +78,7 @@ const HeaderRightComponent = memo(() => {
     <>
       <Container>
         <IconContainer>
-          <Icon
-            icon={faSearch}
-            color={theme.color.primary}
-          />
+          <Icon icon={faSearch} color={theme.color.primary} />
         </IconContainer>
         <Dropdown
           overlay={NotificationsMenu}
@@ -93,17 +87,10 @@ const HeaderRightComponent = memo(() => {
           arrow
         >
           <IconContainer>
-            <Icon
-              icon={faBell}
-              color={theme.color.primary}
-            />
+            <Icon icon={faBell} color={theme.color.primary} />
           </IconContainer>
         </Dropdown>
-        <Dropdown
-          overlay={menu}
-          placement="bottomLeft"
-          arrow
-        >
+        <Dropdown overlay={menu} placement="bottomLeft" arrow>
           <IconContainer>
             <ProfileImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" />
           </IconContainer>

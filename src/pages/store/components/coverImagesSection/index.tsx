@@ -1,30 +1,24 @@
 import { useState } from 'react'
 import { faImages } from '@fortawesome/pro-light-svg-icons'
-import { Upload } from 'antd'
 import { UploadChangeParam, UploadFile } from 'antd/lib/upload/interface'
+import ImgCrop from 'antd-img-crop'
 
 import {
   Container,
   TitleContainer,
   Icon,
   Title,
-  ImagesContainer
+  ImagesContainer,
+  UploadImage
 } from './index.styled'
 
 const CoverImages = () => {
-  const [fileListState] = useState([
-    {
-      uid: '-1',
-      name: 'image.png',
-      status: 'done',
-      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-    }
-  ])
+  const [fileListState, setFileListState] = useState<any>([])
 
   const onChange = (info: UploadChangeParam<UploadFile<any>>) => {
     const { fileList } = info
     console.info(fileList)
-    // setFileListState(fileList)
+    setFileListState(fileList)
   }
 
   const onPreview = async (file: any) => {
@@ -52,15 +46,17 @@ const CoverImages = () => {
         </Title>
       </TitleContainer>
       <ImagesContainer>
-        <Upload
-          action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-          listType="picture-card"
-          // fileList={fileListState}
-          onChange={onChange}
-          onPreview={onPreview}
-        >
-          {fileListState.length < 5 && '+ Upload'}
-        </Upload>
+        <ImgCrop rotate>
+          <UploadImage
+            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+            listType="picture-card"
+            fileList={fileListState}
+            onChange={onChange}
+            onPreview={onPreview}
+          >
+            {fileListState.length < 6 && '+ Upload'}
+          </UploadImage>
+        </ImgCrop>
       </ImagesContainer>
     </Container>
   )

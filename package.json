@@ -19,6 +19,7 @@
     "@types/react": "^17.0.30",
     "@types/react-dom": "^17.0.0",
     "antd": "^4.16.13",
+    "antd-img-crop": "^3.16.0",
     "axios": "^0.22.0",
     "immer": "^9.0.6",
     "lodash": "^4.17.21",
