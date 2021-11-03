@@ -6,18 +6,7 @@ import {
   Marker
 } from 'react-google-maps'
 import { GOOGLE_MAP_URL } from '../../config/constants'
-
-type IMapProps = {
-  propsLat: number
-  propsLong: number
-  height: string
-  zoom: number
-}
-
-type IPositionStateType = {
-  lat: number
-  lng: number
-}
+import { IMapProps, IPositionStateType } from './types'
 
 const Map: FC<IMapProps> = memo(
   ({ propsLat, propsLong, height, zoom }: IMapProps) => {
