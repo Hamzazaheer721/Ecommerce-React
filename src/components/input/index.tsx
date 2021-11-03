@@ -17,7 +17,9 @@ import {
   Label,
   PhoneInputField,
   Prefix,
-  Suffix
+  Suffix,
+  SuffixText,
+  TextAreaField
 } from './index.styled'
 
 interface CountryData {
@@ -45,6 +47,8 @@ interface InputProps {
     formattedValue: string
   ) => void
   store?: boolean
+  suffixText?: string
+  textArea?: boolean
 }
 
 const Input = memo(
@@ -62,6 +66,8 @@ const Input = memo(
         readOnly,
         handlePhoneChange,
         store,
+        suffixText,
+        textArea,
         ...props
       },
       inputRef
@@ -89,7 +95,7 @@ const Input = memo(
 
       return (
         <InputContainer hasValue={!!value} store={!!store}>
-          {!phonefield && (
+          {!phonefield && !textArea && (
             <InputField
               readOnly={readOnly}
               {...props}
@@ -115,6 +121,16 @@ const Input = memo(
               onChange={handleChange}
             />
           )}
+          {textArea && (
+            <TextAreaField
+              readOnly={!!readOnly}
+              {...props}
+              name={name}
+              value={value}
+              rows={4}
+              autoSize={{ minRows: 4, maxRows: 4 }}
+            />
+          )}
           {phonefield && (
             <PhoneInputField
               placeholder=""
@@ -123,8 +139,18 @@ const Input = memo(
               onChange={handlePhoneChange}
             />
           )}
-          {prefix && <Prefix icon={prefix} $phonefield={!!phonefield} />}
-          <Label hasValue={!!value} $phonefield={!!phonefield}>
+          {prefix && (
+            <Prefix
+              icon={prefix}
+              $phonefield={!!phonefield}
+              $textArea={!!textArea}
+            />
+          )}
+          <Label
+            hasValue={!!value}
+            $phonefield={!!phonefield}
+            $textArea={!!textArea}
+          >
             {label}
           </Label>
           {typePassword && (
@@ -134,6 +160,7 @@ const Input = memo(
             />
           )}
           {!typePassword && suffix && <Suffix icon={suffix} />}
+          {!typePassword && suffixText && <SuffixText>{suffixText}</SuffixText>}
         </InputContainer>
       )
     }
