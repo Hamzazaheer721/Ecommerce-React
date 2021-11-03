@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
+import { device } from '../../styles/devices'
 
 export const StoreContainer = styled.div`
   display: flex;
@@ -6,4 +7,15 @@ export const StoreContainer = styled.div`
   width: 100%;
   height: 90vh;
   max-height: 1200px;
+  @media ${device.tablet} {
+    flex-direction: column;
+  }
+
+  @media ${device.mobile} {
+    flex-direction: column;
+  }
+
+  @media ${device.tiny} {
+    flex-direction: column;
+  }
 `

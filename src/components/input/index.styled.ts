@@ -19,12 +19,14 @@ export const Label = styled.p<{
   left: ${({ $phonefield }) => ($phonefield ? '6.5rem' : '3rem')};
   pointer-events: none;
   transition: all 0.22s;
-  top: ${({$textArea}) => ($textArea ? '1.8rem' : '50%')};
+  top: ${({ $textArea }) => ($textArea ? '1.8rem' : '50%')};
   transform: translateY(-50%);
   display: block;
   transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
   padding: 0 7px;
-  ${({ hasValue }) => hasValue &&
+  ${({ hasValue }) =>
+    // eslint-disable-next-line implicit-arrow-linebreak
+    hasValue &&
     `
       top: 0;
       left: 0.8rem;
@@ -37,7 +39,9 @@ export const Label = styled.p<{
   @media ${device.mobile} {
     font-size: 14px;
     left: ${({ $phonefield }) => ($phonefield ? '5.6rem' : '2.2rem')};
-    ${({ hasValue }) => hasValue &&
+    ${({ hasValue }) =>
+      // eslint-disable-next-line implicit-arrow-linebreak
+      hasValue &&
       `
       left: 0.5rem;
       font-size: 0.8rem;
@@ -46,7 +50,9 @@ export const Label = styled.p<{
   @media ${device.tiny} {
     font-size: 11.5px;
     left: ${({ $phonefield }) => ($phonefield ? '5.3rem' : '2.2rem')};
-    ${({ hasValue }) => hasValue &&
+    ${({ hasValue }) =>
+      // eslint-disable-next-line implicit-arrow-linebreak
+      hasValue &&
       `
       left: 0.5rem;
       font-size: 0.8rem;
@@ -145,7 +151,9 @@ export const InputContainer = styled.div<{
   }
 
   /* Used for positioning flag when it is used outside */
-  ${({ store }) => store &&
+  ${({ store }) =>
+    // eslint-disable-next-line implicit-arrow-linebreak
+    store &&
     `
     .react-tel-input{
       top: 3px;
@@ -158,7 +166,9 @@ export const InputContainer = styled.div<{
     }  
   `}
 
-  ${({ hasValue }) => hasValue &&
+  ${({ hasValue }) =>
+    // eslint-disable-next-line implicit-arrow-linebreak
+    hasValue &&
     `
     border: 1px solid black;
   `}
@@ -253,10 +263,12 @@ export const Prefix = styled(FontAwesomeIcon)<{
 }>`
   position: absolute;
   left: 1rem;
-  top: ${({$textArea}) => ($textArea ? '1.8rem' : '50%')};
+  top: ${({ $textArea }) => ($textArea ? '1.8rem' : '50%')};
   transform: translateY(-50%);
   font-size: 1.4rem;
-  ${({ $phonefield }) => $phonefield &&
+  ${({ $phonefield }) =>
+    // eslint-disable-next-line implicit-arrow-linebreak
+    $phonefield &&
     `
     z-index: 2;
   `}
@@ -289,7 +301,7 @@ export const Suffix = styled(FontAwesomeIcon)`
 export const SuffixText = styled.div`
   position: absolute;
   top: 50%;
-  right: 40%;
+  right: 24%;
   transform: translateY(-50%);
   font-size: 0.9rem;
   color: ${(props) => props.theme.color.black};
@@ -302,5 +314,6 @@ export const SuffixText = styled.div`
 
   @media ${device.tiny} {
     font-size: 0.72rem;
+    right: 32%;
   }
 `

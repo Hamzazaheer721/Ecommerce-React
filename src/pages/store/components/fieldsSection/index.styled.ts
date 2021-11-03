@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { device } from '../../../../styles/devices';
+import styled from 'styled-components'
+import { device } from '../../../../styles/devices'
 
 export const FieldsSectionContainer = styled.div`
   flex: 1 1 75%;
@@ -16,15 +16,24 @@ export const InputsContainer = styled.div`
   flex-wrap: wrap;
 `
 export const SingleInputContainer = styled.div`
-  border:none;
-  outline:none;
+  border: none;
+  outline: none;
   width: 100%;
 `
-export const InputContainer = styled.div<{single? : boolean}>`
+export const InputContainer = styled.div<{ single?: boolean }>`
   border: none;
   outline: none;
   flex: 1 1 45%;
-  @media ${device.mobile}{
+
+  @media ${device.tablet} {
+    flex: 1 1 100%;
+  }
+
+  @media ${device.mobile} {
+    flex: 1 1 100%;
+  }
+
+  @media ${device.tiny} {
     flex: 1 1 100%;
   }
 `
