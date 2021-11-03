@@ -1,46 +1,75 @@
-import { useState, useEffect, memo } from 'react'
+import { useState, useEffect, memo, FC, useMemo } from 'react'
+import {
+  GoogleMap,
+  withScriptjs,
+  withGoogleMap,
+  Marker
+} from 'react-google-maps'
+import { GOOGLE_MAP_URL } from '../../config/constants'
 
-import { GoogleMap, withScriptjs, withGoogleMap } from 'react-google-maps'
+type IMapProps = {
+  propsLat: number
+  propsLong: number
+  height: string
+  zoom: number
+}
 
-type IStateType = {
+type IPositionStateType = {
   lat: number
   lng: number
 }
 
-const Map = memo(() => {
-  const [mapPosition, setMapPosition] = useState<IStateType>({
-    lat: 30.3753,
-    lng: 69.3451
-  })
-
-  useEffect(() => {
-    setMapPosition({
-      lat: 30.3753,
-      lng: 69.3451
+const Map: FC<IMapProps> = memo(
+  ({ propsLat, propsLong, height, zoom }: IMapProps) => {
+    const [mapPosition, setMapPosition] = useState<IPositionStateType>({
+      lat: propsLat,
+      lng: propsLong
     })
-  }, [])
+    const [dragable] = useState<boolean>(false)
 
-  const obj: any = {
-    lat: mapPosition.lat,
-    lng: mapPosition.lng
+    const [markerPosition, setMarkerPosition] = useState<IPositionStateType>({
+      lat: propsLat,
+      lng: propsLong
+    })
+
+    const AsyncMap = useMemo(
+      () =>
+        // eslint-disable-next-line implicit-arrow-linebreak
+        withScriptjs(
+          withGoogleMap(() => (
+            <GoogleMap defaultZoom={zoom} defaultCenter={mapPosition}>
+              <Marker
+                draggable={dragable}
+                position={{ lat: markerPosition.lat, lng: markerPosition.lng }}
+              />
+            </GoogleMap>
+          ))
+        ),
+      []
+    )
+
+    useEffect(() => {
+      setMapPosition({
+        lat: propsLat,
+        lng: propsLong
+      })
+      setMarkerPosition({
+        lat: propsLat,
+        lng: propsLong
+      })
+    }, [])
+
+    return (
+      <div>
+        <AsyncMap
+          googleMapURL={GOOGLE_MAP_URL}
+          loadingElement={<div style={{ height: '100%' }} />}
+          containerElement={<div style={{ height }} />}
+          mapElement={<div style={{ height: '100%' }} />}
+        />
+      </div>
+    )
   }
-
-  const AsyncMap = withScriptjs(
-    withGoogleMap(() => <GoogleMap defaultZoom={15} defaultCenter={obj} />)
-  )
-
-  const map = (
-    <div>
-      <AsyncMap
-        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0FVkc6oMvpT1XJ-7PTiJL3w9CosGINDM&libraries=places"
-        loadingElement={<div style={{ height: '100%' }} />}
-        containerElement={<div style={{ height: '300px' }} />}
-        mapElement={<div style={{ height: '100%' }} />}
-      />
-    </div>
-  )
-
-  return map
-})
+)
 
 export default Map

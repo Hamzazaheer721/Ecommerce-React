@@ -74,8 +74,12 @@ const UserProfile = memo(() => (
           <OfficeTitle>Office</OfficeTitle>
           <Address>341-E2, Johar Town, Lahore </Address>
         </StreetAddress>
-        {/* <MapImage src="/images/map.png" /> */}
-        <MapComponent />
+        <MapComponent
+          height="300px"
+          zoom={15}
+          propsLat={30.3753}
+          propsLong={69.3451}
+        />
         <LinkText>
           <LinkIcon icon={faMapMarkedAlt} />
           Manage Address
