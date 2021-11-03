@@ -238,6 +238,7 @@ export const Suffix = styled(FontAwesomeIcon)`
     font-size: 1rem;
   }
 `
+
 export const SuffixText = styled.div`
   position: absolute;
   top: 50%;
