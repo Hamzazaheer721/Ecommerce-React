@@ -5,6 +5,7 @@ import {
   withGoogleMap,
   Marker
 } from 'react-google-maps'
+import { GOOGLE_MAP_URL } from '../../config/constants'
 import { IMapProps, IPositionStateType } from './types'
 
 const Map: FC<IMapProps> = memo(
@@ -14,11 +15,6 @@ const Map: FC<IMapProps> = memo(
       lng: propsLong
     })
     const [dragable] = useState<boolean>(false)
-
-    const MAP_URL = useMemo<string>(
-      () => process.env.REACT_APP_GOOGLE_MAP_URL || '',
-      []
-    )
 
     const [markerPosition, setMarkerPosition] = useState<IPositionStateType>({
       lat: propsLat,
@@ -55,7 +51,7 @@ const Map: FC<IMapProps> = memo(
     return (
       <div>
         <AsyncMap
-          googleMapURL={MAP_URL}
+          googleMapURL={GOOGLE_MAP_URL}
           loadingElement={<div style={{ height: '100%' }} />}
           containerElement={<div style={{ height }} />}
           mapElement={<div style={{ height: '100%' }} />}
