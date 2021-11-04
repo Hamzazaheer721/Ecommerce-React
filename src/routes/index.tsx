@@ -10,6 +10,7 @@ import ResetPassword from '../pages/resetPassword'
 import CustomizeModal from '../components/modal'
 import Profile from '../pages/profile'
 import Store from '../pages/store'
+import Contact from '../pages/contact'
 
 const RouterComponent = memo(() => (
   <Router>
@@ -26,6 +27,7 @@ const RouterComponent = memo(() => (
       <Route exact path="/reset-password/:userId" component={ResetPassword} />
       <Route exact path="/user-profile" component={Profile} />
       <Route exact path="/store" component={Store} />
+      <Route exact path="/contact" component={Contact} />
     </Switch>
   </Router>
 ))
