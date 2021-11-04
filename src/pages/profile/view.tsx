@@ -1,6 +1,6 @@
-import { FC, memo } from 'react'
+import { FC } from 'react'
 import UserProfileComponent from './userProfile'
 
-const ViewComponent: FC = memo(() => <UserProfileComponent />)
+const ViewComponent: FC = () => <UserProfileComponent />
 
 export default ViewComponent
