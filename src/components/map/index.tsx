@@ -16,15 +16,15 @@ Geocode.enableDebug()
 interface IMapProps {
   propsLat?: number
   propsLong?: number
-  height: string
-  zoom: number
+  height?: string
+  zoom?: number
 }
 
 const Map: FC<IMapProps> = ({
-  propsLat = 59.955413,
-  propsLong = 30.337844,
-  height,
-  zoom
+  propsLat = 31.4697,
+  propsLong = 74.2728,
+  height = '300px',
+  zoom = 15
 }: IMapProps) => {
   const [mapPosition, setMapPosition] = useState<IPositionStateType>({
     lat: propsLat,
