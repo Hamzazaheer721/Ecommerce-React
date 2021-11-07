@@ -26,14 +26,13 @@ import {
 
 import Input from '../../../components/input'
 
-const InputFields = memo(() => (
+const LocationInputFields = memo(() => (
   <FieldsSectionContainer>
-    view component
     <SingleInputContainer>
       <Input label="Location" prefix={faMapMarkerAlt} suffix={faTimesCircle} />
     </SingleInputContainer>
     <SingleInputContainer>
-      <Input label="Street Address" phonefield prefix={faHome} store />
+      <Input label="Street Address" prefix={faHome} store />
     </SingleInputContainer>
     <InputsContainer>
       <InputContainer>
@@ -76,4 +75,4 @@ const InputFields = memo(() => (
   </FieldsSectionContainer>
 ))
 
-export default InputFields
+export default LocationInputFields

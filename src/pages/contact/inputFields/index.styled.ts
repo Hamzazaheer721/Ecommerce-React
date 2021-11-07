@@ -5,6 +5,7 @@ export const FieldsSectionContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 10px 20px 0 20px;
+  margin-top: 15px;
   gap: 20px;
 `
 export const SingleInputContainer = styled.div`

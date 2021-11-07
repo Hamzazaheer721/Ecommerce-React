@@ -53,5 +53,8 @@ export const defaultTheme: any = {
   },
   storeColor: {
     lightBlue: '#DFF5FF'
+  },
+  locationCard: {
+    lightBlue: '#EEF6FB'
   }
 }
