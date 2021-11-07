@@ -26,7 +26,7 @@ import {
 
 import Input from '../../../components/input'
 
-const InputFields = memo(() => (
+const LocationInputFields = memo(() => (
   <FieldsSectionContainer>
     view component
     <SingleInputContainer>
@@ -76,4 +76,4 @@ const InputFields = memo(() => (
   </FieldsSectionContainer>
 ))
 
-export default InputFields
+export default LocationInputFields

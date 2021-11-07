@@ -4,8 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 export const Container = styled.div`
   margin: 20px 20px 20px 20px;
   padding: 15px;
-  border: 1px solid ${(props) => props.theme.color.primary};
-  border-style: dashed;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25'   xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='14' ry='14' stroke='%231B9BD7FF' stroke-width='3' stroke-dasharray='6%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  border-radius: 8px;
+  /* border: 1px solid ${(props) => props.theme.color.primary}; */
+  /* border-style: dashed; */
   background-color: ${(props) => props.theme.locationCard.lightBlue};
   border-radius: 6px;
 `
