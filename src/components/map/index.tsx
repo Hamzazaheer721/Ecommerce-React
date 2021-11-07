@@ -1,5 +1,5 @@
 /* eslint-disable one-var */
-import { useState, FC, useMemo, useEffect } from 'react'
+import { useState, FC, useMemo, useCallback } from 'react'
 import {
   GoogleMap,
   withScriptjs,
@@ -7,76 +7,61 @@ import {
   Marker
 } from 'react-google-maps'
 import Geocode from 'react-geocode'
-import { GOOGLE_MAP_URL } from '../../config/constants'
+import { GOOGLE_MAP_API_KEY, GOOGLE_MAP_URL } from '../../config/constants'
+import { IPositionStateType } from './types'
 
-Geocode.setApiKey('AIzaSyB0FVkc6oMvpT1XJ-7PTiJL3w9CosGINDM')
+Geocode.setApiKey(GOOGLE_MAP_API_KEY)
 Geocode.enableDebug()
 
 interface IMapProps {
-  propsLat: number
-  propsLong: number
+  propsLat?: number
+  propsLong?: number
   height: string
   zoom: number
 }
 
-type IMapPositionStateType = {
-  lat: number
-  lng: number
-}
-
-type IMarkerPositionStateType = {
-  lat: number
-  lng: number
-}
-
 const Map: FC<IMapProps> = ({
-  propsLat,
-  propsLong,
+  propsLat = 59.955413,
+  propsLong = 30.337844,
   height,
   zoom
 }: IMapProps) => {
-  const [mapPosition, setMapPosition] = useState<IMapPositionStateType>({
+  const [mapPosition, setMapPosition] = useState<IPositionStateType>({
     lat: propsLat,
     lng: propsLong
   })
-  const [dragable] = useState<boolean>(true)
+  const [draggable] = useState<boolean>(true)
 
-  const [markerPosition, setMarkerPosition] =
-    useState<IMarkerPositionStateType>({
-      lat: propsLat,
-      lng: propsLong
-    })
+  const [markerPosition, setMarkerPosition] = useState<IPositionStateType>({
+    lat: propsLat,
+    lng: propsLong
+  })
 
-  useEffect(() => {
-    setMapPosition({
-      lat: propsLat,
-      lng: propsLong
-    })
-  }, [])
-
-  const onMarkerDragEnd = (coord: any) => {
-    // eslint-disable-next-line one-var
-    const { latLng } = coord
-    const newLat = latLng.lat()
-    const newLng = latLng.lng()
-
-    Geocode.fromLatLng(newLat, newLng).then(
-      () => {
-        setMapPosition({
-          lat: newLat,
-          lng: newLng
-        })
-        setMarkerPosition({
-          lat: newLat,
-          lng: newLng
-        })
-      },
-      (error) => {
-        // eslint-disable-next-line no-console
-        console.error(error)
-      }
-    )
-  }
+  const onMarkerDragEnd = useCallback(
+    async (coord: any) => {
+      // eslint-disable-next-line one-var
+      const { latLng } = coord
+      const newLat = latLng.lat()
+      const newLng = latLng.lng()
+      await Geocode.fromLatLng(newLat, newLng).then(
+        () => {
+          setMapPosition({
+            lat: newLat,
+            lng: newLng
+          })
+          setMarkerPosition({
+            lat: newLat,
+            lng: newLng
+          })
+        },
+        (error) => {
+          // eslint-disable-next-line no-console
+          console.error(error)
+        }
+      )
+    },
+    [markerPosition, mapPosition]
+  )
 
   const AsyncMap = useMemo(
     () =>
@@ -85,14 +70,14 @@ const Map: FC<IMapProps> = ({
         withGoogleMap(() => (
           <GoogleMap defaultZoom={zoom} defaultCenter={mapPosition}>
             <Marker
-              draggable={dragable}
+              draggable={draggable}
               onDragEnd={(coord) => onMarkerDragEnd(coord)}
               position={{ lat: markerPosition.lat, lng: markerPosition.lng }}
             />
           </GoogleMap>
         ))
       ),
-    []
+    [mapPosition, markerPosition]
   )
 
   return (
