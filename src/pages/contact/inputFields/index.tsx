@@ -28,7 +28,6 @@ import Input from '../../../components/input'
 
 const LocationInputFields = memo(() => (
   <FieldsSectionContainer>
-    view component
     <SingleInputContainer>
       <Input label="Location" prefix={faMapMarkerAlt} suffix={faTimesCircle} />
     </SingleInputContainer>
