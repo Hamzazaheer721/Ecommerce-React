@@ -33,7 +33,7 @@ const InputFields = memo(() => (
       <Input label="Location" prefix={faMapMarkerAlt} suffix={faTimesCircle} />
     </SingleInputContainer>
     <SingleInputContainer>
-      <Input label="Street Address" phonefield prefix={faHome} store />
+      <Input label="Street Address" prefix={faHome} store />
     </SingleInputContainer>
     <InputsContainer>
       <InputContainer>
