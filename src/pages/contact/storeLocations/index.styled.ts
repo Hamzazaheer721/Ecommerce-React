@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Container = styled.div`
-  margin: 10px 20px 20px 20px;
+  margin: 20px 20px 20px 20px;
   padding: 15px;
   border: 1px solid ${(props) => props.theme.color.primary};
   border-style: dashed;
