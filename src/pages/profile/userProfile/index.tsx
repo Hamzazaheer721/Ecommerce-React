@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+import { memo } from 'react'
 import {
   faUser,
   faKey,
@@ -37,7 +38,7 @@ import {
 import ProfileImage from '../profileImage'
 import Input from '../../../components/input'
 
-const UserProfile = () => (
+const UserProfile = memo(() => (
   <Container>
     <LeftContainer>
       <ProfileImage />
@@ -113,6 +114,5 @@ const UserProfile = () => (
       </DeleteLinkText>
     </RightContainer>
   </Container>
-)
-
+))
 export default UserProfile

@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import {
   faBuilding,
   faTimesCircle,
@@ -25,7 +26,7 @@ import {
 
 import Input from '../../../components/input'
 
-const InputFields = () => (
+const InputFields = memo(() => (
   <FieldsSectionContainer>
     view component
     <SingleInputContainer>
@@ -73,6 +74,6 @@ const InputFields = () => (
       <Input label="NTN Number" prefix={faClipboardList} />
     </SingleInputContainer>
   </FieldsSectionContainer>
-)
+))
 
 export default InputFields
