@@ -19,7 +19,8 @@ import {
   Prefix,
   Suffix,
   SuffixText,
-  TextAreaField
+  TextAreaField,
+  SecondSuffix
 } from './index.styled'
 
 interface CountryData {
@@ -38,17 +39,20 @@ interface InputProps {
   typePassword: boolean
   phonefield: boolean
   readOnly: boolean
+  secondSuffix: IconProp
   // eslint-disable-next-line no-unused-vars
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void
+  locationHandleChange: (e: ChangeEvent<HTMLInputElement>) => void
+
   handlePhoneChange?: (
     value: string,
     data: {} | CountryData,
     event: ChangeEvent<HTMLInputElement>,
     formattedValue: string
   ) => void
-  store?: boolean
-  suffixText?: string
-  textArea?: boolean
+  store: boolean
+  suffixText: string
+  textArea: boolean
 }
 
 const Input = memo(
@@ -64,6 +68,7 @@ const Input = memo(
         suffix,
         phonefield,
         readOnly,
+        secondSuffix,
         handlePhoneChange,
         store,
         suffixText,
@@ -139,6 +144,7 @@ const Input = memo(
               onChange={handlePhoneChange}
             />
           )}
+
           {prefix && (
             <Prefix
               icon={prefix}
@@ -159,7 +165,12 @@ const Input = memo(
               icon={!showPassword ? faEye : faEyeSlash}
             />
           )}
-          {!typePassword && suffix && <Suffix icon={suffix} />}
+          {!typePassword && suffix && (
+            <Suffix icon={suffix} $secondSuffix={!!secondSuffix} />
+          )}
+          {!typePassword && secondSuffix && (
+            <SecondSuffix icon={secondSuffix} />
+          )}
           {!typePassword && suffixText && <SuffixText>{suffixText}</SuffixText>}
         </InputContainer>
       )

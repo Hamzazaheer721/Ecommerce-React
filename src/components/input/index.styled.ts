@@ -281,14 +281,33 @@ export const Prefix = styled(FontAwesomeIcon)<{
   }
 `
 
-export const Suffix = styled(FontAwesomeIcon)`
+export const Suffix = styled(FontAwesomeIcon)<{ $secondSuffix?: boolean }>`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   font-size: 1.4rem;
+  right: ${({ $secondSuffix }) => ($secondSuffix ? '3rem' : '1rem')};
+  width: 12px;
+  cursor: pointer;
+  @media ${device.mobile} {
+    font-size: 1rem;
+    right: ${({ $secondSuffix }) => ($secondSuffix ? '2.5rem' : '1rem')};
+  }
+
+  @media ${device.tiny} {
+    font-size: 1rem;
+    right: ${({ $secondSuffix }) => ($secondSuffix ? '2.5rem' : '1rem')};
+  }
+`
+export const SecondSuffix = styled(FontAwesomeIcon)`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.6rem;
   right: 1rem;
   width: 12px;
-
+  color: ${(props) => props.theme.color.primary};
+  cursor: pointer;
   @media ${device.mobile} {
     font-size: 1rem;
   }
@@ -297,7 +316,6 @@ export const Suffix = styled(FontAwesomeIcon)`
     font-size: 1rem;
   }
 `
-
 export const SuffixText = styled.div`
   position: absolute;
   top: 50%;
