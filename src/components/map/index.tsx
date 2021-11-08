@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-undef */
 /* eslint-disable one-var */
 import { useState, FC, useMemo, useCallback, memo } from 'react'
 import {
@@ -9,7 +11,6 @@ import {
 import { useDispatch } from 'react-redux'
 import { GOOGLE_MAP_URL } from '../../config/constants'
 import { updateLocation } from '../../redux/features/geoLocatonSlice'
-import { IGeoLocationLongLat } from '../../types/geoLocation'
 import { IPositionStateType } from './types'
 
 interface IMapProps {
@@ -44,10 +45,22 @@ const Map: FC<IMapProps> = memo(
         const newLat = latLng.lat()
         const newLng = latLng.lng()
 
-        const _obj: IGeoLocationLongLat = {
-          long: newLat,
-          lat: newLng
-        }
+        const geocoder = new google.maps.Geocoder()
+        const latlng = new google.maps.LatLng(newLat, newLng)
+        geocoder.geocode({ location: latlng }, (results, status) => {
+          if (status === google.maps.GeocoderStatus.OK) {
+            results &&
+              results[0] &&
+              dispatch(
+                updateLocation({
+                  geoCodeAddress: results[0].address_components
+                })
+              )
+          } else {
+            // eslint-disable-next-line no-console
+            console.error('Error : ', status)
+          }
+        })
 
         setMapPosition({
           lat: newLat,
@@ -57,7 +70,6 @@ const Map: FC<IMapProps> = memo(
           lat: newLat,
           lng: newLng
         })
-        dispatch(updateLocation(_obj))
       },
       [markerPosition, mapPosition]
     )

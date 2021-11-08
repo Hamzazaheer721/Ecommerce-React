@@ -3,6 +3,7 @@ import { updateLocationCaseReducer } from './caseReducers';
 import { IGeoLocationLongLat } from '../../../types/geoLocation/index';
 
 export const initialState: Partial<IGeoLocationLongLat> = {}
+
 export const currentGeoLocationSlice = createSlice({
   name: 'currentGeoLocation',
   initialState,

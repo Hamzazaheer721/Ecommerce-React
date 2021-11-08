@@ -1,7 +1,5 @@
 export type IGeoLocationLongLat = {
-  long: number,
-  lat: number,
-  address?: Partial<IGeoAddressType>
+  address: Partial<IGeoAddressType>
 }
 
 export type IGeoAddressType = {
@@ -10,4 +8,8 @@ export type IGeoAddressType = {
   state: string,
   postalCode: string,
   country: string
+}
+
+export type IGeoLocationPayloadArg = {
+  geoCodeAddress: any
 }
