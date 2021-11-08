@@ -47,6 +47,7 @@ const Map: FC<IMapProps> = memo(
 
         const geocoder = new google.maps.Geocoder()
         const latlng = new google.maps.LatLng(newLat, newLng)
+
         geocoder.geocode({ location: latlng }, (results, status) => {
           if (status === google.maps.GeocoderStatus.OK) {
             results &&
@@ -62,14 +63,13 @@ const Map: FC<IMapProps> = memo(
           }
         })
 
-        setMapPosition({
+        const _obj: typeof mapPosition | typeof markerPosition = {
           lat: newLat,
           lng: newLng
-        })
-        setMarkerPosition({
-          lat: newLat,
-          lng: newLng
-        })
+        }
+
+        setMapPosition(_obj)
+        setMarkerPosition(_obj)
       },
       [markerPosition, mapPosition]
     )
