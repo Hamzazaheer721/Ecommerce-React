@@ -52,3 +52,7 @@ export const ButtonContainer = styled.div`
   width: 100%;
   text-align: center;
 `
+
+export const MapContainer = styled.div<{height: string}>`
+  height: ${({height}) => height}
+`

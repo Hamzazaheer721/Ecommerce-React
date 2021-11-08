@@ -11,6 +11,7 @@ import {
   PURGE,
   REGISTER
 } from 'redux-persist'
+import { currentGeoLocationSlice } from '../features/geoLocatonSlice/index';
 import { userSignupSlice } from '../features/userSignupSlice'
 import { userSigninSlice } from '../features/userSigninSlice/index'
 import { activationSlice } from '../features/activationSlice'
@@ -26,7 +27,8 @@ const reducers = combineReducers({
   modal: ModalSlice.reducer,
   resendActivation: resendActivationLinkSlice.reducer,
   forgotPassword: forgotPasswordSlice.reducer,
-  resetPassword: resetPasswordSlice.reducer
+  resetPassword: resetPasswordSlice.reducer,
+  currentGeoLocation: currentGeoLocationSlice.reducer
 })
 
 const persistConfig = {

@@ -5,12 +5,12 @@ import Map from './components/map'
 import ButtonComponent from './components/button'
 
 const ViewComponent = memo(() => (
-  <div>
+  <>
     <Map />
     <InputFields />
     <StoreLocations />
     <ButtonComponent />
-  </div>
+  </>
 ))
 
 export default ViewComponent
