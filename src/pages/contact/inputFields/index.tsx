@@ -12,7 +12,8 @@ import {
   faMobileAndroid,
   faEnvelope,
   faClipboardList,
-  faBrowser
+  faBrowser,
+  faLocation
 } from '@fortawesome/pro-light-svg-icons'
 import {
   FieldsSectionContainer,
@@ -29,7 +30,12 @@ import Input from '../../../components/input'
 const LocationInputFields = memo(() => (
   <FieldsSectionContainer>
     <SingleInputContainer>
-      <Input label="Location" prefix={faMapMarkerAlt} suffix={faTimesCircle} />
+      <Input
+        label="Location"
+        prefix={faMapMarkerAlt}
+        suffix={faTimesCircle}
+        secondSuffix={faLocation}
+      />
     </SingleInputContainer>
     <SingleInputContainer>
       <Input label="Street Address" prefix={faHome} store />

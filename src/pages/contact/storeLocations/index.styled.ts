@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { device } from '../../../styles/devices'
 
 export const Container = styled.div`
   margin: 20px 20px 20px 20px;
@@ -33,6 +34,12 @@ export const LinkText = styled.h4`
   color: ${(props) => props.theme.color.primary};
   margin-top: 10px;
   cursor: pointer;
+  @media ${device.mobile} {
+    font-size: 12px;
+  }
+  @media ${device.tiny} {
+    font-size: 12px;
+  }
 `
 
 export const LinkIcon = styled(FontAwesomeIcon)`

@@ -8,12 +8,13 @@ export const IconStyler = styled(FontAwesomeIcon)`
   font-size: 1.2rem;
   margin-right: 7px;
 `
-export const ButtonContainer = styled.div`
+export const ButtonContainer = styled.div<{ color?: string }>`
   height: 40px;
   min-width: 250px;
   .ant-btn {
     color: ${(props) => props.theme.color.white};
     background: linear-gradient(270deg, #1a87bb, #1b9bd7);
+    background-color: red !important;
     border: none;
     border-radius: 20px;
     width: 100%;
@@ -25,6 +26,12 @@ export const ButtonContainer = styled.div`
       color: ${(props) => props.theme.color.white};
       background: linear-gradient(270deg, #1a87bb, #1b9bd7);
     }
+    ${({ color }) =>
+      // eslint-disable-next-line implicit-arrow-linebreak
+      color &&
+      `
+      background-color: color !important
+    `}
   }
 `
 export const SecondaryButtonContainer = styled.div`

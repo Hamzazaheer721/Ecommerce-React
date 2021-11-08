@@ -47,3 +47,8 @@ export const InputContainer = styled.div`
   border: none;
   outline: none;
 `
+
+export const ButtonContainer = styled.div`
+  width: 100%;
+  text-align: center;
+`
