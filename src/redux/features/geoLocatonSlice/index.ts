@@ -1,17 +1,15 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import { updateLocationCaseReducer } from './caseReducers';
 import { IGeoLocationLongLat } from '../../../types/geoLocation/index';
 
-const initialState: Partial<IGeoLocationLongLat> = {}
+export const initialState: Partial<IGeoLocationLongLat> = {}
+
 export const currentGeoLocationSlice = createSlice({
   name: 'currentGeoLocation',
   initialState,
   reducers: {
-    updateLocation: (state, action : PayloadAction<IGeoLocationLongLat>) => {
-      const {payload} = action;
-      state.lat = payload.lat;
-      state.long = payload.long;
-    }
+    updateLocationCaseReducer
   }
 })
 
-export const {updateLocation} = currentGeoLocationSlice.actions;
+export const {updateLocationCaseReducer: updateLocation} = currentGeoLocationSlice.actions;

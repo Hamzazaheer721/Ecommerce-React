@@ -15,6 +15,7 @@ import {
   faBrowser,
   faLocation
 } from '@fortawesome/pro-light-svg-icons'
+
 import {
   FieldsSectionContainer,
   SingleInputContainer,
@@ -24,7 +25,6 @@ import {
   CustomCheckBox,
   CheckboxPlaceholder
 } from './index.styled'
-
 import Input from '../../../../components/input'
 
 const LocationInputFields = memo(() => (
