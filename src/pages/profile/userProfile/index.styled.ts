@@ -143,6 +143,10 @@ export const Address = styled.span`
   font-size: 16px;
   color: ${(props) => props.theme.color.darkGray};
 `
+export const TitleContainer = styled.div`
+  font-size: 16px;
+  color: ${(props) => props.theme.color.darkGray};
+`
 
 export const OfficeTitle = styled.span`
   font-size: 14px;
