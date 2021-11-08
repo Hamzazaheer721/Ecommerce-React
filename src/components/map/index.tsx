@@ -6,7 +6,10 @@ import {
   withGoogleMap,
   Marker
 } from 'react-google-maps'
+import { useDispatch } from 'react-redux'
 import { GOOGLE_MAP_URL } from '../../config/constants'
+import { updateLocation } from '../../redux/features/geoLocatonSlice'
+import { IGeoLocationLongLat } from '../../types/geoLocation'
 import { IPositionStateType } from './types'
 
 interface IMapProps {
@@ -23,6 +26,7 @@ const Map: FC<IMapProps> = memo(
     height = '300px',
     zoom = 15
   }: IMapProps) => {
+    const dispatch = useDispatch()
     const [mapPosition, setMapPosition] = useState<IPositionStateType>({
       lat: propsLat,
       lng: propsLong
@@ -40,6 +44,10 @@ const Map: FC<IMapProps> = memo(
         const newLat = latLng.lat()
         const newLng = latLng.lng()
 
+        const _obj: IGeoLocationLongLat = {
+          long: newLat,
+          lat: newLng
+        }
         setMapPosition({
           lat: newLat,
           lng: newLng
@@ -48,6 +56,7 @@ const Map: FC<IMapProps> = memo(
           lat: newLat,
           lng: newLng
         })
+        dispatch(updateLocation(_obj))
       },
       [markerPosition, mapPosition]
     )
