@@ -56,13 +56,13 @@ const Map: FC<IMapProps> = memo(
           dispatch(updateLocation(updateLocationArg))
         }
 
-        const _obj: typeof mapPosition | typeof markerPosition = {
+        const mapObj: typeof mapPosition | typeof markerPosition = {
           lat: newLat,
           lng: newLng
         }
 
-        setMapPosition(_obj)
-        setMarkerPosition(_obj)
+        setMapPosition(mapObj)
+        setMarkerPosition(mapObj)
       },
       [markerPosition, mapPosition]
     )
