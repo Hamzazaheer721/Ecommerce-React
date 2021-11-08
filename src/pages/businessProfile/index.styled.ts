@@ -8,6 +8,13 @@ export const TabsContainer = styled(Tabs)`
     opacity: 1 !important;
   }
 
+  .ant-tabs-nav-wrap {
+    margin-bottom: 1px;
+  }
+
+  .ant-tabs-nav {
+    margin-bottom: 21px;
+  }
   .ant-tabs-tab-btn:hover {
     color: white !important;
     opacity: 1 !important;

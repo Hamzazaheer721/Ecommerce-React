@@ -32,7 +32,7 @@ export const SelectContainer = styled.div`
   background-color: ${(props) => props.theme.color.white};
   border-radius: 8px;
   transition: 0.4s;
-  padding: 5px;
+  padding: 3.4px;
   margin-bottom: 15px;
 
   p {
@@ -56,10 +56,10 @@ export const SelectContainer = styled.div`
 
 export const Prefix = styled(FontAwesomeIcon)`
   position: absolute;
-  left: 0.9rem;
+  left: 0.95rem;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 1rem;
+  font-size: 1.2rem;
 
   @media ${device.mobile} {
     font-size: 1rem;
@@ -78,9 +78,18 @@ export const SelectField = styled(Select)`
   background-color: transparent;
   box-shadow: none !important;
 
+  .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+    width: 100%;
+    height: 25px !important;
+    padding: 0 11 px;
+  }
+
   .ant-select-selection-item {
-    margin-left: 10px !important;
-    margin-top: 1.5px;
+    margin-left: 18px !important;
+    margin-top: -2px;
+    text-align: left;
+    padding: 3px 0;
+    font-size: 1rem;
   }
 
   .ant-select-selector {
@@ -90,6 +99,7 @@ export const SelectField = styled(Select)`
     border: none !important;
     box-shadow: none !important;
     padding-left: 1.9rem !important;
+    height: 25px !important;
 
     :focus {
       outline: none;
@@ -117,17 +127,21 @@ export const SelectField = styled(Select)`
     }
     .ant-select-selection-item {
       margin-left: 35px !important;
+      font-size: 0.8rem;
     }
   }
 
   @media ${device.tiny} {
-    padding-left: 2.5rem;
     :focus ~ ${Label} {
       left: 0.5rem;
       font-size: 0.8rem;
     }
     .ant-select-selector {
       padding-left: 0.1rem !important;
+    }
+    .ant-select-selection-item {
+      margin-left: 35px !important;
+      font-size: 0.8rem;
     }
   }
 `

@@ -1,6 +1,9 @@
 import styled, { createGlobalStyle } from 'styled-components'
 import { device } from './devices'
 
+interface ISecondLayoutProps {
+  secondLayout?: boolean
+}
 export const GlobalStyle = createGlobalStyle`
   html, body, #root {
     margin: 0;
@@ -11,14 +14,14 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 16px;
   }
 `
-export const LoginViewContainer = styled.div`
+export const LoginViewContainer = styled.div<ISecondLayoutProps>`
   margin: 0 auto;
   width: 35%;
   text-align: center;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: ${({ secondLayout }) => (secondLayout ? '' : '100vh')};
 
   @media ${device.tablet} {
     width: 50%;
@@ -26,7 +29,7 @@ export const LoginViewContainer = styled.div`
 
   @media ${device.mobile} {
     width: 100%;
-    padding: 0 50px;
+    padding: ${({ secondLayout }) => (secondLayout ? '0 15px' : '0 510px')};
   }
 
   @media ${device.tiny} {
