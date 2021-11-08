@@ -1,14 +1,18 @@
-import { FC, memo, useState } from 'react'
-import ImgCrop from 'antd-img-crop'
+import { useState } from 'react'
+import { faImages } from '@fortawesome/pro-light-svg-icons'
 import { UploadChangeParam, UploadFile } from 'antd/lib/upload/interface'
+import ImgCrop from 'antd-img-crop'
 
 import {
-  ImageSectionContainer,
+  Container,
+  TitleContainer,
+  Icon,
+  Title,
   ImagesContainer,
   UploadImage
 } from './index.styled'
 
-const ImageSection: FC = memo(() => {
+const CoverImages = () => {
   const [fileListState, setFileListState] = useState<any>([])
 
   const onChange = (info: UploadChangeParam<UploadFile<any>>) => {
@@ -30,7 +34,14 @@ const ImageSection: FC = memo(() => {
   }
 
   return (
-    <ImageSectionContainer>
+    <Container>
+      <TitleContainer>
+        <Icon icon={faImages} />
+        <Title>
+          Add Business Cover Images
+          <p>*Upto 6 images allowed</p>
+        </Title>
+      </TitleContainer>
       <ImagesContainer>
         <ImgCrop rotate>
           <UploadImage
@@ -40,12 +51,11 @@ const ImageSection: FC = memo(() => {
             onChange={onChange}
             onPreview={onPreview}
           >
-            {fileListState.length < 1 && '+ Upload'}
+            {fileListState.length < 6 && '+ Upload'}
           </UploadImage>
         </ImgCrop>
       </ImagesContainer>
-    </ImageSectionContainer>
+    </Container>
   )
-})
-
-export default ImageSection
+}
+export default CoverImages

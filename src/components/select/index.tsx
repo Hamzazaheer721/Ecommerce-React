@@ -16,7 +16,7 @@ const Select: FC<ISelectProps> = memo(({ prefix, handleChange, label }) => {
   const { Option } = SelectField
   return (
     <SelectContainer>
-      <SelectField defaultValue="Amount" onChange={handleChange}>
+      <SelectField onChange={handleChange}>
         <Option value=""> Amount</Option>
       </SelectField>
       {prefix && <Prefix icon={prefix} />}

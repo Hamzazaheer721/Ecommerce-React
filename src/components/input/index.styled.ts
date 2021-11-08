@@ -319,7 +319,7 @@ export const SecondSuffix = styled(FontAwesomeIcon)`
 export const SuffixText = styled.div`
   position: absolute;
   top: 50%;
-  right: 24%;
+  right: 7.2rem;
   transform: translateY(-50%);
   font-size: 0.9rem;
   color: ${(props) => props.theme.color.black};
@@ -328,10 +328,11 @@ export const SuffixText = styled.div`
 
   @media ${device.mobile} {
     font-size: 0.72rem;
+    right: 5.8rem;
   }
 
   @media ${device.tiny} {
     font-size: 0.72rem;
-    right: 32%;
+    right: 5.6rem;
   }
 `

@@ -37,3 +37,36 @@ export const InputContainer = styled.div<{ single?: boolean }>`
     flex: 1 1 100%;
   }
 `
+export const CheckboxContainer = styled.div`
+  display: flex;
+`
+
+export const CustomCheckBox = styled.input`
+  margin: 2.5px;
+  box-shadow: 0px 3px 6px #00000029;
+  border: 0.5px solid #4e98e2;
+  border-radius: 3px;
+`
+export const CheckboxPlaceholder = styled.p`
+  color: black;
+  padding-left: 6px;
+  font-size: 12px;
+  span {
+    color: ${(props) => props.theme.color.primary};
+    cursor: pointer;
+  }
+`
+export const ButtonContainer = styled.div`
+  width: 100%;
+  text-align: center;
+  margin: 15px 0;
+  margin-top: -10px;
+
+  @media ${device.mobile} {
+    margin-top: -20px;
+  }
+
+  @media ${device.tiny} {
+    margin-top: -20px;
+  }
+`

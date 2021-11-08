@@ -79,7 +79,7 @@ export const SelectField = styled(Select)`
   box-shadow: none !important;
 
   .ant-select-selection-item {
-    margin-left: 20px !important;
+    margin-left: 10px !important;
     margin-top: 1.5px;
   }
 
@@ -108,13 +108,15 @@ export const SelectField = styled(Select)`
   }
 
   @media ${device.mobile} {
-    padding-left: 2.5rem;
     :focus ~ ${Label} {
       left: 0.5rem;
       font-size: 0.8rem;
     }
     .ant-select-selector {
       padding-left: 0.1rem !important;
+    }
+    .ant-select-selection-item {
+      margin-left: 35px !important;
     }
   }
 
