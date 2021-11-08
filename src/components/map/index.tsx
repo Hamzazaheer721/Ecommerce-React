@@ -10,7 +10,9 @@ import {
 } from 'react-google-maps'
 import { useDispatch } from 'react-redux'
 import { GOOGLE_MAP_URL } from '../../config/constants'
+import { getAddress } from '../../general/helper'
 import { updateLocation } from '../../redux/features/geoLocatonSlice'
+import { IGeoLocationPayloadArg } from '../../types/geoLocation'
 import { IPositionStateType } from './types'
 
 interface IMapProps {
@@ -45,23 +47,14 @@ const Map: FC<IMapProps> = memo(
         const newLat = latLng.lat()
         const newLng = latLng.lng()
 
-        const geocoder = new google.maps.Geocoder()
-        const latlng = new google.maps.LatLng(newLat, newLng)
-
-        geocoder.geocode({ location: latlng }, (results, status) => {
-          if (status === google.maps.GeocoderStatus.OK) {
-            results &&
-              results[0] &&
-              dispatch(
-                updateLocation({
-                  geoCodeAddress: results[0].address_components
-                })
-              )
-          } else {
-            // eslint-disable-next-line no-console
-            console.error('Error : ', status)
+        let response = getAddress(newLat, newLng)
+        if (response) {
+          response = JSON.parse(JSON.stringify(response))
+          const updateLocationArg: IGeoLocationPayloadArg = {
+            geoCodeAddress: response
           }
-        })
+          dispatch(updateLocation(updateLocationArg))
+        }
 
         const _obj: typeof mapPosition | typeof markerPosition = {
           lat: newLat,

@@ -2,5 +2,5 @@
 
 self.onmessage = (e) => {
   const { data } = e
-  console.info(data)
+  console.info('Data is being received', data)
 }
