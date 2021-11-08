@@ -13,18 +13,8 @@ interface IButtonProps {
 }
 
 const Button: FC<IButtonProps> = memo(
-  ({
-    label,
-    icon,
-    type,
-    color,
-    handleSubmit
-  }: IButtonProps) => (
-    <CustomButton
-      htmlType={type}
-      color={color}
-      onClick={handleSubmit}
-    >
+  ({ label, icon, type, color, handleSubmit }: IButtonProps) => (
+    <CustomButton htmlType={type} color={color} onClick={handleSubmit}>
       {icon && <IconStyler icon={icon} />}
       {label}
     </CustomButton>
