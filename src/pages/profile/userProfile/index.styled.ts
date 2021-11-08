@@ -11,6 +11,9 @@ export const Container = styled.div`
   @media ${device.mobile} {
     flex-direction: column;
   }
+  @media ${device.tiny} {
+    flex-direction: column;
+  }
 `
 export const LeftContainer = styled.div`
   /* padding: 0 15px; */
@@ -20,6 +23,9 @@ export const LeftContainer = styled.div`
   @media ${device.mobile} {
     flex: 1;
   }
+  @media ${device.tiny} {
+    flex: 1;
+  }
 `
 
 export const RightContainer = styled.div`
@@ -27,6 +33,9 @@ export const RightContainer = styled.div`
   flex: 0.75;
 
   @media ${device.mobile} {
+    flex: 1;
+  }
+  @media ${device.tiny} {
     flex: 1;
   }
 `
@@ -52,6 +61,13 @@ export const InputFieldsContainer = styled.div`
   padding: 10px 0 0 0;
   gap: 10px;
   @media ${device.mobile} {
+    flex-direction: column;
+    ${InputContainer} {
+      flex: 1 1 100%;
+    }
+  }
+
+  @media ${device.tiny} {
     flex-direction: column;
     ${InputContainer} {
       flex: 1 1 100%;
@@ -87,6 +103,10 @@ export const AddressPaymentContainer = styled.div`
   padding: 13px;
   border-radius: 5px;
   margin: 20px 0;
+
+  @media ${device.tiny} {
+    padding: 6px;
+  }
 `
 export const MapIcon = styled(FontAwesomeIcon)`
   color: ${(props) => props.theme.color.darkGray};
@@ -97,6 +117,11 @@ export const MapIcon = styled(FontAwesomeIcon)`
 export const AddressPaymentTitle = styled.span`
   font-size: 16px;
   font-weight: 600;
+
+  @media ${device.tiny} {
+    font-size: 13px;
+    width: 100%;
+  }
 `
 export const ShippingAddress = styled.span`
   font-size: 12px;
@@ -106,6 +131,10 @@ export const ShippingAddress = styled.span`
   border-radius: 4px;
   float: right;
   border: 0.5px solid #9adbf9;
+
+  @media ${device.tiny} {
+    float: none;
+  }
 `
 export const StreetAddress = styled.div`
   margin: 5px;
