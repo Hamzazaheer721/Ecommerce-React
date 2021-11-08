@@ -17,7 +17,6 @@ const CoverImages = () => {
 
   const onChange = (info: UploadChangeParam<UploadFile<any>>) => {
     const { fileList } = info
-    console.info(fileList)
     setFileListState(fileList)
   }
 
@@ -32,8 +31,6 @@ const CoverImages = () => {
     }
     const image = new Image()
     image.src = src
-    // const imgWindow = window.open(src)
-    // imgWindow.document.write(image.outerHTML)
   }
 
   return (
