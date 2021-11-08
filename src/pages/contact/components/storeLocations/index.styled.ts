@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { device } from '../../../styles/devices'
+import { device } from '../../../../styles/devices'
 
 export const Container = styled.div`
   margin: 20px 20px 20px 20px;

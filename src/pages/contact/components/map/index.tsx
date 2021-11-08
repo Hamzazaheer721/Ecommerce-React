@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import MapComponent from '../../../components/map'
+import MapComponent from '../../../../components/map'
 
 const Map = memo(() => <MapComponent />)
 

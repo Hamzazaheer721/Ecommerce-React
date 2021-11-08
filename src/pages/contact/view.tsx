@@ -1,8 +1,8 @@
 import { memo } from 'react'
-import InputFields from './inputFields'
-import StoreLocations from './storeLocations'
-import Map from './map'
-import ButtonComponent from './buton'
+import InputFields from './components/inputFields'
+import StoreLocations from './components/storeLocations'
+import Map from './components/map'
+import ButtonComponent from './components/button'
 
 const ViewComponent = memo(() => (
   <div>
