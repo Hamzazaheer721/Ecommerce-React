@@ -56,15 +56,20 @@ const Map: FC<IMapProps> = memo(
       () =>
         // eslint-disable-next-line implicit-arrow-linebreak
         withScriptjs(
-          withGoogleMap(() => (
-            <GoogleMap defaultZoom={zoom} defaultCenter={mapPosition}>
-              <Marker
-                draggable={draggable}
-                onDragEnd={(coord) => onMarkerDragEnd(coord)}
-                position={{ lat: markerPosition.lat, lng: markerPosition.lng }}
-              />
-            </GoogleMap>
-          ))
+          withGoogleMap(
+            memo(() => (
+              <GoogleMap defaultZoom={zoom} defaultCenter={mapPosition}>
+                <Marker
+                  draggable={draggable}
+                  onDragEnd={(coord) => onMarkerDragEnd(coord)}
+                  position={{
+                    lat: markerPosition.lat,
+                    lng: markerPosition.lng
+                  }}
+                />
+              </GoogleMap>
+            ))
+          )
         ),
       [mapPosition, markerPosition]
     )
