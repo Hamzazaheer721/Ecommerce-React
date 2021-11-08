@@ -25,7 +25,7 @@ import {
   CheckboxPlaceholder
 } from './index.styled'
 
-import Input from '../../../components/input'
+import Input from '../../../../components/input'
 
 const LocationInputFields = memo(() => (
   <FieldsSectionContainer>
