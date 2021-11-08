@@ -46,6 +46,7 @@ export const InputContainer = styled.div`
   width: 100%;
   border: none;
   outline: none;
+  margin-bottom: 21px;
 `
 
 export const ButtonContainer = styled.div`
@@ -53,6 +54,11 @@ export const ButtonContainer = styled.div`
   text-align: center;
 `
 
-export const MapContainer = styled.div<{height: string}>`
-  height: ${({height}) => height}
+export const MapContainer = styled.div<{ height: string }>`
+  height: ${({ height }) => height};
+`
+
+export const InputFieldsSecondaryLayout = styled.div`
+  padding: 0 15px;
+  width: 100%;
 `

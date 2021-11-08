@@ -2,6 +2,7 @@ import { memo } from 'react'
 import { TabsContainer } from './index.styled'
 import Profile from '../profile'
 import Contact from '../contact'
+import Bank from '../bank'
 
 const { TabPane } = TabsContainer
 
@@ -24,7 +25,7 @@ const ViewComponent = memo(() => (
         <Contact />
       </TabPane>
       <TabPane tab="Bank" key="3">
-        Content of Tab Pane 3
+        <Bank />
       </TabPane>
     </TabsContainer>
   </div>
