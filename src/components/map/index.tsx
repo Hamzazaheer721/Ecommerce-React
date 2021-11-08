@@ -48,6 +48,7 @@ const Map: FC<IMapProps> = memo(
           long: newLat,
           lat: newLng
         }
+
         setMapPosition({
           lat: newLat,
           lng: newLng
