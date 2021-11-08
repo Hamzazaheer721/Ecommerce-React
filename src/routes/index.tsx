@@ -11,6 +11,7 @@ import CustomizeModal from '../components/modal'
 import Profile from '../pages/profile'
 import Store from '../pages/store'
 import Contact from '../pages/contact'
+import businessProfile from '../pages/businessProfile'
 
 const RouterComponent = memo(() => (
   <Router>
@@ -28,6 +29,7 @@ const RouterComponent = memo(() => (
       <Route exact path="/user-profile" component={Profile} />
       <Route exact path="/store" component={Store} />
       <Route exact path="/contact" component={Contact} />
+      <Route exact path="/business-profile" component={businessProfile} />
     </Switch>
   </Router>
 ))

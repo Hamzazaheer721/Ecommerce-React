@@ -265,7 +265,7 @@ export const Prefix = styled(FontAwesomeIcon)<{
   left: 1rem;
   top: ${({ $textArea }) => ($textArea ? '1.8rem' : '50%')};
   transform: translateY(-50%);
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   ${({ $phonefield }) =>
     // eslint-disable-next-line implicit-arrow-linebreak
     $phonefield &&
