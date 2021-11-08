@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { memo } from 'react'
 import {
   faUser,
@@ -11,7 +12,6 @@ import {
 } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import MapComponent from '../../../components/map'
-
 import {
   Container,
   LeftContainer,
@@ -77,8 +77,8 @@ const UserProfile = memo(() => (
         <MapComponent
           height="300px"
           zoom={15}
-          propsLat={30.3753}
-          propsLong={69.3451}
+          propsLat={59.955413}
+          propsLong={30.337844}
         />
         <LinkText>
           <LinkIcon icon={faMapMarkedAlt} />
@@ -115,5 +115,4 @@ const UserProfile = memo(() => (
     </RightContainer>
   </Container>
 ))
-
 export default UserProfile
