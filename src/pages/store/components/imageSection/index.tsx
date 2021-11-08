@@ -13,7 +13,6 @@ const ImageSection: FC = memo(() => {
 
   const onChange = (info: UploadChangeParam<UploadFile<any>>) => {
     const { fileList } = info
-    console.info(fileList)
     setFileListState(fileList)
   }
 
@@ -28,8 +27,6 @@ const ImageSection: FC = memo(() => {
     }
     const image = new Image()
     image.src = src
-    // const imgWindow = window.open(src)
-    // imgWindow.document.write(image.outerHTML)
   }
 
   return (
