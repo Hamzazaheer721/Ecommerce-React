@@ -13,8 +13,11 @@ export const isObjectEmpty = (obj : any): boolean => {
   return true;
 }
 
-export const getCurrentLocation = (): Partial<IGeoLocationLongLat> => {
-  let _geo: Partial<IGeoLocationLongLat> = {};
+export const getCurrentLocation = (): IGeoLocationLongLat => {
+  let _geo: IGeoLocationLongLat = {
+    long: 0,
+    lat: 0
+  };
   if (navigator.geolocation) {
     // eslint-disable-next-line no-undef
     navigator.geolocation.getCurrentPosition((position: GeolocationPosition) => {
