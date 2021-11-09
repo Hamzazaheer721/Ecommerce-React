@@ -61,22 +61,15 @@ const Map: FC<IMapProps> = memo(
         const { latLng } = coord
         const newLat = latLng.lat()
         const newLng = latLng.lng()
-
         let response = await getAddressObj(newLat, newLng)
         if (response) {
           response = JSON.parse(JSON.stringify(response))
-          // const updateLocationArg: IGeoLocationPayloadArg = {
-          //   geoCodeAddress: response
-          // }
           locationWorker.postMessage(response)
-          // dispatch(updateLocation(updateLocationArg))
         }
-
         const mapObj: typeof mapPosition | typeof markerPosition = {
           lat: newLat,
           lng: newLng
         }
-
         setMapPosition(mapObj)
         setMarkerPosition(mapObj)
       },
