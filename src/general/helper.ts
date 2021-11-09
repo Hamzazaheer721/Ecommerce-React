@@ -38,7 +38,7 @@ export const getCurrentLatLang = (): Omit<
 }
 
 // eslint-disable-next-line max-len
-export const getAddress = (newLat: any, newLng: any) => {
+export const getAddressObj = async (newLat: any, newLng: any) => {
   const geocoder = new google.maps.Geocoder()
   const latlng = new google.maps.LatLng(newLat, newLng)
   return geocoder.geocode({ location: latlng }, (results, status) => {
