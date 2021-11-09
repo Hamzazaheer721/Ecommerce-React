@@ -10,7 +10,7 @@ import {
 } from 'react-google-maps'
 import { useDispatch } from 'react-redux'
 import { GOOGLE_MAP_URL } from '../../config/constants'
-import { getAddress } from '../../general/helper'
+import { getAddressObj } from '../../general/helper'
 import { updateLocation } from '../../redux/features/geoLocatonSlice'
 import { IGeoLocationPayloadArg } from '../../types/geoLocation'
 import { IPositionStateType } from './types'
@@ -30,12 +30,12 @@ const Map: FC<IMapProps> = memo(
     zoom = 15
   }: IMapProps) => {
     const dispatch = useDispatch()
+
     const [mapPosition, setMapPosition] = useState<IPositionStateType>({
       lat: propsLat,
       lng: propsLong
     })
     const [draggable] = useState<boolean>(true)
-
     const [markerPosition, setMarkerPosition] = useState<IPositionStateType>({
       lat: propsLat,
       lng: propsLong
@@ -47,7 +47,7 @@ const Map: FC<IMapProps> = memo(
         const newLat = latLng.lat()
         const newLng = latLng.lng()
 
-        let response = getAddress(newLat, newLng)
+        let response = await getAddressObj(newLat, newLng)
         if (response) {
           response = JSON.parse(JSON.stringify(response))
           const updateLocationArg: IGeoLocationPayloadArg = {

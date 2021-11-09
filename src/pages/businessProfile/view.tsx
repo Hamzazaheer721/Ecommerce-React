@@ -3,11 +3,13 @@ import { TabsContainer } from './index.styled'
 import Profile from '../profile'
 import Contact from '../contact'
 import Bank from '../bank'
+import HeaderComponent from '../../components/header'
 
 const { TabPane } = TabsContainer
 
 const ViewComponent = memo(() => (
-  <div>
+  <>
+    <HeaderComponent />
     <TabsContainer
       tabBarStyle={{
         backgroundColor: '#1B9BD7',
@@ -28,7 +30,7 @@ const ViewComponent = memo(() => (
         <Bank />
       </TabPane>
     </TabsContainer>
-  </div>
+  </>
 ))
 
 export default ViewComponent
