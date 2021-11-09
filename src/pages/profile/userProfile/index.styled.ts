@@ -58,8 +58,8 @@ export const InputFieldsContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  padding: 10px 0 0 0;
-  gap: 10px;
+  padding: 0 0 20px 0;
+  gap: 20px;
   @media ${device.mobile} {
     flex-direction: column;
     ${InputContainer} {
@@ -77,7 +77,6 @@ export const InputFieldsContainer = styled.div`
 
 export const LinkText = styled.h4`
   color: ${(props) => props.theme.color.primary};
-  margin-top: 10px;
   cursor: pointer;
 `
 
@@ -137,7 +136,7 @@ export const ShippingAddress = styled.span`
   }
 `
 export const StreetAddress = styled.div`
-  margin: 5px;
+  margin: 5px 5px 10px 5px;
 `
 export const Address = styled.span`
   font-size: 16px;
