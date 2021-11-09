@@ -16,28 +16,11 @@ import {
   AntSwitch,
   CardContainer
 } from './index.styled'
+import { Cards } from './helper'
 import { LoginViewContainer } from '../../../../styles/global'
 
 const Card = memo(() => {
   const theme = useContext(ThemeContext)
-
-  const Cards: any = [
-    {
-      no: '1'
-    },
-    {
-      no: '1'
-    },
-    {
-      no: '1'
-    },
-    {
-      no: '1'
-    },
-    {
-      no: '1'
-    }
-  ]
 
   return (
     <Container>
