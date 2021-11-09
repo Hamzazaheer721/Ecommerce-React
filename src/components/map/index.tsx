@@ -30,12 +30,12 @@ const Map: FC<IMapProps> = memo(
     zoom = 15
   }: IMapProps) => {
     const dispatch = useDispatch()
+
     const [mapPosition, setMapPosition] = useState<IPositionStateType>({
       lat: propsLat,
       lng: propsLong
     })
     const [draggable] = useState<boolean>(true)
-
     const [markerPosition, setMarkerPosition] = useState<IPositionStateType>({
       lat: propsLat,
       lng: propsLong
