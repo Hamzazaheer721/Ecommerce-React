@@ -34,7 +34,7 @@ export const LoginViewContainer = styled.div<ISecondLayoutProps>`
 
   @media ${device.tiny} {
     width: 100%;
-    padding: 0 25px;
+    padding: 0 15px;
   }
 `
 export const InputFieldsContainer = styled.div`

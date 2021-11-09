@@ -2,6 +2,7 @@
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Switch } from 'antd'
+import { device } from '../../../../styles/devices'
 
 export const Container = styled.div`
   padding-top: 20px;
@@ -38,6 +39,10 @@ export const CardTitle = styled.p`
   span {
     color: ${(props) => props.theme.color.darkGray};
     font-size: 12px;
+  }
+  @media ${device.tiny} {
+    font-size: 14px;
+    margin: 0 2px;
   }
 `
 export const IconsContainer = styled.div`
