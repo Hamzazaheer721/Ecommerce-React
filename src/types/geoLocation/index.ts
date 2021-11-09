@@ -8,6 +8,8 @@ export type IGeoAddressType = {
   state: string,
   postalCode: string,
   country: string
+  streetAddress: string
+  location: string
 }
 
 export type IGeoLocationPayloadArg = {

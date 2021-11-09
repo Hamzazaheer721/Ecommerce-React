@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-undef */
 /* eslint-disable one-var */
-import { useState, FC, useMemo, useCallback, memo } from 'react'
+import { useState, FC, useMemo, useCallback, memo, useEffect } from 'react'
 import {
   GoogleMap,
   withScriptjs,
@@ -11,8 +11,8 @@ import {
 import { useDispatch } from 'react-redux'
 import { GOOGLE_MAP_URL } from '../../config/constants'
 import { getAddressObj } from '../../general/helper'
-import { updateLocation } from '../../redux/features/geoLocatonSlice'
 import { IGeoLocationPayloadArg } from '../../types/geoLocation'
+import { updateLocation } from '../../redux/features/geoLocatonSlice'
 import { IPositionStateType } from './types'
 
 interface IMapProps {
@@ -41,6 +41,21 @@ const Map: FC<IMapProps> = memo(
       lng: propsLong
     })
 
+    const locationWorker: Worker = useMemo(
+      () => new Worker('./workers/locationWorker.js'),
+      []
+    )
+
+    useEffect(() => {
+      locationWorker.onmessage = (event: MessageEvent) => {
+        const { data } = event
+        const _obj: Partial<IGeoLocationPayloadArg> = {
+          geoCodeAddress: data
+        }
+        dispatch(updateLocation(_obj))
+      }
+    }, [locationWorker])
+
     const onMarkerDragEnd = useCallback(
       async (coord: any) => {
         const { latLng } = coord
@@ -50,10 +65,11 @@ const Map: FC<IMapProps> = memo(
         let response = await getAddressObj(newLat, newLng)
         if (response) {
           response = JSON.parse(JSON.stringify(response))
-          const updateLocationArg: IGeoLocationPayloadArg = {
-            geoCodeAddress: response
-          }
-          dispatch(updateLocation(updateLocationArg))
+          // const updateLocationArg: IGeoLocationPayloadArg = {
+          //   geoCodeAddress: response
+          // }
+          locationWorker.postMessage(response)
+          // dispatch(updateLocation(updateLocationArg))
         }
 
         const mapObj: typeof mapPosition | typeof markerPosition = {
