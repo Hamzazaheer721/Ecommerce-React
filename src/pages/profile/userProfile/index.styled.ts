@@ -58,8 +58,8 @@ export const InputFieldsContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  padding: 10px 0 0 0;
-  gap: 10px;
+  padding: 0 0 20px 0;
+  gap: 20px;
   @media ${device.mobile} {
     flex-direction: column;
     ${InputContainer} {
@@ -77,7 +77,6 @@ export const InputFieldsContainer = styled.div`
 
 export const LinkText = styled.h4`
   color: ${(props) => props.theme.color.primary};
-  margin: 15px 0;
   cursor: pointer;
 `
 
