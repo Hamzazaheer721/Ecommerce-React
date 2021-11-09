@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react'
+import { memo } from 'react'
 import {
   faBuilding,
   faTimesCircle,
@@ -15,7 +15,6 @@ import {
   faBrowser,
   faLocation
 } from '@fortawesome/pro-light-svg-icons'
-import { useSelector } from 'react-redux'
 import {
   FieldsSectionContainer,
   SingleInputContainer,
@@ -26,31 +25,11 @@ import {
   CheckboxPlaceholder
 } from './index.styled'
 import Input from '../../../../components/input'
-import { RootState } from '../../../../redux/store'
-import { IGeoAddressType } from '../../../../types/geoLocation'
-import { IContactInitialState } from './useForm/helper'
+import useContactForm from './useContactForm'
 
 const LocationInputFields = memo(() => {
-  const { address } = useSelector(
-    (state: RootState) => state.currentGeoLocation
-  )
-  const [locationStates, setLocationStates] =
-    useState<Partial<IGeoAddressType>>(IContactInitialState)
-
   const { location, streetAddress, city, area, state, country, postalCode } =
-    locationStates
-
-  useEffect(() => {
-    setLocationStates({
-      area: address?.area,
-      city: address?.city,
-      country: address?.country,
-      location: address?.location,
-      postalCode: address?.postalCode,
-      state: address?.state,
-      streetAddress: address?.streetAddress
-    })
-  }, [address])
+    useContactForm()
 
   return (
     <FieldsSectionContainer>
