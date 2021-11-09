@@ -15,7 +15,7 @@ export const isObjectEmpty = (obj: any): boolean => {
   return true
 }
 
-export const getCurrentLocation = (): Omit<
+export const getCurrentLatLang = (): Omit<
   IGeoLocationPayloadArg,
   'geoCodeAddress'
 > => {
@@ -37,6 +37,7 @@ export const getCurrentLocation = (): Omit<
   return _geo
 }
 
+// eslint-disable-next-line max-len
 export const getAddress = (newLat: any, newLng: any) => {
   const geocoder = new google.maps.Geocoder()
   const latlng = new google.maps.LatLng(newLat, newLng)
