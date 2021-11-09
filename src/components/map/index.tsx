@@ -10,7 +10,11 @@ import {
 } from 'react-google-maps'
 import { useDispatch } from 'react-redux'
 import { GOOGLE_MAP_URL } from '../../config/constants'
-import { getAddressObj } from '../../general/helper'
+import {
+  getAddressObj,
+  getAddressObjWithCallback,
+  getCurrentLatLang
+} from '../../general/helper'
 import { IGeoLocationPayloadArg } from '../../types/geoLocation'
 import { updateLocation } from '../../redux/features/geoLocatonSlice'
 import { IPositionStateType } from './types'
@@ -20,6 +24,7 @@ interface IMapProps {
   propsLong?: number
   height?: string
   zoom?: number
+  setCurrentLocation?: boolean
 }
 
 const Map: FC<IMapProps> = memo(
@@ -27,7 +32,8 @@ const Map: FC<IMapProps> = memo(
     propsLat = 31.4697,
     propsLong = 74.2728,
     height = '300px',
-    zoom = 15
+    zoom = 15,
+    setCurrentLocation
   }: IMapProps) => {
     const dispatch = useDispatch()
 
@@ -45,6 +51,25 @@ const Map: FC<IMapProps> = memo(
       () => new Worker('./workers/locationWorker.js'),
       []
     )
+
+    const initializeCurrentPosition = useCallback(async () => {
+      await getCurrentLatLang((res: number[]) => {
+        console.info(res)
+        getAddressObjWithCallback(res[0], res[1], (response: any) => {
+          if (response) {
+            console.info('my response :', response)
+            response = JSON.parse(JSON.stringify(response))
+            locationWorker.postMessage(response)
+          }
+        })
+      })
+    }, [locationWorker])
+
+    useEffect(() => {
+      if (setCurrentLocation) {
+        initializeCurrentPosition()
+      }
+    }, [])
 
     useEffect(() => {
       locationWorker.onmessage = (event: MessageEvent) => {

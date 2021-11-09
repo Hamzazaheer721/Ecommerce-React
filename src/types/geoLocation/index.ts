@@ -15,3 +15,8 @@ export type IGeoAddressType = {
 export type IGeoLocationPayloadArg = {
   geoCodeAddress: any
 }
+
+export type IGeoLangLatType = {
+  lng: number,
+  lat: number
+}

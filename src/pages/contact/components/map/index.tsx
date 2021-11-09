@@ -4,7 +4,7 @@ import { MapContainer } from '../../../../styles/global'
 
 const Map = memo(() => (
   <MapContainer height="300px">
-    <MapComponent />
+    <MapComponent setCurrentLocation />
   </MapContainer>
 ))
 
