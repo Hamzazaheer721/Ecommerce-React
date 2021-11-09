@@ -41,7 +41,10 @@ const Map: FC<IMapProps> = memo(
       lng: propsLong
     })
 
-    const locationWorker: Worker = new Worker('./workers/locationWorker.js')
+    const locationWorker: Worker = useMemo(
+      () => new Worker('./workers/locationWorker.js'),
+      []
+    )
 
     useEffect(() => {
       locationWorker.onmessage = (event: MessageEvent) => {
