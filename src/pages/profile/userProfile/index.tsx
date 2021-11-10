@@ -87,12 +87,10 @@ const UserProfile = memo(() => (
           Manage Address
         </LinkText>
       </AddressPaymentContainer>
-
       <AddressPaymentContainer>
         <MapIcon icon={faMapMarkerAlt} />
         <AddressPaymentTitle>Payment Method</AddressPaymentTitle>
         <ShippingAddress>Default Payment Method</ShippingAddress>
-
         <SelectiveCardContainer>
           <CardImage src="/images/master-card-icon.png" />
           <CardTitle>
