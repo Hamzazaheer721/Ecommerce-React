@@ -13,6 +13,7 @@ import { GOOGLE_MAP_URL } from '../../config/constants'
 import {
   getAddressObj,
   getAddressObjWithCallback,
+  // getCompleteResult
   getCurrentLatLang
 } from '../../general/helper'
 import { IGeoLocationPayloadArg } from '../../types/geoLocation'
@@ -53,11 +54,9 @@ const Map: FC<IMapProps> = memo(
     )
 
     const initializeCurrentPosition = useCallback(async () => {
-      await getCurrentLatLang((res: number[]) => {
-        console.info(res)
-        getAddressObjWithCallback(res[0], res[1], (response: any) => {
+      await getCurrentLatLang(async (res: number[]) => {
+        await getAddressObjWithCallback(res[0], res[1], (response) => {
           if (response) {
-            console.info('my response :', response)
             response = JSON.parse(JSON.stringify(response))
             locationWorker.postMessage(response)
           }

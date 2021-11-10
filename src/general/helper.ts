@@ -2,12 +2,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-prototype-builtins */
 /* eslint-disable no-restricted-syntax */
-declare global {
-  // eslint-disable-next-line no-unused-vars
-  interface Window {
-    google: any
-  }
-}
+
 export const isObjectEmpty = (obj: any): boolean => {
   let key
   for (key in obj) {
@@ -19,76 +14,114 @@ export const isObjectEmpty = (obj: any): boolean => {
 }
 
 export function getCurrentLatLang(func: any) {
-  const _geo: number[] = []
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition((position: GeolocationPosition) => {
-      _geo.push(position.coords.longitude)
-      _geo.push(position.coords.latitude)
-      func(_geo)
-    })
+  // eslint-disable-next-line no-var
+  var _geo: number[] = []
+  const options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
   }
-  // // eslint-disable-next-line no-var
-  // var _geo: number[] = []
-  // const options = {
-  //   enableHighAccuracy: true,
-  //   timeout: 5000,
-  //   maximumAge: 0
-  // }
 
-  // const positionSuccess = (position: GeolocationPosition) => {
-  //   _geo.push(position.coords.longitude)
-  //   _geo.push(position.coords.latitude)
-  //   func(_geo)
-  // }
+  const positionSuccess = (position: GeolocationPosition) => {
+    _geo.push(position.coords.longitude)
+    _geo.push(position.coords.latitude)
+    func(_geo)
+  }
 
-  // const positionError = (err: any) => {
-  //   // eslint-disable-next-line no-console
-  //   console.warn(`ERROR(${err.code}): ${err.message}`)
-  // }
+  const positionError = (err: any) => {
+    // eslint-disable-next-line no-console
+    console.warn(`ERROR(${err.code}): ${err.message}`)
+  }
 
-  // if (navigator.geolocation) {
-  //   // eslint-disable-next-line no-undef
-  //   navigator.geolocation.getCurrentPosition(
-  //     positionSuccess,
-  //     positionError,
-  //     options
-  //   )
-  // }
+  if (navigator.geolocation) {
+    // eslint-disable-next-line no-undef
+    navigator.geolocation.getCurrentPosition(
+      positionSuccess,
+      positionError,
+      options
+    )
+  }
 }
 
 // eslint-disable-next-line max-len
-export const getAddressObj = async (newLat: any, newLng: any) => {
+export const getAddressObj = async (newLat: number, newLng: number) => {
   const geocoder = new google.maps.Geocoder()
   const latlng = new google.maps.LatLng(newLat, newLng)
-  return geocoder.geocode({ location: latlng }, (results, status) => {
-    let _result
-    if (status === google.maps.GeocoderStatus.OK) {
-      if (results && results[0]) {
-        _result = results[0]
+  return geocoder.geocode(
+    { location: latlng },
+    (
+      results: google.maps.GeocoderResult[] | null,
+      status: google.maps.GeocoderStatus
+    ) => {
+      let _result
+      if (status === google.maps.GeocoderStatus.OK) {
+        if (results && results[0]) {
+          _result = results[0]
+        }
+      } else {
+        // eslint-disable-next-line no-console
+        console.error('Error : ', status)
       }
-    } else {
-      // eslint-disable-next-line no-console
-      console.error('Error : ', status)
+      return _result
     }
-    return _result
-  })
+  )
 }
 
 export const getAddressObjWithCallback = async (
   newLat: number,
   newLng: number,
-  func: any
+  // eslint-disable-next-line no-unused-vars
+  func: (res: google.maps.GeocoderResult) => void
 ) => {
- const geocoder = new google.maps.Geocoder()
+  const geocoder = new google.maps.Geocoder()
   const latlng = new google.maps.LatLng(newLat, newLng)
-  return geocoder.geocode({ location: latlng }, (results, status) => {
-    if (status === google.maps.GeocoderStatus.OK) {
-      if (results && results[0]) {
-        func(results[0])
+  return geocoder.geocode(
+    { location: latlng },
+    (
+      results: google.maps.GeocoderResult[] | null,
+      status: google.maps.GeocoderStatus
+    ) => {
+      if (status === google.maps.GeocoderStatus.OK) {
+        if (results && results[0]) {
+          func(results[0])
+        }
+      } else {
+        // eslint-disable-next-line no-console
+        console.error('Error : ', status)
       }
-    } else {
-      // eslint-disable-next-line no-console
-      console.error('Error : ', status)
     }
-  })
+  )
+}
+
+export const getCompleteResult = (
+  // eslint-disable-next-line no-unused-vars
+  func: (res: google.maps.GeocoderResult) => void
+) => {
+  const geocoder = new google.maps.Geocoder()
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position: GeolocationPosition) => {
+        const latlng = new google.maps.LatLng(
+          position.coords.longitude,
+          position.coords.latitude
+        )
+        return geocoder.geocode(
+          { location: latlng },
+          (
+            results: google.maps.GeocoderResult[] | null,
+            status: google.maps.GeocoderStatus
+          ) => {
+            if (status === google.maps.GeocoderStatus.OK) {
+              if (results && results[0]) {
+                func(results[0])
+              }
+            } else {
+              // eslint-disable-next-line no-console
+              console.error('Error : ', status)
+            }
+          }
+        )
+      }
+    )
+  }
 }
