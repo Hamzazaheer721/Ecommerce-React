@@ -54,7 +54,6 @@ const UserProfile = memo(() => (
           <Input label="Email" prefix={faEnvelope} />
         </InputContainer>
       </InputFieldsContainer>
-
       <InputFieldsContainer>
         <InputContainer>
           <Input label="WhatsApp Number" store phonefield prefix={faWhatsapp} />
