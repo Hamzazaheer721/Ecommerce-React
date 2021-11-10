@@ -28,7 +28,6 @@ import {
   StreetAddress,
   Address,
   OfficeTitle,
-  // MapImage,
   SelectiveCardContainer,
   CardImage,
   CardTitle,
@@ -41,7 +40,6 @@ import useUserProfileForm from '../useUserProfileForm'
 
 const UserProfile = memo(() => {
   const { handleChange, handlePhoneChange } = useUserProfileForm()
-
   const nameField = useRef<HTMLInputElement>(null)
   const emailField = useRef<HTMLInputElement>(null)
   const phoneField = useRef<HTMLInputElement>(null)
@@ -76,7 +74,6 @@ const UserProfile = memo(() => {
             />
           </InputContainer>
         </InputFieldsContainer>
-
         <InputFieldsContainer>
           <InputContainer>
             <Input
@@ -125,12 +122,10 @@ const UserProfile = memo(() => {
             Manage Address
           </LinkText>
         </AddressPaymentContainer>
-
         <AddressPaymentContainer>
           <MapIcon icon={faMapMarkerAlt} />
           <AddressPaymentTitle>Payment Method</AddressPaymentTitle>
           <ShippingAddress>Default Payment Method</ShippingAddress>
-
           <SelectiveCardContainer>
             <CardImage src="/images/master-card-icon.png" />
             <CardTitle>
