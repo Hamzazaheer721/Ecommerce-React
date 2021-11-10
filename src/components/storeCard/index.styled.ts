@@ -94,8 +94,8 @@ export const BadgeAreaWraper = styled.div`
   background-color: ${(props) => props.theme.color.primary};
   padding: 0 5px 1px 2px;
   white-space: nowrap;
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 `
 
 export const IconArea = styled.div`
