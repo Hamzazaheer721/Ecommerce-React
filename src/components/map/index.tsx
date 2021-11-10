@@ -81,10 +81,10 @@ const Map: FC<IMapProps> = memo(
     }, [locationWorker])
 
     const onMarkerDragEnd = useCallback(
-      async (coord: any) => {
+      async (coord: google.maps.MapMouseEvent) => {
         const { latLng } = coord
-        const newLat = latLng.lat()
-        const newLng = latLng.lng()
+        const newLat = latLng!.lat()
+        const newLng = latLng!.lng()
         let response = await getAddressObj(newLat, newLng)
         if (response) {
           response = JSON.parse(JSON.stringify(response))
@@ -109,7 +109,7 @@ const Map: FC<IMapProps> = memo(
               <GoogleMap defaultZoom={zoom} defaultCenter={mapPosition}>
                 <Marker
                   draggable={draggable}
-                  onDragEnd={(coord) => onMarkerDragEnd(coord)}
+                  onDragEnd={onMarkerDragEnd}
                   position={{
                     lat: markerPosition.lat,
                     lng: markerPosition.lng
