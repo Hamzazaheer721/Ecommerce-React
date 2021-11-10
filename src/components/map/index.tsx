@@ -56,7 +56,7 @@ const Map: FC<IMapProps> = memo(
       []
     )
 
-    const initializeCurrentPosition = useCallback(async () => {
+    const initializeCurrentPosition = useCallback(() => {
       getCurrentLatLang(async (res: google.maps.LatLngLiteral) => {
         getAddressObjWithCallback(res, (response: IGeoIntializeCustomData) => {
           locationWorker.postMessage(response)
