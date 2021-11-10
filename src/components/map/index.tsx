@@ -13,7 +13,6 @@ import { GOOGLE_MAP_URL } from '../../config/constants'
 import {
   getAddressObj,
   getAddressObjWithCallback,
-  // getCompleteResult
   getCurrentLatLang
 } from '../../general/helper'
 import { IGeoIntializeCustomData } from '../../types/geoLocation'
