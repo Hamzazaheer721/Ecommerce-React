@@ -16,10 +16,7 @@ import {
   // getCompleteResult
   getCurrentLatLang
 } from '../../general/helper'
-import {
-  IGeoIntializeCustomData,
-  IGeoLocationPayloadArg
-} from '../../types/geoLocation'
+import { IGeoIntializeCustomData } from '../../types/geoLocation'
 import { updateLocation } from '../../redux/features/geoLocatonSlice'
 import { IPositionStateType } from './types'
 
@@ -71,10 +68,7 @@ const Map: FC<IMapProps> = memo(
     useEffect(() => {
       locationWorker.onmessage = (event: MessageEvent) => {
         const { data } = event
-        const _obj: Partial<IGeoLocationPayloadArg> = {
-          geoCodeAddress: data
-        }
-        dispatch(updateLocation(_obj))
+        dispatch(updateLocation({ geoCodeAddress: data }))
       }
     }, [locationWorker])
 

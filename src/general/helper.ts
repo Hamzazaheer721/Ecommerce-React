@@ -63,7 +63,7 @@ export const getAddressObj = async (lat: number, lng: number) => {
         // eslint-disable-next-line no-console
         console.error('Error : ', status)
       }
-      return _result
+      return JSON.parse(JSON.stringify(_result))
     }
   )
 }
