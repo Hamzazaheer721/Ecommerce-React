@@ -1,72 +1,37 @@
 /* eslint-disable react/jsx-wrap-multilines */
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { Collapse } from 'antd'
+import { faCog, faShippingTimed, faTag } from '@fortawesome/pro-light-svg-icons'
+import { Container } from './index.styled'
+import Header from './components/header'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faCog,
-  faShippingTimed,
-  faTags
-} from '@fortawesome/pro-light-svg-icons'
-import { Container, HeaderContainer, Title } from './index.styled'
+const ViewComponent: FC = memo(() => {
+  const { Panel } = Collapse
 
-const { Panel } = Collapse
-
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`
-
-const ViewComponent: FC = () => (
-  <Container>
-    <Collapse expandIconPosition="right" defaultActiveKey={['1']}>
-      <Panel
-        header={
-          <HeaderContainer>
-            <FontAwesomeIcon icon={faCog} />
-            <Title>Setting</Title>
-          </HeaderContainer>
-        }
-        key="1"
-      >
-        <p>{text}</p>
-      </Panel>
-      <Panel
-        header={
-          <HeaderContainer>
-            <FontAwesomeIcon icon={faShippingTimed} />
-            <Title>Shipping</Title>
-          </HeaderContainer>
-        }
-        key="2"
-      >
-        <p>{text}</p>
-      </Panel>
-      <Panel
-        header={
-          <HeaderContainer>
-            <FontAwesomeIcon icon={faShippingTimed} />
-            <Title>Store Timings</Title>
-          </HeaderContainer>
-        }
-        key="3"
-      >
-        <p>{text}</p>
-      </Panel>
-      <Panel
-        header={
-          <HeaderContainer>
-            <FontAwesomeIcon icon={faTags} />
-            <Title>Other Settings</Title>
-          </HeaderContainer>
-        }
-        key="3"
-      >
-        <p>{text}</p>
-      </Panel>
-    </Collapse>
-  </Container>
-)
+  return (
+    <Container>
+      <Collapse expandIconPosition="right" defaultActiveKey={['1']}>
+        <Panel header={<Header icon={faCog} title="Setting" />} key="1">
+          <p>test</p>
+        </Panel>
+        <Panel
+          header={<Header icon={faShippingTimed} title="Shipping" />}
+          key="2"
+        >
+          <p>test</p>
+        </Panel>
+        <Panel
+          header={<Header icon={faShippingTimed} title="Store Timings" />}
+          key="3"
+        >
+          <p>test</p>
+        </Panel>
+        <Panel header={<Header icon={faTag} title="Other Timings" />} key="4">
+          <p>test</p>
+        </Panel>
+      </Collapse>
+    </Container>
+  )
+})
 
 export default ViewComponent
