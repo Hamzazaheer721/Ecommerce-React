@@ -18,7 +18,3 @@ export const Container = styled.div`
     border-top: none !important;
   }
 `
-export const HeaderContainer = styled.div``
-export const Title = styled.span`
-  margin-left: 10px;
-`
