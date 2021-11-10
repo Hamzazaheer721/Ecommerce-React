@@ -20,3 +20,6 @@ export type IGeoLangLatType = {
   lng: number,
   lat: number
 }
+
+// eslint-disable-next-line no-undef
+export type IGeoIntializeCustomData = { results: google.maps.GeocoderResult[] }

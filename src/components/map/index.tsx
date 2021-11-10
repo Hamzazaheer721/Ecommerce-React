@@ -16,7 +16,10 @@ import {
   // getCompleteResult
   getCurrentLatLang
 } from '../../general/helper'
-import { IGeoLocationPayloadArg } from '../../types/geoLocation'
+import {
+  IGeoIntializeCustomData,
+  IGeoLocationPayloadArg
+} from '../../types/geoLocation'
 import { updateLocation } from '../../redux/features/geoLocatonSlice'
 import { IPositionStateType } from './types'
 
@@ -54,19 +57,9 @@ const Map: FC<IMapProps> = memo(
     )
 
     const initializeCurrentPosition = useCallback(async () => {
-      getCurrentLatLang(async (res: number[]) => {
-        const _obj: google.maps.LatLngLiteral = {
-          lat: res[0],
-          lng: res[1]
-        }
-        getAddressObjWithCallback(_obj, (response) => {
-          const _res: google.maps.GeocoderResult = JSON.parse(
-            JSON.stringify(response)
-          )
-          const __obj: { results: google.maps.GeocoderResult[] } = {
-            results: [_res]
-          }
-          locationWorker.postMessage(__obj)
+      getCurrentLatLang(async (res: google.maps.LatLngLiteral) => {
+        getAddressObjWithCallback(res, (response: IGeoIntializeCustomData) => {
+          locationWorker.postMessage(response)
         })
       })
     }, [locationWorker])
