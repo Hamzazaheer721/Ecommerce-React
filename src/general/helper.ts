@@ -15,6 +15,7 @@ export const isObjectEmpty = (obj: any): boolean => {
 
 export function getCurrentLatLang(func: any) {
   const _geo: number[] = []
+
   const options = {
     enableHighAccuracy: true,
     timeout: 5000,
