@@ -165,6 +165,14 @@ export const ProfileImage = styled.img`
   top: 79%;
   border-radius: 10px;
   flex: 5;
+
+  @media ${device.mobile} {
+    margin-left: 0.6rem;
+  }
+
+  @media ${device.tiny} {
+    margin-left: 0.6rem;
+  }
 `
 
 export const ProfileSubContainer = styled.div`
@@ -227,7 +235,7 @@ export const ShopButton = styled.button`
   }
   @media ${device.tiny} {
     height: 40px;
-    width: 132px;
+    width: 115px;
   }
 `
 
@@ -249,7 +257,7 @@ export const WhatsAppButton = styled.button`
   }
   @media ${device.tiny} {
     height: 40px;
-    width: 132px;
+    width: 115px;
   }
 `
 
