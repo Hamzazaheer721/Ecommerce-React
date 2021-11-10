@@ -41,7 +41,6 @@ const Map: FC<IMapProps> = memo(
       lat: propsLat,
       lng: propsLong
     })
-    const [draggable] = useState<boolean>(true)
     const [markerPosition, setMarkerPosition] = useState<IPositionStateType>({
       lat: propsLat,
       lng: propsLong
@@ -100,7 +99,7 @@ const Map: FC<IMapProps> = memo(
             memo(() => (
               <GoogleMap defaultZoom={zoom} defaultCenter={mapPosition}>
                 <Marker
-                  draggable={draggable}
+                  draggable
                   onDragEnd={onMarkerDragEnd}
                   position={{
                     lat: markerPosition.lat,
