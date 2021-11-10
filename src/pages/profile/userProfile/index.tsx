@@ -37,6 +37,7 @@ import {
 } from './index.styled'
 import ProfileImage from '../profileImage'
 import Input from '../../../components/input'
+import { MapContainer } from '../../../styles/global'
 
 const UserProfile = memo(() => (
   <Container>
@@ -74,12 +75,14 @@ const UserProfile = memo(() => (
           <OfficeTitle>Office</OfficeTitle>
           <Address>341-E2, Johar Town, Lahore </Address>
         </StreetAddress>
-        <MapComponent
-          height="300px"
-          zoom={15}
-          propsLat={59.955413}
-          propsLong={30.337844}
-        />
+        <MapContainer height="300px">
+          <MapComponent
+            height="300px"
+            zoom={15}
+            propsLat={59.955413}
+            propsLong={30.337844}
+          />
+        </MapContainer>
         <LinkText>
           <LinkIcon icon={faMapMarkedAlt} />
           Manage Address
