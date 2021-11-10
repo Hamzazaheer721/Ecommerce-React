@@ -92,7 +92,7 @@ export const BadgeArea = styled.span`
 `
 export const BadgeAreaWraper = styled.div`
   background-color: ${(props) => props.theme.color.primary};
-  padding: 2px 5px 2px 2px;
+  padding: 0 5px 1px 2px;
   white-space: nowrap;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
@@ -115,8 +115,9 @@ export const TimeArea = styled.div`
   background: rgba(0, 0, 0, 0.8);
   color: ${(props) => props.theme.color.primary};
   background-color: ${(props) => props.theme.color.lightBlue};
-  padding: 0 14px;
-  border-radius: 10px;
+  padding: 0 12px;
+  border-radius: 7px;
+  font-size: 12px;
 `
 export const IconStyle = styled(FontAwesomeIcon)`
   font-size: 22px;
