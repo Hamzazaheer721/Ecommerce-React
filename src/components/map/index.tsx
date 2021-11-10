@@ -17,7 +17,6 @@ import {
 } from '../../general/helper'
 import { IGeoIntializeCustomData } from '../../types/geoLocation'
 import { updateLocation } from '../../redux/features/geoLocatonSlice'
-import { IPositionStateType } from './types'
 
 interface IMapProps {
   propsLat?: number
@@ -37,14 +36,15 @@ const Map: FC<IMapProps> = memo(
   }: IMapProps) => {
     const dispatch = useDispatch()
 
-    const [mapPosition, setMapPosition] = useState<IPositionStateType>({
+    const [mapPosition, setMapPosition] = useState<google.maps.LatLngLiteral>({
       lat: propsLat,
       lng: propsLong
     })
-    const [markerPosition, setMarkerPosition] = useState<IPositionStateType>({
-      lat: propsLat,
-      lng: propsLong
-    })
+    const [markerPosition, setMarkerPosition] =
+      useState<google.maps.LatLngLiteral>({
+        lat: propsLat,
+        lng: propsLong
+      })
 
     const locationWorker: Worker = useMemo(
       () => new Worker('./workers/locationWorker.js'),
@@ -81,7 +81,7 @@ const Map: FC<IMapProps> = memo(
           response = JSON.parse(JSON.stringify(response))
           locationWorker.postMessage(response)
         }
-        const mapObj: typeof mapPosition | typeof markerPosition = {
+        const mapObj: google.maps.LatLngLiteral = {
           lat: newLat,
           lng: newLng
         }
