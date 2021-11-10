@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { HeaderContainer, Title } from './index.styled'
@@ -8,11 +8,11 @@ interface IHeaderProps {
   title: string
 }
 
-const Header: FC<IHeaderProps> = ({ icon, title }: IHeaderProps) => (
+const Header: FC<IHeaderProps> = memo(({ icon, title }: IHeaderProps) => (
   <HeaderContainer>
     <FontAwesomeIcon icon={icon} />
     <Title>{title}</Title>
   </HeaderContainer>
-)
+))
 
 export default Header
