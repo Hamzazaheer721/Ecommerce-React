@@ -14,8 +14,7 @@ export const isObjectEmpty = (obj: any): boolean => {
 }
 
 export function getCurrentLatLang(func: any) {
-  // eslint-disable-next-line no-var
-  var _geo: number[] = []
+  const _geo: number[] = []
   const options = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -34,7 +33,6 @@ export function getCurrentLatLang(func: any) {
   }
 
   if (navigator.geolocation) {
-    // eslint-disable-next-line no-undef
     navigator.geolocation.getCurrentPosition(
       positionSuccess,
       positionError,
