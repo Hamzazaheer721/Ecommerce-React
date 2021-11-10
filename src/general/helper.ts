@@ -91,36 +91,3 @@ export const getAddressObjWithCallback = async (
     }
   )
 }
-
-export const getCompleteResult = (
-  // eslint-disable-next-line no-unused-vars
-  func: (res: google.maps.GeocoderResult) => void
-) => {
-  const geocoder = new google.maps.Geocoder()
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      (position: GeolocationPosition) => {
-        const latlng = new google.maps.LatLng(
-          position.coords.longitude,
-          position.coords.latitude
-        )
-        return geocoder.geocode(
-          { location: latlng },
-          (
-            results: google.maps.GeocoderResult[] | null,
-            status: google.maps.GeocoderStatus
-          ) => {
-            if (status === google.maps.GeocoderStatus.OK) {
-              if (results && results[0]) {
-                func(results[0])
-              }
-            } else {
-              // eslint-disable-next-line no-console
-              console.error('Error : ', status)
-            }
-          }
-        )
-      }
-    )
-  }
-}
