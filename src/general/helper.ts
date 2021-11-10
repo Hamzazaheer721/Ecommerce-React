@@ -23,8 +23,8 @@ export function getCurrentLatLang(func: any) {
   }
 
   const positionSuccess = (position: GeolocationPosition) => {
-    _geo.push(position.coords.longitude)
     _geo.push(position.coords.latitude)
+    _geo.push(position.coords.longitude)
     func(_geo)
   }
 
@@ -67,13 +67,13 @@ export const getAddressObj = async (newLat: number, newLng: number) => {
 }
 
 export const getAddressObjWithCallback = async (
-  newLat: number,
-  newLng: number,
+  _obj: google.maps.LatLngLiteral,
   // eslint-disable-next-line no-unused-vars
   func: (res: google.maps.GeocoderResult) => void
 ) => {
+  const {lat, lng} = _obj
   const geocoder = new google.maps.Geocoder()
-  const latlng = new google.maps.LatLng(newLat, newLng)
+  const latlng = new google.maps.LatLng(lat, lng)
   return geocoder.geocode(
     { location: latlng },
     (

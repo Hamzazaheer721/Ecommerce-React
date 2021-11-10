@@ -54,12 +54,19 @@ const Map: FC<IMapProps> = memo(
     )
 
     const initializeCurrentPosition = useCallback(async () => {
-      await getCurrentLatLang(async (res: number[]) => {
-        await getAddressObjWithCallback(res[0], res[1], (response) => {
-          if (response) {
-            response = JSON.parse(JSON.stringify(response))
-            locationWorker.postMessage(response)
+      getCurrentLatLang(async (res: number[]) => {
+        const _obj: google.maps.LatLngLiteral = {
+          lat: res[0],
+          lng: res[1]
+        }
+        getAddressObjWithCallback(_obj, (response) => {
+          const _res: google.maps.GeocoderResult = JSON.parse(
+            JSON.stringify(response)
+          )
+          const __obj: { results: google.maps.GeocoderResult[] } = {
+            results: [_res]
           }
+          locationWorker.postMessage(__obj)
         })
       })
     }, [locationWorker])
