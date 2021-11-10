@@ -4,16 +4,14 @@
 /* eslint-disable no-restricted-syntax */
 
 export const isObjectEmpty = (obj: any): boolean => {
-  let key
-  for (key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      return false
-    }
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) return false
   }
   return true
 }
 
-export function getCurrentLatLang(func: any) {
+// eslint-disable-next-line no-unused-vars
+export const getCurrentLatLang = (func: (_var: number[]) => void): void => {
   const _geo: number[] = []
 
   const options = {
@@ -43,9 +41,9 @@ export function getCurrentLatLang(func: any) {
 }
 
 // eslint-disable-next-line max-len
-export const getAddressObj = async (newLat: number, newLng: number) => {
+export const getAddressObj = async (lat: number, lng: number) => {
   const geocoder = new google.maps.Geocoder()
-  const latlng = new google.maps.LatLng(newLat, newLng)
+  const latlng = new google.maps.LatLng(lat, lng)
   return geocoder.geocode(
     { location: latlng },
     (
