@@ -72,9 +72,7 @@ const Map: FC<IMapProps> = memo(
     }, [locationWorker])
 
     useEffect(() => {
-      if (setCurrentLocation) {
-        initializeCurrentPosition()
-      }
+      setCurrentLocation && initializeCurrentPosition()
     }, [])
 
     useEffect(() => {
