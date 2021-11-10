@@ -81,8 +81,9 @@ const Map: FC<IMapProps> = memo(
     }, [locationWorker])
 
     const onMarkerDragEnd = useCallback(
-      async (coord: google.maps.MapMouseEvent) => {
-        const { latLng } = coord
+      async (e: google.maps.MapMouseEvent) => {
+        e.stop()
+        const { latLng } = e
         const newLat = latLng!.lat()
         const newLng = latLng!.lng()
         let response = await getAddressObj(newLat, newLng)
