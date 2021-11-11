@@ -29,6 +29,7 @@ import useContactForm from './useContactForm'
 
 const LocationInputFields = memo(() => {
   const {
+    handleChange,
     location,
     streetAddress,
     city,
@@ -45,10 +46,12 @@ const LocationInputFields = memo(() => {
           ref={autoCompleteRef}
           label="Location"
           prefix={faMapMarkerAlt}
-          value={location}
           suffix={faTimesCircle}
           secondSuffix={faLocation}
           autoComplete
+          name="location"
+          value={location}
+          handleChange={handleChange}
         />
       </SingleInputContainer>
       <SingleInputContainer>

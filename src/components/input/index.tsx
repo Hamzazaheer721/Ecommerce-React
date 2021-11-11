@@ -108,6 +108,7 @@ const Input = memo(
               {...props}
               name={name}
               value={value}
+              placeholder=""
               type={typePassword && !showPassword ? 'password' : 'text'}
               ref={(element) => {
                 if (element) {
