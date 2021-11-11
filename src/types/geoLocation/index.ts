@@ -1,5 +1,12 @@
+/* eslint-disable no-undef */
 export type IGeoLocationLongLat = {
   address: Partial<IGeoAddressType>
+  location: IGeoLocationType
+}
+
+export type IGeoLocationType = {
+  mapPosition: google.maps.LatLngLiteral,
+  markerPosition: google.maps.LatLngLiteral
 }
 
 export type IGeoAddressType = {
