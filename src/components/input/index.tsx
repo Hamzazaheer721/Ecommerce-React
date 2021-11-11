@@ -53,10 +53,11 @@ interface InputProps {
   store: boolean
   suffixText: string
   textArea: boolean
+  autoComplete?: boolean
 }
 
 const Input = memo(
-  forwardRef<HTMLInputElement, Partial<InputProps>>(
+  forwardRef<HTMLInputElement | null, Partial<InputProps>>(
     (
       {
         label,
@@ -73,6 +74,7 @@ const Input = memo(
         store,
         suffixText,
         textArea,
+        autoComplete,
         ...props
       },
       inputRef

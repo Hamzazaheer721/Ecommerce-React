@@ -28,18 +28,27 @@ import Input from '../../../../components/input'
 import useContactForm from './useContactForm'
 
 const LocationInputFields = memo(() => {
-  const { location, streetAddress, city, area, state, country, postalCode } =
-    useContactForm()
-
+  const {
+    location,
+    streetAddress,
+    city,
+    area,
+    state,
+    country,
+    postalCode,
+    autoCompleteRef
+  } = useContactForm()
   return (
     <FieldsSectionContainer>
       <SingleInputContainer>
         <Input
+          ref={autoCompleteRef}
           label="Location"
           prefix={faMapMarkerAlt}
           value={location}
           suffix={faTimesCircle}
           secondSuffix={faLocation}
+          autoComplete
         />
       </SingleInputContainer>
       <SingleInputContainer>
