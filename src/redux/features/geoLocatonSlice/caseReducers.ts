@@ -1,5 +1,5 @@
 import { CaseReducer, PayloadAction } from '@reduxjs/toolkit'
-import { IGeoLocationLongLat, IGeoLocationPayloadArg } from '../../../types/geoLocation'
+import { IGeoAddressType, IGeoLocationLongLat, IGeoLocationPayloadArg } from '../../../types/geoLocation/index';
 
 export const updateLocationCaseReducer: CaseReducer<
   Partial<IGeoLocationLongLat>,
@@ -17,3 +17,14 @@ export const updateLocationCaseReducer: CaseReducer<
     state.address.location = geoCodeAddress?.location;
   }
 }
+
+export const setLocationCaseReducer: CaseReducer<
+  Partial<IGeoLocationLongLat>,
+  PayloadAction<{name: keyof IGeoAddressType, value: string}>
+  > = (state, action) => {
+    const {payload} = action;
+    const {address} = state;
+    if (address) {
+      address[payload.name] = payload.value;
+    }
+  }
