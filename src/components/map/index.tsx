@@ -78,7 +78,8 @@ const Map: FC<IMapProps> = memo(
           lat: latLng!.lat(),
           lng: latLng!.lng()
         }
-        let response = await getAddressObj(mapObj.lat, mapObj.lng)
+        const { lat, lng } = mapObj
+        let response = await getAddressObj(lat, lng)
         if (response) {
           response = JSON.parse(JSON.stringify(response))
           locationWorker.postMessage(response)
