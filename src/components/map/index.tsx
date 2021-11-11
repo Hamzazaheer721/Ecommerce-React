@@ -44,13 +44,6 @@ const Map: FC<IMapProps> = memo(
     })
     const { mapPosition, markerPosition } = mapState
 
-    const handleMapStateChange = useCallback(
-      (key: keyof IMapStateType, value: google.maps.LatLngLiteral) => {
-        setMapState({ ...mapState, [key]: value })
-      },
-      [mapState]
-    )
-
     const locationWorker: Worker = useMemo(
       () => new Worker('./workers/locationWorker.js'),
       []
@@ -89,10 +82,9 @@ const Map: FC<IMapProps> = memo(
           response = JSON.parse(JSON.stringify(response))
           locationWorker.postMessage(response)
         }
-        handleMapStateChange('mapPosition', mapObj)
-        handleMapStateChange('markerPosition', mapObj)
+        setMapState({ mapPosition: mapObj, markerPosition: mapObj })
       },
-      [markerPosition, mapPosition]
+      [mapState]
     )
 
     const AsyncMap = useMemo(
