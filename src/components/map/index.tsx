@@ -13,16 +13,14 @@ import { GOOGLE_MAP_URL } from '../../config/constants'
 import {
   getAddressObj,
   getAddressObjWithCallback,
-  // getCompleteResult
   getCurrentLatLang
 } from '../../general/helper'
 import { IGeoIntializeCustomData } from '../../types/geoLocation'
 import { updateLocation } from '../../redux/features/geoLocatonSlice'
-import { IPositionStateType } from './types'
+import { IMapStateType } from './types'
 
 interface IMapProps {
-  propsLat?: number
-  propsLong?: number
+  latLng?: google.maps.LatLngLiteral
   height?: string
   zoom?: number
   setCurrentLocation?: boolean
@@ -30,23 +28,21 @@ interface IMapProps {
 
 const Map: FC<IMapProps> = memo(
   ({
-    propsLat = 31.4697,
-    propsLong = 74.2728,
+    latLng = {
+      lat: 31.4697,
+      lng: 74.2728
+    },
     height = '300px',
     zoom = 15,
     setCurrentLocation
   }: IMapProps) => {
     const dispatch = useDispatch()
 
-    const [mapPosition, setMapPosition] = useState<IPositionStateType>({
-      lat: propsLat,
-      lng: propsLong
+    const [mapState, setMapState] = useState<IMapStateType>({
+      mapPosition: { lat: latLng.lat, lng: latLng.lng },
+      markerPosition: { lat: latLng.lat, lng: latLng.lng }
     })
-    const [draggable] = useState<boolean>(true)
-    const [markerPosition, setMarkerPosition] = useState<IPositionStateType>({
-      lat: propsLat,
-      lng: propsLong
-    })
+    const { mapPosition, markerPosition } = mapState
 
     const locationWorker: Worker = useMemo(
       () => new Worker('./workers/locationWorker.js'),
@@ -55,8 +51,8 @@ const Map: FC<IMapProps> = memo(
 
     const initializeCurrentPosition = useCallback(() => {
       getCurrentLatLang(async (res: google.maps.LatLngLiteral) => {
-        getAddressObjWithCallback(res, (response: IGeoIntializeCustomData) => {
-          locationWorker.postMessage(response)
+        getAddressObjWithCallback(res, (_res: IGeoIntializeCustomData) => {
+          locationWorker.postMessage(_res)
         })
       })
     }, [locationWorker])
@@ -75,22 +71,20 @@ const Map: FC<IMapProps> = memo(
     const onMarkerDragEnd = useCallback(
       async (e: google.maps.MapMouseEvent) => {
         e.stop()
-        const { latLng } = e
-        const newLat = latLng!.lat()
-        const newLng = latLng!.lng()
-        let response = await getAddressObj(newLat, newLng)
+        const { latLng: latLangEvent } = e
+        const mapObj: google.maps.LatLngLiteral = {
+          lat: latLangEvent!.lat(),
+          lng: latLangEvent!.lng()
+        }
+        const { lat, lng } = mapObj
+        let response = await getAddressObj(lat, lng)
         if (response) {
           response = JSON.parse(JSON.stringify(response))
           locationWorker.postMessage(response)
         }
-        const mapObj: typeof mapPosition | typeof markerPosition = {
-          lat: newLat,
-          lng: newLng
-        }
-        setMapPosition(mapObj)
-        setMarkerPosition(mapObj)
+        setMapState({ mapPosition: mapObj, markerPosition: mapObj })
       },
-      [markerPosition, mapPosition]
+      [mapState]
     )
 
     const AsyncMap = useMemo(
@@ -101,7 +95,7 @@ const Map: FC<IMapProps> = memo(
             memo(() => (
               <GoogleMap defaultZoom={zoom} defaultCenter={mapPosition}>
                 <Marker
-                  draggable={draggable}
+                  draggable
                   onDragEnd={onMarkerDragEnd}
                   position={{
                     lat: markerPosition.lat,

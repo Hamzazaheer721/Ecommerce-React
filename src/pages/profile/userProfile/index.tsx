@@ -116,8 +116,10 @@ const UserProfile = memo(() => {
             <MapComponent
               height="300px"
               zoom={15}
-              propsLat={59.955413}
-              propsLong={30.337844}
+              latLng={{
+                lat: 59.955413,
+                lng: 30.337844
+              }}
             />
           </MapContainer>
           <LinkText>

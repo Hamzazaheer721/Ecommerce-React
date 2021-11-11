@@ -1,11 +1,5 @@
-export type IMapProps = {
-  propsLat: number
-  propsLong: number
-  height: string
-  zoom: number
-}
-
-export type IPositionStateType = {
-  lat: number
-  lng: number
+/* eslint-disable no-undef */
+export type IMapStateType = {
+  mapPosition: google.maps.LatLngLiteral,
+  markerPosition: google.maps.LatLngLiteral
 }
