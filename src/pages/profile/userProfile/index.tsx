@@ -37,13 +37,13 @@ import {
 import ProfileImage from '../profileImage'
 import Input from '../../../components/input'
 import useUserProfileForm from '../useUserProfileForm'
+import { MapContainer } from '../../../styles/global'
 
 const UserProfile = memo(() => {
-  const { handleChange, handlePhoneChange } = useUserProfileForm()
+  const { handleChange, handlePhoneChange, handleSubmit } = useUserProfileForm()
   const nameField = useRef<HTMLInputElement>(null)
   const emailField = useRef<HTMLInputElement>(null)
   const phoneField = useRef<HTMLInputElement>(null)
-  const passwordField = useRef<HTMLInputElement>(null)
 
   return (
     <Container>
@@ -89,16 +89,17 @@ const UserProfile = memo(() => {
           </InputContainer>
           <InputContainer>
             <Input
-              ref={passwordField}
               name="password"
-              label="Password"
+              // label="******"
               prefix={faKey}
-              value={passwordField && passwordField.current?.value}
+              value="******"
               typePassword
-              handleChange={handleChange}
             />
           </InputContainer>
         </InputFieldsContainer>
+        <button onClick={handleSubmit} type="button">
+          submit
+        </button>
         <LinkText>
           <LinkIcon icon={faKeySkeleton} />
           Change Password
@@ -111,12 +112,14 @@ const UserProfile = memo(() => {
             <OfficeTitle>Office</OfficeTitle>
             <Address>341-E2, Johar Town, Lahore </Address>
           </StreetAddress>
-          <MapComponent
-            height="300px"
-            zoom={15}
-            propsLat={59.955413}
-            propsLong={30.337844}
-          />
+          <MapContainer height="300px">
+            <MapComponent
+              height="300px"
+              zoom={15}
+              propsLat={59.955413}
+              propsLong={30.337844}
+            />
+          </MapContainer>
           <LinkText>
             <LinkIcon icon={faMapMarkedAlt} />
             Manage Address

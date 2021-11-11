@@ -3,19 +3,19 @@
 /* eslint-disable no-prototype-builtins */
 /* eslint-disable no-restricted-syntax */
 
+import { IGeoIntializeCustomData } from '../types/geoLocation'
+
 export const isObjectEmpty = (obj: any): boolean => {
-  let key
-  for (key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      return false
-    }
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) return false
   }
   return true
 }
 
-export function getCurrentLatLang(func: any) {
-  // eslint-disable-next-line no-var
-  var _geo: number[] = []
+export const getCurrentLatLang = (
+  // eslint-disable-next-line no-unused-vars
+  func: (_var: google.maps.LatLngLiteral) => void
+): void => {
   const options = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -23,9 +23,11 @@ export function getCurrentLatLang(func: any) {
   }
 
   const positionSuccess = (position: GeolocationPosition) => {
-    _geo.push(position.coords.longitude)
-    _geo.push(position.coords.latitude)
-    func(_geo)
+    const _obj: google.maps.LatLngLiteral = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    }
+    func(_obj)
   }
 
   const positionError = (err: any) => {
@@ -34,7 +36,6 @@ export function getCurrentLatLang(func: any) {
   }
 
   if (navigator.geolocation) {
-    // eslint-disable-next-line no-undef
     navigator.geolocation.getCurrentPosition(
       positionSuccess,
       positionError,
@@ -44,9 +45,9 @@ export function getCurrentLatLang(func: any) {
 }
 
 // eslint-disable-next-line max-len
-export const getAddressObj = async (newLat: number, newLng: number) => {
+export const getAddressObj = async (lat: number, lng: number) => {
   const geocoder = new google.maps.Geocoder()
-  const latlng = new google.maps.LatLng(newLat, newLng)
+  const latlng = new google.maps.LatLng(lat, lng)
   return geocoder.geocode(
     { location: latlng },
     (
@@ -62,19 +63,19 @@ export const getAddressObj = async (newLat: number, newLng: number) => {
         // eslint-disable-next-line no-console
         console.error('Error : ', status)
       }
-      return _result
+      return JSON.parse(JSON.stringify(_result))
     }
   )
 }
 
 export const getAddressObjWithCallback = async (
-  newLat: number,
-  newLng: number,
+  _obj: google.maps.LatLngLiteral,
   // eslint-disable-next-line no-unused-vars
-  func: (res: google.maps.GeocoderResult) => void
+  func: (res: IGeoIntializeCustomData) => void
 ) => {
+  const { lat, lng } = _obj
   const geocoder = new google.maps.Geocoder()
-  const latlng = new google.maps.LatLng(newLat, newLng)
+  const latlng = new google.maps.LatLng(lat, lng)
   return geocoder.geocode(
     { location: latlng },
     (
@@ -83,7 +84,10 @@ export const getAddressObjWithCallback = async (
     ) => {
       if (status === google.maps.GeocoderStatus.OK) {
         if (results && results[0]) {
-          func(results[0])
+          const __obj: IGeoIntializeCustomData = {
+            results: [JSON.parse(JSON.stringify(results[0]))]
+          }
+          func(__obj)
         }
       } else {
         // eslint-disable-next-line no-console
@@ -91,37 +95,4 @@ export const getAddressObjWithCallback = async (
       }
     }
   )
-}
-
-export const getCompleteResult = (
-  // eslint-disable-next-line no-unused-vars
-  func: (res: google.maps.GeocoderResult) => void
-) => {
-  const geocoder = new google.maps.Geocoder()
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      (position: GeolocationPosition) => {
-        const latlng = new google.maps.LatLng(
-          position.coords.longitude,
-          position.coords.latitude
-        )
-        return geocoder.geocode(
-          { location: latlng },
-          (
-            results: google.maps.GeocoderResult[] | null,
-            status: google.maps.GeocoderStatus
-          ) => {
-            if (status === google.maps.GeocoderStatus.OK) {
-              if (results && results[0]) {
-                func(results[0])
-              }
-            } else {
-              // eslint-disable-next-line no-console
-              console.error('Error : ', status)
-            }
-          }
-        )
-      }
-    )
-  }
 }

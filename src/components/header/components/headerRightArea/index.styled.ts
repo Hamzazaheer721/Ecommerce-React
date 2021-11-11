@@ -30,8 +30,11 @@ export const Container = styled.div`
   align-items: center;
   justify-content: right;
   padding-right: 20px;
+  @media ${device.mobile} {
+    padding-right: 0;
+  }
   @media ${device.tiny} {
-    padding-right: 2px;
+    padding-right: 0;
   }
 `
 
@@ -72,6 +75,13 @@ export const ButtonContainer = styled.div`
 
 export const IconContainer = styled.div`
   margin-right: 15px;
+
+  @media ${device.mobile} {
+    margin-right: 5px;
+  }
+  @media ${device.tiny} {
+    margin-right: 5px;
+  }
 `
 
 export default {}

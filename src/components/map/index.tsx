@@ -16,7 +16,7 @@ import {
   // getCompleteResult
   getCurrentLatLang
 } from '../../general/helper'
-import { IGeoLocationPayloadArg } from '../../types/geoLocation'
+import { IGeoIntializeCustomData } from '../../types/geoLocation'
 import { updateLocation } from '../../redux/features/geoLocatonSlice'
 import { IPositionStateType } from './types'
 
@@ -53,38 +53,31 @@ const Map: FC<IMapProps> = memo(
       []
     )
 
-    const initializeCurrentPosition = useCallback(async () => {
-      await getCurrentLatLang(async (res: number[]) => {
-        await getAddressObjWithCallback(res[0], res[1], (response) => {
-          if (response) {
-            response = JSON.parse(JSON.stringify(response))
-            locationWorker.postMessage(response)
-          }
+    const initializeCurrentPosition = useCallback(() => {
+      getCurrentLatLang(async (res: google.maps.LatLngLiteral) => {
+        getAddressObjWithCallback(res, (response: IGeoIntializeCustomData) => {
+          locationWorker.postMessage(response)
         })
       })
     }, [locationWorker])
 
     useEffect(() => {
-      if (setCurrentLocation) {
-        initializeCurrentPosition()
-      }
+      setCurrentLocation && initializeCurrentPosition()
     }, [])
 
     useEffect(() => {
       locationWorker.onmessage = (event: MessageEvent) => {
         const { data } = event
-        const _obj: Partial<IGeoLocationPayloadArg> = {
-          geoCodeAddress: data
-        }
-        dispatch(updateLocation(_obj))
+        dispatch(updateLocation({ geoCodeAddress: data }))
       }
     }, [locationWorker])
 
     const onMarkerDragEnd = useCallback(
-      async (coord: any) => {
-        const { latLng } = coord
-        const newLat = latLng.lat()
-        const newLng = latLng.lng()
+      async (e: google.maps.MapMouseEvent) => {
+        e.stop()
+        const { latLng } = e
+        const newLat = latLng!.lat()
+        const newLng = latLng!.lng()
         let response = await getAddressObj(newLat, newLng)
         if (response) {
           response = JSON.parse(JSON.stringify(response))
@@ -109,7 +102,7 @@ const Map: FC<IMapProps> = memo(
               <GoogleMap defaultZoom={zoom} defaultCenter={mapPosition}>
                 <Marker
                   draggable={draggable}
-                  onDragEnd={(coord) => onMarkerDragEnd(coord)}
+                  onDragEnd={onMarkerDragEnd}
                   position={{
                     lat: markerPosition.lat,
                     lng: markerPosition.lng

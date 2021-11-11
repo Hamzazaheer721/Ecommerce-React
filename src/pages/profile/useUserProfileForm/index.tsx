@@ -1,12 +1,15 @@
-import { useState, useCallback, ChangeEvent } from 'react'
+import { useState, useCallback, ChangeEvent, MouseEvent } from 'react'
 import { IInputFormInitialValue } from './helper'
 import { IInputFormType } from './types'
+// import { useDispatch } from 'react-redux'
+// import { updateUserProfileSlice } from '../../../redux/features/updateUserProfileSlice'
 
 const useUserProfileForm = () => {
   const [inputData, setInputData] = useState<IInputFormType>(
     IInputFormInitialValue
   )
 
+  // const dispatch = useDispatch()
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       const { name, value } = e.target
@@ -26,7 +29,16 @@ const useUserProfileForm = () => {
     },
     [inputData]
   )
-  return { handleChange, handlePhoneChange }
+  const handleSubmit = useCallback(
+    async (e: MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault()
+      // dispatch(updateUserProfileSlice(inputData))
+      console.info('handleSubmit working', inputData.email)
+    },
+    [inputData]
+  )
+
+  return { handleChange, handlePhoneChange, handleSubmit }
 }
 
 export default useUserProfileForm

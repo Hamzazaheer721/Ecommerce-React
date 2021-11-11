@@ -26,11 +26,6 @@ const useContactForm = () => {
     })
   }, [address])
 
-  // useEffect(() => {
-  //   console.info('I am rendered', locationStates)
-  //   console.info('redux state', address)
-  // })
-
   return { location, streetAddress, city, area, state, country, postalCode }
 }
 

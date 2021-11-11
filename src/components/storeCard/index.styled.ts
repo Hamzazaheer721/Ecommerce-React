@@ -92,10 +92,10 @@ export const BadgeArea = styled.span`
 `
 export const BadgeAreaWraper = styled.div`
   background-color: ${(props) => props.theme.color.primary};
-  padding: 2px 5px 2px 2px;
+  padding: 0 5px 1px 2px;
   white-space: nowrap;
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 `
 
 export const IconArea = styled.div`
@@ -115,8 +115,9 @@ export const TimeArea = styled.div`
   background: rgba(0, 0, 0, 0.8);
   color: ${(props) => props.theme.color.primary};
   background-color: ${(props) => props.theme.color.lightBlue};
-  padding: 0 14px;
-  border-radius: 10px;
+  padding: 0 12px;
+  border-radius: 7px;
+  font-size: 12px;
 `
 export const IconStyle = styled(FontAwesomeIcon)`
   font-size: 22px;
@@ -165,6 +166,14 @@ export const ProfileImage = styled.img`
   top: 79%;
   border-radius: 10px;
   flex: 5;
+
+  @media ${device.mobile} {
+    margin-left: 0.6rem;
+  }
+
+  @media ${device.tiny} {
+    margin-left: 0.6rem;
+  }
 `
 
 export const ProfileSubContainer = styled.div`
@@ -227,7 +236,7 @@ export const ShopButton = styled.button`
   }
   @media ${device.tiny} {
     height: 40px;
-    width: 132px;
+    width: 115px;
   }
 `
 
@@ -249,7 +258,7 @@ export const WhatsAppButton = styled.button`
   }
   @media ${device.tiny} {
     height: 40px;
-    width: 132px;
+    width: 115px;
   }
 `
 
