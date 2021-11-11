@@ -1,11 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit'
 import {
-  updateLocationCaseReducer,
-  setLocationCaseReducer
+  updateGeoAddressCaseReducer,
+  setGeoAddressCaseReducer,
+  setGeoLocationCaseReducer
 } from './caseReducers'
 import { IGeoLocationLongLat } from '../../../types/geoLocation/index'
 
 export const initialState: Partial<IGeoLocationLongLat> = {
+  location: {
+    mapPosition: {
+      lat: 31.4697,
+      lng: 74.2728
+    },
+    markerPosition: {
+      lat: 31.4697,
+      lng: 74.2728
+    }
+  },
   address: {
     area: '',
     city: '',
@@ -20,12 +31,14 @@ export const currentGeoLocationSlice = createSlice({
   name: 'currentGeoLocation',
   initialState,
   reducers: {
-    updateLocationCaseReducer,
-    setLocationCaseReducer
+    updateGeoAddressCaseReducer,
+    setGeoAddressCaseReducer,
+    setGeoLocationCaseReducer
   }
 })
 
 export const {
-  updateLocationCaseReducer: updateLocation,
-  setLocationCaseReducer: setLocationState
+  updateGeoAddressCaseReducer: updateGeoAddress,
+  setGeoAddressCaseReducer: setGeoAddressState,
+  setGeoLocationCaseReducer: setGeoLocationState
 } = currentGeoLocationSlice.actions

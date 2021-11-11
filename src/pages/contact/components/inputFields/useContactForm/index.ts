@@ -3,7 +3,7 @@ import { usePlacesWidget } from 'react-google-autocomplete'
 import { useDispatch, useSelector } from 'react-redux'
 import { IGeoAddressType } from '../../../../../types/geoLocation/index'
 import { GOOGLE_MAP_API_KEY } from '../../../../../config/constants'
-import { setLocationState } from '../../../../../redux/features/geoLocatonSlice'
+import { setGeoAddressState } from '../../../../../redux/features/geoLocatonSlice'
 import { RootState } from '../../../../../redux/store'
 
 const useContactForm = () => {
@@ -12,8 +12,8 @@ const useContactForm = () => {
     (state: RootState) => state.currentGeoLocation
   )
   const handlePlaceSelected = useCallback(
-    // eslint-disable-next-line no-console
-    (place) => console.info(place),
+    // eslint-disable-next-line no-undef
+    (places: google.maps.places.PlaceResult) => console.info(places),
     [address?.location]
   )
 
@@ -22,7 +22,7 @@ const useContactForm = () => {
       e.preventDefault()
       const { name, value } = e.target
       const _key: keyof IGeoAddressType = name as keyof IGeoAddressType
-      dispatch(setLocationState({ name: _key, value }))
+      dispatch(setGeoAddressState({ name: _key, value }))
     },
     [address]
   )
