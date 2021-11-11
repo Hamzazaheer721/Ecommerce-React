@@ -77,8 +77,6 @@ const UserProfile = memo(() => {
         <InputFieldsContainer>
           <InputContainer>
             <Input
-              ref={phoneField}
-              name="phone"
               label="WhatsApp Number"
               store
               phonefield
@@ -88,13 +86,7 @@ const UserProfile = memo(() => {
             />
           </InputContainer>
           <InputContainer>
-            <Input
-              name="password"
-              // label="******"
-              prefix={faKey}
-              value="******"
-              typePassword
-            />
+            <Input name="password" prefix={faKey} value="******" typePassword />
           </InputContainer>
         </InputFieldsContainer>
         <button onClick={handleSubmit} type="button">

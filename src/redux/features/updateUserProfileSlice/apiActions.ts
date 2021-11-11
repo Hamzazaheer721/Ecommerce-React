@@ -9,8 +9,14 @@ import {
   IUpdateUserProfilePayloadArg,
   IUpdateUserProfileRejectPayload
 } from './types'
-import { IRegisterRtn } from '../../../types/signup/index'
 
+const token = '53|JDrTXd7j0F7AG6Y9MoSUH1DciJrd9EpvarSfj3Mi'
+
+const config = {
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+}
 export const UpdateUserProfile = createAsyncThunk<
   IUpdateProfilePayloadRtn,
   IUpdateUserProfilePayloadArg,
@@ -19,15 +25,16 @@ export const UpdateUserProfile = createAsyncThunk<
   'updateUser/updateUserProfile',
   async (userProfile: IUpdateUserProfilePayloadArg, thunkAPI) => {
     try {
-      const response = await Instance.post<any>(
+      const response = await Instance.put<any>(
         `${SERVER_IP}/user/profile`,
-        userProfile
+        userProfile,
+        config
       )
       if (response.status === 400)
         return thunkAPI.rejectWithValue(response.data)
       return { ...response.data }
     } catch (err: any) {
-      const error: AxiosError<IRegisterRtn> = err // cast the error for access
+      const error: AxiosError<IUpdateUserProfileRejectPayload> = err // cast the error for access
       if (!error.response) {
         throw err
       }
