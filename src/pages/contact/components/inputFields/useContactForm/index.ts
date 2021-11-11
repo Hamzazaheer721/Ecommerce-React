@@ -1,6 +1,6 @@
 import { usePlacesWidget } from 'react-google-autocomplete'
 import { useSelector } from 'react-redux'
-import { GOOGLE_MAP_API_KEY } from '../../../../../config/constants';
+import { GOOGLE_MAP_API_KEY } from '../../../../../config/constants'
 import { RootState } from '../../../../../redux/store'
 
 const useContactForm = () => {
@@ -10,18 +10,19 @@ const useContactForm = () => {
 
   const { ref: autoCompleteRef } = usePlacesWidget({
     apiKey: GOOGLE_MAP_API_KEY,
+    // eslint-disable-next-line no-console
     onPlaceSelected: (place) => console.info(place)
   })
 
   return {
-    location: address?.location,
-    streetAddress: address?.streetAddress,
-    city: address?.city,
+    autoCompleteRef,
     area: address?.area,
+    city: address?.city,
     state: address?.state,
     country: address?.country,
+    location: address?.location,
     postalCode: address?.postalCode,
-    autoCompleteRef
+    streetAddress: address?.streetAddress
   }
 }
 
