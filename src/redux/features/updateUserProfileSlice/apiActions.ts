@@ -9,6 +9,13 @@ import {
   IUpdateUserProfileRejectPayload
 } from './types'
 
+const token = '53|JDrTXd7j0F7AG6Y9MoSUH1DciJrd9EpvarSfj3Mi'
+
+const config = {
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+}
 export const UpdateUserProfile = createAsyncThunk<
   IUpdateProfilePayloadRtn,
   IUpdateUserProfilePayloadArg,
@@ -17,7 +24,11 @@ export const UpdateUserProfile = createAsyncThunk<
   'updateUser/updateUserProfile',
   async (userProfile: IUpdateUserProfilePayloadArg, thunkAPI) => {
     try {
-      const response = await Instance.put<any>('/user/profile', userProfile)
+      const response = await Instance.put<any>(
+        '/user/profile',
+        userProfile,
+        config
+      )
       if (response.status === 400)
         return thunkAPI.rejectWithValue(response.data)
       return { ...response.data }
