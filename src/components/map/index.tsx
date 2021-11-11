@@ -74,16 +74,14 @@ const Map: FC<IMapProps> = memo(
       async (e: google.maps.MapMouseEvent) => {
         e.stop()
         const { latLng } = e
-        const newLat = latLng!.lat()
-        const newLng = latLng!.lng()
-        let response = await getAddressObj(newLat, newLng)
+        const mapObj: google.maps.LatLngLiteral = {
+          lat: latLng!.lat(),
+          lng: latLng!.lng()
+        }
+        let response = await getAddressObj(mapObj.lat, mapObj.lng)
         if (response) {
           response = JSON.parse(JSON.stringify(response))
           locationWorker.postMessage(response)
-        }
-        const mapObj: google.maps.LatLngLiteral = {
-          lat: newLat,
-          lng: newLng
         }
         setMapPosition(mapObj)
         setMarkerPosition(mapObj)
