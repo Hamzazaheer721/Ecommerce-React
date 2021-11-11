@@ -1,32 +1,20 @@
-import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../../../redux/store'
-import { IGeoAddressType } from '../../../../../types/geoLocation'
-import { IContactInitialState } from './helper'
 
 const useContactForm = () => {
   const { address } = useSelector(
     (state: RootState) => state.currentGeoLocation
   )
 
-  const [locationStates, setLocationStates] =
-    useState<Partial<IGeoAddressType>>(IContactInitialState)
-  const { location, streetAddress, city, area, state, country, postalCode } =
-    locationStates
-
-  useEffect(() => {
-    setLocationStates({
-      area: address?.area,
-      city: address?.city,
-      country: address?.country,
-      location: address?.location,
-      postalCode: address?.postalCode,
-      state: address?.state,
-      streetAddress: address?.streetAddress
-    })
-  }, [address])
-
-  return { location, streetAddress, city, area, state, country, postalCode }
+  return {
+    location: address?.location,
+    streetAddress: address?.streetAddress,
+    city: address?.city,
+    area: address?.area,
+    state: address?.state,
+    country: address?.country,
+    postalCode: address?.postalCode
+  }
 }
 
 export default useContactForm
