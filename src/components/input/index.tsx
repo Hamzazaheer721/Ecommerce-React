@@ -109,19 +109,19 @@ const Input = memo(
               name={name}
               value={value}
               type={typePassword && !showPassword ? 'password' : 'text'}
-              ref={(_ref) => {
-                if (_ref) {
+              ref={(element) => {
+                if (element) {
                   // eslint-disable-next-line no-extra-semi
                   ;(localRef as MutableRefObject<HTMLInputElement>).current =
-                    _ref
+                    element
                 }
                 if (inputRef) {
                   if (typeof inputRef === 'function') {
-                    inputRef(_ref)
+                    inputRef(element)
                   }
                   if (typeof inputRef === 'object') {
                     // eslint-disable-next-line no-param-reassign
-                    inputRef.current = _ref
+                    inputRef.current = element
                   }
                 }
               }}
