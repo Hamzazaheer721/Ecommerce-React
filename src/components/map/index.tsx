@@ -19,8 +19,7 @@ import { IGeoIntializeCustomData } from '../../types/geoLocation'
 import { updateLocation } from '../../redux/features/geoLocatonSlice'
 
 interface IMapProps {
-  propsLat?: number
-  propsLong?: number
+  latLng?: google.maps.LatLngLiteral
   height?: string
   zoom?: number
   setCurrentLocation?: boolean
@@ -28,8 +27,10 @@ interface IMapProps {
 
 const Map: FC<IMapProps> = memo(
   ({
-    propsLat = 31.4697,
-    propsLong = 74.2728,
+    latLng = {
+      lat: 31.4697,
+      lng: 74.2728
+    },
     height = '300px',
     zoom = 15,
     setCurrentLocation
@@ -37,13 +38,13 @@ const Map: FC<IMapProps> = memo(
     const dispatch = useDispatch()
 
     const [mapPosition, setMapPosition] = useState<google.maps.LatLngLiteral>({
-      lat: propsLat,
-      lng: propsLong
+      lat: latLng.lat,
+      lng: latLng.lng
     })
     const [markerPosition, setMarkerPosition] =
       useState<google.maps.LatLngLiteral>({
-        lat: propsLat,
-        lng: propsLong
+        lat: latLng.lat,
+        lng: latLng.lng
       })
 
     const locationWorker: Worker = useMemo(
@@ -73,10 +74,10 @@ const Map: FC<IMapProps> = memo(
     const onMarkerDragEnd = useCallback(
       async (e: google.maps.MapMouseEvent) => {
         e.stop()
-        const { latLng } = e
+        const { latLng: latLangEvent } = e
         const mapObj: google.maps.LatLngLiteral = {
-          lat: latLng!.lat(),
-          lng: latLng!.lng()
+          lat: latLangEvent!.lat(),
+          lng: latLangEvent!.lng()
         }
         const { lat, lng } = mapObj
         let response = await getAddressObj(lat, lng)
