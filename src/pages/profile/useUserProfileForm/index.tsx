@@ -1,10 +1,20 @@
 import { useState, useCallback, ChangeEvent, MouseEvent } from 'react'
 import { useDispatch } from 'react-redux'
+import axios from 'axios'
 import { IInputFormInitialValue } from './helper'
 import { IInputFormType } from './types'
 import { UpdateUserProfile } from '../../../redux/features/updateUserProfileSlice/apiActions'
 
 const useUserProfileForm = () => {
+  axios.interceptors.request.use((config) => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      config.headers!.Authorization = `Bearer ${token}`
+    }
+
+    return config
+  })
+
   const [inputData, setInputData] = useState<IInputFormType>(
     IInputFormInitialValue
   )

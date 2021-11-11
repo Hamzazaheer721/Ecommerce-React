@@ -1,7 +1,7 @@
 import { ChangeEvent, useCallback } from 'react'
 import { usePlacesWidget } from 'react-google-autocomplete'
 import { useDispatch, useSelector } from 'react-redux'
-import { IGeoAddressType} from '../../../../../types/geoLocation/index';
+import { IGeoAddressType } from '../../../../../types/geoLocation/index'
 import { GOOGLE_MAP_API_KEY } from '../../../../../config/constants'
 import { setLocationState } from '../../../../../redux/features/geoLocatonSlice'
 import { RootState } from '../../../../../redux/store'
@@ -17,12 +17,15 @@ const useContactForm = () => {
     [address?.location]
   )
 
-  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault()
-    const {name, value} = e.target;
-    const _key : keyof IGeoAddressType = name as keyof IGeoAddressType
-    dispatch(setLocationState({name: _key, value}))
-  }, [address])
+  const handleChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      e.preventDefault()
+      const { name, value } = e.target
+      const _key: keyof IGeoAddressType = name as keyof IGeoAddressType
+      dispatch(setLocationState({ name: _key, value }))
+    },
+    [address]
+  )
 
   const { ref: autoCompleteRef } = usePlacesWidget({
     apiKey: GOOGLE_MAP_API_KEY,
