@@ -17,6 +17,7 @@ import {
 } from '../../general/helper'
 import { IGeoIntializeCustomData } from '../../types/geoLocation'
 import { updateLocation } from '../../redux/features/geoLocatonSlice'
+import { IMapStateType } from './types'
 
 interface IMapProps {
   latLng?: google.maps.LatLngLiteral
@@ -37,15 +38,18 @@ const Map: FC<IMapProps> = memo(
   }: IMapProps) => {
     const dispatch = useDispatch()
 
-    const [mapPosition, setMapPosition] = useState<google.maps.LatLngLiteral>({
-      lat: latLng.lat,
-      lng: latLng.lng
+    const [mapState, setMapState] = useState<IMapStateType>({
+      mapPosition: { lat: latLng.lat, lng: latLng.lng },
+      markerPosition: { lat: latLng.lat, lng: latLng.lng }
     })
-    const [markerPosition, setMarkerPosition] =
-      useState<google.maps.LatLngLiteral>({
-        lat: latLng.lat,
-        lng: latLng.lng
-      })
+    const { mapPosition, markerPosition } = mapState
+
+    const handleMapStateChange = useCallback(
+      (key: keyof IMapStateType, value: google.maps.LatLngLiteral) => {
+        setMapState({ ...mapState, [key]: value })
+      },
+      [mapState]
+    )
 
     const locationWorker: Worker = useMemo(
       () => new Worker('./workers/locationWorker.js'),
@@ -85,8 +89,8 @@ const Map: FC<IMapProps> = memo(
           response = JSON.parse(JSON.stringify(response))
           locationWorker.postMessage(response)
         }
-        setMapPosition(mapObj)
-        setMarkerPosition(mapObj)
+        handleMapStateChange('mapPosition', mapObj)
+        handleMapStateChange('markerPosition', mapObj)
       },
       [markerPosition, mapPosition]
     )
