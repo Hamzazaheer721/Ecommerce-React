@@ -75,14 +75,7 @@ const UserProfile = memo(() => (
           <Address>341-E2, Johar Town, Lahore </Address>
         </StreetAddress>
         <MapContainer height="300px">
-          <MapComponent
-            height="300px"
-            zoom={15}
-            latLng={{
-              lat: 59.955413,
-              lng: 30.337844
-            }}
-          />
+          <MapComponent height="300px" zoom={15} />
         </MapContainer>
         <LinkText>
           <LinkIcon icon={faMapMarkedAlt} />
