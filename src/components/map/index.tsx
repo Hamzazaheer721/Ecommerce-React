@@ -34,7 +34,6 @@ const Map: FC<IMapProps> = memo(
     const { location, inputFlag } = useSelector(
       (state: RootState) => state.currentGeoLocation
     )
-    // const { location } = locationState
 
     const locationWorker: Worker = useMemo(
       () => new Worker('./workers/locationWorker.js'),
