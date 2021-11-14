@@ -24,7 +24,7 @@ const useContactForm = () => {
           lat: geometry.location!.lat(),
           lng: geometry.location!.lng()
         }
-        dispatch(setGeoLocationState(_obj))
+        dispatch(setGeoLocationState({position: _obj, flag: true}))
       }
     },
     [address]

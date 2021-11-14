@@ -31,7 +31,7 @@ const Map: FC<IMapProps> = memo(
   ({ latLng, height = '300px', zoom = 15, setCurrentLocation }: IMapProps) => {
     const dispatch = useDispatch()
 
-    const { location } = useSelector(
+    const { location, inputFlag } = useSelector(
       (state: RootState) => state.currentGeoLocation
     )
     // const { location } = locationState
@@ -43,7 +43,7 @@ const Map: FC<IMapProps> = memo(
 
     const initializeCurrentPosition = useCallback(() => {
       getCurrentLatLang(async (res: google.maps.LatLngLiteral) => {
-        dispatch(setGeoLocationState(res))
+        dispatch(setGeoLocationState({ position: res }))
         getAddressObjWithCallback(res, (_res: IGeoIntializeCustomData) => {
           locationWorker.postMessage(_res)
         })
@@ -58,14 +58,16 @@ const Map: FC<IMapProps> = memo(
           response = JSON.parse(JSON.stringify(response))
           locationWorker.postMessage(response)
         }
-        dispatch(setGeoLocationState(mapObj))
+        dispatch(setGeoLocationState({ position: mapObj }))
       },
       [location]
     )
 
     useEffect(() => {
-      latLng && dispatch(setGeoLocationState(latLng))
-      setCurrentLocation && initializeCurrentPosition()
+      if (!inputFlag) {
+        latLng && dispatch(setGeoLocationState({ position: latLng }))
+        setCurrentLocation && initializeCurrentPosition()
+      }
     }, [])
 
     useEffect(() => {
@@ -74,6 +76,12 @@ const Map: FC<IMapProps> = memo(
         dispatch(updateGeoAddress({ geoCodeAddress: data }))
       }
     }, [locationWorker])
+
+    useEffect(() => {
+      if (inputFlag) {
+        getAddressAndDispatch(location!.mapPosition)
+      }
+    }, [location, inputFlag])
 
     const onMarkerDragEnd = useCallback(
       async (e: google.maps.MapMouseEvent) => {

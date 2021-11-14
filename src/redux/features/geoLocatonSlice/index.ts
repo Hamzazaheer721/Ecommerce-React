@@ -14,7 +14,8 @@ export const initialState: Partial<IGeoLocationLongLat> = {
       lat: 31.4697,
       lng: 74.2728
     }
-  }
+  },
+  inputFlag: false
 }
 
 export const currentGeoLocationSlice = createSlice({

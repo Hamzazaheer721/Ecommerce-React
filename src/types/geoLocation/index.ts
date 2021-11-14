@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 export type IGeoLocationLongLat = {
-  location: IGeoLocationType
+  location: IGeoLocationType,
+  inputFlag: boolean
 }
 
 export type IGeoAddressObjStateType = {
