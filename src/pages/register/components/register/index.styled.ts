@@ -96,7 +96,6 @@ export const CheckboxContainer = styled.div`
 `
 
 export const CustomCheckBox = styled.input`
-  margin: 0;
   box-shadow: 0px 3px 6px #00000029;
   border: 0.5px solid #4e98e2;
   border-radius: 3px;
@@ -106,7 +105,6 @@ export const CheckboxPlaceholder = styled.p`
   text-align: left;
   letter-spacing: 0px;
   padding-left: 6px;
-  padding-top: 10px;
   font-size: 12px;
   span {
     color: ${(props) => props.theme.color.primary};
