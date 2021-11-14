@@ -1,9 +1,11 @@
-import { isEmpty } from '../../../../../general/validations';
-import { IInputformType, IInputformErrorsType } from './types';
+import { isEmpty } from '../../../../../general/validations'
+import { IInputformType, IInputformErrorsType } from './types'
 
-export const validateInputForm = (inputData: Omit<IInputformType, 'remember'>) => {
-  const errors: IInputformErrorsType = {};
-  const { username, password } = inputData;
+export const validateInputForm = (
+  inputData: Omit<IInputformType, 'remember'>
+) => {
+  const errors: IInputformErrorsType = {}
+  const { username, password } = inputData
 
   if (isEmpty(username)) {
     errors.usernameError = 'Please enter your username'
@@ -13,5 +15,5 @@ export const validateInputForm = (inputData: Omit<IInputformType, 'remember'>) =
     errors.passwordError = 'Please enter your password'
   }
 
-  return errors;
+  return errors
 }

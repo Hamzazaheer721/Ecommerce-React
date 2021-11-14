@@ -7,6 +7,7 @@ import {
   faCity
 } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { Link } from 'react-router-dom'
 import useForm from './useForm'
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
@@ -162,7 +163,9 @@ const Register: FC = memo(() => {
       </ButtonContainer>
       <LoginFooter>
         Already on WhatsPays?
-        <span> Login</span>
+        <Link to="/login">
+          <span> Login</span>
+        </Link>
       </LoginFooter>
     </LoginViewContainer>
   )

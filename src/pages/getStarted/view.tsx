@@ -45,7 +45,7 @@ const ViewComponent: FC = memo(() => (
     <LoginFooter>
       Already on WhatsPays?
       <Link to="/login">
-        <LinkSpan> login</LinkSpan>
+        <LinkSpan> Login</LinkSpan>
       </Link>
     </LoginFooter>
   </LoginViewContainer>
