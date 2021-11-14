@@ -22,23 +22,16 @@ import {
   faBadgeCheck
 } from '@fortawesome/pro-light-svg-icons'
 import 'antd/dist/antd.css'
-import {
-  SubMenuItem,
-  CustomMenu,
-  IconContainer
-} from './index.styled'
+import { SubMenuItem, CustomMenu, IconContainer } from './index.styled'
 import Icon from '../../../icon'
+import { Link } from 'react-router-dom'
 
 const { SubMenu } = Menu
 
 const MenuComponent = memo(() => {
   return (
     <>
-      <CustomMenu
-        style={{ width: 250 }}
-        defaultOpenKeys={['']}
-        mode="inline"
-      >
+      <CustomMenu style={{ width: 250 }} defaultOpenKeys={['']} mode="inline">
         <Menu.Item
           key="1"
           icon={
@@ -76,7 +69,7 @@ const MenuComponent = memo(() => {
             }
             key="15"
           >
-            Create
+            <Link to="/user-profile">Create</Link>
           </SubMenuItem>
           <SubMenuItem
             icon={

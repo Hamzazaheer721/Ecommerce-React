@@ -10,13 +10,13 @@ export interface IResponseMessageType {
 }
 
 export type IInputformType = {
-  username : string,
-  password: string,
+  username: string
+  password: string
   remember?: boolean
 }
 
 export type IInputformErrorsType = {
-  usernameError? : string,
-  passwordError?: string,
+  usernameError?: string
+  passwordError?: string
   responseError?: string
 }

@@ -2,7 +2,6 @@
 /* eslint-disable react/jsx-curly-newline */
 /* eslint-disable no-param-reassign */
 import { memo, FC, useCallback } from 'react'
-import { Modal } from 'antd'
 import 'antd/dist/antd.css'
 import { faCheck } from '@fortawesome/pro-light-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
@@ -14,7 +13,8 @@ import {
   ModalContentContainer,
   Title,
   DoneButton,
-  Description
+  Description,
+  ModalContainer
 } from './index.styled'
 
 const SuccessModal: FC = memo(() => {
@@ -32,7 +32,12 @@ const SuccessModal: FC = memo(() => {
 
   return (
     <>
-      <Modal centered footer={null} closable={false} visible={modalVisibility}>
+      <ModalContainer
+        centered
+        footer={null}
+        closable={false}
+        visible={modalVisibility}
+      >
         <ModalContentContainer>
           <NotificationIcon icon={faCheck} />
           <Title>Done</Title>
@@ -47,7 +52,7 @@ const SuccessModal: FC = memo(() => {
             OK
           </DoneButton>
         </ModalContentContainer>
-      </Modal>
+      </ModalContainer>
     </>
   )
 })

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Modal } from 'antd'
 
 export const ModalContentContainer = styled.div`
   text-align: center;
@@ -36,4 +37,9 @@ export const DoneButton = styled.button`
   height: 40px;
   width: 156px;
   padding: 0;
+`
+export const ModalContainer = styled(Modal)`
+  .ant-modal-content {
+    border-radius: 20px;
+  }
 `

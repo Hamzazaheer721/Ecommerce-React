@@ -1,3 +1,4 @@
+/* eslint-disable implicit-arrow-linebreak */
 import { configureStore } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
 import storage from 'redux-persist/lib/storage'
@@ -11,7 +12,7 @@ import {
   PURGE,
   REGISTER
 } from 'redux-persist'
-import { currentGeoLocationSlice } from '../features/geoLocatonSlice/index';
+import { currentGeoLocationSlice } from '../features/geoLocatonSlice/index'
 import { userSignupSlice } from '../features/userSignupSlice'
 import { userSigninSlice } from '../features/userSigninSlice/index'
 import { activationSlice } from '../features/activationSlice'
@@ -19,6 +20,7 @@ import { ModalSlice } from '../features/modalSlice'
 import { resendActivationLinkSlice } from '../features/resendActivationLinkSlice'
 import { forgotPasswordSlice } from '../features/forgotPasswordSlice'
 import { resetPasswordSlice } from '../features/resetPasswordSlice'
+import { updateUserProfileSlice } from '../features/updateUserProfileSlice/index'
 
 const reducers = combineReducers({
   user: userSigninSlice.reducer,
@@ -28,7 +30,8 @@ const reducers = combineReducers({
   resendActivation: resendActivationLinkSlice.reducer,
   forgotPassword: forgotPasswordSlice.reducer,
   resetPassword: resetPasswordSlice.reducer,
-  currentGeoLocation: currentGeoLocationSlice.reducer
+  currentGeoLocation: currentGeoLocationSlice.reducer,
+  updateUserProfile: updateUserProfileSlice.reducer
 })
 
 const persistConfig = {
@@ -41,7 +44,8 @@ const persistedReducer = persistReducer(persistConfig, reducers)
 
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
       }

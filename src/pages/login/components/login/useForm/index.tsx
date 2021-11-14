@@ -3,8 +3,10 @@ import {
   ChangeEvent,
   useCallback,
   useEffect,
-  useState
+  useState,
+  useRef
 } from 'react'
+import { useHistory } from 'react-router-dom'
 import { AxiosResponse } from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import produce from 'immer'
@@ -24,7 +26,7 @@ import { isObjectEmpty } from '../../../../../general/helper'
 
 export const useFormLogin = () => {
   const dispatch = useDispatch()
-
+  const { push } = useHistory()
   const [inputData, setInputData] = useState<IInputformType>(
     IInputformInitialValue
   )
@@ -35,14 +37,29 @@ export const useFormLogin = () => {
   const [response, setResponse] = useState<IResponseMessageType>({})
 
   const { user } = useSelector((state: RootState) => state.user)
+
+  const timeRef = useRef<NodeJS.Timer>()
+
   // const {loading, success, message} = useSelector((state: RootState) => state.activation)
+
+  useEffect(
+    () => () => {
+      timeRef.current && clearTimeout(timeRef.current)
+    },
+    []
+  )
 
   useEffect(() => {
     if (user && remember) {
       localStorage.setItem('token', JSON.stringify(user.auth_token))
       localStorage.setItem('user', JSON.stringify(user))
     }
-  }, [user, remember])
+    if (response.success === 'Your account has been logged in.') {
+      timeRef.current = setTimeout(() => {
+        push('/')
+      }, 2000)
+    }
+  }, [user, remember, response])
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
