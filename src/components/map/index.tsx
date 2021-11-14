@@ -16,11 +16,9 @@ import {
   getCurrentLatLang
 } from '../../general/helper'
 import { IGeoIntializeCustomData } from '../../types/geoLocation'
-import {
-  setGeoLocationState,
-  updateGeoAddress
-} from '../../redux/features/geoLocatonSlice'
+import { setGeoLocationState } from '../../redux/features/geoLocatonSlice'
 import { RootState } from '../../redux/store'
+import { updateGeoAddress } from '../../redux/features/geoAddressSlice'
 
 interface IMapProps {
   latLng?: google.maps.LatLngLiteral

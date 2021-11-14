@@ -21,6 +21,7 @@ import { resendActivationLinkSlice } from '../features/resendActivationLinkSlice
 import { forgotPasswordSlice } from '../features/forgotPasswordSlice'
 import { resetPasswordSlice } from '../features/resetPasswordSlice'
 import { updateUserProfileSlice } from '../features/updateUserProfileSlice/index'
+import { geoAddressSlice } from '../features/geoAddressSlice'
 
 const reducers = combineReducers({
   user: userSigninSlice.reducer,
@@ -31,7 +32,8 @@ const reducers = combineReducers({
   forgotPassword: forgotPasswordSlice.reducer,
   resetPassword: resetPasswordSlice.reducer,
   currentGeoLocation: currentGeoLocationSlice.reducer,
-  updateUserProfile: updateUserProfileSlice.reducer
+  updateUserProfile: updateUserProfileSlice.reducer,
+  currentAddressLocation: geoAddressSlice.reducer
 })
 
 const persistConfig = {
