@@ -36,6 +36,7 @@ const Map: FC<IMapProps> = memo(
     const { location } = useSelector(
       (state: RootState) => state.currentGeoLocation
     )
+    // const { location } = locationState
 
     const locationWorker: Worker = useMemo(
       () => new Worker('./workers/locationWorker.js'),
@@ -50,6 +51,19 @@ const Map: FC<IMapProps> = memo(
         })
       })
     }, [locationWorker])
+
+    const getAddressAndDispatch = useCallback(
+      async (mapObj: google.maps.LatLngLiteral) => {
+        const { lat, lng } = mapObj
+        let response = await getAddressObj(lat, lng)
+        if (response) {
+          response = JSON.parse(JSON.stringify(response))
+          locationWorker.postMessage(response)
+        }
+        dispatch(setGeoLocationState(mapObj))
+      },
+      [location]
+    )
 
     useEffect(() => {
       latLng && dispatch(setGeoLocationState(latLng))
@@ -71,13 +85,7 @@ const Map: FC<IMapProps> = memo(
           lat: latLangEvent!.lat(),
           lng: latLangEvent!.lng()
         }
-        const { lat, lng } = mapObj
-        let response = await getAddressObj(lat, lng)
-        if (response) {
-          response = JSON.parse(JSON.stringify(response))
-          locationWorker.postMessage(response)
-        }
-        dispatch(setGeoLocationState(mapObj))
+        getAddressAndDispatch(mapObj)
       },
       [location]
     )
