@@ -5,6 +5,7 @@ export const IInputformInitialValue = {
 }
 
 export interface IResponseMessageType {
+  nextScreen?: boolean,
   success?: string
   error?: string
 }

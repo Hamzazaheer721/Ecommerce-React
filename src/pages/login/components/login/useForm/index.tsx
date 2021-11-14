@@ -54,12 +54,12 @@ export const useFormLogin = () => {
       localStorage.setItem('token', JSON.stringify(user.auth_token))
       localStorage.setItem('user', JSON.stringify(user))
     }
-    if (response.success === 'Your account has been logged in.') {
+    if (response.nextScreen) {
       timeRef.current = setTimeout(() => {
         push('/')
       }, 2000)
     }
-  }, [user, remember, response])
+  }, [response])
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -86,7 +86,11 @@ export const useFormLogin = () => {
       .then((res: AxiosResponse<IUserLoginRtnResponse>) => {
         if (res.data) {
           dispatch(addUserAction(res.data.data))
-          setResponse({ success: res.data.message, error: '' })
+          setResponse({
+            success: res.data.message,
+            error: '',
+            nextScreen: true
+          })
         }
       })
       .catch((error) => {
