@@ -8,9 +8,10 @@ import { RootState } from '../../../../../redux/store'
 
 const useContactForm = () => {
   const dispatch = useDispatch()
-  const { address } = useSelector(
+  const locationState = useSelector(
     (state: RootState) => state.currentGeoLocation
   )
+  const {address} = locationState;
 
   const handlePlaceSelected = useCallback(
     // eslint-disable-next-line no-undef
@@ -22,10 +23,11 @@ const useContactForm = () => {
           lat: geometry.location!.lat(),
           lng: geometry.location!.lng()
         }
+        console.info(_obj)
         dispatch(setGeoLocationState(_obj))
       }
     },
-    [address?.location]
+    [address]
   )
 
   const handleChange = useCallback(

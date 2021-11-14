@@ -77,9 +77,6 @@ const Map: FC<IMapProps> = memo(
       }
     }, [locationWorker])
 
-    useEffect(() => {
-      console.info('I am rendered')
-    })
     const onMarkerDragEnd = useCallback(
       async (e: google.maps.MapMouseEvent) => {
         e.stop()
