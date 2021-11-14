@@ -14,7 +14,6 @@ const useContactForm = () => {
   const handlePlaceSelected = useCallback(
     // eslint-disable-next-line no-undef
     (places: google.maps.places.PlaceResult) => {
-      console.log(places.geometry?.location)
       const {geometry} = places;
       if (geometry) {
         // eslint-disable-next-line no-undef
