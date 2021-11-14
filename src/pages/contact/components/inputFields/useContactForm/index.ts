@@ -3,18 +3,31 @@ import { usePlacesWidget } from 'react-google-autocomplete'
 import { useDispatch, useSelector } from 'react-redux'
 import { IGeoAddressType } from '../../../../../types/geoLocation/index'
 import { GOOGLE_MAP_API_KEY } from '../../../../../config/constants'
-import { setGeoAddressState } from '../../../../../redux/features/geoLocatonSlice'
+import { setGeoAddressState, setGeoLocationState } from '../../../../../redux/features/geoLocatonSlice'
 import { RootState } from '../../../../../redux/store'
 
 const useContactForm = () => {
   const dispatch = useDispatch()
-  const { address } = useSelector(
+  const locationState = useSelector(
     (state: RootState) => state.currentGeoLocation
   )
+  const {address} = locationState;
+
   const handlePlaceSelected = useCallback(
     // eslint-disable-next-line no-undef
-    (places: google.maps.places.PlaceResult) => console.info(places),
-    [address?.location]
+    (places: google.maps.places.PlaceResult) => {
+      const {geometry} = places;
+      if (geometry) {
+        // eslint-disable-next-line no-undef
+        const _obj : google.maps.LatLngLiteral = {
+          lat: geometry.location!.lat(),
+          lng: geometry.location!.lng()
+        }
+        console.info(_obj)
+        dispatch(setGeoLocationState(_obj))
+      }
+    },
+    [address]
   )
 
   const handleChange = useCallback(
