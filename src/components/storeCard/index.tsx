@@ -35,17 +35,14 @@ import { temArray } from './helper'
 
 const StoreCardComponent = memo(() => (
   <div>
-    {temArray.map((card) => (
+    {temArray.map(() => (
       <CardWrapper>
         <CardContainer>
           <GroupContainer>
             <HeaderArea>
               <SubHeaderArea>
                 <BadgeAreaWraper>
-                  <BadgeArea>
-                    Top Rated
-                    {card.no}
-                  </BadgeArea>
+                  <BadgeArea>Top Rated</BadgeArea>
                 </BadgeAreaWraper>
                 <IconArea>
                   <IconContainer>
@@ -69,8 +66,8 @@ const StoreCardComponent = memo(() => (
           <br />
           <br />
           <Description>
-            Chinese, Pakistani, Bakery, Pizza, Coffee, Cake
-            Chinese, Pakistani, Bakery, Pizza, Coffee, Cake
+            Chinese, Pakistani, Bakery, Pizza, Coffee, Cake Chinese, Pakistani,
+            Bakery, Pizza, Coffee, Cake
           </Description>
           <ButtonsContainer>
             <ShopButton>

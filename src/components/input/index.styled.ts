@@ -59,7 +59,32 @@ export const Label = styled.p<{
    `}
   }
 `
-export const PhoneInputField = styled(PhoneInput)``
+export const PhoneInputField = styled(PhoneInput)`
+  :focus ~ ${Label} {
+    top: 0;
+    left: 0.8rem;
+    font-size: 0.8rem;
+    background: linear-gradient(180deg, #f2f4ff 50%, white 50%);
+    opacity: 1;
+    color: ${(props) => props.theme.color.lightGray};
+  }
+
+  @media ${device.mobile} {
+    padding-left: 2.5rem;
+    :focus ~ ${Label} {
+      left: 0.5rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  @media ${device.tiny} {
+    padding-left: 2.5rem;
+    :focus ~ ${Label} {
+      left: 0.5rem;
+      font-size: 0.8rem;
+    }
+  }
+`
 
 export const TextAreaField = styled(TextArea)`
   outline: none;

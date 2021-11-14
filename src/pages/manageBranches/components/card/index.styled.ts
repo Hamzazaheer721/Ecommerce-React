@@ -52,6 +52,14 @@ export const IconsContainer = styled.div`
   .ant-switch-checked {
     background-color: ${(props) => props.theme.color.green} !important;
   }
+
+  @media ${device.mobile} {
+    gap: 0;
+  }
+
+  @media ${device.tiny} {
+    gap: 0;
+  }
 `
 export const Icon = styled(FontAwesomeIcon)<{ PropsColor?: string }>`
   color: ${({ PropsColor }) => (PropsColor ? PropsColor : '')};
