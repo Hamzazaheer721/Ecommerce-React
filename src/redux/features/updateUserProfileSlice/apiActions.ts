@@ -8,7 +8,7 @@ import {
   IUpdateUserProfilePayloadArg,
   IUpdateUserProfileRejectPayload
 } from './types'
-import { Config } from './helper'
+import { Config } from '../../../general/helper'
 
 export const UpdateUserProfile = createAsyncThunk<
   IUpdateProfilePayloadRtn,

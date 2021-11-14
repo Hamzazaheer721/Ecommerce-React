@@ -23,6 +23,7 @@ export const LoginFooter = styled.p`
   span {
     font-weight: 700;
     cursor: pointer;
+    color: black;
   }
 `
 

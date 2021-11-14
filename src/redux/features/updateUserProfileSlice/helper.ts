@@ -9,11 +9,3 @@ export const initialState: IUpdateUserProfileStateType = {
   success: false,
   message: ''
 }
-
-const userToken = localStorage.getItem('token')
-
-export const Config = {
-  headers: {
-    Authorization: `Bearer ${userToken}`
-  }
-}

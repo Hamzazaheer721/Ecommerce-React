@@ -37,7 +37,8 @@ import {
 import ProfileImage from '../profileImage'
 import Input from '../../../components/input'
 import useUserProfileForm from '../useUserProfileForm'
-import { MapContainer } from '../../../styles/global'
+import { MapContainer, ButtonContainer } from '../../../styles/global'
+import GenericButton from '../../../components/genericButton'
 
 const UserProfile = memo(() => {
   const { handleChange, handlePhoneChange, handleSubmit } = useUserProfileForm()
@@ -89,9 +90,15 @@ const UserProfile = memo(() => {
             <Input name="password" prefix={faKey} value="******" typePassword />
           </InputContainer>
         </InputFieldsContainer>
-        <button onClick={handleSubmit} type="button">
-          submit
-        </button>
+        <ButtonContainer>
+          <GenericButton
+            label="Submit"
+            handleSubmit={handleSubmit}
+            type="submit"
+            color="red"
+          />
+        </ButtonContainer>
+
         <LinkText>
           <LinkIcon icon={faKeySkeleton} />
           Change Password
