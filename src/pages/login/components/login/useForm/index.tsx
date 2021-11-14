@@ -40,8 +40,6 @@ export const useFormLogin = () => {
 
   const timeRef = useRef<NodeJS.Timer>()
 
-  // const {loading, success, message} = useSelector((state: RootState) => state.activation)
-
   useEffect(
     () => () => {
       timeRef.current && clearTimeout(timeRef.current)
