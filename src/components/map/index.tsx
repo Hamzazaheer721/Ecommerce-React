@@ -33,10 +33,10 @@ const Map: FC<IMapProps> = memo(
   ({ latLng, height = '300px', zoom = 15, setCurrentLocation }: IMapProps) => {
     const dispatch = useDispatch()
 
-    const locationState = useSelector(
+    const { location } = useSelector(
       (state: RootState) => state.currentGeoLocation
     )
-    const { location } = locationState
+    // const { location } = locationState
 
     const locationWorker: Worker = useMemo(
       () => new Worker('./workers/locationWorker.js'),
@@ -77,6 +77,9 @@ const Map: FC<IMapProps> = memo(
       }
     }, [locationWorker])
 
+    useEffect(() => {
+      console.info('I am rendered')
+    })
     const onMarkerDragEnd = useCallback(
       async (e: google.maps.MapMouseEvent) => {
         e.stop()

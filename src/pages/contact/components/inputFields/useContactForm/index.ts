@@ -11,6 +11,7 @@ const useContactForm = () => {
   const { address } = useSelector(
     (state: RootState) => state.currentGeoLocation
   )
+
   const handlePlaceSelected = useCallback(
     // eslint-disable-next-line no-undef
     (places: google.maps.places.PlaceResult) => {
