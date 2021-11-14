@@ -29,7 +29,7 @@ export const LoginViewContainer = styled.div<ISecondLayoutProps>`
 
   @media ${device.mobile} {
     width: 100%;
-    padding: ${({ secondLayout }) => (secondLayout ? '0 15px' : '0 20px')};
+    padding: ${({ secondLayout }) => (secondLayout ? '0 15px' : '0 51px')};
   }
 
   @media ${device.tiny} {
