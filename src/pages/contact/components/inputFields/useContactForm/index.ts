@@ -23,7 +23,6 @@ const useContactForm = () => {
           lat: geometry.location!.lat(),
           lng: geometry.location!.lng()
         }
-        console.info(_obj)
         dispatch(setGeoLocationState(_obj))
       }
     },
