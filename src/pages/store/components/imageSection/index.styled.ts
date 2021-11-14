@@ -44,9 +44,11 @@ export const UploadImage = styled(Upload)`
   @media ${device.tiny} {
     .ant-upload-list-picture-card-container {
       width: 46% !important;
+      height: 200px !important;
     }
     .ant-upload.ant-upload-select-picture-card {
       width: 46%;
+      height: 200px !important;
     }
   }
 `
