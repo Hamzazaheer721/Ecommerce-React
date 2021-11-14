@@ -33,7 +33,8 @@ import {
   CardTitle,
   SimpoleIcon,
   DeleteLinkText,
-  ButtonLayout
+  ButtonLayout,
+  PaymentMethod
 } from './index.styled'
 import ProfileImage from '../profileImage'
 import Input from '../../../components/input'
@@ -122,7 +123,7 @@ const UserProfile = memo(() => {
         <AddressPaymentContainer>
           <MapIcon icon={faMapMarkerAlt} />
           <AddressPaymentTitle>Payment Method</AddressPaymentTitle>
-          <ShippingAddress>Default Payment Method</ShippingAddress>
+          <PaymentMethod>Default Payment Method</PaymentMethod>
           <SelectiveCardContainer>
             <CardImage src="/images/master-card-icon.png" />
             <CardTitle>

@@ -78,6 +78,7 @@ export const InputFieldsContainer = styled.div`
 export const LinkText = styled.h4`
   color: ${(props) => props.theme.color.primary};
   cursor: pointer;
+  margin-top: 5px;
 `
 
 export const DeleteLinkText = styled.h4`
@@ -132,9 +133,26 @@ export const ShippingAddress = styled.span`
   border: 0.5px solid #9adbf9;
 
   @media ${device.tiny} {
-    float: none;
+    margin-right: 5px;
+    float: right;
   }
 `
+
+export const PaymentMethod = styled.span`
+  font-size: 12px;
+  font-weight: 500;
+  background-color: ${(props) => props.theme.storeColor.lightBlue};
+  padding: 5px 4px;
+  border-radius: 4px;
+  float: right;
+  border: 0.5px solid #9adbf9;
+
+  @media ${device.tiny} {
+    margin-right: 5px;
+    float: left;
+  }
+`
+
 export const StreetAddress = styled.div`
   margin: 5px 5px 10px 5px;
 `
