@@ -183,3 +183,14 @@ export const CardTitle = styled.p`
     font-size: 14px;
   }
 `
+export const ButtonLayout = styled.div`
+  padding: 0 30%;
+
+  @media ${device.mobile} {
+    padding: 0 10%;
+  }
+
+  @media ${device.tiny} {
+    padding: 0 5%;
+  }
+`

@@ -32,7 +32,8 @@ import {
   CardImage,
   CardTitle,
   SimpoleIcon,
-  DeleteLinkText
+  DeleteLinkText,
+  ButtonLayout
 } from './index.styled'
 import ProfileImage from '../profileImage'
 import Input from '../../../components/input'
@@ -90,14 +91,6 @@ const UserProfile = memo(() => {
             <Input name="password" prefix={faKey} value="******" typePassword />
           </InputContainer>
         </InputFieldsContainer>
-        <ButtonContainer>
-          <GenericButton
-            label="Submit"
-            handleSubmit={handleSubmit}
-            type="submit"
-            color="red"
-          />
-        </ButtonContainer>
 
         <LinkText>
           <LinkIcon icon={faKeySkeleton} />
@@ -143,6 +136,16 @@ const UserProfile = memo(() => {
             Manage Payment Method
           </LinkText>
         </AddressPaymentContainer>
+        <ButtonLayout>
+          <ButtonContainer>
+            <GenericButton
+              label="Save"
+              handleSubmit={handleSubmit}
+              type="submit"
+              color="red"
+            />
+          </ButtonContainer>
+        </ButtonLayout>
         <LinkText>
           <SimpoleIcon icon={faUserMinus} />
           Deactivate Account

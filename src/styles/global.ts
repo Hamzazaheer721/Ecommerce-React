@@ -53,8 +53,24 @@ export const InputContainer = styled.div`
 `
 
 export const ButtonContainer = styled.div`
+  height: 40px;
+  margin: 10px 0;
   width: 100%;
-  text-align: center;
+  .ant-btn {
+    color: ${(props) => props.theme.color.white};
+    background: linear-gradient(270deg, #1a87bb, #1b9bd7);
+    border: none;
+    border-radius: 20px;
+    width: 100%;
+    font-size: 1rem;
+    height: 100%;
+    &:hover,
+    &:focus,
+    &:active {
+      color: ${(props) => props.theme.color.white};
+      background: linear-gradient(270deg, #1a87bb, #1b9bd7);
+    }
+  }
 `
 
 export const MapContainer = styled.div<{ height: string }>`
