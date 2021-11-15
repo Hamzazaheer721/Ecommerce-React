@@ -2,7 +2,7 @@ import { memo, useContext } from 'react'
 import {
   faCreditCard,
   faLandmark,
-  faCreditCardFront,
+  // faCreditCardFront,
   faMoneyCheckEditAlt,
   faMapMarkedAlt,
   faMobileAndroid,
@@ -38,9 +38,9 @@ const ViewComponent = memo(() => {
           <InputContainer>
             <Input prefix={faLandmark} label="Bank Name" />
           </InputContainer>
-          <InputContainer>
+          {/* <InputContainer>
             <Input prefix={faCreditCardFront} label="Account Number" />
-          </InputContainer>
+          </InputContainer> */}
           <InputContainer>
             <Input prefix={faMoneyCheckEditAlt} label="IBAN Number" />
           </InputContainer>
