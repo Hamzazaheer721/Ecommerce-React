@@ -32,7 +32,7 @@ const RouterComponent = memo(() => (
       <Route exact path="/store" component={Store} />
       <Route exact path="/contact" component={Contact} />
       <Route exact path="/business-profile" component={businessProfile} />
-      <Route exact path="/Manage-branches" component={ManageBranches} />
+      <Route exact path="/manage-branches" component={ManageBranches} />
       <Route exact path="/setting" component={Setting} />
     </Switch>
   </Router>
