@@ -28,6 +28,7 @@ const ToastComponent: FC<IToastProps> = memo(
       () => filterColor(toastType),
       [toastType]
     )
+
     return (
       <ToastContainer colors={colors}>
         <LeftContainer>

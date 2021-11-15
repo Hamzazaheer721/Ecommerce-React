@@ -68,7 +68,7 @@ const MenuComponent = memo(() => {
             }
             key="15"
           >
-            <Link to="/user-profile">Create</Link>
+            <Link to="/business-profile">Create</Link>
           </SubMenuItem>
           <SubMenuItem
             icon={
