@@ -86,28 +86,6 @@ const Input = memo(
       },
       inputRef
     ) => {
-      // const [_value, setValue] = useState<typeof value>(value)
-
-      // useEffect(() => {
-      //   setValue(value)
-      // }, [value])
-
-      // const handleInputDebounce = debounce(
-      //   (e: ChangeEvent<HTMLInputElement>) => {
-      //     if (handleChange) handleChange(e)
-      //   },
-      //   debounceValue
-      // )
-
-      // const handleInputChange = useCallback(
-      //   (e: ChangeEvent<HTMLInputElement>) => {
-      //     setValue(e.target.value)
-      //     handleInputDebounce(e)
-      //   },
-      //   [_value]
-      // )
-      // console.error(handleInputChange)
-
       const localRef = useRef<HTMLInputElement>(null)
       const [showPassword, setShowPassword] = useState(false)
       const debouncedHandleChange =
