@@ -5,6 +5,7 @@ import {
   memo,
   MutableRefObject,
   useCallback,
+  useEffect,
   useLayoutEffect,
   useRef,
   useState
@@ -112,7 +113,7 @@ const Input = memo(
       const debouncedHandleChange =
         useRef<DebouncedFunc<(e: ChangeEvent<HTMLInputElement>) => void>>()
 
-      useLayoutEffect(() => {
+      useEffect(() => {
         if (handleChange && !debouncedHandleChange.current) {
           debouncedHandleChange.current = debounce(handleChange, debounceValue)
         }
