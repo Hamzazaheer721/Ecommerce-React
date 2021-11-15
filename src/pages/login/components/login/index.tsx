@@ -2,6 +2,7 @@ import { FC, memo, useRef } from 'react'
 import { faKey, faUser } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom'
+
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
 import ToastComponent from '../../../../components/toaster'
