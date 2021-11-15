@@ -52,6 +52,7 @@ const LocationInputFields = memo(() => {
           name="location"
           value={location}
           handleChange={handleChange}
+          debounceValue={3000}
         />
       </SingleInputContainer>
       <SingleInputContainer>
@@ -59,7 +60,12 @@ const LocationInputFields = memo(() => {
       </SingleInputContainer>
       <InputsContainer>
         <InputContainer>
-          <Input label="Postal Code" prefix={faMailbox} value={postalCode} />
+          <Input
+            label="Postal Code"
+            prefix={faMailbox}
+            value={postalCode}
+            handleChange={handleChange}
+          />
         </InputContainer>
         <InputContainer>
           <Input prefix={faChartArea} label="Area" value={area} />

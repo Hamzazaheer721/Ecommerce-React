@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react'
+import { memo, useLayoutEffect, useState } from 'react'
 import { TabsContainer } from './index.styled'
 import Contact from '../contact'
 import Store from '../store'
@@ -11,7 +11,7 @@ const ViewComponent = memo(() => {
 
   const [scriptLoaded, setScriptLoaded] = useState<boolean>(false)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const googleMapScript = loadMapApi()
     googleMapScript.addEventListener('load', () => {
       setScriptLoaded(true)
