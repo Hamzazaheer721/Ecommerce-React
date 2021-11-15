@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { TabsContainer } from './index.styled'
-import Profile from '../profile'
 import Contact from '../contact'
+import Store from '../store'
 import Bank from '../bank'
 import HeaderComponent from '../../components/header'
 
@@ -22,7 +22,7 @@ const ViewComponent = memo(() => {
         centered
       >
         <TabPane tab="Profile" key="1">
-          <Profile />
+          <Store />
         </TabPane>
         <TabPane tab="Contact" key="2">
           <Contact />
