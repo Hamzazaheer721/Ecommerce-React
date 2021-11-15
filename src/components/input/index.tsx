@@ -12,6 +12,7 @@ import {
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faEye, faEyeSlash } from '@fortawesome/pro-light-svg-icons'
 import debounce from 'lodash/debounce'
+import { DebouncedFunc } from 'lodash'
 import {
   InputContainer,
   InputField,
@@ -108,15 +109,20 @@ const Input = memo(
 
       const localRef = useRef<HTMLInputElement>(null)
       const [showPassword, setShowPassword] = useState(false)
+      const debouncedHandleChange =
+        useRef<DebouncedFunc<(e: ChangeEvent<HTMLInputElement>) => void>>()
+
+      useLayoutEffect(() => {
+        if (handleChange && !debouncedHandleChange.current) {
+          debouncedHandleChange.current = debounce(handleChange, debounceValue)
+        }
+      }, [])
 
       useLayoutEffect(() => {
         if (setInitialValue && localRef.current) {
           localRef.current.value = value
         }
       }, [value])
-
-      const debouncedHandleChange =
-        handleChange && debounce(handleChange, debounceValue)
 
       const handleEyeChange = useCallback(() => {
         setShowPassword((prevState) => !prevState)
@@ -149,7 +155,9 @@ const Input = memo(
                 }
               }}
               // onChange={debounceValue ? handleInputChange : handleChange}
-              onChange={debounceValue ? debouncedHandleChange : handleChange}
+              onChange={
+                debounceValue ? debouncedHandleChange.current : handleChange
+              }
             />
           )}
           {textArea && (
