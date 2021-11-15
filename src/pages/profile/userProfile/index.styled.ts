@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { device } from '../../../styles/devices'
 
 export const Container = styled.div`
-  /* padding: 0 15px; */
   margin: 15px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  gap: 10px;
   @media ${device.mobile} {
     flex-direction: column;
   }

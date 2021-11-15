@@ -1,7 +1,8 @@
 /* eslint-disable */
 import { memo } from 'react'
-import { Menu } from 'antd'
-
+import Menu from 'antd/es/menu'
+import { Link } from 'react-router-dom'
+import 'antd/dist/antd.css'
 import {
   faUser,
   faTachometerAltFast,
@@ -21,14 +22,12 @@ import {
   faUserGraduate,
   faBadgeCheck
 } from '@fortawesome/pro-light-svg-icons'
-import 'antd/dist/antd.css'
-import { SubMenuItem, CustomMenu, IconContainer } from './index.styled'
 import Icon from '../../../icon'
-import { Link } from 'react-router-dom'
-
-const { SubMenu } = Menu
+import { SubMenuItem, CustomMenu, IconContainer } from './index.styled'
 
 const MenuComponent = memo(() => {
+  const { SubMenu } = Menu
+
   return (
     <>
       <CustomMenu style={{ width: 250 }} defaultOpenKeys={['']} mode="inline">
@@ -40,7 +39,7 @@ const MenuComponent = memo(() => {
             </IconContainer>
           }
         >
-          Profile
+          <Link to={'/user-profile'}>Profile</Link>
         </Menu.Item>
         <Menu.Item
           key="2"
@@ -69,7 +68,7 @@ const MenuComponent = memo(() => {
             }
             key="15"
           >
-            <Link to="/user-profile">Create</Link>
+            <Link to="/business-profile">Create</Link>
           </SubMenuItem>
           <SubMenuItem
             icon={
