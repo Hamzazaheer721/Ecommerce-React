@@ -44,7 +44,6 @@ interface InputProps {
   // eslint-disable-next-line no-unused-vars
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void
   locationHandleChange: (e: ChangeEvent<HTMLInputElement>) => void
-
   handlePhoneChange?: (
     value: string,
     data: {} | CountryData,
@@ -149,7 +148,6 @@ const Input = memo(
                   }
                 }
               }}
-              // onChange={debounceValue ? handleInputChange : handleChange}
               onChange={debounceValue ? debouncedHandleChange : handleChange}
             />
           )}

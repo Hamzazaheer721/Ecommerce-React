@@ -57,31 +57,74 @@ const LocationInputFields = memo(() => {
         />
       </SingleInputContainer>
       <SingleInputContainer>
-        <Input label="Street Address" prefix={faHome} value={streetAddress} />
+        <Input
+          label="Street Address"
+          prefix={faHome}
+          name="streetAddress"
+          value={streetAddress}
+          handleChange={handleChange}
+          setInitialValue
+          debounceValue={3000}
+        />
       </SingleInputContainer>
       <InputsContainer>
         <InputContainer>
           <Input
             label="Postal Code"
             prefix={faMailbox}
+            name="postalCode"
             value={postalCode}
             handleChange={handleChange}
+            setInitialValue
+            debounceValue={3000}
           />
         </InputContainer>
         <InputContainer>
-          <Input prefix={faChartArea} label="Area" value={area} />
+          <Input
+            prefix={faChartArea}
+            label="Area"
+            name="area"
+            value={area}
+            handleChange={handleChange}
+            setInitialValue
+            debounceValue={3000}
+          />
         </InputContainer>
       </InputsContainer>
       <InputsContainer>
         <InputContainer>
-          <Input prefix={faBuilding} label="City" value={city} />
+          <Input
+            prefix={faBuilding}
+            label="City"
+            name="city"
+            value={city}
+            handleChange={handleChange}
+            setInitialValue
+            debounceValue={3000}
+          />
         </InputContainer>
         <InputContainer>
-          <Input prefix={faCity} label="State" value={state} />
+          <Input
+            prefix={faCity}
+            label="State"
+            name="state"
+            value={state}
+            handleChange={handleChange}
+            setInitialValue
+            debounceValue={3000}
+          />
         </InputContainer>
       </InputsContainer>
       <SingleInputContainer>
-        <Input label="Country" prefix={faGlobe} value={country} />
+        <Input
+          label="Country"
+          prefix={faGlobe}
+          name="country"
+          value={country}
+          handleChange={handleChange}
+          setInitialValue
+          debounceValue={3000}
+        />
       </SingleInputContainer>
       <CheckboxContainer>
         <CustomCheckBox type="checkbox" name="remember" />

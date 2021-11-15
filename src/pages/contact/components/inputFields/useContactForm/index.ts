@@ -12,25 +12,28 @@ const useContactForm = () => {
   const locationState = useSelector(
     (state: RootState) => state.currentAddressLocation
   )
-  const {address} = locationState;
+  const { address } = locationState
   const timeInterval = useRef<NodeJS.Timeout>()
 
-  useEffect(() => () => {
-    timeInterval.current && clearTimeout(timeInterval.current)
-  }, [])
+  useEffect(
+    () => () => {
+      timeInterval.current && clearTimeout(timeInterval.current)
+    },
+    []
+  )
 
   const handlePlaceSelected = useCallback(
     // eslint-disable-next-line no-undef
     (places: google.maps.places.PlaceResult) => {
-      const {geometry} = places;
+      const { geometry } = places
       if (geometry) {
         // eslint-disable-next-line no-undef
-        const _obj : google.maps.LatLngLiteral = {
+        const _obj: google.maps.LatLngLiteral = {
           lat: geometry.location!.lat(),
           lng: geometry.location!.lng()
         }
         timeInterval.current = setTimeout(() => {
-          dispatch(setGeoLocationState({position: _obj, flag: true}))
+          dispatch(setGeoLocationState({ position: _obj, flag: true }))
         }, 1000)
       }
     },
@@ -40,7 +43,7 @@ const useContactForm = () => {
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       e.preventDefault()
-      e.stopPropagation();
+      e.stopPropagation()
       const { name, value } = e.target
       const _key: keyof IGeoAddressType = name as keyof IGeoAddressType
       dispatch(setGeoAddressState({ name: _key, value }))
