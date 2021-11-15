@@ -5,14 +5,13 @@ import {
   memo,
   MutableRefObject,
   useCallback,
-  useEffect,
+  useLayoutEffect,
   useRef,
   useState
 } from 'react'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-// import debounce from 'lodash/debounce'
 import { faEye, faEyeSlash } from '@fortawesome/pro-light-svg-icons'
-import { debounce } from 'lodash'
+import debounce from 'lodash/debounce'
 import {
   InputContainer,
   InputField,
@@ -57,6 +56,7 @@ interface InputProps {
   textArea: boolean
   autoComplete?: boolean
   debounceValue?: number
+  setInitialValue?: boolean
 }
 
 const Input = memo(
@@ -79,32 +79,45 @@ const Input = memo(
         textArea,
         autoComplete,
         debounceValue,
+        setInitialValue,
         ...props
       },
       inputRef
     ) => {
+      // const [_value, setValue] = useState<typeof value>(value)
+
+      // useEffect(() => {
+      //   setValue(value)
+      // }, [value])
+
+      // const handleInputDebounce = debounce(
+      //   (e: ChangeEvent<HTMLInputElement>) => {
+      //     if (handleChange) handleChange(e)
+      //   },
+      //   debounceValue
+      // )
+
+      // const handleInputChange = useCallback(
+      //   (e: ChangeEvent<HTMLInputElement>) => {
+      //     setValue(e.target.value)
+      //     handleInputDebounce(e)
+      //   },
+      //   [_value]
+      // )
+      // console.error(handleInputChange)
+
       const localRef = useRef<HTMLInputElement>(null)
       const [showPassword, setShowPassword] = useState(false)
-      const [_value, setValue] = useState<typeof value>(value)
 
-      useEffect(() => {
-        setValue(value)
+      useLayoutEffect(() => {
+        if (setInitialValue && localRef.current) {
+          localRef.current.value = value
+        }
       }, [value])
 
-      const handleInputDebounce = debounce(
-        (e: ChangeEvent<HTMLInputElement>) => {
-          if (handleChange) handleChange(e)
-        },
-        debounceValue
-      )
-
-      const handleInputChange = useCallback(
-        (e: ChangeEvent<HTMLInputElement>) => {
-          setValue(e.target.value)
-          handleInputDebounce(e)
-        },
-        [_value]
-      )
+      const debouncedHandleChange = useCallback(() => {
+        handleChange && debounce(handleChange, debounceValue)
+      }, [handleChange, value])
 
       const handleEyeChange = useCallback(() => {
         setShowPassword((prevState) => !prevState)
@@ -117,7 +130,7 @@ const Input = memo(
               readOnly={readOnly}
               {...props}
               name={name}
-              value={debounceValue ? _value : value}
+              // value={debounceValue ? _value : value}
               placeholder=""
               type={typePassword && !showPassword ? 'password' : 'text'}
               ref={(element) => {
@@ -136,7 +149,8 @@ const Input = memo(
                   }
                 }
               }}
-              onChange={debounceValue ? handleInputChange : handleChange}
+              // onChange={debounceValue ? handleInputChange : handleChange}
+              onChange={debounceValue ? debouncedHandleChange : handleChange}
             />
           )}
           {textArea && (

@@ -52,6 +52,7 @@ const LocationInputFields = memo(() => {
           name="location"
           value={location}
           handleChange={handleChange}
+          setInitialValue
           debounceValue={3000}
         />
       </SingleInputContainer>

@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback } from 'react'
+import { ChangeEvent, useCallback, useEffect, useRef } from 'react'
 import { usePlacesWidget } from 'react-google-autocomplete'
 import { useDispatch, useSelector } from 'react-redux'
 import { IGeoAddressType } from '../../../../../types/geoLocation/index'
@@ -13,6 +13,11 @@ const useContactForm = () => {
     (state: RootState) => state.currentAddressLocation
   )
   const {address} = locationState;
+  const timeInterval = useRef<NodeJS.Timeout>()
+
+  useEffect(() => () => {
+    timeInterval.current && clearTimeout(timeInterval.current)
+  }, [])
 
   const handlePlaceSelected = useCallback(
     // eslint-disable-next-line no-undef
@@ -24,7 +29,9 @@ const useContactForm = () => {
           lat: geometry.location!.lat(),
           lng: geometry.location!.lng()
         }
-        dispatch(setGeoLocationState({position: _obj, flag: true}))
+        timeInterval.current = setTimeout(() => {
+          dispatch(setGeoLocationState({position: _obj, flag: true}))
+        }, 1000)
       }
     },
     [address]
@@ -33,6 +40,7 @@ const useContactForm = () => {
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       e.preventDefault()
+      e.stopPropagation();
       const { name, value } = e.target
       const _key: keyof IGeoAddressType = name as keyof IGeoAddressType
       dispatch(setGeoAddressState({ name: _key, value }))
