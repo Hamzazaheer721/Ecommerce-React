@@ -44,6 +44,7 @@ interface InputProps {
   // eslint-disable-next-line no-unused-vars
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void
   locationHandleChange: (e: ChangeEvent<HTMLInputElement>) => void
+
   handlePhoneChange?: (
     value: string,
     data: {} | CountryData,
@@ -114,9 +115,8 @@ const Input = memo(
         }
       }, [value])
 
-      const debouncedHandleChange = useCallback(() => {
+      const debouncedHandleChange =
         handleChange && debounce(handleChange, debounceValue)
-      }, [handleChange, value])
 
       const handleEyeChange = useCallback(() => {
         setShowPassword((prevState) => !prevState)
@@ -148,6 +148,7 @@ const Input = memo(
                   }
                 }
               }}
+              // onChange={debounceValue ? handleInputChange : handleChange}
               onChange={debounceValue ? debouncedHandleChange : handleChange}
             />
           )}
