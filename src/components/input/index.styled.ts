@@ -191,12 +191,13 @@ export const InputContainer = styled.div<{
     }  
   `}
 
-  ${({ hasValue }) =>
+  /* border when something has been filled */
+  /* ${({ hasValue }) =>
     // eslint-disable-next-line implicit-arrow-linebreak
     hasValue &&
     `
     border: 1px solid black;
-  `}
+  `} */
 
   .ant-input:focus, 
   .ant-input-focused {

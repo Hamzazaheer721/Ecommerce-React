@@ -40,7 +40,7 @@ const MenuComponent = memo(() => {
             </IconContainer>
           }
         >
-          Profile
+          <Link to={'/user-profile'}>Profile</Link>
         </Menu.Item>
         <Menu.Item
           key="2"
