@@ -37,7 +37,7 @@ const ActivationCode: FC = memo(() => {
       <HeadingsContainer>
         <LoginHeader>Forgot Password</LoginHeader>
         <LoginDescription>
-          Using the form below to activate your account
+          Use the form below to activate your account
         </LoginDescription>
       </HeadingsContainer>
       {forgotPasswordMessage && !forgotPasswordSuccess ? (
@@ -45,7 +45,7 @@ const ActivationCode: FC = memo(() => {
       ) : (
         <ToastComponent
           toastType="info"
-          description="Enter your WhatsApp Number or Email Address"
+          description="Enter your WhatsApp Number or Email Address."
         />
       )}
       <InputFieldsContainer>
