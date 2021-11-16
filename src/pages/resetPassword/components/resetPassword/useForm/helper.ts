@@ -1,7 +1,7 @@
 import {
   isEmpty,
-  validateActivationCode,
-  validatePassword
+  validateActivationCode
+  // validatePassword
 } from '../../../../../general/validations'
 import { IResetPasswordErrorTypes, IResetPasswordStateTypes } from './types'
 
@@ -19,23 +19,34 @@ export const validateErrors = (
   const errors: Partial<IResetPasswordErrorTypes> = {}
   const { activation_code, password, password_confirmation } = resetPasswordData
 
-  if (activation_code && isEmpty(activation_code.trim().toUpperCase())) {
+  if (typeof activation_code === 'string' && isEmpty(activation_code.trim().toUpperCase())) {
     errors.activationCodeError = 'Please enter a activation code'
-  } else if (activation_code && !validateActivationCode(activation_code.trim().toUpperCase())) {
+  } else if (
+    typeof activation_code === 'string' &&
+    !validateActivationCode(activation_code.trim().toUpperCase())
+  ) {
     errors.activationCodeError = 'Please enter a valid activation code'
   }
 
   if (isEmpty(password)) {
     errors.passwordError = 'Please enter a password'
-  } else if (!validatePassword(password)) {
-    errors.passwordError = 'Please enter a valid password'
+  } else if (password.length < 8) {
+    errors.confirmationPasswordError =
+      'Please enter a password of atleast 8 characters'
   }
+  // else if (!validatePassword(password)) {
+  //   errors.passwordError = 'Please enter a valid password'
+  // }
 
   if (isEmpty(password_confirmation)) {
     errors.confirmationPasswordError = 'Please enter a password'
-  } else if (!validatePassword(password_confirmation)) {
-    errors.confirmationPasswordError = 'Please enter a valid password'
+  } else if (password_confirmation.length < 8) {
+    errors.confirmationPasswordError =
+      'Please enter a password of atleast 8 characters'
   }
+  // else if (!validatePassword(password_confirmation)) {
+  //   errors.confirmationPasswordError = 'Please enter a valid password'
+  // }
 
-  return errors;
+  return errors
 }
