@@ -59,10 +59,8 @@ const useForm = () => {
 
   // keeping online message in state for activation page and going back if email doesn't exist
   useEffect(() => {
+    registerState.message && dispatch(clearMessageStates())
     !registerState.email && history.goBack()
-    return () => {
-      registerState.message && dispatch(clearMessageStates())
-    }
   }, [])
 
   // dispatching user in redux and clearing all registerStates after going to home page
