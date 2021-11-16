@@ -54,6 +54,9 @@ const ActivationCode: FC = memo(() => {
           handleClick={handleClick}
         />
       )}
+      {success && message && (
+        <ToastComponent toastType="success" description={message} />
+      )}
       {!resendStateLoading && resendStateSuccess && resendStateMessage && (
         <ToastComponent toastType="success" description={resendStateMessage} />
       )}
@@ -81,6 +84,7 @@ const ActivationCode: FC = memo(() => {
             readOnly
             label="Email Address"
             name="email"
+            setInitialValue
             value={email}
             prefix={faEnvelope}
           />

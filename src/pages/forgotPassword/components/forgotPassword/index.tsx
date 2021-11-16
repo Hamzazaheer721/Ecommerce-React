@@ -75,7 +75,7 @@ const ActivationCode: FC = memo(() => {
       </ButtonContainer>
       <LoginFooter>
         Already on WhatsPays?
-        <Link to="/get-started">
+        <Link to="/login">
           <LinkText> Login</LinkText>
         </Link>
       </LoginFooter>

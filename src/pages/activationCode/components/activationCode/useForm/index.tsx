@@ -15,8 +15,8 @@ import { clearActivationMessageStates } from '../../../../../redux/features/acti
 import { IActivationThunkArgType } from '../../../../../redux/features/activationSlice/types'
 import { RootState } from '../../../../../redux/store'
 import {
-  clearAllStates,
-  clearMessageStates
+  clearAllStates
+  // clearMessageStates
 } from '../../../../../redux/features/userSignupSlice'
 import { checkError, initialState } from './helper'
 import { IActivationErrorType, IActivationType } from './types'
@@ -59,16 +59,18 @@ const useForm = () => {
 
   // keeping online message in state for activation page and going back if email doesn't exist
   useEffect(() => {
-    registerState.message && dispatch(clearMessageStates())
     !registerState.email && history.goBack()
+    return () => {
+      dispatch(clearActivationMessageStates())
+      dispatch(clearAllStates())
+    }
   }, [])
 
   // dispatching user in redux and clearing all registerStates after going to home page
   const dispatchUser = useCallback(() => {
     user &&
       dispatch(addUserAction(user)) &&
-      history.push('/') &&
-      dispatch(clearAllStates())
+      setTimeout(() => history.push('/'), 2000)
   }, [activationState, loginState, registerState])
 
   // dispatching user if we have success message
