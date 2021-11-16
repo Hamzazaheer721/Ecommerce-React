@@ -2,7 +2,6 @@ import { FC, memo, useRef } from 'react'
 import { faKey, faUser } from '@fortawesome/pro-light-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom'
-
 import Button from '../../../../components/genericButton'
 import Input from '../../../../components/input'
 import ToastComponent from '../../../../components/toaster'
@@ -76,6 +75,7 @@ const Login: FC = memo(() => {
         ) : (
           <MarginDiv />
         )}
+
         <CheckboxContainer>
           <CustomCheckBox
             type="checkbox"
@@ -97,7 +97,7 @@ const Login: FC = memo(() => {
         <LoginSubFooter>Forget your password?</LoginSubFooter>
       </Link>
       <LoginFooter>
-        Don`t have an account?
+        Don&apos;t have an account?
         <Link to="/get-started">
           <LinkText> Register</LinkText>
         </Link>

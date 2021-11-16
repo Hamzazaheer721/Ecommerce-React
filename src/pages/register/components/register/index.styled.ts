@@ -36,17 +36,20 @@ export const InputContainer = styled.div`
   border: none;
   outline: none;
 `
-export const ButtonContainer = styled.div<{ isPrimary: boolean; theme: any }>`
-  height: 40px;
+export const ButtonContainer = styled.div<{
+  isPrimary: 'visitor' | 'company'
+  theme: any
+}>`
+  height: 50px;
   width: 100%;
   .ant-btn {
     color: ${(props) => props.theme.color.white};
     background: ${({ isPrimary, theme }) =>
-      isPrimary
+      isPrimary === 'visitor'
         ? theme.gradientButton.primary
         : theme.gradientButton.secondary};
     border: none;
-    border-radius: 20px;
+    border-radius: 30px;
     width: 100%;
     font-size: 1rem;
     height: 100%;

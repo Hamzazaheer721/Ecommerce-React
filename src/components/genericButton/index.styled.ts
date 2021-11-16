@@ -9,13 +9,13 @@ export const IconStyler = styled(FontAwesomeIcon)`
   margin-right: 7px;
 `
 export const ButtonContainer = styled.div<{ color?: string }>`
-  height: 40px;
+  height: 50px;
   min-width: 250px;
   .ant-btn {
     color: ${(props) => props.theme.color.white};
     background: linear-gradient(270deg, #1a87bb, #1b9bd7);
     border: none;
-    border-radius: 20px;
+    border-radius: 30px;
     width: 100%;
     font-size: 1rem;
     height: 100%;
@@ -36,14 +36,14 @@ export const ButtonContainer = styled.div<{ color?: string }>`
 export const SecondaryButtonContainer = styled.div`
   /* min-width: 64px; */
   margin: 12px 0;
-  height: 40px;
+  height: 50px;
   min-width: 250px;
 
   .ant-btn {
     color: ${(props) => props.theme.color.white};
     background: linear-gradient(270deg, #0c215a, #243d82);
     border: none;
-    border-radius: 20px;
+    border-radius: 30px;
     width: 100%;
     font-size: 1rem;
     height: 100%;
