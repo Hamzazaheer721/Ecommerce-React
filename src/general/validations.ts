@@ -47,3 +47,23 @@ export const validateDomain = (domain : string) => {
   const re = /^[a-zA-Z0-9]{3,20}$/;
   return re.test(domain);
 };
+
+export const doesDigitExist = (_val : string) => {
+  const re = /^(?=(.*\d){1})$/;
+  return re.test(_val)
+}
+
+export const doesCapitalLetterExist = (_val : string) => {
+  const re = /^(?=(.*[A-Z]){1})$/;
+  return re.test(_val)
+}
+
+export const doesSmallLetterExist = (_val : string) => {
+  const re = /^(?=(.*[a-z]){1})$/;
+  return re.test(_val)
+}
+
+export const doesSpecialCharacterExist = (_val : string) => {
+  const re = /^(?=(.*[!@#$%^&*]){1})$/;
+  return re.test(_val)
+}

@@ -95,6 +95,7 @@ const useForm = () => {
   const handleSubmit = useCallback(
     async (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
+      setErrors({})
       const updatedErrors = errorChecks(registerData, isCustomer)
       setErrors(updatedErrors)
       isObjectEmpty(updatedErrors) && makeApiCall()

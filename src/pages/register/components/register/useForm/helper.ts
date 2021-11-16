@@ -5,7 +5,8 @@ import {
   validatePhoneNumber,
   validatePassword,
   isEmail
-} from '../../../../../general/validations'
+} from '../../../../../general/validations';
+
 import { IRegisterErrors, IRegisterType } from '../../../../../types/signup'
 
 export const initialState: IRegisterType = {
@@ -55,7 +56,7 @@ export const errorChecks = (
   if (isEmpty(password)) {
     errors.passwordError = 'Please enter your password'
   } else if (!validatePassword(password)) {
-    errors.passwordError = 'Please enter a valid password'
+    errors.passwordError = 'Use 8 or more characters with a mix of letters, numbers & symbols i.e '
   }
 
   return errors
