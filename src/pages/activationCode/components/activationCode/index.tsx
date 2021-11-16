@@ -81,6 +81,7 @@ const ActivationCode: FC = memo(() => {
             readOnly
             label="Email Address"
             name="email"
+            setInitialValue
             value={email}
             prefix={faEnvelope}
           />
