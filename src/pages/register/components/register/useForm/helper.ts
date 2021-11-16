@@ -3,7 +3,7 @@ import {
   validateName,
   validateCompany,
   validatePhoneNumber,
-  validatePassword,
+  // validatePassword,
   isEmail
 } from '../../../../../general/validations';
 
@@ -25,7 +25,7 @@ export const errorChecks = (
   isCustomer: 'visitor' | 'company'
 ) => {
   const errors: Partial<IRegisterErrors> = {}
-  const { name, phone, store_name, email, password } = registerData
+  const { name, phone, store_name, email, password, checkbox } = registerData
 
   if (isEmpty(name)) {
     errors.nameError = 'Please enter your Full name'
@@ -55,8 +55,16 @@ export const errorChecks = (
 
   if (isEmpty(password)) {
     errors.passwordError = 'Please enter your password'
-  } else if (!validatePassword(password)) {
-    errors.passwordError = 'Use 8 or more characters with a mix of letters, numbers & symbols i.e '
+  } else if (password.length < 8) {
+    errors.passwordError = 'Please enter atleast 8 characters'
+  }
+  // else if (!validatePassword(password)) {
+  // eslint-disable-next-line max-len
+  //   errors.passwordError = 'Use 8 or more characters with a mix of letters, numbers & symbols'
+  // }
+
+  if (!checkbox) {
+    errors.checkboxError = 'You must accept terms and condition'
   }
 
   return errors

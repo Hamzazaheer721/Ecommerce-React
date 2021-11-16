@@ -28,6 +28,7 @@ export interface IRegisterErrors {
   storeNameError: string
   emailError: string
   passwordError: string
+  checkboxError: string
 }
 
 export type IRegisterErrorType = Partial<IRegisterErrors>

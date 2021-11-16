@@ -10,11 +10,17 @@ interface IButtonProps {
   color?: string
   // eslint-disable-next-line no-unused-vars
   handleSubmit?: (e: MouseEvent<HTMLButtonElement>) => void
+  _disabled?: boolean
 }
 
 const Button: FC<IButtonProps> = memo(
-  ({ label, icon, type, color, handleSubmit }: IButtonProps) => (
-    <CustomButton htmlType={type} color={color} onClick={handleSubmit}>
+  ({ label, icon, type, color, handleSubmit, _disabled }: IButtonProps) => (
+    <CustomButton
+      htmlType={type}
+      color={color}
+      onClick={handleSubmit}
+      disabled={_disabled}
+    >
       {icon && <IconStyler icon={icon} />}
       {label}
     </CustomButton>

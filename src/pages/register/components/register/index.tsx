@@ -20,7 +20,9 @@ import {
 import {
   ButtonContainer,
   CheckboxContainer,
+  CheckboxError,
   CheckboxPlaceholder,
+  CheckboxSection,
   CustomCheckBox,
   HeadingsContainer,
   InputContainer,
@@ -46,8 +48,14 @@ const Register: FC = memo(() => {
   } = useForm()
   const { phone } = registerData
   const { success, message } = registerState
-  const { nameError, phoneError, storeNameError, emailError, passwordError } =
-    errors
+  const {
+    nameError,
+    phoneError,
+    storeNameError,
+    emailError,
+    passwordError,
+    checkboxError
+  } = errors
   return (
     <LoginViewContainer>
       <HeadingsContainer>
@@ -139,18 +147,26 @@ const Register: FC = memo(() => {
         ) : (
           <MarginDiv />
         )}
-        <CheckboxContainer>
-          <CustomCheckBox
-            type="checkbox"
-            name="checkbox"
-            onChange={handleChange}
-          />
-          <CheckboxPlaceholder>
-            Please accept the
-            <span> terms and conditions </span>
-            to proceed
-          </CheckboxPlaceholder>
-        </CheckboxContainer>
+        <CheckboxSection>
+          <CheckboxContainer>
+            <CustomCheckBox
+              type="checkbox"
+              name="checkbox"
+              onChange={handleChange}
+            />
+            <CheckboxPlaceholder>
+              Please accept the
+              <span> terms and conditions </span>
+              to proceed
+            </CheckboxPlaceholder>
+          </CheckboxContainer>
+
+          <CheckboxError>
+            {checkboxError && (
+              <EmptyErrorState>{checkboxError}</EmptyErrorState>
+            )}
+          </CheckboxError>
+        </CheckboxSection>
       </InputFieldsContainer>
       <ButtonContainer isPrimary={isCustomer}>
         <Button

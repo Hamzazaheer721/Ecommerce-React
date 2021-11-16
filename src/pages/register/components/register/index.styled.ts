@@ -58,7 +58,7 @@ export const ButtonContainer = styled.div<{
     &:active {
       color: ${(props) => props.theme.color.white};
       background: ${({ isPrimary, theme }) =>
-        isPrimary
+        isPrimary === 'visitor'
           ? theme.gradientButton.primary
           : theme.gradientButton.secondary};
     }
@@ -92,10 +92,19 @@ export const InputFieldsContainer = styled.div`
   width: 100%;
 `
 
+export const CheckboxSection = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 export const CheckboxContainer = styled.div`
+  margin-top: 6px;
   display: flex;
   align-items: baseline;
-  margin-left: 5px;
+  line-height: 5px;
+`
+
+export const CheckboxError = styled.div`
+  display: flex;
 `
 
 export const CustomCheckBox = styled.input`
