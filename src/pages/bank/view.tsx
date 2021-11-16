@@ -1,8 +1,7 @@
-import { memo, useContext } from 'react'
+import { memo, useContext, useRef } from 'react'
 import {
   faCreditCard,
   faLandmark,
-  // faCreditCardFront,
   faMoneyCheckEditAlt,
   faMapMarkedAlt,
   faMobileAndroid,
@@ -22,8 +21,17 @@ import { LoginViewContainer, ButtonContainer } from '../../styles/global'
 import Input from '../../components/input'
 import Select from '../../components/select'
 import ButtonComponent from '../../components/genericButton'
+import useFieldsForm from './useFieldsForm'
 
 const ViewComponent = memo(() => {
+  const { handleChange, handlePhoneChange, handleSubmit } = useFieldsForm()
+  const bankNameField = useRef<HTMLInputElement>(null)
+  const ibannumberField = useRef<HTMLInputElement>(null)
+  const accountholdernameField = useRef<HTMLInputElement>(null)
+  const phoneField = useRef<HTMLInputElement>(null)
+  const accountholderidField = useRef<HTMLInputElement>(null)
+  const swiftcodeField = useRef<HTMLInputElement>(null)
+
   const theme = useContext(ThemeContext)
 
   return (
@@ -36,29 +44,59 @@ const ViewComponent = memo(() => {
             </InputContainer>
           </InputsContainer>
           <InputContainer>
-            <Input prefix={faLandmark} label="Bank Name" />
+            <Input
+              ref={bankNameField}
+              name="bank_name"
+              prefix={faLandmark}
+              label="Bank Name"
+              handleChange={handleChange}
+            />
           </InputContainer>
-          {/* <InputContainer>
-            <Input prefix={faCreditCardFront} label="Account Number" />
-          </InputContainer> */}
+
           <InputContainer>
-            <Input prefix={faMoneyCheckEditAlt} label="IBAN Number" />
+            <Input
+              ref={ibannumberField}
+              name="iban_number"
+              prefix={faMoneyCheckEditAlt}
+              label="IBAN Number"
+              handleChange={handleChange}
+            />
           </InputContainer>
           <InputContainer>
-            <Input prefix={faMapMarkedAlt} label="Account Holder Name" />
+            <Input
+              ref={accountholdernameField}
+              name="acc_holder_name"
+              prefix={faMapMarkedAlt}
+              label="Account Holder Name"
+              handleChange={handleChange}
+            />
           </InputContainer>
           <InputContainer>
             <Input
               prefix={faMobileAndroid}
               label="Account Holder Mobile Number"
               phonefield
+              value={phoneField && phoneField.current?.value}
+              handlePhoneChange={handlePhoneChange}
             />
           </InputContainer>
           <InputContainer>
-            <Input prefix={faGlobe} label="Account Holder ID/Passport Number" />
+            <Input
+              ref={accountholderidField}
+              name="passport_number"
+              prefix={faGlobe}
+              label="Account Holder ID/Passport Number"
+              handleChange={handleChange}
+            />
           </InputContainer>
           <InputContainer>
-            <Input prefix={faSwift} label="Swift Code" />
+            <Input
+              ref={swiftcodeField}
+              name="swift_code"
+              prefix={faSwift}
+              label="Swift Code"
+              handleChange={handleChange}
+            />
           </InputContainer>
         </InputContainer>
         <ButtonContainer>
@@ -67,6 +105,7 @@ const ViewComponent = memo(() => {
               icon={faSave}
               label="Save"
               color={theme.color.primary}
+              handleSubmit={handleSubmit}
             />
           </ButtonContainerInner>
         </ButtonContainer>

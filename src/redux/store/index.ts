@@ -22,6 +22,7 @@ import { forgotPasswordSlice } from '../features/forgotPasswordSlice'
 import { resetPasswordSlice } from '../features/resetPasswordSlice'
 import { updateUserProfileSlice } from '../features/updateUserProfileSlice/index'
 import { geoAddressSlice } from '../features/geoAddressSlice'
+import { updateBankInfoSlice } from '../features/updateBankInfo'
 
 const reducers = combineReducers({
   user: userSigninSlice.reducer,
@@ -33,7 +34,8 @@ const reducers = combineReducers({
   resetPassword: resetPasswordSlice.reducer,
   currentGeoLocation: currentGeoLocationSlice.reducer,
   updateUserProfile: updateUserProfileSlice.reducer,
-  currentAddressLocation: geoAddressSlice.reducer
+  currentAddressLocation: geoAddressSlice.reducer,
+  updateBankInfo: updateBankInfoSlice.reducer
 })
 
 const persistConfig = {
