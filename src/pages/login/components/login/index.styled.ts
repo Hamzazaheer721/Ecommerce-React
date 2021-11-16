@@ -35,13 +35,13 @@ export const InputContainer = styled.div`
   outline: none;
 `
 export const ButtonContainer = styled.div`
-  height: 40px;
+  height: 50px;
   width: 100%;
   .ant-btn {
     color: ${(props) => props.theme.color.white};
     background: linear-gradient(270deg, #1a87bb, #1b9bd7);
     border: none;
-    border-radius: 20px;
+    border-radius: 30px;
     width: 100%;
     font-size: 1rem;
     height: 100%;
@@ -89,6 +89,10 @@ export const MarginDiv = styled.div`
 export const CheckboxContainer = styled.div`
   display: flex;
   align-items: baseline;
+
+  .ant-checkbox {
+    border: 1px solid #1890ff;
+  }
 `
 
 export const CustomCheckBox = styled.input`

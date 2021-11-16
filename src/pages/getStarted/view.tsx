@@ -20,26 +20,16 @@ const ViewComponent: FC = memo(() => (
   <LoginViewContainer>
     <LoginHeader>Get Started Free</LoginHeader>
     <LoginDescription>
-      Its time to enjoy ultimate shoping experience through WhatsApp
+      I&apos;ts time to enjoy ultimate shopping experience through WhatsApp
     </LoginDescription>
     <Link to="/register/customer">
       <ButtonContainer>
-        <CustomButton
-          label="Customer"
-          icon={faUser}
-          type="button"
-          color="red"
-        />
+        <CustomButton label="Customer" icon={faUser} type="button" />
       </ButtonContainer>
     </Link>
     <Link to="/register/company">
       <SecondaryButtonContainer>
-        <CustomButton
-          label="Company"
-          icon={faBuilding}
-          type="button"
-          color="red"
-        />
+        <CustomButton label="Company" icon={faBuilding} type="button" />
       </SecondaryButtonContainer>
     </Link>
     <LoginFooter>

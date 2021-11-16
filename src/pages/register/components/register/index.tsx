@@ -48,13 +48,12 @@ const Register: FC = memo(() => {
   const { success, message } = registerState
   const { nameError, phoneError, storeNameError, emailError, passwordError } =
     errors
-
   return (
     <LoginViewContainer>
       <HeadingsContainer>
         <LoginHeader>Get Started Free</LoginHeader>
         <SubHeading>
-          Its time to enjoy ultimate shopping experience through WhatsApp
+          It&apos;s time to enjoy ultimate shopping experience through WhatsApp
         </SubHeading>
       </HeadingsContainer>
       {!success && message && (
@@ -148,15 +147,15 @@ const Register: FC = memo(() => {
           />
           <CheckboxPlaceholder>
             Please accept the
-            <span> term and conditions </span>
+            <span> terms and conditions </span>
             to proceed
           </CheckboxPlaceholder>
         </CheckboxContainer>
       </InputFieldsContainer>
-      <ButtonContainer isPrimary={!!isCustomer}>
+      <ButtonContainer isPrimary={isCustomer}>
         <Button
           type="submit"
-          label={isCustomer ? 'Customer' : 'Company'}
+          label={isCustomer === 'visitor' ? 'Customer' : 'Company'}
           icon={isCustomer ? faUser : faBuilding}
           handleSubmit={handleSubmit}
         />

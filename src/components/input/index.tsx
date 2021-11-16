@@ -175,7 +175,7 @@ const Input = memo(
           {typePassword && (
             <Suffix
               onClick={handleEyeChange}
-              icon={!showPassword ? faEye : faEyeSlash}
+              icon={showPassword ? faEye : faEyeSlash}
             />
           )}
           {!typePassword && suffix && (
