@@ -127,7 +127,11 @@ const LocationInputFields = memo(() => {
         />
       </SingleInputContainer>
       <CheckboxContainer>
-        <CustomCheckBox type="checkbox" name="remember" />
+        <CustomCheckBox
+          type="checkbox"
+          name="is_online"
+          onChange={handleChange}
+        />
         <CheckboxPlaceholder>Online Store only</CheckboxPlaceholder>
       </CheckboxContainer>
       <SingleInputContainer>
