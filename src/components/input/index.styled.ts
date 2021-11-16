@@ -47,6 +47,7 @@ export const Label = styled.p<{
       font-size: 0.8rem;
    `}
   }
+
   @media ${device.tiny} {
     font-size: 11.5px;
     left: ${({ $phonefield }) => ($phonefield ? '5.3rem' : '2.2rem')};
@@ -157,12 +158,13 @@ export const InputField = styled.input`
 
 export const InputContainer = styled.div<{
   hasValue: boolean
+  _disabled?: boolean
   store?: boolean
 }>`
   height: 100%;
   width: 100%;
   position: relative;
-  border: ${(props) => props.theme.borderColor.gray};
+  border: ${(props) => (props.theme.borderColor.gray)};
   background-color: ${(props) => props.theme.color.white};
   border-radius: 8px;
   transition: 0.4s;
@@ -174,6 +176,10 @@ export const InputContainer = styled.div<{
     transition: background-color 5000s ease-in-out 0s;
     /* -webkit-text-fill-color: #0b233b; */
   }
+  ${({ _disabled}) => _disabled &&
+    `
+    color: #999999;
+  `}
 
   /* Used for positioning flag when it is used outside */
   ${({ store }) =>
@@ -249,7 +255,7 @@ export const InputContainer = styled.div<{
   &:focus-within,
   &:active,
   &:hover {
-    border: ${(props) => props.theme.borderColor.black};
+    border: ${(props) => (props._disabled ? props.theme.borderColor.gray : props.theme.borderColor.black)};
   }
   &:focus-within {
     p {
@@ -307,7 +313,10 @@ export const Prefix = styled(FontAwesomeIcon)<{
   }
 `
 
-export const Suffix = styled(FontAwesomeIcon)<{ $secondSuffix?: boolean }>`
+export const Suffix = styled(FontAwesomeIcon)<{
+  $secondSuffix?: boolean
+  _disabled?: boolean
+}>`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -315,6 +324,7 @@ export const Suffix = styled(FontAwesomeIcon)<{ $secondSuffix?: boolean }>`
   right: ${({ $secondSuffix }) => ($secondSuffix ? '3rem' : '1rem')};
   width: 12px;
   cursor: pointer;
+  color: #333333;
   @media ${device.mobile} {
     font-size: 1rem;
     right: ${({ $secondSuffix }) => ($secondSuffix ? '2.5rem' : '1rem')};
@@ -324,6 +334,11 @@ export const Suffix = styled(FontAwesomeIcon)<{ $secondSuffix?: boolean }>`
     font-size: 1rem;
     right: ${({ $secondSuffix }) => ($secondSuffix ? '2.5rem' : '1rem')};
   }
+
+  ${({ _disabled }) => _disabled &&
+    `
+    color: #333333;
+  `}
 `
 export const SecondSuffix = styled(FontAwesomeIcon)`
   position: absolute;

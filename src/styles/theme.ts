@@ -23,6 +23,7 @@ export const defaultTheme: any = {
     // paragraph
     blackLighter: '#333333' // for cross icon border and stroke
   },
+  disabledColor: '#999999',
   borderColor: {
     gray: '1px solid #DDDDDD',
     black: '1px solid #000000'

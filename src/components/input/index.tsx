@@ -6,13 +6,14 @@ import {
   MutableRefObject,
   useCallback,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState
 } from 'react'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-// import debounce from 'lodash/debounce'
 import { faEye, faEyeSlash } from '@fortawesome/pro-light-svg-icons'
-import { debounce } from 'lodash'
+import debounce from 'lodash/debounce'
+import { DebouncedFunc } from 'lodash'
 import {
   InputContainer,
   InputField,
@@ -57,6 +58,8 @@ interface InputProps {
   textArea: boolean
   autoComplete?: boolean
   debounceValue?: number
+  setInitialValue?: boolean
+  _disabled?: boolean
 }
 
 const Input = memo(
@@ -79,45 +82,46 @@ const Input = memo(
         textArea,
         autoComplete,
         debounceValue,
+        setInitialValue,
+        _disabled,
         ...props
       },
       inputRef
     ) => {
       const localRef = useRef<HTMLInputElement>(null)
       const [showPassword, setShowPassword] = useState(false)
-      const [_value, setValue] = useState<typeof value>(value)
+      const debouncedHandleChange =
+        useRef<DebouncedFunc<(e: ChangeEvent<HTMLInputElement>) => void>>()
 
       useEffect(() => {
-        setValue(value)
+        if (handleChange && !debouncedHandleChange.current) {
+          debouncedHandleChange.current = debounce(handleChange, debounceValue)
+        }
+      }, [])
+
+      useLayoutEffect(() => {
+        if (setInitialValue && localRef.current) {
+          localRef.current.value = value
+        }
       }, [value])
-
-      const handleInputDebounce = debounce(
-        (e: ChangeEvent<HTMLInputElement>) => {
-          if (handleChange) handleChange(e)
-        },
-        debounceValue
-      )
-
-      const handleInputChange = useCallback(
-        (e: ChangeEvent<HTMLInputElement>) => {
-          setValue(e.target.value)
-          handleInputDebounce(e)
-        },
-        [_value]
-      )
 
       const handleEyeChange = useCallback(() => {
         setShowPassword((prevState) => !prevState)
       }, [showPassword])
 
       return (
-        <InputContainer hasValue={!!value} store={!!store}>
+        <InputContainer
+          hasValue={!!value}
+          store={!!store}
+          _disabled={!!_disabled}
+        >
           {!phonefield && !textArea && (
             <InputField
               readOnly={readOnly}
+              disabled={_disabled}
               {...props}
               name={name}
-              value={debounceValue ? _value : value}
+              // value={debounceValue ? _value : value}
               placeholder=""
               type={typePassword && !showPassword ? 'password' : 'text'}
               ref={(element) => {
@@ -136,7 +140,9 @@ const Input = memo(
                   }
                 }
               }}
-              onChange={debounceValue ? handleInputChange : handleChange}
+              onChange={
+                debounceValue ? debouncedHandleChange.current : handleChange
+              }
             />
           )}
           {textArea && (
@@ -179,7 +185,11 @@ const Input = memo(
             />
           )}
           {!typePassword && suffix && (
-            <Suffix icon={suffix} $secondSuffix={!!secondSuffix} />
+            <Suffix
+              icon={suffix}
+              $secondSuffix={!!secondSuffix}
+              _disabled={!!_disabled}
+            />
           )}
           {!typePassword && secondSuffix && (
             <SecondSuffix icon={secondSuffix} />

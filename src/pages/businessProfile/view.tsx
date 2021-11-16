@@ -5,6 +5,7 @@ import Store from '../store'
 import Bank from '../bank'
 import HeaderComponent from '../../components/header'
 import { loadMapApi } from '../../general/helper'
+import { tabStyle } from './helper'
 
 const ViewComponent = memo(() => {
   const { TabPane } = TabsContainer
@@ -23,16 +24,7 @@ const ViewComponent = memo(() => {
       {scriptLoaded && (
         <>
           <HeaderComponent />
-          <TabsContainer
-            tabBarStyle={{
-              backgroundColor: '#1B9BD7',
-              color: 'white',
-              borderBottomLeftRadius: '10px',
-              borderBottomRightRadius: '10px'
-            }}
-            defaultActiveKey="1"
-            centered
-          >
+          <TabsContainer tabBarStyle={tabStyle} defaultActiveKey="1" centered>
             <TabPane tab="Profile" key="1">
               <Store />
             </TabPane>

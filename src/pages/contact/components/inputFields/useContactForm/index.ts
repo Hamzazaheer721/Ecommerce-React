@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback } from 'react'
+import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react'
 import { usePlacesWidget } from 'react-google-autocomplete'
 import { useDispatch, useSelector } from 'react-redux'
 import { IGeoAddressType } from '../../../../../types/geoLocation/index'
@@ -6,36 +6,61 @@ import { GOOGLE_MAP_API_KEY } from '../../../../../config/constants'
 import { setGeoLocationState } from '../../../../../redux/features/geoLocatonSlice'
 import { RootState } from '../../../../../redux/store'
 import { setGeoAddressState } from '../../../../../redux/features/geoAddressSlice'
+import { IContactStateType } from './types'
+import { initialContactState } from './helper'
 
 const useContactForm = () => {
   const dispatch = useDispatch()
   const locationState = useSelector(
     (state: RootState) => state.currentAddressLocation
   )
-  const {address} = locationState;
+  const { address } = locationState
+  const timeInterval = useRef<NodeJS.Timeout>()
+
+  const [contactData, setContactData] = useState<IContactStateType>(initialContactState)
+  const {is_online} = contactData;
+
+  useEffect(
+    () => () => {
+      timeInterval.current && clearTimeout(timeInterval.current)
+    },
+    []
+  )
 
   const handlePlaceSelected = useCallback(
     // eslint-disable-next-line no-undef
     (places: google.maps.places.PlaceResult) => {
-      const {geometry} = places;
+      const { geometry } = places
       if (geometry) {
         // eslint-disable-next-line no-undef
-        const _obj : google.maps.LatLngLiteral = {
+        const _obj: google.maps.LatLngLiteral = {
           lat: geometry.location!.lat(),
           lng: geometry.location!.lng()
         }
-        dispatch(setGeoLocationState({position: _obj, flag: true}))
+        timeInterval.current = setTimeout(() => {
+          dispatch(setGeoLocationState({ position: _obj, flag: true }))
+        }, 500)
       }
     },
     [address]
   )
 
-  const handleChange = useCallback(
+  const handleContactChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+      e.stopPropagation()
+      const { name, value } = e.target;
+      (name === 'is_online') ?
+        setContactData({...contactData, [name]: e.target.checked})
+      : setContactData({...contactData, [name]: value })
+  }, [contactData])
+
+  const handleAddressChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
-      e.preventDefault()
+      e.preventDefault();
+      e.stopPropagation()
       const { name, value } = e.target
-      const _key: keyof IGeoAddressType = name as keyof IGeoAddressType
-      dispatch(setGeoAddressState({ name: _key, value }))
+        e.preventDefault()
+        const _key: keyof IGeoAddressType = name as keyof IGeoAddressType
+        dispatch(setGeoAddressState({ name: _key, value }))
     },
     [address]
   )
@@ -46,7 +71,9 @@ const useContactForm = () => {
   })
 
   return {
-    handleChange,
+    is_online,
+    handleAddressChange,
+    handleContactChange,
     autoCompleteRef,
     area: address?.area,
     city: address?.city,

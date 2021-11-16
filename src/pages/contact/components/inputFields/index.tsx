@@ -29,7 +29,8 @@ import useContactForm from './useContactForm'
 
 const LocationInputFields = memo(() => {
   const {
-    handleChange,
+    handleAddressChange,
+    handleContactChange,
     location,
     streetAddress,
     city,
@@ -37,7 +38,8 @@ const LocationInputFields = memo(() => {
     state,
     country,
     postalCode,
-    autoCompleteRef
+    autoCompleteRef,
+    is_online
   } = useContactForm()
   return (
     <FieldsSectionContainer>
@@ -51,39 +53,94 @@ const LocationInputFields = memo(() => {
           autoComplete
           name="location"
           value={location}
-          handleChange={handleChange}
+          handleChange={handleAddressChange}
+          setInitialValue
           debounceValue={3000}
+          _disabled={is_online}
         />
       </SingleInputContainer>
       <SingleInputContainer>
-        <Input label="Street Address" prefix={faHome} value={streetAddress} />
+        <Input
+          label="Street Address"
+          prefix={faHome}
+          name="streetAddress"
+          value={streetAddress}
+          handleChange={handleAddressChange}
+          setInitialValue
+          debounceValue={3000}
+          _disabled={is_online}
+        />
       </SingleInputContainer>
       <InputsContainer>
         <InputContainer>
           <Input
             label="Postal Code"
             prefix={faMailbox}
+            name="postalCode"
             value={postalCode}
-            handleChange={handleChange}
+            handleChange={handleAddressChange}
+            setInitialValue
+            debounceValue={3000}
+            _disabled={is_online}
           />
         </InputContainer>
         <InputContainer>
-          <Input prefix={faChartArea} label="Area" value={area} />
+          <Input
+            prefix={faChartArea}
+            label="Area"
+            name="area"
+            value={area}
+            handleChange={handleAddressChange}
+            setInitialValue
+            debounceValue={3000}
+            _disabled={is_online}
+          />
         </InputContainer>
       </InputsContainer>
       <InputsContainer>
         <InputContainer>
-          <Input prefix={faBuilding} label="City" value={city} />
+          <Input
+            prefix={faBuilding}
+            label="City"
+            name="city"
+            value={city}
+            handleChange={handleAddressChange}
+            setInitialValue
+            debounceValue={3000}
+            _disabled={is_online}
+          />
         </InputContainer>
         <InputContainer>
-          <Input prefix={faCity} label="State" value={state} />
+          <Input
+            prefix={faCity}
+            label="State"
+            name="state"
+            value={state}
+            handleChange={handleAddressChange}
+            setInitialValue
+            debounceValue={3000}
+            _disabled={is_online}
+          />
         </InputContainer>
       </InputsContainer>
       <SingleInputContainer>
-        <Input label="Country" prefix={faGlobe} value={country} />
+        <Input
+          label="Country"
+          prefix={faGlobe}
+          name="country"
+          value={country}
+          handleChange={handleAddressChange}
+          setInitialValue
+          debounceValue={3000}
+          _disabled={is_online}
+        />
       </SingleInputContainer>
       <CheckboxContainer>
-        <CustomCheckBox type="checkbox" name="remember" />
+        <CustomCheckBox
+          type="checkbox"
+          name="is_online"
+          onChange={handleContactChange}
+        />
         <CheckboxPlaceholder>Online Store only</CheckboxPlaceholder>
       </CheckboxContainer>
       <SingleInputContainer>
