@@ -47,7 +47,7 @@ export const Label = styled.p<{
       font-size: 0.8rem;
    `}
   }
-  
+
   @media ${device.tiny} {
     font-size: 11.5px;
     left: ${({ $phonefield }) => ($phonefield ? '5.3rem' : '2.2rem')};
@@ -164,7 +164,7 @@ export const InputContainer = styled.div<{
   height: 100%;
   width: 100%;
   position: relative;
-  border: ${(props) => (props._disabled ? props.theme.disabledColor : props.theme.borderColor.gray)};
+  border: ${(props) => (props.theme.borderColor.gray)};
   background-color: ${(props) => props.theme.color.white};
   border-radius: 8px;
   transition: 0.4s;
@@ -255,7 +255,7 @@ export const InputContainer = styled.div<{
   &:focus-within,
   &:active,
   &:hover {
-    border: ${(props) => (props._disabled ? props.theme.disabledColor : props.theme.borderColor.black)};
+    border: ${(props) => (props._disabled ? props.theme.borderColor.gray : props.theme.borderColor.black)};
   }
   &:focus-within {
     p {
@@ -324,6 +324,7 @@ export const Suffix = styled(FontAwesomeIcon)<{
   right: ${({ $secondSuffix }) => ($secondSuffix ? '3rem' : '1rem')};
   width: 12px;
   cursor: pointer;
+  color: #333333;
   @media ${device.mobile} {
     font-size: 1rem;
     right: ${({ $secondSuffix }) => ($secondSuffix ? '2.5rem' : '1rem')};
@@ -336,7 +337,7 @@ export const Suffix = styled(FontAwesomeIcon)<{
 
   ${({ _disabled }) => _disabled &&
     `
-    color: black;
+    color: #333333;
   `}
 `
 export const SecondSuffix = styled(FontAwesomeIcon)`
