@@ -54,6 +54,9 @@ const ActivationCode: FC = memo(() => {
           handleClick={handleClick}
         />
       )}
+      {success && message && (
+        <ToastComponent toastType="success" description={message} />
+      )}
       {!resendStateLoading && resendStateSuccess && resendStateMessage && (
         <ToastComponent toastType="success" description={resendStateMessage} />
       )}

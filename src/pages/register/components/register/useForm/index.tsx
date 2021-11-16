@@ -39,9 +39,12 @@ const useForm = () => {
   const emailRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
 
-  useEffect(() => {
-    dispatch(clearMessageStates())
-  }, [])
+  useEffect(
+    () => () => {
+      dispatch(clearMessageStates())
+    },
+    []
+  )
 
   useEffect(() => {
     registerStateMessage &&
@@ -52,8 +55,7 @@ const useForm = () => {
           description: registerStateMessage,
           nextScreen: '/activation-code'
         })
-      ) &&
-      dispatch(clearMessageStates())
+      )
   }, [registerState])
 
   const handleChange = useCallback(
