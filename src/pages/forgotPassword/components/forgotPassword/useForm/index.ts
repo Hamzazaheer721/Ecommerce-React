@@ -27,6 +27,10 @@ const useForm = () => {
   const [error, setError] = useState<IForgotPasswordErrorsType>({})
   const { usernameError } = error
 
+  useEffect(() => () => {
+      dispatch(clearForgotPaswordSliceHelperStates())
+  }, [])
+
   useEffect(() => {
     forgotPasswordSuccess &&
       forgotPasswordMessage &&
@@ -36,8 +40,7 @@ const useForm = () => {
           description: forgotPasswordMessage,
           nextScreen: '/reset-password'
         })
-      ) &&
-      dispatch(clearForgotPaswordSliceHelperStates())
+      )
   }, [forgotPasswordMessage, forgotPasswordSuccess])
 
   const handleChange = useCallback(
