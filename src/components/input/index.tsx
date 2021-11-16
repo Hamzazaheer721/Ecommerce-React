@@ -59,6 +59,7 @@ interface InputProps {
   autoComplete?: boolean
   debounceValue?: number
   setInitialValue?: boolean
+  _disabled?: boolean
 }
 
 const Input = memo(
@@ -82,6 +83,7 @@ const Input = memo(
         autoComplete,
         debounceValue,
         setInitialValue,
+        _disabled,
         ...props
       },
       inputRef
@@ -108,10 +110,15 @@ const Input = memo(
       }, [showPassword])
 
       return (
-        <InputContainer hasValue={!!value} store={!!store}>
+        <InputContainer
+          hasValue={!!value}
+          store={!!store}
+          _disabled={!!_disabled}
+        >
           {!phonefield && !textArea && (
             <InputField
               readOnly={readOnly}
+              disabled={_disabled}
               {...props}
               name={name}
               // value={debounceValue ? _value : value}
@@ -178,7 +185,11 @@ const Input = memo(
             />
           )}
           {!typePassword && suffix && (
-            <Suffix icon={suffix} $secondSuffix={!!secondSuffix} />
+            <Suffix
+              icon={suffix}
+              $secondSuffix={!!secondSuffix}
+              _disabled={!!_disabled}
+            />
           )}
           {!typePassword && secondSuffix && (
             <SecondSuffix icon={secondSuffix} />

@@ -29,7 +29,8 @@ import useContactForm from './useContactForm'
 
 const LocationInputFields = memo(() => {
   const {
-    handleChange,
+    handleAddressChange,
+    handleContactChange,
     location,
     streetAddress,
     city,
@@ -37,7 +38,8 @@ const LocationInputFields = memo(() => {
     state,
     country,
     postalCode,
-    autoCompleteRef
+    autoCompleteRef,
+    is_online
   } = useContactForm()
   return (
     <FieldsSectionContainer>
@@ -51,9 +53,10 @@ const LocationInputFields = memo(() => {
           autoComplete
           name="location"
           value={location}
-          handleChange={handleChange}
+          handleChange={handleAddressChange}
           setInitialValue
           debounceValue={3000}
+          _disabled={is_online}
         />
       </SingleInputContainer>
       <SingleInputContainer>
@@ -62,9 +65,10 @@ const LocationInputFields = memo(() => {
           prefix={faHome}
           name="streetAddress"
           value={streetAddress}
-          handleChange={handleChange}
+          handleChange={handleAddressChange}
           setInitialValue
           debounceValue={3000}
+          _disabled={is_online}
         />
       </SingleInputContainer>
       <InputsContainer>
@@ -74,9 +78,10 @@ const LocationInputFields = memo(() => {
             prefix={faMailbox}
             name="postalCode"
             value={postalCode}
-            handleChange={handleChange}
+            handleChange={handleAddressChange}
             setInitialValue
             debounceValue={3000}
+            _disabled={is_online}
           />
         </InputContainer>
         <InputContainer>
@@ -85,9 +90,10 @@ const LocationInputFields = memo(() => {
             label="Area"
             name="area"
             value={area}
-            handleChange={handleChange}
+            handleChange={handleAddressChange}
             setInitialValue
             debounceValue={3000}
+            _disabled={is_online}
           />
         </InputContainer>
       </InputsContainer>
@@ -98,9 +104,10 @@ const LocationInputFields = memo(() => {
             label="City"
             name="city"
             value={city}
-            handleChange={handleChange}
+            handleChange={handleAddressChange}
             setInitialValue
             debounceValue={3000}
+            _disabled={is_online}
           />
         </InputContainer>
         <InputContainer>
@@ -109,9 +116,10 @@ const LocationInputFields = memo(() => {
             label="State"
             name="state"
             value={state}
-            handleChange={handleChange}
+            handleChange={handleAddressChange}
             setInitialValue
             debounceValue={3000}
+            _disabled={is_online}
           />
         </InputContainer>
       </InputsContainer>
@@ -121,16 +129,17 @@ const LocationInputFields = memo(() => {
           prefix={faGlobe}
           name="country"
           value={country}
-          handleChange={handleChange}
+          handleChange={handleAddressChange}
           setInitialValue
           debounceValue={3000}
+          _disabled={is_online}
         />
       </SingleInputContainer>
       <CheckboxContainer>
         <CustomCheckBox
           type="checkbox"
           name="is_online"
-          onChange={handleChange}
+          onChange={handleContactChange}
         />
         <CheckboxPlaceholder>Online Store only</CheckboxPlaceholder>
       </CheckboxContainer>

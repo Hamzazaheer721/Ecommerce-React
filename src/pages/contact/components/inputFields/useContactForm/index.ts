@@ -6,6 +6,8 @@ import { GOOGLE_MAP_API_KEY } from '../../../../../config/constants'
 import { setGeoLocationState } from '../../../../../redux/features/geoLocatonSlice'
 import { RootState } from '../../../../../redux/store'
 import { setGeoAddressState } from '../../../../../redux/features/geoAddressSlice'
+import { IContactStateType } from './types'
+import { initialContactState } from './helper'
 
 const useContactForm = () => {
   const dispatch = useDispatch()
@@ -15,7 +17,8 @@ const useContactForm = () => {
   const { address } = locationState
   const timeInterval = useRef<NodeJS.Timeout>()
 
-  const [isOnline, setIsOnline] = useState<boolean>(false)
+  const [contactData, setContactData] = useState<IContactStateType>(initialContactState)
+  const {is_online} = contactData;
 
   useEffect(
     () => () => {
@@ -36,25 +39,30 @@ const useContactForm = () => {
         }
         timeInterval.current = setTimeout(() => {
           dispatch(setGeoLocationState({ position: _obj, flag: true }))
-        }, 1000)
+        }, 500)
       }
     },
     [address]
   )
 
-  const handleChange = useCallback(
+  const handleContactChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+      e.stopPropagation()
+      const { name, value } = e.target;
+      (name === 'is_online') ?
+        setContactData({...contactData, [name]: e.target.checked})
+      : setContactData({...contactData, [name]: value })
+  }, [contactData])
+
+  const handleAddressChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
+      e.preventDefault();
       e.stopPropagation()
       const { name, value } = e.target
-      if (name === 'is_online') {
-        setIsOnline(e.target.checked)
-      } else {
         e.preventDefault()
         const _key: keyof IGeoAddressType = name as keyof IGeoAddressType
         dispatch(setGeoAddressState({ name: _key, value }))
-      }
     },
-    [address, isOnline]
+    [address]
   )
 
   const { ref: autoCompleteRef } = usePlacesWidget({
@@ -63,7 +71,9 @@ const useContactForm = () => {
   })
 
   return {
-    handleChange,
+    is_online,
+    handleAddressChange,
+    handleContactChange,
     autoCompleteRef,
     area: address?.area,
     city: address?.city,
