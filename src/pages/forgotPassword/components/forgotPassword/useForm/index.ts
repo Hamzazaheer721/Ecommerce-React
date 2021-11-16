@@ -27,9 +27,12 @@ const useForm = () => {
   const [error, setError] = useState<IForgotPasswordErrorsType>({})
   const { usernameError } = error
 
-  useEffect(() => () => {
+  useEffect(
+    () => () => {
       dispatch(clearForgotPaswordSliceHelperStates())
-  }, [])
+    },
+    []
+  )
 
   useEffect(() => {
     forgotPasswordSuccess &&

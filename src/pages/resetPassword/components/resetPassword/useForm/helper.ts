@@ -33,7 +33,7 @@ export const validateErrors = (
   if (isEmpty(password)) {
     errors.passwordError = 'Please enter a password'
   } else if (password.length < 8) {
-    errors.confirmationPasswordError =
+    errors.passwordError =
       'Please enter a password of atleast 8 characters'
   }
   // else if (!validatePassword(password)) {
