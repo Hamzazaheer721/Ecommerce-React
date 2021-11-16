@@ -14,18 +14,20 @@ export const IResetPasswordInitialState: IResetPasswordStateTypes = {
 }
 
 export const validateErrors = (
-  resetPasswordData: Omit<IResetPasswordStateTypes, 'username'>
+  resetPasswordData: Omit<IResetPasswordStateTypes, 'username'>,
+  hasParams: boolean
 ): Partial<IResetPasswordErrorTypes> => {
   const errors: Partial<IResetPasswordErrorTypes> = {}
   const { activation_code, password, password_confirmation } = resetPasswordData
 
-  if (typeof activation_code === 'string' && isEmpty(activation_code.trim().toUpperCase())) {
-    errors.activationCodeError = 'Please enter a activation code'
-  } else if (
-    typeof activation_code === 'string' &&
-    !validateActivationCode(activation_code.trim().toUpperCase())
-  ) {
-    errors.activationCodeError = 'Please enter a valid activation code'
+  if (!hasParams) {
+    if (isEmpty(activation_code!.trim().toUpperCase())) {
+      errors.activationCodeError = 'Please enter a activation code'
+    } else if (
+      !validateActivationCode(activation_code!.trim().toUpperCase())
+    ) {
+      errors.activationCodeError = 'Please enter a valid activation code'
+    }
   }
 
   if (isEmpty(password)) {

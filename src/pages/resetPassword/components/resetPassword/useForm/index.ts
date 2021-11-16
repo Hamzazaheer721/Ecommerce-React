@@ -99,7 +99,7 @@ const useForm = () => {
   const handleSubmit = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
-      const checkErrors = validateErrors(resetPasswordData)
+      const checkErrors = validateErrors(resetPasswordData, hasParams)
       setErrors(checkErrors)
       isObjectEmpty(checkErrors) && makeApiCall()
     },
