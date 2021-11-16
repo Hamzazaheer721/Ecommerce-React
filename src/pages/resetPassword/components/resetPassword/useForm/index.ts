@@ -14,7 +14,10 @@ import { useHistory, useParams } from 'react-router-dom'
 import { isObjectEmpty } from '../../../../../general/helper'
 import { openModal } from '../../../../../redux/features/modalSlice'
 import { clearAllResetPasswordSliceStates } from '../../../../../redux/features/resetPasswordSlice'
-import { resetPassword, resetPasswordWithLink } from '../../../../../redux/features/resetPasswordSlice/apiAction'
+import {
+  resetPassword,
+  resetPasswordWithLink
+} from '../../../../../redux/features/resetPasswordSlice/apiAction'
 import { RootState } from '../../../../../redux/store'
 import { IResetPasswordInitialState, validateErrors } from './helper'
 import {
@@ -46,6 +49,9 @@ const useForm = () => {
 
   useEffect(() => {
     !username && history.goBack()
+    return () => {
+      dispatch(clearAllResetPasswordSliceStates())
+    }
   }, [])
 
   useEffect(() => {
@@ -57,8 +63,7 @@ const useForm = () => {
           description: resetPasswordMessage,
           nextScreen: '/login'
         })
-      ) &&
-      dispatch(clearAllResetPasswordSliceStates())
+      )
   }, [resetPasswordMessage, resetPasswordSuccess])
 
   const makeApiCall = useCallback(() => {
