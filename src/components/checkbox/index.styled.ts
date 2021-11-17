@@ -40,3 +40,4 @@ export const CustomCheckBox = styled(Checkbox)<Partial<ICheckboxProps>>`
     }
   }
 `
+export const Container = styled.div``

@@ -1,6 +1,6 @@
 import { CheckboxChangeEvent } from 'antd/lib/checkbox'
 import { FC, memo } from 'react'
-import { CustomCheckBox } from './index.styled'
+import { CustomCheckBox, Container } from './index.styled'
 
 interface ICheckboxInterface {
   // eslint-disable-next-line no-unused-vars
@@ -14,16 +14,18 @@ interface ICheckboxInterface {
 }
 const Checkbox: FC<ICheckboxInterface> = memo(
   ({ handleChange, label, name, border, borderRadius, height, width }) => (
-    <CustomCheckBox
-      name={name}
-      onChange={handleChange}
-      borderRadius={borderRadius}
-      border={border}
-      height={height}
-      width={width}
-    >
-      {label}
-    </CustomCheckBox>
+    <Container>
+      <CustomCheckBox
+        name={name}
+        onChange={handleChange}
+        borderRadius={borderRadius}
+        border={border}
+        height={height}
+        width={width}
+      >
+        {label}
+      </CustomCheckBox>
+    </Container>
   )
 )
 
