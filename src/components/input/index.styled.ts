@@ -158,7 +158,7 @@ export const InputField = styled.input`
 
 export const InputContainer = styled.div<{
   hasValue: boolean
-  _disabled?: boolean
+  grayed?: boolean
   store?: boolean
 }>`
   height: 100%;
@@ -176,7 +176,7 @@ export const InputContainer = styled.div<{
     transition: background-color 5000s ease-in-out 0s;
     /* -webkit-text-fill-color: #0b233b; */
   }
-  ${({ _disabled}) => _disabled &&
+  ${({ grayed}) => grayed &&
     `
     color: #999999;
   `}
@@ -255,7 +255,7 @@ export const InputContainer = styled.div<{
   &:focus-within,
   &:active,
   &:hover {
-    border: ${(props) => (props._disabled ? props.theme.borderColor.gray : props.theme.borderColor.black)};
+    border: ${(props) => (props.grayed ? props.theme.borderColor.gray : props.theme.borderColor.black)};
   }
   &:focus-within {
     p {
@@ -315,7 +315,7 @@ export const Prefix = styled(FontAwesomeIcon)<{
 
 export const Suffix = styled(FontAwesomeIcon)<{
   $secondSuffix?: boolean
-  _disabled?: boolean
+  grayed?: boolean
 }>`
   position: absolute;
   top: 50%;
@@ -335,7 +335,7 @@ export const Suffix = styled(FontAwesomeIcon)<{
     right: ${({ $secondSuffix }) => ($secondSuffix ? '2.5rem' : '1rem')};
   }
 
-  ${({ _disabled }) => _disabled &&
+  ${({ grayed }) => grayed &&
     `
     color: #333333;
   `}

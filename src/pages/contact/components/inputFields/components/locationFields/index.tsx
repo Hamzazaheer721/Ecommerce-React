@@ -51,7 +51,7 @@ const LocationFields: FC = memo(() => {
           handleChange={handleAddressChange}
           setInitialValue
           debounceValue={3000}
-          _disabled={is_online}
+          grayed={is_online}
         />
       </SingleInputContainer>
       <SingleInputContainer>
@@ -63,7 +63,7 @@ const LocationFields: FC = memo(() => {
           handleChange={handleAddressChange}
           setInitialValue
           debounceValue={3000}
-          _disabled={is_online}
+          grayed={is_online}
         />
       </SingleInputContainer>
       <InputsContainer>
@@ -76,7 +76,7 @@ const LocationFields: FC = memo(() => {
             handleChange={handleAddressChange}
             setInitialValue
             debounceValue={3000}
-            _disabled={is_online}
+            grayed={is_online}
           />
         </InputContainer>
         <InputContainer>
@@ -88,7 +88,7 @@ const LocationFields: FC = memo(() => {
             handleChange={handleAddressChange}
             setInitialValue
             debounceValue={3000}
-            _disabled={is_online}
+            grayed={is_online}
           />
         </InputContainer>
       </InputsContainer>
@@ -102,7 +102,7 @@ const LocationFields: FC = memo(() => {
             handleChange={handleAddressChange}
             setInitialValue
             debounceValue={3000}
-            _disabled={is_online}
+            grayed={is_online}
           />
         </InputContainer>
         <InputContainer>
@@ -114,7 +114,7 @@ const LocationFields: FC = memo(() => {
             handleChange={handleAddressChange}
             setInitialValue
             debounceValue={3000}
-            _disabled={is_online}
+            grayed={is_online}
           />
         </InputContainer>
       </InputsContainer>
@@ -127,7 +127,7 @@ const LocationFields: FC = memo(() => {
           handleChange={handleAddressChange}
           setInitialValue
           debounceValue={3000}
-          _disabled={is_online}
+          grayed={is_online}
         />
       </SingleInputContainer>
       <CheckboxContainer>
