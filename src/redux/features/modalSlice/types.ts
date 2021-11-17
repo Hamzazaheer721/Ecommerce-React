@@ -1,6 +1,6 @@
 export type IModalStateType = {
   modalVisibility: boolean
-  modalType: 'success' | 'discount' | 'order' | ''
+  modalType: 'success' | 'discount' | 'order' | 'alert' | ''
   description?: string
   nextScreen?: string
 }

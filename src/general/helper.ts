@@ -99,10 +99,9 @@ export const getAddressObjWithCallback = async (
 }
 
 const userToken = localStorage.getItem('token')
-
 export const Config = {
   headers: {
-    Authorization: `Bearer ${userToken}`
+    Authorization: `Bearer ${userToken ? JSON.parse(userToken) : ''}`
   }
 }
 

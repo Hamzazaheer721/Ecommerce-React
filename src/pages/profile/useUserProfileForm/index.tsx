@@ -1,8 +1,10 @@
+/* eslint-disable no-undef */
 import { useState, useCallback, ChangeEvent, MouseEvent } from 'react'
 import { useDispatch } from 'react-redux'
 import { IInputFormInitialValue } from './helper'
 import { IInputFormType } from './types'
 import { UpdateUserProfile } from '../../../redux/features/updateUserProfileSlice/apiActions'
+import { openModal } from '../../../redux/features/modalSlice'
 
 const useUserProfileForm = () => {
   const [inputData, setInputData] = useState<IInputFormType>(
@@ -37,7 +39,21 @@ const useUserProfileForm = () => {
     [inputData]
   )
 
-  return { handleChange, handlePhoneChange, handleSubmit }
+  const deactivateHandler = useCallback(
+    // eslint-disable-next-line no-unused-vars
+    (e: MouseEvent<HTMLHeadingElement>) => {
+      dispatch(
+        openModal({
+          modalType: 'alert',
+          description: 'You want to deactivate your account',
+          nextScreen: '/login'
+        })
+      )
+    },
+    []
+  )
+
+  return { handleChange, handlePhoneChange, handleSubmit, deactivateHandler }
 }
 
 export default useUserProfileForm

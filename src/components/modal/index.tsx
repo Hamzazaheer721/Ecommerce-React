@@ -4,6 +4,7 @@ import { RootState } from '../../redux/store'
 import SuccessModal from './components/successModal'
 import DiscountModal from './components/discountModal'
 import OrderModal from './components/orderModal'
+import AlertModal from './components/alertModal'
 
 const ModalView: FC = memo(() => {
   const { modalType } = useSelector((state: RootState) => state.modal)
@@ -15,6 +16,8 @@ const ModalView: FC = memo(() => {
       return <DiscountModal />
     case 'order':
       return <OrderModal />
+    case 'alert':
+      return <AlertModal />
     default:
       return null
   }
