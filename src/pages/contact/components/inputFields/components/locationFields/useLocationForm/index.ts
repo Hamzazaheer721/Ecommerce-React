@@ -1,6 +1,7 @@
 import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react'
 import { usePlacesWidget } from 'react-google-autocomplete'
 import { useDispatch, useSelector } from 'react-redux'
+import { CheckboxChangeEvent } from 'antd/lib/checkbox';
 import { IGeoAddressType } from '../../../../../../../types/geoLocation/index'
 import { GOOGLE_MAP_API_KEY } from '../../../../../../../config/constants'
 import { setGeoLocationState } from '../../../../../../../redux/features/geoLocatonSlice'
@@ -45,12 +46,10 @@ const useLocationForm = () => {
     [address]
   )
 
-  const handleContactChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+  const handleContactChange = useCallback((e: CheckboxChangeEvent) => {
       e.stopPropagation()
-      const { name, value } = e.target;
-      (name === 'is_online') ?
-        setContactData({...contactData, [name]: e.target.checked})
-      : setContactData({...contactData, [name]: value })
+      const {name, checked} = e.target
+      setContactData({...contactData, [name as string]: checked})
   }, [contactData])
 
   const handleAddressChange = useCallback(

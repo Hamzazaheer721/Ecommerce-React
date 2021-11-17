@@ -1,8 +1,42 @@
 import styled from 'styled-components'
-import { Checkbox } from 'antd';
+import { Checkbox } from 'antd'
 
-export const CustomCheckBox = styled(Checkbox)`
+interface ICheckboxProps {
+  height: string
+  borderRadius: string
+  border: string
+}
+
+export const CustomCheckBox = styled(Checkbox)<Partial<ICheckboxProps>>`
+  .ant-checkbox{
+    border-radius: ${({borderRadius}) => borderRadius || '3px'};
+  }
+
+  .ant-checkbox-inner {
+    border: ${({border}) => border || '0.5px solid #4e98e2'};
+    border-radius: ${({borderRadius}) => borderRadius || '3px'};
+    /* give height width here */
+  }
+
+  .ant-checkbox-inner:hover,
+  .ant-checkbox-inner:active {
+    border: none;
+  }
+
+  .ant-checkbox-checked:after {
+    border: none;
+  }
+
+  .ant-checkbox {
+    border: none;
+    box-shadow: 0px 3px 6px #00000029 !important;
+  }
+
+  .ant-checkbox-checked:focus-within {
+    .ant-checkbox-inner {
+      background-color: ${(props) => props.theme.color.primary};
+    }
+  }
 `
 
-export const CheckboxContainer = styled.div`
-`
+export const CheckboxContainer = styled.div``

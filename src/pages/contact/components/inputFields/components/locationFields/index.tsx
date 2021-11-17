@@ -14,12 +14,10 @@ import Input from '../../../../../../components/input'
 import {
   InputsContainer,
   InputContainer,
-  SingleInputContainer,
-  CheckboxContainer,
-  CustomCheckBox,
-  CheckboxPlaceholder
+  SingleInputContainer
 } from '../../index.styled'
 import useLocationForm from './useLocationForm'
+import Checkbox from '../../../../../../components/checkbox'
 
 const LocationFields: FC = memo(() => {
   const {
@@ -130,14 +128,11 @@ const LocationFields: FC = memo(() => {
           grayed={is_online}
         />
       </SingleInputContainer>
-      <CheckboxContainer>
-        <CustomCheckBox
-          type="checkbox"
-          name="is_online"
-          onChange={handleContactChange}
-        />
-        <CheckboxPlaceholder>Online Store only</CheckboxPlaceholder>
-      </CheckboxContainer>
+      <Checkbox
+        handleChange={handleContactChange}
+        name="is_online"
+        label="Online Store only"
+      />
     </>
   )
 })
