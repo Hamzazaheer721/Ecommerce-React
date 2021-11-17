@@ -23,7 +23,8 @@ import {
   Suffix,
   SuffixText,
   TextAreaField,
-  SecondSuffix
+  SecondSuffix,
+  PrefixText
 } from './index.styled'
 
 interface CountryData {
@@ -60,6 +61,7 @@ interface InputProps {
   debounceValue?: number
   setInitialValue?: boolean
   grayed?: boolean
+  prefixText: string
 }
 
 const Input = memo(
@@ -84,6 +86,7 @@ const Input = memo(
         debounceValue,
         setInitialValue,
         grayed,
+        prefixText,
         ...props
       },
       inputRef
@@ -116,6 +119,7 @@ const Input = memo(
               readOnly={readOnly}
               {...props}
               name={name}
+              prefixText={!!prefixText}
               // value={debounceValue ? _value : value}
               placeholder=""
               type={typePassword && !showPassword ? 'password' : 'text'}
@@ -166,10 +170,15 @@ const Input = memo(
               $textArea={!!textArea}
             />
           )}
+          {prefixText && (
+            // eslint-disable-next-line react/jsx-one-expression-per-line
+            <PrefixText> {prefixText} </PrefixText>
+          )}
           <Label
             hasValue={!!value}
             $phonefield={!!phonefield}
             $textArea={!!textArea}
+            prefixText={!!prefixText}
           >
             {label}
           </Label>
