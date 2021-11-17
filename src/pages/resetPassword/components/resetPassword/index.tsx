@@ -42,7 +42,7 @@ const ActivationCode: FC = memo(() => {
         <LoginHeader>Reset Password</LoginHeader>
         <LoginDescription>
           Enter
-          <b> Verification code </b>
+          <b> Verification Code </b>
           to activate your account
         </LoginDescription>
       </HeadingsContainer>
