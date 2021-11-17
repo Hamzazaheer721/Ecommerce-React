@@ -26,10 +26,6 @@ export const InputContainer = styled.div<{ single?: boolean }>`
   outline: none;
   flex: 1 1 45%;
 `
-export const CheckboxContainer = styled.div`
-  display: flex;
-  align-items: baseline;
-`
 
 export const CustomCheckBox = styled.input`
   margin: 0;

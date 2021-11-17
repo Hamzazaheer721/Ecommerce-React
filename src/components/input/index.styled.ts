@@ -11,6 +11,7 @@ export const Label = styled.p<{
   hasValue: boolean
   $phonefield?: boolean
   $textArea?: boolean
+  prefixText?: boolean
 }>`
   color: #c5c5c5;
   font-size: 1rem;
@@ -24,9 +25,9 @@ export const Label = styled.p<{
   display: block;
   transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
   padding: 0 7px;
-  ${({ hasValue }) =>
+  ${({ hasValue, prefixText }) =>
     // eslint-disable-next-line implicit-arrow-linebreak
-    hasValue &&
+    (hasValue || prefixText) &&
     `
       top: 0;
       left: 0.8rem;
@@ -39,9 +40,9 @@ export const Label = styled.p<{
   @media ${device.mobile} {
     font-size: 14px;
     left: ${({ $phonefield }) => ($phonefield ? '5.6rem' : '2.2rem')};
-    ${({ hasValue }) =>
+    ${({ hasValue, prefixText }) =>
       // eslint-disable-next-line implicit-arrow-linebreak
-      hasValue &&
+      (hasValue || prefixText) &&
       `
       left: 0.5rem;
       font-size: 0.8rem;
@@ -51,9 +52,9 @@ export const Label = styled.p<{
   @media ${device.tiny} {
     font-size: 11.5px;
     left: ${({ $phonefield }) => ($phonefield ? '5.3rem' : '2.2rem')};
-    ${({ hasValue }) =>
+    ${({ hasValue, prefixText }) =>
       // eslint-disable-next-line implicit-arrow-linebreak
-      hasValue &&
+      (hasValue || prefixText) &&
       `
       left: 0.5rem;
       font-size: 0.8rem;
@@ -121,7 +122,7 @@ export const TextAreaField = styled(TextArea)`
     }
   }
 `
-export const InputField = styled.input`
+export const InputField = styled.input<{ prefixText?: boolean }>`
   outline: none;
   border: none;
   width: 100%;
@@ -129,6 +130,11 @@ export const InputField = styled.input`
   background-color: transparent;
   padding-left: 3rem;
   padding-right: 3rem;
+
+  ${({ prefixText }) => prefixText &&
+    `
+      padding-left: 10rem;
+    `}
 
   :focus ~ ${Label} {
     top: 0;
@@ -141,6 +147,11 @@ export const InputField = styled.input`
 
   @media ${device.mobile} {
     padding-left: 2.5rem;
+    ${({ prefixText }) => prefixText &&
+      `
+      padding-left: 9.5rem;
+    `}
+    font-size: 0.72rem;
     :focus ~ ${Label} {
       left: 0.5rem;
       font-size: 0.8rem;
@@ -149,6 +160,11 @@ export const InputField = styled.input`
 
   @media ${device.tiny} {
     padding-left: 2.5rem;
+    font-size: 0.72rem;
+    ${({ prefixText }) => prefixText &&
+      `
+      padding-left: 9.5rem;
+    `}
     :focus ~ ${Label} {
       left: 0.5rem;
       font-size: 0.8rem;
@@ -158,13 +174,13 @@ export const InputField = styled.input`
 
 export const InputContainer = styled.div<{
   hasValue: boolean
-  _disabled?: boolean
+  grayed?: boolean
   store?: boolean
 }>`
   height: 100%;
   width: 100%;
   position: relative;
-  border: ${(props) => (props.theme.borderColor.gray)};
+  border: ${(props) => props.theme.borderColor.gray};
   background-color: ${(props) => props.theme.color.white};
   border-radius: 8px;
   transition: 0.4s;
@@ -176,7 +192,7 @@ export const InputContainer = styled.div<{
     transition: background-color 5000s ease-in-out 0s;
     /* -webkit-text-fill-color: #0b233b; */
   }
-  ${({ _disabled}) => _disabled &&
+  ${({ grayed }) => grayed &&
     `
     color: #999999;
   `}
@@ -255,7 +271,9 @@ export const InputContainer = styled.div<{
   &:focus-within,
   &:active,
   &:hover {
-    border: ${(props) => (props._disabled ? props.theme.borderColor.gray : props.theme.borderColor.black)};
+    border: ${(props) => (props.grayed
+        ? props.theme.borderColor.gray
+        : props.theme.borderColor.black)};
   }
   &:focus-within {
     p {
@@ -312,10 +330,29 @@ export const Prefix = styled(FontAwesomeIcon)<{
     font-size: 1rem;
   }
 `
+export const PrefixText = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 3.2rem;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  color: ${(props) => props.theme.color.black};
+  font-weight: bold;
+  /* width: 12px; */
 
+  @media ${device.mobile} {
+    font-size: 0.72rem;
+    left: 3.5rem;
+  }
+
+  @media ${device.tiny} {
+    font-size: 0.72rem;
+    left: 3.5rem;
+  }
+`
 export const Suffix = styled(FontAwesomeIcon)<{
   $secondSuffix?: boolean
-  _disabled?: boolean
+  grayed?: boolean
 }>`
   position: absolute;
   top: 50%;
@@ -335,7 +372,7 @@ export const Suffix = styled(FontAwesomeIcon)<{
     right: ${({ $secondSuffix }) => ($secondSuffix ? '2.5rem' : '1rem')};
   }
 
-  ${({ _disabled }) => _disabled &&
+  ${({ grayed }) => grayed &&
     `
     color: #333333;
   `}
