@@ -58,7 +58,6 @@ const useLocationForm = () => {
       e.preventDefault();
       e.stopPropagation()
       const { name, value } = e.target
-        e.preventDefault()
         const _key: keyof IGeoAddressType = name as keyof IGeoAddressType
         dispatch(setGeoAddressState({ name: _key, value }))
     },
