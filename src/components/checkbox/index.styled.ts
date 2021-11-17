@@ -5,6 +5,7 @@ interface ICheckboxProps {
   height: string
   borderRadius: string
   border: string
+  width: string
 }
 
 export const CustomCheckBox = styled(Checkbox)<Partial<ICheckboxProps>>`
@@ -15,7 +16,8 @@ export const CustomCheckBox = styled(Checkbox)<Partial<ICheckboxProps>>`
   .ant-checkbox-inner {
     border: ${({border}) => border || '0.5px solid #4e98e2'};
     border-radius: ${({borderRadius}) => borderRadius || '3px'};
-    /* give height width here */
+    height: ${({height}) => height || '14px'};
+    width: ${({width}) => width || '14px'};
   }
 
   .ant-checkbox-inner:hover,
@@ -38,5 +40,3 @@ export const CustomCheckBox = styled(Checkbox)<Partial<ICheckboxProps>>`
     }
   }
 `
-
-export const CheckboxContainer = styled.div``

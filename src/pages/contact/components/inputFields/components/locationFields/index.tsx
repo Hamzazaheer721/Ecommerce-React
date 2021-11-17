@@ -132,6 +132,8 @@ const LocationFields: FC = memo(() => {
         handleChange={handleContactChange}
         name="is_online"
         label="Online Store only"
+        height="16px"
+        width="16px"
       />
     </>
   )
