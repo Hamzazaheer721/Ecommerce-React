@@ -1,4 +1,4 @@
-import { IGeoAddressType } from '../../../../../types/geoLocation/index'
+import { IGeoAddressType } from '../../../../../../../types/geoLocation/index'
 import { IContactStateType } from './types'
 
 export const IContactInitialState: Partial<IGeoAddressType> = {
