@@ -7,11 +7,18 @@ interface ICheckboxInterface {
   handleChange: (e: CheckboxChangeEvent) => void
   name: string
   label: string
+  borderRadius?: string
+  border?: string
 }
 const Checkbox: FC<ICheckboxInterface> = memo(
-  ({ handleChange, label, name }) => (
+  ({ handleChange, label, name, border, borderRadius }) => (
     <CheckboxContainer>
-      <CustomCheckBox name={name} onChange={handleChange}>
+      <CustomCheckBox
+        name={name}
+        onChange={handleChange}
+        borderRadius={borderRadius}
+        border={border}
+      >
         {label}
       </CustomCheckBox>
     </CheckboxContainer>
