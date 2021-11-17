@@ -89,7 +89,13 @@ const UserProfile = memo(() => {
             />
           </InputContainer>
           <InputContainer>
-            <Input name="password" prefix={faKey} value="******" typePassword />
+            <Input
+              name="password"
+              prefix={faKey}
+              typePassword
+              label="******"
+              _disabled
+            />
           </InputContainer>
         </InputFieldsContainer>
 

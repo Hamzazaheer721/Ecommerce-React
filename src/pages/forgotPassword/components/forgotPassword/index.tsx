@@ -45,7 +45,7 @@ const ActivationCode: FC = memo(() => {
       ) : (
         <ToastComponent
           toastType="info"
-          description="Enter your WhatsApp Number or Email Address"
+          description="Enter your WhatsApp Number or Email Address."
         />
       )}
       <InputFieldsContainer>

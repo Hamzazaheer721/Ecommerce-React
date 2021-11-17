@@ -94,6 +94,7 @@ const ToastComponent: FC<IToastProps> = memo(
                         <b> WhatsApp Number </b>
                         or
                         <b> Email Address</b>
+                        <span>.</span>
                       </>
                     ) : (
                       <>
