@@ -16,6 +16,7 @@ import { RootState } from '../../../../../../../redux/store'
 import { setGeoAddressState } from '../../../../../../../redux/features/geoAddressSlice'
 import { initialContactState } from './helper'
 import { IContactStateType } from './types'
+import useCurrentPosition from '../../../../../../../general/hooks/useCurrentPosition'
 
 const useLocationForm = () => {
   const dispatch = useDispatch()
@@ -29,6 +30,7 @@ const useLocationForm = () => {
     useState<IContactStateType>(initialContactState)
   const { is_online } = contactData
 
+  const {initializeCurrentPosition} = useCurrentPosition()
   useEffect(
     () => () => {
       timeInterval.current && clearTimeout(timeInterval.current)
@@ -37,12 +39,17 @@ const useLocationForm = () => {
   )
 
   const handleSuffixClick = useCallback((e: MouseEvent<SVGSVGElement>) => {
+    e.preventDefault()
     e.stopPropagation()
+    const name: keyof IGeoAddressType = 'location'
+    dispatch(setGeoAddressState({ name, value: '' }))
   }, [])
 
   const handleSecondSuffixClick = useCallback(
     (e: MouseEvent<SVGSVGElement>) => {
+      e.preventDefault()
       e.stopPropagation()
+      initializeCurrentPosition()
     },
     []
   )

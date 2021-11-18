@@ -22,8 +22,10 @@ import Checkbox from '../../../../../../components/checkbox'
 
 const LocationFields: FC = memo(() => {
   const {
+    handleSuffixClick,
     handleAddressChange,
     handleContactChange,
+    handleSecondSuffixClick,
     location,
     streetAddress,
     city,
@@ -62,6 +64,8 @@ const LocationFields: FC = memo(() => {
           name="location"
           value={location}
           handleChange={handleAddressChange}
+          handleSecondSuffixClick={handleSecondSuffixClick}
+          handleSuffixClick={handleSuffixClick}
           setInitialValue
           debounceValue={3000}
           grayed={is_online}
