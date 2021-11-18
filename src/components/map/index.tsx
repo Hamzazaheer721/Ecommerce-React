@@ -47,7 +47,7 @@ const Map: FC<IMapProps> = memo(
           locationWorker.postMessage(_res)
         })
       })
-    }, [locationWorker])
+    }, [])
 
     const getAddressAndDispatch = useCallback(
       async (mapObj: google.maps.LatLngLiteral) => {
@@ -74,7 +74,7 @@ const Map: FC<IMapProps> = memo(
         const { data } = event
         dispatch(updateGeoAddress({ geoCodeAddress: data }))
       }
-    }, [locationWorker])
+    }, [])
 
     useEffect(() => {
       if (inputFlag) {
