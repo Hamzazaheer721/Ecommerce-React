@@ -44,7 +44,7 @@ import { MapContainer, ButtonContainer } from '../../../styles/global'
 import GenericButton from '../../../components/genericButton'
 
 const UserProfile = memo(() => {
-  const { handleChange, handlePhoneChange, handleSubmit, deactivateHandler } =
+  const { handleChange, handlePhoneChange, handleSubmit, deactivateModalHandler } =
     useUserProfileForm()
   const nameField = useRef<HTMLInputElement>(null)
   const emailField = useRef<HTMLInputElement>(null)
@@ -96,7 +96,8 @@ const UserProfile = memo(() => {
               prefix={faKey}
               typePassword
               label="******"
-              _disabled
+              grayed
+              readOnly
             />
           </InputContainer>
         </InputFieldsContainer>
@@ -155,7 +156,7 @@ const UserProfile = memo(() => {
             />
           </ButtonContainer>
         </ButtonLayout>
-        <LinkText onClick={deactivateHandler}>
+        <LinkText onClick={deactivateModalHandler}>
           <SimpleIcon icon={faUserMinus} />
           Deactivate Account
         </LinkText>

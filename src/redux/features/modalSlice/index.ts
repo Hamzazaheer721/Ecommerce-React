@@ -17,6 +17,7 @@ export const ModalSlice = createSlice({
       state.modalType = payload.modalType
       if (payload.description) state.description = payload.description
       if (payload.nextScreen) state.nextScreen = payload.nextScreen
+      if (payload.methodType) state.methodType = payload.methodType
     },
     closeModal: (state) => {
       state.description = ''

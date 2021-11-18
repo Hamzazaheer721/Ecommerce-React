@@ -23,7 +23,7 @@ const AlertModal: FC = memo(() => {
   const dispatch = useDispatch()
   // const history = useHistory()
 
-  const { modalVisibility, description } = useSelector(
+  const { modalVisibility, description, methodType } = useSelector(
     (state: RootState) => state.modal
   )
 
@@ -31,8 +31,13 @@ const AlertModal: FC = memo(() => {
     dispatch(closeModal())
   }, [modalVisibility])
 
-  const successModalState = useCallback(() => {
-    dispatch(deactivateUser())
+  const methodHandler = useCallback(() => {
+    switch (methodType) {
+      case 'deactivateAccount':
+        return dispatch(deactivateUser())
+      default:
+        return null
+    }
   }, [])
 
   // const successModalState = useCallback(() => {
@@ -61,7 +66,7 @@ const AlertModal: FC = memo(() => {
           <CancelButton type="button" onClick={cancelModalState}>
             Cancel
           </CancelButton>
-          <DoneButton type="button" onClick={successModalState}>
+          <DoneButton type="button" onClick={methodHandler}>
             Yes
           </DoneButton>
         </ModalContentContainer>
