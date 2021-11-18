@@ -93,7 +93,8 @@ const Input = memo(
     ) => {
       const localRef = useRef<HTMLInputElement>(null)
       const [showPassword, setShowPassword] = useState(false)
-      const [val, setVal] = useState<string>('')
+      const [val, setVal] =
+        useState<string>('') /* state to force render when debouncing */
       const [hack, setHack] = useState<boolean>(false)
       const debouncedHandleChange =
         useRef<DebouncedFunc<(e: ChangeEvent<HTMLInputElement>) => void>>()
