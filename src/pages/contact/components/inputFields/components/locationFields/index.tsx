@@ -41,9 +41,11 @@ const LocationFields: FC = memo(() => {
         <SingleInputContainer>
           <Input
             label="Branch Name"
-            prefixText={`${'New Yorkers Pizza'} -`}
-            prefix={faStore}
+            prefixText={`${'New Yorkers Pizza'} - `}
             name="branch_name"
+            value={area}
+            setInitialValue
+            prefix={faStore}
             handleChange={handleAddressChange}
             debounceValue={3000}
           />

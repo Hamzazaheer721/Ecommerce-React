@@ -93,7 +93,8 @@ const Input = memo(
     ) => {
       const localRef = useRef<HTMLInputElement>(null)
       const [showPassword, setShowPassword] = useState(false)
-      const [val, setVal] = useState<string>('')
+      const [val, setVal] =
+        useState<string>('') /* state to force render when debouncing */
       const [hack, setHack] = useState<boolean>(false)
       const debouncedHandleChange =
         useRef<DebouncedFunc<(e: ChangeEvent<HTMLInputElement>) => void>>()
@@ -113,9 +114,11 @@ const Input = memo(
       }, [hack])
 
       useLayoutEffect(() => {
-        if (setInitialValue && localRef.current) {
+        if (setInitialValue && localRef.current && !localRef.current.value) {
           localRef.current.value = value
-          setVal(value) /* This has been fit here to make label go up only */
+          if (!val) {
+            setVal(value) /* This has been fit here to make label go up only */
+          }
         }
       }, [value])
 
