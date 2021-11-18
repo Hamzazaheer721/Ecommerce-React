@@ -10,6 +10,7 @@ export const deactivateUserSlice = createSlice({
     builder
       .addCase(deactivateUser.fulfilled, (state, { payload }) => {
         state.loading = false
+        state.status = true
         state.message = payload.message
         state.success = payload.success
       })
