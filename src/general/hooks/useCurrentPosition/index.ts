@@ -21,7 +21,7 @@ const useCurrentPosition = () => {
         locationWorker.postMessage(_res)
       })
     })
-  }, [locationWorker])
+  }, [])
 
   useEffect(() => {
     locationWorker.onmessage = (event: MessageEvent) => {
