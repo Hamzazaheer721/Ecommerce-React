@@ -2,6 +2,7 @@
 import {
   ChangeEvent,
   forwardRef,
+  MouseEvent,
   memo,
   MutableRefObject,
   useCallback,
@@ -62,6 +63,8 @@ interface InputProps {
   setInitialValue?: boolean
   grayed?: boolean
   prefixText: string
+  handleSuffixClick?: (e: MouseEvent<SVGSVGElement>) => void
+  handleSecondSuffixClick?: (e: MouseEvent<SVGSVGElement>) => void
 }
 
 const Input = memo(
@@ -71,22 +74,24 @@ const Input = memo(
         label,
         value = '',
         name,
-        handleChange,
         typePassword = false,
         prefix,
         suffix,
         phonefield,
         readOnly,
         secondSuffix,
-        handlePhoneChange,
-        store,
         suffixText,
+        store,
+        grayed,
         textArea,
+        prefixText,
         autoComplete,
         debounceValue,
         setInitialValue,
-        grayed,
-        prefixText,
+        handleChange,
+        handleSuffixClick,
+        handlePhoneChange,
+        handleSecondSuffixClick,
         ...props
       },
       inputRef
@@ -208,13 +213,17 @@ const Input = memo(
           )}
           {!typePassword && suffix && (
             <Suffix
+              onClick={handleSuffixClick}
               icon={suffix}
               $secondSuffix={!!secondSuffix}
               grayed={!!grayed}
             />
           )}
           {!typePassword && secondSuffix && (
-            <SecondSuffix icon={secondSuffix} />
+            <SecondSuffix
+              icon={secondSuffix}
+              onClick={handleSecondSuffixClick}
+            />
           )}
           {!typePassword && suffixText && <SuffixText>{suffixText}</SuffixText>}
         </InputContainer>
