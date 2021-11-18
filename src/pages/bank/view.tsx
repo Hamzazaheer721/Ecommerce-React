@@ -24,16 +24,16 @@ import ButtonComponent from '../../components/genericButton'
 import useFieldsForm from './useFieldsForm'
 
 const ViewComponent = memo(() => {
-  const { handleChange, handlePhoneChange, handleSubmit } = useFieldsForm()
+  const { handleChange, handlePhoneChange, handleSubmit, inputData } =
+    useFieldsForm()
   const bankNameField = useRef<HTMLInputElement>(null)
   const ibannumberField = useRef<HTMLInputElement>(null)
   const accountholdernameField = useRef<HTMLInputElement>(null)
-  const phoneField = useRef<HTMLInputElement>(null)
   const accountholderidField = useRef<HTMLInputElement>(null)
   const swiftcodeField = useRef<HTMLInputElement>(null)
 
   const theme = useContext(ThemeContext)
-
+  const { acc_holder_mobile_number } = inputData
   return (
     <Container>
       <LoginViewContainer secondLayout>
@@ -81,7 +81,7 @@ const ViewComponent = memo(() => {
               prefix={faMobileAndroid}
               label="Account Holder Mobile Number"
               phonefield
-              value={phoneField && phoneField.current?.value}
+              value={acc_holder_mobile_number}
               handlePhoneChange={handlePhoneChange}
             />
           </InputContainer>

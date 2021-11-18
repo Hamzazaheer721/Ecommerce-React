@@ -36,7 +36,7 @@ const useBankForm = () => {
     [inputData]
   )
 
-  return { handleChange, handlePhoneChange, handleSubmit }
+  return { handleChange, handlePhoneChange, handleSubmit, inputData }
 }
 
 export default useBankForm

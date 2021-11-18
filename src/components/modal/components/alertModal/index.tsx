@@ -35,7 +35,7 @@ const AlertModal: FC = memo(() => {
 
   const cancelModalState = useCallback(() => {
     dispatch(closeModal())
-  }, [modalVisibility])
+  }, [])
 
   const methodHandler = useCallback(() => {
     switch (methodType) {
@@ -52,10 +52,6 @@ const AlertModal: FC = memo(() => {
       push('/login')
     }
   }, [status])
-  // const successModalState = useCallback(() => {
-  //   dispatch(closeModal())
-  //   nextScreen && history.push(nextScreen)
-  // }, [modalVisibility, nextScreen, history])
 
   return (
     <>

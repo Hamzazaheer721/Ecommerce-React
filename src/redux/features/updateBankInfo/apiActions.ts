@@ -2,7 +2,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { AxiosError } from 'axios'
 import { Instance } from '../../../config/axios'
-import { Config } from '../../../general/helper'
+import { config } from '../../../general/helper'
 import {
   IUpdateBankInfoPayloadRtn,
   IUpdateBankInfoPayloadArg,
@@ -17,7 +17,7 @@ export const updateBankInfo = createAsyncThunk<
   'updateBank/updateUserBankInfo',
   async (paymentInfo: IUpdateBankInfoPayloadArg, thunkAPI) => {
     try {
-      const response = await Instance.put<any>('/store', paymentInfo, Config)
+      const response = await Instance.put<any>('/store', paymentInfo, config)
       if (response.status === 400)
         // eslint-disable-next-line nonblock-statement-body-position
         return thunkAPI.rejectWithValue(response.data)

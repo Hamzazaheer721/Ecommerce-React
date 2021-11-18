@@ -59,8 +59,8 @@ const useUserProfileForm = () => {
     handleChange,
     handlePhoneChange,
     handleSubmit,
-    deactivateModalHandler
+    deactivateModalHandler,
+    inputData
   }
 }
-
 export default useUserProfileForm

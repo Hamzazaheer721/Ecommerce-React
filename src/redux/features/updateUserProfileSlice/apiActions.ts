@@ -8,7 +8,7 @@ import {
   IUpdateUserProfilePayloadArg,
   IUpdateUserProfileRejectPayload
 } from './types'
-import { Config } from '../../../general/helper'
+import { config } from '../../../general/helper'
 
 export const UpdateUserProfile = createAsyncThunk<
   IUpdateProfilePayloadRtn,
@@ -21,7 +21,7 @@ export const UpdateUserProfile = createAsyncThunk<
       const response = await Instance.put<any>(
         '/user/profile',
         userProfile,
-        Config
+        config
       )
       if (response.status === 400)
         return thunkAPI.rejectWithValue(response.data)

@@ -44,11 +44,16 @@ import { MapContainer, ButtonContainer } from '../../../styles/global'
 import GenericButton from '../../../components/genericButton'
 
 const UserProfile = memo(() => {
-  const { handleChange, handlePhoneChange, handleSubmit, deactivateModalHandler } =
-    useUserProfileForm()
+  const {
+    handleChange,
+    handlePhoneChange,
+    handleSubmit,
+    deactivateModalHandler,
+    inputData
+  } = useUserProfileForm()
   const nameField = useRef<HTMLInputElement>(null)
   const emailField = useRef<HTMLInputElement>(null)
-  const phoneField = useRef<HTMLInputElement>(null)
+  const { phone } = inputData
 
   return (
     <Container>
@@ -86,7 +91,7 @@ const UserProfile = memo(() => {
               store
               phonefield
               prefix={faWhatsapp}
-              value={phoneField && phoneField.current?.value}
+              value={phone}
               handlePhoneChange={handlePhoneChange}
             />
           </InputContainer>
