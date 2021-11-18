@@ -94,7 +94,7 @@ const Login: FC = memo(() => {
         />
       </ButtonContainer>
       <Link to="/forgot-password">
-        <LoginSubFooter>Forget your password?</LoginSubFooter>
+        <LoginSubFooter>Forgot your password?</LoginSubFooter>
       </Link>
       <LoginFooter>
         Don&apos;t have an account?

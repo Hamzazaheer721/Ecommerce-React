@@ -91,7 +91,7 @@ export const LinkIcon = styled(FontAwesomeIcon)`
   margin-right: 5px;
   cursor: pointer;
 `
-export const SimpoleIcon = styled(FontAwesomeIcon)`
+export const SimpleIcon = styled(FontAwesomeIcon)`
   margin-right: 5px;
   cursor: pointer;
   color: black;

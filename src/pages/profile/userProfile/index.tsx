@@ -1,3 +1,4 @@
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-undef */
 import { memo, useRef } from 'react'
 import {
@@ -31,7 +32,7 @@ import {
   SelectiveCardContainer,
   CardImage,
   CardTitle,
-  SimpoleIcon,
+  SimpleIcon,
   DeleteLinkText,
   ButtonLayout,
   PaymentMethod
@@ -43,10 +44,16 @@ import { MapContainer, ButtonContainer } from '../../../styles/global'
 import GenericButton from '../../../components/genericButton'
 
 const UserProfile = memo(() => {
-  const { handleChange, handlePhoneChange, handleSubmit } = useUserProfileForm()
+  const {
+    handleChange,
+    handlePhoneChange,
+    handleSubmit,
+    deactivateModalHandler,
+    inputData
+  } = useUserProfileForm()
   const nameField = useRef<HTMLInputElement>(null)
   const emailField = useRef<HTMLInputElement>(null)
-  const phoneField = useRef<HTMLInputElement>(null)
+  const { phone } = inputData
 
   return (
     <Container>
@@ -84,12 +91,19 @@ const UserProfile = memo(() => {
               store
               phonefield
               prefix={faWhatsapp}
-              value={phoneField && phoneField.current?.value}
+              value={phone}
               handlePhoneChange={handlePhoneChange}
             />
           </InputContainer>
           <InputContainer>
-            <Input name="password" prefix={faKey} value="******" typePassword />
+            <Input
+              name="password"
+              prefix={faKey}
+              typePassword
+              label="******"
+              grayed
+              readOnly
+            />
           </InputContainer>
         </InputFieldsContainer>
 
@@ -147,13 +161,13 @@ const UserProfile = memo(() => {
             />
           </ButtonContainer>
         </ButtonLayout>
-        <LinkText>
-          <SimpoleIcon icon={faUserMinus} />
+        <LinkText onClick={deactivateModalHandler}>
+          <SimpleIcon icon={faUserMinus} />
           Deactivate Account
         </LinkText>
         <DeleteLinkText>
-          <SimpoleIcon icon={faUser} />
-          Deactivate Account
+          <SimpleIcon icon={faUser} />
+          Delete Account
         </DeleteLinkText>
       </RightContainer>
     </Container>

@@ -99,7 +99,7 @@ const ActivationCode: FC = memo(() => {
         />
       </ButtonContainer>
       <Link to="/">
-        <LoginSubFooter>Forget your password?</LoginSubFooter>
+        <LoginSubFooter>Forgot your password?</LoginSubFooter>
       </Link>
       <LoginFooter>
         Don`t have an account?

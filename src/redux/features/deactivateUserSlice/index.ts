@@ -1,22 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { initialState } from './helper'
-import { updateBankInfo } from './apiActions'
+import { deactivateUser } from './apiActions'
 
-export const updateBankInfoSlice = createSlice({
-  name: 'updateBank',
+export const deactivateUserSlice = createSlice({
+  name: 'deactivate',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(updateBankInfo.fulfilled, (state, { payload }) => {
+      .addCase(deactivateUser.fulfilled, (state, { payload }) => {
         state.loading = false
+        state.status = true
         state.message = payload.message
         state.success = payload.success
       })
-      .addCase(updateBankInfo.pending, (state) => {
+      .addCase(deactivateUser.pending, (state) => {
         state.loading = true
       })
-      .addCase(updateBankInfo.rejected, (state, { payload }) => {
+      .addCase(deactivateUser.rejected, (state, { payload }) => {
         if (payload) {
           state.loading = false
           state.message = payload.message
