@@ -93,6 +93,8 @@ const Input = memo(
     ) => {
       const localRef = useRef<HTMLInputElement>(null)
       const [showPassword, setShowPassword] = useState(false)
+      const [val, setVal] = useState<string>('')
+      const [hack, setHack] = useState<boolean>(false)
       const debouncedHandleChange =
         useRef<DebouncedFunc<(e: ChangeEvent<HTMLInputElement>) => void>>()
 
@@ -102,9 +104,18 @@ const Input = memo(
         }
       }, [])
 
+      const handleHack = useCallback(() => {
+        debounceValue && setHack((prevState) => !prevState)
+      }, [hack])
+
+      useEffect(() => {
+        debounceValue && localRef.current && setVal(localRef.current.value)
+      }, [hack])
+
       useLayoutEffect(() => {
         if (setInitialValue && localRef.current) {
           localRef.current.value = value
+          setVal(value) /* This has been fit here to make label go up only */
         }
       }, [value])
 
@@ -113,12 +124,17 @@ const Input = memo(
       }, [showPassword])
 
       return (
-        <InputContainer hasValue={!!value} store={!!store} grayed={!!grayed}>
+        <InputContainer
+          hasValue={debounceValue ? !!val : !!value}
+          store={!!store}
+          grayed={!!grayed}
+        >
           {!phonefield && !textArea && (
             <InputField
               readOnly={readOnly}
               {...props}
               name={name}
+              onSelect={handleHack}
               prefixText={!!prefixText}
               // value={debounceValue ? _value : value}
               placeholder=""
@@ -162,7 +178,6 @@ const Input = memo(
               onChange={handlePhoneChange}
             />
           )}
-
           {prefix && (
             <Prefix
               icon={prefix}
@@ -175,7 +190,7 @@ const Input = memo(
             <PrefixText> {prefixText} </PrefixText>
           )}
           <Label
-            hasValue={!!value}
+            hasValue={debounceValue ? !!val : !!value}
             $phonefield={!!phonefield}
             $textArea={!!textArea}
             prefixText={!!prefixText}
