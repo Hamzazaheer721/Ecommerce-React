@@ -45,7 +45,7 @@ const LocationFields: FC = memo(() => {
             prefix={faStore}
             name="branch_name"
             handleChange={handleAddressChange}
-            debounceValue={1000}
+            debounceValue={400}
           />
         </SingleInputContainer>
       )}
@@ -61,7 +61,7 @@ const LocationFields: FC = memo(() => {
           value={location}
           handleChange={handleAddressChange}
           setInitialValue
-          debounceValue={1000}
+          debounceValue={400}
           grayed={is_online}
         />
       </SingleInputContainer>
@@ -73,7 +73,7 @@ const LocationFields: FC = memo(() => {
           value={streetAddress}
           handleChange={handleAddressChange}
           setInitialValue
-          debounceValue={1000}
+          debounceValue={400}
           grayed={is_online}
         />
       </SingleInputContainer>
@@ -86,7 +86,7 @@ const LocationFields: FC = memo(() => {
             value={postalCode}
             handleChange={handleAddressChange}
             setInitialValue
-            debounceValue={1000}
+            debounceValue={400}
             grayed={is_online}
           />
         </InputContainer>
@@ -98,7 +98,7 @@ const LocationFields: FC = memo(() => {
             value={area}
             handleChange={handleAddressChange}
             setInitialValue
-            debounceValue={1000}
+            debounceValue={400}
             grayed={is_online}
           />
         </InputContainer>
@@ -112,7 +112,7 @@ const LocationFields: FC = memo(() => {
             value={city}
             handleChange={handleAddressChange}
             setInitialValue
-            debounceValue={1000}
+            debounceValue={400}
             grayed={is_online}
           />
         </InputContainer>
@@ -124,7 +124,7 @@ const LocationFields: FC = memo(() => {
             value={state}
             handleChange={handleAddressChange}
             setInitialValue
-            debounceValue={1000}
+            debounceValue={400}
             grayed={is_online}
           />
         </InputContainer>
@@ -137,7 +137,7 @@ const LocationFields: FC = memo(() => {
           value={country}
           handleChange={handleAddressChange}
           setInitialValue
-          debounceValue={1000}
+          debounceValue={400}
           grayed={is_online}
         />
       </SingleInputContainer>
