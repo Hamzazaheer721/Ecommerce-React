@@ -8,6 +8,7 @@ import { getAddressObjWithCallback, getCurrentLatLang } from '../../helper'
 
 const useCurrentPosition = () => {
   const dispatch = useDispatch()
+
   const locationWorker = useMemo<Worker>(
     () => new Worker('./workers/locationWorker.js'),
     []
