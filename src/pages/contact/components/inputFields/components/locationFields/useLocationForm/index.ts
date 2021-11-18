@@ -1,7 +1,14 @@
-import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react'
+import {
+  ChangeEvent,
+  MouseEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from 'react'
 import { usePlacesWidget } from 'react-google-autocomplete'
 import { useDispatch, useSelector } from 'react-redux'
-import { CheckboxChangeEvent } from 'antd/lib/checkbox';
+import { CheckboxChangeEvent } from 'antd/lib/checkbox'
 import { IGeoAddressType } from '../../../../../../../types/geoLocation/index'
 import { GOOGLE_MAP_API_KEY } from '../../../../../../../config/constants'
 import { setGeoLocationState } from '../../../../../../../redux/features/geoLocatonSlice'
@@ -9,6 +16,7 @@ import { RootState } from '../../../../../../../redux/store'
 import { setGeoAddressState } from '../../../../../../../redux/features/geoAddressSlice'
 import { initialContactState } from './helper'
 import { IContactStateType } from './types'
+import useCurrentPosition from '../../../../../../../general/hooks/useCurrentPosition'
 
 const useLocationForm = () => {
   const dispatch = useDispatch()
@@ -18,12 +26,30 @@ const useLocationForm = () => {
   const { address } = locationState
   const timeInterval = useRef<NodeJS.Timeout>()
 
-  const [contactData, setContactData] = useState<IContactStateType>(initialContactState)
-  const {is_online} = contactData;
+  const [contactData, setContactData] =
+    useState<IContactStateType>(initialContactState)
+  const { is_online } = contactData
 
+  const {initializeCurrentPosition} = useCurrentPosition()
   useEffect(
     () => () => {
       timeInterval.current && clearTimeout(timeInterval.current)
+    },
+    []
+  )
+
+  const handleSuffixClick = useCallback((e: MouseEvent<SVGSVGElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+    const name: keyof IGeoAddressType = 'location'
+    dispatch(setGeoAddressState({ name, value: '' }))
+  }, [])
+
+  const handleSecondSuffixClick = useCallback(
+    (e: MouseEvent<SVGSVGElement>) => {
+      e.preventDefault()
+      e.stopPropagation()
+      initializeCurrentPosition()
     },
     []
   )
@@ -46,19 +72,22 @@ const useLocationForm = () => {
     [address]
   )
 
-  const handleContactChange = useCallback((e: CheckboxChangeEvent) => {
+  const handleContactChange = useCallback(
+    (e: CheckboxChangeEvent) => {
       e.stopPropagation()
-      const {name, checked} = e.target
-      setContactData({...contactData, [name as string]: checked})
-  }, [contactData])
+      const { name, checked } = e.target
+      setContactData({ ...contactData, [name as string]: checked })
+    },
+    [contactData]
+  )
 
   const handleAddressChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
-      e.preventDefault();
+      e.preventDefault()
       e.stopPropagation()
       const { name, value } = e.target
-        const _key: keyof IGeoAddressType = name as keyof IGeoAddressType
-        dispatch(setGeoAddressState({ name: _key, value }))
+      const _key: keyof IGeoAddressType = name as keyof IGeoAddressType
+      dispatch(setGeoAddressState({ name: _key, value }))
     },
     [address]
   )
@@ -70,8 +99,10 @@ const useLocationForm = () => {
 
   return {
     is_online,
+    handleSuffixClick,
     handleAddressChange,
     handleContactChange,
+    handleSecondSuffixClick,
     autoCompleteRef,
     area: address?.area,
     city: address?.city,

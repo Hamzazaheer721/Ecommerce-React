@@ -2,6 +2,7 @@
 import {
   ChangeEvent,
   forwardRef,
+  MouseEvent,
   memo,
   MutableRefObject,
   useCallback,
@@ -62,6 +63,8 @@ interface InputProps {
   setInitialValue?: boolean
   grayed?: boolean
   prefixText: string
+  handleSuffixClick?: (e: MouseEvent<SVGSVGElement>) => void
+  handleSecondSuffixClick?: (e: MouseEvent<SVGSVGElement>) => void
 }
 
 const Input = memo(
@@ -71,33 +74,36 @@ const Input = memo(
         label,
         value = '',
         name,
-        handleChange,
         typePassword = false,
         prefix,
         suffix,
         phonefield,
         readOnly,
         secondSuffix,
-        handlePhoneChange,
-        store,
         suffixText,
+        store,
+        grayed,
         textArea,
+        prefixText,
         autoComplete,
         debounceValue,
         setInitialValue,
-        grayed,
-        prefixText,
+        handleChange,
+        handleSuffixClick,
+        handlePhoneChange,
+        handleSecondSuffixClick,
         ...props
       },
       inputRef
     ) => {
       const localRef = useRef<HTMLInputElement>(null)
+      const debouncedHandleChange =
+        useRef<DebouncedFunc<(e: ChangeEvent<HTMLInputElement>) => void>>()
+
       const [showPassword, setShowPassword] = useState(false)
       const [val, setVal] =
         useState<string>('') /* state to force render when debouncing */
       const [hack, setHack] = useState<boolean>(false)
-      const debouncedHandleChange =
-        useRef<DebouncedFunc<(e: ChangeEvent<HTMLInputElement>) => void>>()
 
       useEffect(() => {
         if (handleChange && !debouncedHandleChange.current) {
@@ -105,26 +111,24 @@ const Input = memo(
         }
       }, [])
 
-      const handleHack = useCallback(() => {
-        debounceValue && setHack((prevState) => !prevState)
-      }, [hack])
-
       useEffect(() => {
         debounceValue && localRef.current && setVal(localRef.current.value)
       }, [hack])
 
       useLayoutEffect(() => {
-        if (setInitialValue && localRef.current && !localRef.current.value) {
+        if (setInitialValue && localRef.current) {
           localRef.current.value = value
-          if (!val) {
-            setVal(value) /* This has been fit here to make label go up only */
-          }
+          setVal(value) /* This has been fit here to make label go up only */
         }
       }, [value])
 
+      const handleHack = useCallback(() => {
+        debounceValue && setHack((prevState) => !prevState)
+      }, [])
+
       const handleEyeChange = useCallback(() => {
         setShowPassword((prevState) => !prevState)
-      }, [showPassword])
+      }, [])
 
       return (
         <InputContainer
@@ -208,13 +212,17 @@ const Input = memo(
           )}
           {!typePassword && suffix && (
             <Suffix
+              onClick={handleSuffixClick}
               icon={suffix}
               $secondSuffix={!!secondSuffix}
               grayed={!!grayed}
             />
           )}
           {!typePassword && secondSuffix && (
-            <SecondSuffix icon={secondSuffix} />
+            <SecondSuffix
+              icon={secondSuffix}
+              onClick={handleSecondSuffixClick}
+            />
           )}
           {!typePassword && suffixText && <SuffixText>{suffixText}</SuffixText>}
         </InputContainer>
