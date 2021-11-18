@@ -162,7 +162,6 @@ const Input = memo(
               onChange={handlePhoneChange}
             />
           )}
-
           {prefix && (
             <Prefix
               icon={prefix}
