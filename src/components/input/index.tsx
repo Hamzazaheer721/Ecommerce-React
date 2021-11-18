@@ -112,7 +112,7 @@ const Input = memo(
 
       const handleHack = useCallback(() => {
         debounceValue && setHack((prevState) => !prevState)
-      }, [hack])
+      }, [])
 
       useEffect(() => {
         debounceValue && localRef.current && setVal(localRef.current.value)
@@ -127,7 +127,7 @@ const Input = memo(
 
       const handleEyeChange = useCallback(() => {
         setShowPassword((prevState) => !prevState)
-      }, [showPassword])
+      }, [])
 
       return (
         <InputContainer
