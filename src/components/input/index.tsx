@@ -97,21 +97,18 @@ const Input = memo(
       inputRef
     ) => {
       const localRef = useRef<HTMLInputElement>(null)
+      const debouncedHandleChange =
+        useRef<DebouncedFunc<(e: ChangeEvent<HTMLInputElement>) => void>>()
+
       const [showPassword, setShowPassword] = useState(false)
       const [val, setVal] =
         useState<string>('') /* state to force render when debouncing */
       const [hack, setHack] = useState<boolean>(false)
-      const debouncedHandleChange =
-        useRef<DebouncedFunc<(e: ChangeEvent<HTMLInputElement>) => void>>()
 
       useEffect(() => {
         if (handleChange && !debouncedHandleChange.current) {
           debouncedHandleChange.current = debounce(handleChange, debounceValue)
         }
-      }, [])
-
-      const handleHack = useCallback(() => {
-        debounceValue && setHack((prevState) => !prevState)
       }, [])
 
       useEffect(() => {
@@ -124,6 +121,10 @@ const Input = memo(
           setVal(value) /* This has been fit here to make label go up only */
         }
       }, [value])
+
+      const handleHack = useCallback(() => {
+        debounceValue && setHack((prevState) => !prevState)
+      }, [])
 
       const handleEyeChange = useCallback(() => {
         setShowPassword((prevState) => !prevState)
