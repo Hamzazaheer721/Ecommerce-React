@@ -50,6 +50,7 @@ const ViewComponent = memo(() => {
               prefix={faLandmark}
               label="Bank Name"
               handleChange={handleChange}
+              value={bankNameField && bankNameField.current?.value}
             />
           </InputContainer>
 
@@ -60,6 +61,7 @@ const ViewComponent = memo(() => {
               prefix={faMoneyCheckEditAlt}
               label="IBAN Number"
               handleChange={handleChange}
+              value={ibannumberField && ibannumberField.current?.value}
             />
           </InputContainer>
           <InputContainer>
@@ -69,6 +71,9 @@ const ViewComponent = memo(() => {
               prefix={faMapMarkedAlt}
               label="Account Holder Name"
               handleChange={handleChange}
+              value={
+                accountholdernameField && accountholdernameField.current?.value
+              }
             />
           </InputContainer>
           <InputContainer>
@@ -87,6 +92,9 @@ const ViewComponent = memo(() => {
               prefix={faGlobe}
               label="Account Holder ID/Passport Number"
               handleChange={handleChange}
+              value={
+                accountholderidField && accountholderidField.current?.value
+              }
             />
           </InputContainer>
           <InputContainer>
@@ -96,6 +104,7 @@ const ViewComponent = memo(() => {
               prefix={faSwift}
               label="Swift Code"
               handleChange={handleChange}
+              value={swiftcodeField && swiftcodeField.current?.value}
             />
           </InputContainer>
         </InputContainer>

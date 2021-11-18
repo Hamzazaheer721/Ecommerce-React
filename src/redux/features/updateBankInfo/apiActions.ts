@@ -17,7 +17,7 @@ export const updateBankInfo = createAsyncThunk<
   'updateBank/updateUserBankInfo',
   async (paymentInfo: IUpdateBankInfoPayloadArg, thunkAPI) => {
     try {
-      const response = await Instance.put<any>('/store/', paymentInfo, Config)
+      const response = await Instance.put<any>('/store', paymentInfo, Config)
       if (response.status === 400)
         // eslint-disable-next-line nonblock-statement-body-position
         return thunkAPI.rejectWithValue(response.data)
