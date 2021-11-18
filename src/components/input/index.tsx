@@ -115,7 +115,7 @@ const Input = memo(
       useLayoutEffect(() => {
         if (setInitialValue && localRef.current) {
           localRef.current.value = value
-          setVal(value)
+          setVal(value) /* This has been fit here to make label go up only */
         }
       }, [value])
 
