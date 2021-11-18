@@ -119,11 +119,9 @@ const Input = memo(
       }, [hack])
 
       useLayoutEffect(() => {
-        if (setInitialValue && localRef.current && !localRef.current.value) {
+        if (setInitialValue && localRef.current) {
           localRef.current.value = value
-          if (!val) {
-            setVal(value) /* This has been fit here to make label go up only */
-          }
+          setVal(value) /* This has been fit here to make label go up only */
         }
       }, [value])
 
