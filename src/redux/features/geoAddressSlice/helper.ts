@@ -8,5 +8,6 @@ export const initialState: IGeoAddressObjStateType = {
     postalCode: '',
     state: '',
     streetAddress: ''
-  }
+  },
+  is_online: false
 }

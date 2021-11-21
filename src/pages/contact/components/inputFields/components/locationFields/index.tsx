@@ -8,8 +8,7 @@ import {
   faChartArea,
   faCity,
   faGlobe,
-  faLocation,
-  faStore
+  faLocation
 } from '@fortawesome/pro-light-svg-icons'
 import Input from '../../../../../../components/input'
 import {
@@ -39,20 +38,6 @@ const LocationFields: FC = memo(() => {
 
   return (
     <>
-      {is_online && (
-        <SingleInputContainer>
-          <Input
-            label="Branch Name"
-            prefixText={`${'New Yorkers Pizza'} - `}
-            name="branch_name"
-            value={area}
-            setInitialValue
-            prefix={faStore}
-            handleChange={handleAddressChange}
-            debounceValue={3000}
-          />
-        </SingleInputContainer>
-      )}
       <SingleInputContainer>
         <Input
           ref={autoCompleteRef}

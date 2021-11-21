@@ -1,5 +1,9 @@
 import { CaseReducer, PayloadAction } from '@reduxjs/toolkit'
-import { IGeoAddressObjStateType, IGeoLocationPayloadArg, IGeoAddressType } from '../../../types/geoLocation'
+import {
+  IGeoAddressObjStateType,
+  IGeoLocationPayloadArg,
+  IGeoAddressType
+} from '../../../types/geoLocation/index'
 
 export const updateGeoAddressCaseReducer: CaseReducer<
   IGeoAddressObjStateType,
@@ -20,11 +24,17 @@ export const updateGeoAddressCaseReducer: CaseReducer<
 
 export const setGeoAddressCaseReducer: CaseReducer<
   IGeoAddressObjStateType,
-  PayloadAction<{ name: keyof IGeoAddressType; value: string }>
+  PayloadAction<{
+    name: keyof IGeoAddressType | 'is_online'
+    value: string | boolean
+  }>
 > = (state, action) => {
   const { payload } = action
   const { address } = state
-  if (address) {
-    address[payload.name] = payload.value
+  if (typeof payload.value === 'boolean') {
+    state.is_online = payload.value
+  }
+  if (typeof payload.value === 'string') {
+    if (payload.name !== 'is_online') address[payload.name] = payload.value
   }
 }
