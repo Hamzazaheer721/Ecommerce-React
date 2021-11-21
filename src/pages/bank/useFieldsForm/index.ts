@@ -17,18 +17,34 @@ const useBankForm = () => {
     },
     [inputData]
   )
+  // const handlePhoneChange = useCallback(
+  //   (_val, _data) => {
+  //     console.info('phone data', _val)
+  //     const { dialCode } = _data
+  //     setInputData({
+  //       ...inputData,
+  //       acc_holder_mobile_number: `+${dialCode}${_val}`
+  //       // eslint-disable-next-line prefer-template
+  //     })
+  //   },
+  //   [inputData]
+  // )
+
   const handlePhoneChange = useCallback(
     (_val, _data) => {
-      console.info('phone data', _val)
       const { dialCode } = _data
-      setInputData({
-        ...inputData,
-        acc_holder_mobile_number: `+${dialCode}${_val}`
-        // eslint-disable-next-line prefer-template
-      })
+      let str: any = _val
+      if (str.includes(dialCode)) {
+        str = str.replace(dialCode, '')
+        str = str.trim()
+      }
+      if (str && `+${_val}` !== inputData.acc_holder_mobile_number) {
+        setInputData({ ...inputData, acc_holder_mobile_number: `+${_val}` })
+      }
     },
-    [inputData]
+    [inputData.acc_holder_mobile_number]
   )
+
   const handleSubmit = useCallback(
     async (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
