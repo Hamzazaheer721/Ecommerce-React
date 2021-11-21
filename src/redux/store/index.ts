@@ -12,6 +12,7 @@ import {
   PURGE,
   REGISTER
 } from 'redux-persist'
+import { contactFieldSlice } from '../features/contactFieldsSlice/index';
 import { currentGeoLocationSlice } from '../features/geoLocatonSlice/index'
 import { userSignupSlice } from '../features/userSignupSlice'
 import { userSigninSlice } from '../features/userSigninSlice/index'
@@ -37,7 +38,8 @@ const reducers = combineReducers({
   updateUserProfile: updateUserProfileSlice.reducer,
   currentAddressLocation: geoAddressSlice.reducer,
   updateBankInfo: updateBankInfoSlice.reducer,
-  deactivateUser: deactivateUserSlice.reducer
+  deactivateUser: deactivateUserSlice.reducer,
+  contactFields: contactFieldSlice.reducer
 })
 
 const persistConfig = {
