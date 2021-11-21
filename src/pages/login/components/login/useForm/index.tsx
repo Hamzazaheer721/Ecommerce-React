@@ -76,7 +76,6 @@ export const useFormLogin = () => {
   const handleCheckChange = useCallback(
     (e: CheckboxChangeEvent) => {
       e.stopPropagation()
-
       const { name, checked } = e.target
       setInputData({ ...inputData, [name as string]: checked })
     },
