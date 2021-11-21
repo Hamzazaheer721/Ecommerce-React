@@ -1,8 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { IContactStateInitialState } from './helper';
+import { createSlice } from '@reduxjs/toolkit'
+import { setContactFieldsCaseReducer } from './caseReducers';
+import { IContactStateInitialState } from './helper'
 
 export const contactFieldSlice = createSlice({
   name: 'contactFields',
   initialState: IContactStateInitialState,
-  reducers: {}
+  reducers: {
+    setContactFields: setContactFieldsCaseReducer
+  }
 })
+
+export const {setContactFields} = contactFieldSlice.actions
