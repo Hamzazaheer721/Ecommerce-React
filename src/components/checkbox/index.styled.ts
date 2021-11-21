@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Checkbox } from 'antd'
+import { device } from '../../styles/devices'
 
 interface ICheckboxProps {
   height: string
@@ -9,15 +10,19 @@ interface ICheckboxProps {
 }
 
 export const CustomCheckBox = styled(Checkbox)<Partial<ICheckboxProps>>`
-  .ant-checkbox{
-    border-radius: ${({borderRadius}) => borderRadius || '3px'};
+  .ant-checkbox {
+    border-radius: ${({ borderRadius }) => borderRadius || '3px'};
   }
 
   .ant-checkbox-inner {
-    border: ${({border}) => border || '0.5px solid #4e98e2'};
-    border-radius: ${({borderRadius}) => borderRadius || '3px'};
-    height: ${({height}) => height || '14px'};
-    width: ${({width}) => width || '14px'};
+    border: ${({ border }) => border || '0.5px solid #4e98e2'};
+    border-radius: ${({ borderRadius }) => borderRadius || '3px'};
+    height: ${({ height }) => height || '14px'};
+    width: ${({ width }) => width || '14px'};
+    @media ${device.desktop1080p} {
+      height: ${({ height }) => height || '16px'};
+      width: ${({ width }) => width || '16px'};
+    }
   }
 
   .ant-checkbox-inner:hover,
