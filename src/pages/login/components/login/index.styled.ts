@@ -89,19 +89,8 @@ export const MarginDiv = styled.div`
 export const CheckboxContainer = styled.div`
   display: flex;
   align-items: baseline;
-
-  .ant-checkbox {
-    border: 1px solid #1890ff;
-  }
 `
 
-export const CustomCheckBox = styled.input`
-  margin: 0;
-  box-shadow: 0px 3px 6px #00000029;
-  border: 0.5px solid #4e98e2 !important;
-  border-radius: 3px;
-  transform: translateY(-20%) !important;
-`
 export const CheckboxPlaceholder = styled.p`
   color: #606060;
   text-align: left;
@@ -109,7 +98,7 @@ export const CheckboxPlaceholder = styled.p`
   padding-left: 6px;
   padding-top: 10px;
   font-size: 12px;
-  transform: translateY(-17%) !important;
+  transform: translateY(2%) !important;
 
   @media ${device.mobile} {
     transform: translateY(-15%) !important;

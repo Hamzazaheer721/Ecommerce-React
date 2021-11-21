@@ -11,6 +11,7 @@ import {
 import { useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import produce from 'immer'
+import { CheckboxChangeEvent } from 'antd/lib/checkbox'
 import { userSignup } from '../../../../../redux/features/userSignupSlice/apiActions'
 import { RootState } from '../../../../../redux/store'
 import { initialState, errorChecks } from './helper'
@@ -87,6 +88,15 @@ const useForm = () => {
     [registerData]
   )
 
+  const handleCheckChange = useCallback(
+    (e: CheckboxChangeEvent) => {
+      e.stopPropagation()
+      const { name, checked } = e.target
+      setRegisterData({ ...registerData, [name as string]: checked })
+    },
+    [registerData]
+  )
+
   const makeApiCall = useCallback(async () => {
     const data = produce(registerData, (draft) => {
       draft.user_type = isCustomer
@@ -112,6 +122,7 @@ const useForm = () => {
     errors,
     handleSubmit,
     handlePhoneChange,
+    handleCheckChange,
     isCustomer,
     nameRef,
     storeNameRef,

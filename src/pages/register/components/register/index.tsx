@@ -23,7 +23,6 @@ import {
   CheckboxError,
   CheckboxPlaceholder,
   CheckboxSection,
-  CustomCheckBox,
   HeadingsContainer,
   InputContainer,
   InputFieldsContainer,
@@ -31,6 +30,7 @@ import {
 } from './index.styled'
 import ToastComponent from '../../../../components/toaster'
 import { LoginViewContainer } from '../../../../styles/global'
+import Checkbox from '../../../../components/checkbox'
 
 const Register: FC = memo(() => {
   const {
@@ -39,6 +39,7 @@ const Register: FC = memo(() => {
     registerState,
     handleSubmit,
     handlePhoneChange,
+    handleCheckChange,
     errors,
     isCustomer,
     nameRef,
@@ -149,11 +150,7 @@ const Register: FC = memo(() => {
         )}
         <CheckboxSection>
           <CheckboxContainer>
-            <CustomCheckBox
-              type="checkbox"
-              name="checkbox"
-              onChange={handleChange}
-            />
+            <Checkbox name="checkbox" handleChange={handleCheckChange} />
             <CheckboxPlaceholder>
               Please accept the
               <span> terms and conditions </span>

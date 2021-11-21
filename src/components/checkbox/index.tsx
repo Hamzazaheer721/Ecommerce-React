@@ -6,7 +6,7 @@ interface ICheckboxInterface {
   // eslint-disable-next-line no-unused-vars
   handleChange: (e: CheckboxChangeEvent) => void
   name: string
-  label: string
+  label?: string
   borderRadius?: string
   border?: string
   height?: string

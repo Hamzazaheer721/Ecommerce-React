@@ -114,7 +114,6 @@ const ActivationCode: FC = memo(() => {
           handleSubmit={handleSubmit}
         />
       </ButtonContainer>
-
       <LoginFooter>
         Already on WhatsPays?
         <Link to="/get-started">
