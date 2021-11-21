@@ -26,8 +26,7 @@ const useContactForm = () => {
       const { dialCode } = _data
       let str: string = _val
       if (str.includes(dialCode)) {
-        str = str.replace(dialCode, '')
-        str = str.trim()
+        str = str.replace(dialCode, '').trim()
       }
       if (str && `+${_val}` !== phone_number) {
         dispatch(setContactFields({ name: 'phone_number', value: `+${_val}` }))
@@ -41,8 +40,7 @@ const useContactForm = () => {
       const { dialCode } = _data
       let str: string = _val
       if (str.includes(dialCode)) {
-        str = str.replace(dialCode, '')
-        str = str.trim()
+        str = str.replace(dialCode, '').trim()
       }
       if (str && `+${_val}` !== mobile_number) {
         dispatch(setContactFields({ name: 'mobile_number', value: `+${_val}` }))
