@@ -32,13 +32,13 @@ export const InputContainer = styled.div`
   outline: none;
 `
 export const ButtonContainer = styled.div`
-  height: 40px;
+  height: 50px;
   width: 100%;
   .ant-btn {
     color: ${(props) => props.theme.color.white};
     background: linear-gradient(270deg, #1a87bb, #1b9bd7);
     border: none;
-    border-radius: 20px;
+    border-radius: 30px;
     width: 100%;
     font-size: 1rem;
     height: 100%;

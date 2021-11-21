@@ -17,7 +17,6 @@ import {
   ButtonContainer,
   CheckboxContainer,
   CheckboxPlaceholder,
-  CustomCheckBox,
   HeadingsContainer,
   InputContainer,
   InputFieldsContainer,
@@ -25,10 +24,12 @@ import {
   MarginDiv,
   SubHeading
 } from './index.styled'
+import Checkbox from '../../../../components/checkbox'
 
 const Login: FC = memo(() => {
   // eslint-disable-next-line operator-linebreak
-  const { handleSubmit, handleChange, errors, response } = useFormLogin()
+  const { handleSubmit, handleChange, handleCheckChange, errors, response } =
+    useFormLogin()
   const { success, error } = response
   const { usernameError, passwordError } = errors
 
@@ -77,11 +78,7 @@ const Login: FC = memo(() => {
         )}
 
         <CheckboxContainer>
-          <CustomCheckBox
-            type="checkbox"
-            name="remember"
-            onChange={handleChange}
-          />
+          <Checkbox name="remember" handleChange={handleCheckChange} />
           <CheckboxPlaceholder>Remember me</CheckboxPlaceholder>
         </CheckboxContainer>
       </InputFieldsContainer>

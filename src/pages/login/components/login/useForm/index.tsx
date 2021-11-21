@@ -10,6 +10,7 @@ import { useHistory } from 'react-router-dom'
 import { AxiosResponse } from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import produce from 'immer'
+import { CheckboxChangeEvent } from 'antd/lib/checkbox'
 import { addUserAction } from '../../../../../redux/features/userSigninSlice'
 import { IUserLoginRtnResponse } from '../../../../../types/user'
 import { SERVER_IP } from '../../../../../config/constants'
@@ -72,6 +73,16 @@ export const useFormLogin = () => {
     [inputData]
   )
 
+  const handleCheckChange = useCallback(
+    (e: CheckboxChangeEvent) => {
+      e.stopPropagation()
+
+      const { name, checked } = e.target
+      setInputData({ ...inputData, [name as string]: checked })
+    },
+    [inputData]
+  )
+
   const makeApiCall = useCallback(async () => {
     const updatedData: Omit<IInputformType, 'remember'> = produce(
       inputData,
@@ -115,6 +126,7 @@ export const useFormLogin = () => {
     response,
     errors,
     handleChange,
-    handleSubmit
+    handleSubmit,
+    handleCheckChange
   }
 }

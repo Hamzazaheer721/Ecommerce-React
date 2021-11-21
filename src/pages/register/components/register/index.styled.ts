@@ -101,6 +101,14 @@ export const CheckboxContainer = styled.div`
   display: flex;
   align-items: baseline;
   line-height: 5px;
+
+  @media ${device.mobile} {
+    line-height: 12px;
+  }
+
+  @media ${device.tiny} {
+    line-height: 12px;
+  }
 `
 
 export const CheckboxError = styled.div`
@@ -111,16 +119,26 @@ export const CustomCheckBox = styled.input`
   box-shadow: 0px 3px 6px #00000029;
   border: 0.5px solid #4e98e2;
   border-radius: 3px;
+  margin: 0;
+  /* transform: translateY(-20%) !important; */
 `
 export const CheckboxPlaceholder = styled.p`
   color: #606060;
   text-align: left;
   letter-spacing: 0px;
-  padding-left: 6px;
+  padding-left: 10px;
   font-size: 12px;
+  transform: translateY(10%) !important;
   span {
     color: ${(props) => props.theme.color.primary};
     cursor: pointer;
+  }
+
+  @media ${device.mobile} {
+    transform: translateY(-15%) !important;
+  }
+  @media ${device.tiny} {
+    transform: translateY(-5%) !important;
   }
 `
 export const UserButton = styled(FontAwesomeIcon)``
