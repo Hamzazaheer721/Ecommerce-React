@@ -1,14 +1,17 @@
-import { memo, useContext } from 'react'
+import { FC, memo, MouseEvent, useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import { faSave } from '@fortawesome/pro-light-svg-icons'
 import { ButtonLayout } from './index.styled'
 import ButtonComponent from '../../../../components/genericButton'
 import { ButtonContainer } from '../../../../styles/global'
-import useContactFields from '../../useContactField'
 
-const Button = memo(() => {
+interface IButtonProps {
+  // eslint-disable-next-line no-unused-vars
+  handleSubmit: (e: MouseEvent<HTMLButtonElement>) => void
+}
+
+const Button: FC<IButtonProps> = memo(({ handleSubmit }) => {
   const theme = useContext(ThemeContext)
-  const { handleSubmit } = useContactFields()
   return (
     <ButtonLayout>
       <ButtonContainer>
