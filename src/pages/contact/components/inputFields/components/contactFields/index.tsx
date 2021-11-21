@@ -11,8 +11,16 @@ import Input from '../../../../../../components/input'
 import useContactForm from './useContactForm'
 
 const ContactFields: FC = memo(() => {
-  const { email, handleChange, mobile_number, ntn_num, phone_number, website } =
-    useContactForm()
+  const {
+    email,
+    handleChange,
+    handlePhoneChange,
+    handleMobileChange,
+    mobile_number,
+    ntn_num,
+    phone_number,
+    website
+  } = useContactForm()
   return (
     <>
       <SingleInputContainer>
@@ -21,9 +29,7 @@ const ContactFields: FC = memo(() => {
           prefix={faPhoneAlt}
           phonefield
           value={phone_number}
-          name="phone_number"
-          debounceValue={2000}
-          handleChange={handleChange}
+          handlePhoneChange={handlePhoneChange}
         />
       </SingleInputContainer>
       <SingleInputContainer>
@@ -32,9 +38,7 @@ const ContactFields: FC = memo(() => {
           prefix={faMobileAndroid}
           phonefield
           value={mobile_number}
-          name="mobile_number"
-          debounceValue={2000}
-          handleChange={handleChange}
+          handlePhoneChange={handleMobileChange}
         />
       </SingleInputContainer>
       <SingleInputContainer>
