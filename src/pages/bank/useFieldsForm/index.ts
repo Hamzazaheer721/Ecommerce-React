@@ -19,6 +19,7 @@ const useBankForm = () => {
   )
   const handlePhoneChange = useCallback(
     (_val, _data) => {
+      console.info('phone data', _val)
       const { dialCode } = _data
       setInputData({
         ...inputData,
@@ -31,6 +32,7 @@ const useBankForm = () => {
   const handleSubmit = useCallback(
     async (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
+      console.info('this data going to dispatch', inputData)
       dispatch(updateBankInfo(inputData))
     },
     [inputData]

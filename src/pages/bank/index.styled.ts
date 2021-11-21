@@ -14,6 +14,7 @@ export const InputContainer = styled.div<{ single?: boolean }>`
   outline: none;
   flex: 1 1 45%;
   margin-bottom: 17px;
+  text-align: left;
 
   @media ${device.tablet} {
     flex: 1 1 100%;
