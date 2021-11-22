@@ -4,7 +4,7 @@ import {
 } from './caseReducers'
 import { IGeoLocationLongLat } from '../../../types/geoLocation/index'
 
-export const initialState: Partial<IGeoLocationLongLat> = {
+export const initialState: IGeoLocationLongLat = {
   location: {
     mapPosition: {
       lat: 31.4697,

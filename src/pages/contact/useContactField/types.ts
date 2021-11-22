@@ -6,8 +6,8 @@ export type IContactFormDefaultErrorTypes = {
   address: string // check
   city: string // check
   country: string // check
-  latitude: string // check
-  longitude: string // check
+  latitude: number // check
+  longitude: number // check
   postal_code?: string // check
   phone_number?: string // check
   mobile_number?: string // check
@@ -22,8 +22,8 @@ export type IContactFormIsOnlineErrorTypes = {
   address?: string
   city?: string
   country?: string
-  latitude?: string
-  longitude?: string
+  latitude?: number
+  longitude?: number
   postal_code?: string
   phone_number?: string
   mobile_number?: string
