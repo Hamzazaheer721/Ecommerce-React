@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { device } from '../../../../styles/devices'
 
 export const FieldsSectionContainer = styled.div`
   flex: 1 1 75%;
@@ -37,6 +38,18 @@ export const InputContainer = styled.div<{
         align-items: flex-start;
       }
     `}
+
+  @media ${device.tablet} {
+    flex: 1 1 100%;
+  }
+  
+  @media ${device.mobile} {
+    flex: 1 1 100%;
+  }
+
+  @media ${device.tiny} {
+    flex: 1 1 100%;
+  }
 `
 
 export const CustomCheckBox = styled.input`
