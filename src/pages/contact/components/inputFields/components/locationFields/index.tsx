@@ -18,6 +18,7 @@ import {
 } from '../../index.styled'
 import useLocationForm from './useLocationForm'
 import Checkbox from '../../../../../../components/checkbox'
+import { EmptyErrorState } from '../../../../../../styles/typography'
 
 const LocationFields: FC = memo(() => {
   const {
@@ -33,7 +34,8 @@ const LocationFields: FC = memo(() => {
     country,
     postalCode,
     autoCompleteRef,
-    is_online
+    is_online,
+    areaError
   } = useLocationForm()
 
   return (
@@ -69,7 +71,7 @@ const LocationFields: FC = memo(() => {
         />
       </SingleInputContainer>
       <InputsContainer>
-        <InputContainer>
+        <InputContainer withError>
           <Input
             label="Postal Code"
             prefix={faMailbox}
@@ -81,7 +83,7 @@ const LocationFields: FC = memo(() => {
             grayed={is_online}
           />
         </InputContainer>
-        <InputContainer>
+        <InputContainer withError>
           <Input
             prefix={faChartArea}
             label="Area"
@@ -92,6 +94,9 @@ const LocationFields: FC = memo(() => {
             debounceValue={3000}
             grayed={is_online}
           />
+          {areaError && (
+            <EmptyErrorState lessenLineHeight="1">{areaError}</EmptyErrorState>
+          )}
         </InputContainer>
       </InputsContainer>
       <InputsContainer>

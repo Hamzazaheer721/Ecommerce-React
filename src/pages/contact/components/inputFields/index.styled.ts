@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const FieldsSectionContainer = styled.div`
   flex: 1 1 75%;
@@ -21,10 +21,22 @@ export const InputsContainer = styled.div`
   flex-wrap: wrap;
 `
 
-export const InputContainer = styled.div<{ single?: boolean }>`
+export const InputContainer = styled.div<{
+  single?: boolean
+  withError?: boolean
+}>`
   border: none;
   outline: none;
   flex: 1 1 45%;
+
+  ${({ withError }) => withError &&
+    css`
+      & {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    `}
 `
 
 export const CustomCheckBox = styled.input`

@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+/* eslint-disable implicit-arrow-linebreak */
+import styled, { css } from 'styled-components'
 
 export const LoginHeader = styled.h3`
   font-size: 24px;
@@ -34,11 +35,21 @@ export const LoginSubFooter = styled.p`
   color: black;
 `
 
-export const EmptyErrorState = styled.p<{ marginTop?: string }>`
+export const EmptyErrorState = styled.p<{
+  marginTop?: string
+  lessenLineHeight?: string
+}>`
   font-size: 12px;
   margin: 5px 0;
   margin-top: ${({ marginTop }) => marginTop};
   color: red;
+  ${({ lessenLineHeight }) =>
+    lessenLineHeight &&
+    css`
+      & {
+        line-height: ${lessenLineHeight};
+      }
+    `}
 `
 
 export const MarginDiv = styled.div<{ $height?: string }>`
