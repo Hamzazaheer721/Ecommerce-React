@@ -51,7 +51,6 @@ const useContactFields = () => {
         latitude: geoLocation.mapPosition.lat,
         ...contactFieldsState
       }
-      console.info('Updated data: ', updatedData)
       const _errors = validateErrors(updatedData)
       console.info('Errors :', _errors)
     },

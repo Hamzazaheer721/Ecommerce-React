@@ -25,7 +25,7 @@ export const validateErrors = (
   }
 
   if (isEmpty(mobile_number)) {
-    errors.websiteError = 'Please enter your mobile number'
+    errors.mobileNumberError = 'Please enter your mobile number'
   }
 
   if (!is_online) {
