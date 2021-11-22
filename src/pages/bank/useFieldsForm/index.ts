@@ -48,7 +48,6 @@ const useBankForm = () => {
   const handleSubmit = useCallback(
     async (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
-      console.info('this data going to dispatch', inputData)
       dispatch(updateBankInfo(inputData))
     },
     [inputData]
