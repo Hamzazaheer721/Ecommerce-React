@@ -34,10 +34,10 @@ export const LoginSubFooter = styled.p`
   color: black;
 `
 
-export const EmptyErrorState = styled.p<{marginTop?: string}>`
+export const EmptyErrorState = styled.p<{ marginTop?: string }>`
   font-size: 12px;
   margin: 5px 0;
-  margin-top : ${({marginTop}) => marginTop};
+  margin-top: ${({ marginTop }) => marginTop};
   color: red;
 `
 

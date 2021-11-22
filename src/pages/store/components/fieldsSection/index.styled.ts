@@ -20,6 +20,9 @@ export const SingleInputContainer = styled.div`
   outline: none;
   width: 100%;
 `
+export const SingleInputWrapper = styled.div`
+  width: 100%;
+`
 export const InputContainer = styled.div<{ single?: boolean }>`
   border: none;
   outline: none;
@@ -55,4 +58,9 @@ export const CheckboxPlaceholder = styled.p`
     color: ${(props) => props.theme.color.primary};
     cursor: pointer;
   }
+`
+export const ErrorContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 45%;
 `

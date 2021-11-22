@@ -20,7 +20,7 @@ export interface IRegisterCompanyType {
   password: string
 }
 
-export type IRegisterType = IRegisterCompanyType | IRegisterCustomerType;
+export type IRegisterType = IRegisterCompanyType | IRegisterCustomerType
 
 export interface IRegisterErrors {
   nameError: string

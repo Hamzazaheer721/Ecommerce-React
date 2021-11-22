@@ -65,6 +65,7 @@ interface InputProps {
   prefixText: string
   handleSuffixClick?: (e: MouseEvent<SVGSVGElement>) => void
   handleSecondSuffixClick?: (e: MouseEvent<SVGSVGElement>) => void
+  handleTextAreaChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void
 }
 
 const Input = memo(
@@ -91,6 +92,7 @@ const Input = memo(
         handleChange,
         handleSuffixClick,
         handlePhoneChange,
+        handleTextAreaChange,
         handleSecondSuffixClick,
         ...props
       },
@@ -172,9 +174,9 @@ const Input = memo(
               readOnly={!!readOnly}
               {...props}
               name={name}
-              value={value}
               rows={4}
               autoSize={{ minRows: 4, maxRows: 4 }}
+              onChange={handleTextAreaChange}
             />
           )}
           {phonefield && (

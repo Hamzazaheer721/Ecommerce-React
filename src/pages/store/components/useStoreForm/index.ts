@@ -1,14 +1,29 @@
 import { useState, useCallback, ChangeEvent, MouseEvent } from 'react'
-import { IInputFormInitialValue } from './helper'
+import { useDispatch } from 'react-redux'
+import { IInputFormInitialValue, validateInputForm } from './helper'
 import { IInputFormType } from './types'
+import { updateBasicInfo } from '../../../../redux/features/updateBasicInfoSlice/apiActions'
+import { IStoreProfileErrorType } from '../../../../types/businessProfileStore'
+import { isObjectEmpty } from '../../../../general/helper'
 
 const useStoreForm = () => {
+  const dispatch = useDispatch()
+
   const [inputData, setInputData] = useState<IInputFormType>(
     IInputFormInitialValue
   )
+  const [errors, setErrors] = useState<IStoreProfileErrorType>({})
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target
+      setInputData({ ...inputData, [name]: value })
+    },
+    [inputData]
+  )
+
+  const handleTextAreaChange = useCallback(
+    (e: ChangeEvent<HTMLTextAreaElement>) => {
       const { name, value } = e.target
       setInputData({ ...inputData, [name]: value })
     },
@@ -23,6 +38,9 @@ const useStoreForm = () => {
         str = str.replace(dialCode, '')
         str = str.trim()
       }
+      if (!_val) {
+        setInputData({ ...inputData, whatsapp: '' })
+      }
       if (str && `+${_val}` !== inputData.whatsapp) {
         setInputData({ ...inputData, whatsapp: `+${_val}` })
       }
@@ -33,12 +51,22 @@ const useStoreForm = () => {
   const handleSubmit = useCallback(
     async (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
-      // dispatch(updateBankInfo(inputData))
+      const validateErrors = validateInputForm(inputData)
+      setErrors(validateErrors)
+      isObjectEmpty(validateErrors)
+      dispatch(updateBasicInfo(inputData))
     },
     [inputData]
   )
 
-  return { handleChange, inputData, handlePhoneChange, handleSubmit }
+  return {
+    handleChange,
+    inputData,
+    errors,
+    handlePhoneChange,
+    handleSubmit,
+    handleTextAreaChange
+  }
 }
 
 export default useStoreForm
