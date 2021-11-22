@@ -1,7 +1,7 @@
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import {
   faBuilding,
-  faBurgerSoda,
+  // faBurgerSoda,
   faCreditCardFront,
   faUser,
   faSave
@@ -25,16 +25,23 @@ import Button from '../../../../components/button'
 const FieldsSection: FC = memo(() => (
   <FieldsSectionContainer>
     <SingleInputContainer>
-      <Input prefix={faUser} label="Bussiness Profile" />
+      <Input name="name" prefix={faUser} label="Bussiness Profile" />
     </SingleInputContainer>
 
     <InputsContainer>
       <InputContainer>
-        <Input label="WhatsApp Number" phonefield prefix={faWhatsapp} store />
+        <Input
+          name="whatsapp"
+          label="WhatsApp Number"
+          phonefield
+          prefix={faWhatsapp}
+          store
+        />
       </InputContainer>
 
       <InputContainer>
         <Input
+          name="business_url"
           prefix={faCreditCardFront}
           label="Bussiness URL"
           suffixText=".whatspays.com"
@@ -44,17 +51,26 @@ const FieldsSection: FC = memo(() => (
 
     <InputsContainer>
       <InputContainer>
-        <Select prefix={faBurgerSoda} label="Industry" />
+        {/* <Select name="industry" prefix={faBurgerSoda} label="Industry" /> */}
       </InputContainer>
 
       <InputContainer>
-        <Select prefix={faBuilding} label="Industry Type" />
+        <Select
+          // name="industry_type"
+          prefix={faBuilding}
+          label="Industry Type"
+        />
       </InputContainer>
     </InputsContainer>
 
     <InputsContainer>
       <InputContainer>
-        <Input prefix={faBuilding} label="About Bussiness" textArea />
+        <Input
+          name="description"
+          prefix={faBuilding}
+          label="About Bussiness"
+          textArea
+        />
       </InputContainer>
     </InputsContainer>
 
