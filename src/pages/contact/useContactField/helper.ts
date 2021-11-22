@@ -1,9 +1,10 @@
 import { IContactFormType } from '../../../types/contact/index';
 import { isEmpty } from '../../../general/validations'
+import { IContactFormErrorType } from './types';
 
 export const validateErrors = (
   _data: IContactFormType
-) => {
+): Partial<IContactFormErrorType> => {
   const {
     email,
     mobile_number,
@@ -17,7 +18,7 @@ export const validateErrors = (
     latitude,
     is_online
   } = _data
-  const errors: any = {}
+  const errors: Partial<IContactFormErrorType> = {}
 
   if (isEmpty(email)) {
     errors.emailError = 'Please enter your email'
