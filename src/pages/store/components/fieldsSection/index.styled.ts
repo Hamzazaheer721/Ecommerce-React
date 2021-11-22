@@ -14,10 +14,21 @@ export const InputsContainer = styled.div`
   width: 100%;
   gap: 20px;
   flex-wrap: wrap;
+
+  @media ${device.mobile} {
+    flex-direction: column;
+  }
+
+  @media ${device.tiny} {
+    flex-direction: column;
+  }
 `
 export const SingleInputContainer = styled.div`
   border: none;
   outline: none;
+  width: 100%;
+`
+export const SingleInputWrapper = styled.div`
   width: 100%;
 `
 export const InputContainer = styled.div<{ single?: boolean }>`
@@ -56,17 +67,8 @@ export const CheckboxPlaceholder = styled.p`
     cursor: pointer;
   }
 `
-export const ButtonContainer = styled.div`
-  width: 100%;
-  text-align: center;
-  margin: 15px 0;
-  margin-top: -10px;
-
-  @media ${device.mobile} {
-    margin-top: -20px;
-  }
-
-  @media ${device.tiny} {
-    margin-top: -20px;
-  }
+export const ErrorContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 45%;
 `

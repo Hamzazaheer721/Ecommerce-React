@@ -11,7 +11,6 @@ const useUserProfileForm = () => {
   const [inputData, setInputData] = useState<IInputFormType>(
     IInputFormInitialValue
   )
-
   const dispatch = useDispatch()
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {

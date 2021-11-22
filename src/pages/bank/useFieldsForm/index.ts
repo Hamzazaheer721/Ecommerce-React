@@ -17,18 +17,6 @@ const useBankForm = () => {
     },
     [inputData]
   )
-  // const handlePhoneChange = useCallback(
-  //   (_val, _data) => {
-  //     console.info('phone data', _val)
-  //     const { dialCode } = _data
-  //     setInputData({
-  //       ...inputData,
-  //       acc_holder_mobile_number: `+${dialCode}${_val}`
-  //       // eslint-disable-next-line prefer-template
-  //     })
-  //   },
-  //   [inputData]
-  // )
 
   const handlePhoneChange = useCallback(
     (_val, _data) => {
