@@ -2,12 +2,15 @@ import { memo } from 'react'
 import { FieldsSectionContainer } from './index.styled'
 import ContactFields from './components/contactFields'
 import LocationFields from './components/locationFields'
+import ContactFormErrorProvider from '../../../../context/contactFormErrors.context'
 
 const LocationInputFields = memo(() => (
   <>
     <FieldsSectionContainer>
-      <LocationFields />
-      <ContactFields />
+      <ContactFormErrorProvider>
+        <LocationFields />
+        <ContactFields />
+      </ContactFormErrorProvider>
     </FieldsSectionContainer>
   </>
 ))

@@ -5,6 +5,5 @@ export const contactFormSlice = createSlice({
   name: 'contactForm',
   initialState: IContactFormInitialState,
   reducers: {},
-  extraReducers: {
-  }
+  extraReducers: {}
 })
