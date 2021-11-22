@@ -2,6 +2,7 @@ import { MouseEvent, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 // import { IContactFormDefaultErrorTypes } from './types'
 import { RootState } from '../../../redux/store'
+import { validateErrors } from './helper'
 import {
   IContactFormDefaultErrorTypes,
   IContactFormIsOnlineErrorTypes
@@ -18,7 +19,7 @@ const useContactFields = () => {
   )
 
   const geoState = useSelector((state: RootState) => state.currentGeoLocation)
-  const { location } = geoState
+  const { location: geoLocation } = geoState
 
   const handleSubmit = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
@@ -28,22 +29,31 @@ const useContactFields = () => {
         city,
         country,
         streetAddress: address,
-        postalCode: postal_code
+        postalCode: postal_code,
+        location,
+        area,
+        state
       } = locAddress
+
       const updatedData:
         | IContactFormDefaultErrorTypes
         | IContactFormIsOnlineErrorTypes = {
         purpose: 'contact',
-        city,
-        country,
+        is_online,
+        location,
         address,
         postal_code,
-        is_online,
-        longitude: location.mapPosition.lng,
-        latitude: location.mapPosition.lat,
+        area,
+        state,
+        city,
+        country,
+        longitude: geoLocation.mapPosition.lng,
+        latitude: geoLocation.mapPosition.lat,
         ...contactFieldsState
       }
       console.info('Updated data: ', updatedData)
+      const _errors = validateErrors(updatedData)
+      console.info('Errors :', _errors)
     },
     [locationFieldsState, contactFieldsState]
   )
