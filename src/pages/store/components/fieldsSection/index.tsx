@@ -67,7 +67,7 @@ const FieldsSection: FC = memo(() => {
             value={nameField && nameField.current?.value}
           />
         </SingleInputContainer>
-        {nameError ? <EmptyErrorState>{nameError}</EmptyErrorState> : ''}
+        {nameError && <EmptyErrorState>{nameError}</EmptyErrorState>}
       </SingleInputWrapper>
       <InputsContainer>
         <ErrorContainer>
@@ -82,11 +82,7 @@ const FieldsSection: FC = memo(() => {
               handlePhoneChange={handlePhoneChange}
             />
           </InputContainer>
-          {whatsappError ? (
-            <EmptyErrorState>{whatsappError}</EmptyErrorState>
-          ) : (
-            ''
-          )}
+          {whatsappError && <EmptyErrorState>{whatsappError}</EmptyErrorState>}
         </ErrorContainer>
         <ErrorContainer>
           <InputContainer>
@@ -100,10 +96,8 @@ const FieldsSection: FC = memo(() => {
               value={business_urlField && business_urlField.current?.value}
             />
           </InputContainer>
-          {business_urlError ? (
+          {business_urlError && (
             <EmptyErrorState>{business_urlError}</EmptyErrorState>
-          ) : (
-            ''
           )}
         </ErrorContainer>
       </InputsContainer>
@@ -119,11 +113,7 @@ const FieldsSection: FC = memo(() => {
               options={industryOptionsArray}
             />
           </InputContainer>
-          {industryError ? (
-            <EmptyErrorState>{industryError}</EmptyErrorState>
-          ) : (
-            ''
-          )}
+          {industryError && <EmptyErrorState>{industryError}</EmptyErrorState>}
         </ErrorContainer>
         <ErrorContainer>
           <InputContainer>
@@ -136,10 +126,8 @@ const FieldsSection: FC = memo(() => {
               options={industryTypeOptionsArray}
             />
           </InputContainer>
-          {industry_typeError ? (
+          {industry_typeError && (
             <EmptyErrorState>{industry_typeError}</EmptyErrorState>
-          ) : (
-            ''
           )}
         </ErrorContainer>
       </InputsContainer>
@@ -156,10 +144,8 @@ const FieldsSection: FC = memo(() => {
               value={descriptionField && descriptionField.current?.value}
             />
           </InputContainer>
-          {descriptionError ? (
+          {descriptionError && (
             <EmptyErrorState>{descriptionError}</EmptyErrorState>
-          ) : (
-            ''
           )}
         </SingleInputWrapper>
       </InputsContainer>

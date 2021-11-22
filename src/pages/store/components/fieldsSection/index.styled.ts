@@ -14,6 +14,14 @@ export const InputsContainer = styled.div`
   width: 100%;
   gap: 20px;
   flex-wrap: wrap;
+
+  @media ${device.mobile} {
+    flex-direction: column;
+  }
+
+  @media ${device.tiny} {
+    flex-direction: column;
+  }
 `
 export const SingleInputContainer = styled.div`
   border: none;
