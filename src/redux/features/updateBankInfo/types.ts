@@ -86,6 +86,7 @@ export type IUpdateBankInfoPayloadRtn = {
 
 export type IUpdateBankInfoPayloadArg = {
   payment_method: string
+  paypal_email: string
   bank_name: string
   iban_number: string
   acc_holder_name: string

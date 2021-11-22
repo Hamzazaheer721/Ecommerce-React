@@ -5,7 +5,7 @@ export type IGeoLocationLongLat = {
 }
 
 export type IGeoAddressObjStateType = {
-  address: Partial<IGeoAddressType>
+  address: IGeoAddressType
   is_online: boolean
 }
 

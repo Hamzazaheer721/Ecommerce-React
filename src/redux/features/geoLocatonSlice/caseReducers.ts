@@ -4,7 +4,7 @@ import {
 } from '../../../types/geoLocation/index'
 
 export const setGeoLocationCaseReducer : CaseReducer<
-  Partial<IGeoLocationLongLat>,
+  IGeoLocationLongLat,
   // eslint-disable-next-line no-undef
   PayloadAction<{ position: google.maps.LatLngLiteral, flag?: boolean}>
 > = (state, action) => {
