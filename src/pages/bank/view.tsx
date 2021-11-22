@@ -1,4 +1,4 @@
-import { memo, useContext, useRef } from 'react'
+import { memo, useContext, useRef, useState } from 'react'
 import {
   faCreditCard,
   faLandmark,
@@ -6,7 +6,8 @@ import {
   faMapMarkedAlt,
   faMobileAndroid,
   faGlobe,
-  faSave
+  faSave,
+  faEnvelope
 } from '@fortawesome/pro-light-svg-icons'
 import { faSwift } from '@fortawesome/free-brands-svg-icons'
 import { ThemeContext } from 'styled-components'
@@ -22,15 +23,19 @@ import Input from '../../components/input'
 import Select from '../../components/select'
 import ButtonComponent from '../../components/genericButton'
 import useFieldsForm from './useFieldsForm'
+import { optionsArray } from './helper'
 
 const ViewComponent = memo(() => {
   const { handleChange, handlePhoneChange, handleSubmit, inputData } =
     useFieldsForm()
   const bankNameField = useRef<HTMLInputElement>(null)
+  const paypalEmail = useRef<HTMLInputElement>(null)
   const ibannumberField = useRef<HTMLInputElement>(null)
   const accountholdernameField = useRef<HTMLInputElement>(null)
   const accountholderidField = useRef<HTMLInputElement>(null)
   const swiftcodeField = useRef<HTMLInputElement>(null)
+
+  const [selectedValue, setSelectedValue] = useState(undefined)
 
   const theme = useContext(ThemeContext)
   const { acc_holder_mobile_number } = inputData
@@ -40,9 +45,33 @@ const ViewComponent = memo(() => {
         <InputContainer>
           <InputsContainer>
             <InputContainer>
-              <Select prefix={faCreditCard} label="Payment Method" />
+              <Select
+                handleChange={(select) => {
+                  setSelectedValue(select)
+                  inputData.payment_method = select
+                }}
+                prefix={faCreditCard}
+                label="Payment Method"
+                options={optionsArray}
+              />
             </InputContainer>
           </InputsContainer>
+
+          {selectedValue === 'paypal' ? (
+            <InputContainer>
+              <Input
+                ref={paypalEmail}
+                name="paypal_email"
+                prefix={faEnvelope}
+                label="PayPal Email"
+                handleChange={handleChange}
+                value={paypalEmail && paypalEmail.current?.value}
+              />
+            </InputContainer>
+          ) : (
+            ''
+          )}
+
           <InputContainer>
             <Input
               ref={bankNameField}
