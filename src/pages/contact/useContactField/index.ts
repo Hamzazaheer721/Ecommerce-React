@@ -1,5 +1,6 @@
-import { MouseEvent, useCallback } from 'react'
+import { MouseEvent, useCallback, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { isObjectEmpty } from '../../../general/helper'
 // import { IContactFormDefaultErrorTypes } from './types'
 import { RootState } from '../../../redux/store'
 import { validateErrors } from './helper'
@@ -20,6 +21,10 @@ const useContactFields = () => {
 
   const geoState = useSelector((state: RootState) => state.currentGeoLocation)
   const { location: geoLocation } = geoState
+
+  const [errors, setErrors] = useState({})
+
+  const makeApiCall = useCallback(() => {}, [])
 
   const handleSubmit = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
@@ -52,12 +57,19 @@ const useContactFields = () => {
         ...contactFieldsState
       }
       const _errors = validateErrors(updatedData)
-      console.info('Errors :', _errors)
+      setErrors(_errors)
+      isObjectEmpty(_errors) && makeApiCall()
     },
-    [locationFieldsState, contactFieldsState]
+    [locationFieldsState, contactFieldsState, setErrors]
   )
 
-  return { handleSubmit, is_online, locationFieldsState, contactFieldsState }
+  return {
+    handleSubmit,
+    is_online,
+    locationFieldsState,
+    contactFieldsState,
+    errors
+  }
 }
 
 export default useContactFields
