@@ -29,27 +29,27 @@ export const validateErrors = (
   }
 
   if (!is_online) {
-    if (!location || isEmpty(location)) {
+    if (!location) {
       errors.locationError = 'Please enter your location'
     }
 
-    if (!address || isEmpty(address)) {
+    if (!address) {
       errors.addressError = 'Please enter your address'
     }
 
-    if (!area || isEmpty(area)) {
+    if (!area) {
       errors.areaError = 'Please enter your area'
     }
 
-    if (!city || isEmpty(city)) {
+    if (!city) {
       errors.cityError = 'Please enter your city'
     }
 
-    if (!state || isEmpty(state)) {
+    if (!state) {
       errors.stateError = 'Please enter your state'
     }
 
-    if (!country || isEmpty(country)) {
+    if (!country) {
       errors.countryError = 'Please enter your country'
     }
   }
