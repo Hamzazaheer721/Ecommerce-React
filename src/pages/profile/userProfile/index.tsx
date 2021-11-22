@@ -88,7 +88,6 @@ const UserProfile = memo(() => {
           <InputContainer>
             <Input
               label="WhatsApp Number"
-              store
               phonefield
               prefix={faWhatsapp}
               value={phone}
@@ -100,7 +99,9 @@ const UserProfile = memo(() => {
               name="password"
               prefix={faKey}
               typePassword
-              label="******"
+              value="******"
+              setInitialValue
+              _disabled
               grayed
               readOnly
             />
