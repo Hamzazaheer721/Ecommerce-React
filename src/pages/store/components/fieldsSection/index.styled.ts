@@ -56,17 +56,3 @@ export const CheckboxPlaceholder = styled.p`
     cursor: pointer;
   }
 `
-export const ButtonContainer = styled.div`
-  width: 100%;
-  text-align: center;
-  margin: 15px 0;
-  margin-top: -10px;
-
-  @media ${device.mobile} {
-    margin-top: -20px;
-  }
-
-  @media ${device.tiny} {
-    margin-top: -20px;
-  }
-`
