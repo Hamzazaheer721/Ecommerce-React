@@ -1,31 +1,46 @@
-import produce from 'immer'
 import { MouseEvent, useCallback } from 'react'
 import { useSelector } from 'react-redux'
+// import { IContactFormDefaultErrorTypes } from './types'
 import { RootState } from '../../../redux/store'
 
 const useContactFields = () => {
   const locationFieldsState = useSelector(
     (state: RootState) => state.currentAddressLocation
   )
-  const {is_online} = locationFieldsState;
+  const { is_online, address: locAddress } = locationFieldsState
 
   const contactFieldsState = useSelector(
     (state: RootState) => state.contactFields
   )
 
-  const handleSubmit = useCallback((e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault()
-    e.stopPropagation()
+  const geoState = useSelector((state: RootState) => state.currentGeoLocation)
+  const { location } = geoState
 
-    const _loc: typeof locationFieldsState = produce(locationFieldsState, (draft) => draft)
-    const _newLoc = {..._loc.address}
-    const _loc_data = {..._newLoc, is_online: _loc.is_online}
-    const _cont_data: typeof contactFieldsState = produce(contactFieldsState, (draft) => draft)
-    const _updatedData = {..._loc, ..._cont_data}
-
-    console.info('My data is ', _loc_data)
-    console.info('updated Data: ', _updatedData)
-  }, [])
+  const handleSubmit = useCallback(
+    (e: MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault()
+      e.stopPropagation()
+      const {
+        city,
+        country,
+        streetAddress: address,
+        postalCode: postal_code
+      } = locAddress
+      const updatedData = {
+        purpose: 'contact',
+        city,
+        country,
+        address,
+        postal_code,
+        is_online,
+        longitude: location!.mapPosition.lng,
+        latitude: location!.mapPosition.lat,
+        ...contactFieldsState
+      }
+      console.info('Updated data: ', updatedData)
+    },
+    [locationFieldsState, contactFieldsState]
+  )
 
   return { handleSubmit, is_online, locationFieldsState, contactFieldsState }
 }
