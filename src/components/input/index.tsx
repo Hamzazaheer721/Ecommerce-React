@@ -66,6 +66,7 @@ interface InputProps {
   handleSuffixClick?: (e: MouseEvent<SVGSVGElement>) => void
   handleSecondSuffixClick?: (e: MouseEvent<SVGSVGElement>) => void
   handleTextAreaChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void
+  _disabled: boolean
 }
 
 const Input = memo(
@@ -84,6 +85,7 @@ const Input = memo(
         suffixText,
         store,
         grayed,
+        _disabled,
         textArea,
         prefixText,
         autoComplete,
@@ -143,6 +145,7 @@ const Input = memo(
               readOnly={readOnly}
               {...props}
               name={name}
+              disabled={_disabled}
               onSelect={handleHack}
               prefixText={!!prefixText}
               // value={debounceValue ? _value : value}
