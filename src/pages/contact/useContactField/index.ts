@@ -1,13 +1,9 @@
 import { MouseEvent, useCallback, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { isObjectEmpty } from '../../../general/helper'
-// import { IContactFormDefaultErrorTypes } from './types'
 import { RootState } from '../../../redux/store'
+import { IContactFormType } from '../../../types/contact'
 import { validateErrors } from './helper'
-import {
-  IContactFormDefaultErrorTypes,
-  IContactFormIsOnlineErrorTypes
-} from './types'
 
 const useContactFields = () => {
   const locationFieldsState = useSelector(
@@ -24,7 +20,10 @@ const useContactFields = () => {
 
   const [errors, setErrors] = useState({})
 
-  const makeApiCall = useCallback(() => {}, [])
+  const makeApiCall = useCallback(() => {
+    // eslint-disable-next-line no-console
+    console.info(' SUCCESS ')
+  }, [])
 
   const handleSubmit = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
@@ -41,8 +40,7 @@ const useContactFields = () => {
       } = locAddress
 
       const updatedData:
-        | IContactFormDefaultErrorTypes
-        | IContactFormIsOnlineErrorTypes = {
+        IContactFormType = {
         purpose: 'contact',
         is_online,
         location,
@@ -60,7 +58,7 @@ const useContactFields = () => {
       setErrors(_errors)
       isObjectEmpty(_errors) && makeApiCall()
     },
-    [locationFieldsState, contactFieldsState, setErrors]
+    [locationFieldsState, contactFieldsState, errors]
   )
 
   return {

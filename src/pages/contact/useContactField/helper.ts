@@ -1,11 +1,8 @@
+import { IContactFormType } from '../../../types/contact/index';
 import { isEmpty } from '../../../general/validations'
-import {
-  IContactFormDefaultErrorTypes,
-  IContactFormIsOnlineErrorTypes
-} from './types'
 
 export const validateErrors = (
-  _data: IContactFormIsOnlineErrorTypes | IContactFormDefaultErrorTypes
+  _data: IContactFormType
 ) => {
   const {
     email,
@@ -16,16 +13,28 @@ export const validateErrors = (
     city,
     state,
     country,
+    longitude,
+    latitude,
     is_online
   } = _data
-
   const errors: any = {}
+
   if (isEmpty(email)) {
     errors.emailError = 'Please enter your email'
   }
 
   if (isEmpty(mobile_number)) {
     errors.mobileNumberError = 'Please enter your mobile number'
+  }
+
+  if (!String(longitude)) {
+    // eslint-disable-next-line no-console
+    console.error('LONGITUDE MISSNG!')
+  }
+
+  if (!String(latitude)) {
+    // eslint-disable-next-line no-console
+    console.error('LATITUDE MISSING')
   }
 
   if (!is_online) {
