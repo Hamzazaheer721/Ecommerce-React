@@ -58,6 +58,7 @@ export const CustomCheckBox = styled.input`
   border: 0.5px solid #4e98e2;
   border-radius: 3px;
 `
+
 export const CheckboxPlaceholder = styled.p`
   color: #606060;
   text-align: left;
