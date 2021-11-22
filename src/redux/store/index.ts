@@ -1,6 +1,6 @@
 /* eslint-disable implicit-arrow-linebreak */
 import { configureStore } from '@reduxjs/toolkit'
-import logger from 'redux-logger'
+// import logger from 'redux-logger'
 import storage from 'redux-persist/lib/storage'
 import {
   persistReducer,
@@ -28,7 +28,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
       }
-    }).concat(logger)
+    })
 })
 
 export type RootState = ReturnType<typeof store.getState>

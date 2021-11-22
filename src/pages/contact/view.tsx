@@ -7,7 +7,6 @@ import useContactFields from './useContactField'
 
 const ViewComponent = memo(() => {
   const { handleSubmit } = useContactFields()
-
   return (
     <>
       <Map />

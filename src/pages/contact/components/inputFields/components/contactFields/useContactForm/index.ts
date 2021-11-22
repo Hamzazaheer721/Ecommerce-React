@@ -28,6 +28,9 @@ const useContactForm = () => {
       if (str.includes(dialCode)) {
         str = str.replace(dialCode, '').trim()
       }
+      if (!_val) {
+        dispatch(setContactFields({ name: 'phone_number', value: '' }))
+      }
       if (str && `+${_val}` !== phone_number) {
         dispatch(setContactFields({ name: 'phone_number', value: `+${_val}` }))
       }
@@ -41,6 +44,9 @@ const useContactForm = () => {
       let str: string = _val
       if (str.includes(dialCode)) {
         str = str.replace(dialCode, '').trim()
+      }
+      if (!_val) {
+        dispatch(setContactFields({ name: 'mobile_number', value: '' }))
       }
       if (str && `+${_val}` !== mobile_number) {
         dispatch(setContactFields({ name: 'mobile_number', value: `+${_val}` }))

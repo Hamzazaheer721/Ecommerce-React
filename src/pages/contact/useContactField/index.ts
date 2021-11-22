@@ -1,13 +1,18 @@
-import { MouseEvent, useCallback } from 'react'
+import { MouseEvent, useCallback, useContext } from 'react'
 import { useSelector } from 'react-redux'
-// import { IContactFormDefaultErrorTypes } from './types'
-import { RootState } from '../../../redux/store'
 import {
-  IContactFormDefaultErrorTypes,
-  IContactFormIsOnlineErrorTypes
-} from './types'
+  setContactFormErrors,
+  ContactFormErrorDispatchContext
+} from '../../../context/contactFormErrors.context'
+import { isObjectEmpty } from '../../../general/helper'
+import { RootState } from '../../../redux/store'
+import { IContactFormType } from '../../../types/contact'
+import { validateErrors } from './helper'
+import { IContactFormErrorType } from './types'
 
 const useContactFields = () => {
+  const dispatch = useContext(ContactFormErrorDispatchContext)
+
   const locationFieldsState = useSelector(
     (state: RootState) => state.currentAddressLocation
   )
@@ -18,7 +23,12 @@ const useContactFields = () => {
   )
 
   const geoState = useSelector((state: RootState) => state.currentGeoLocation)
-  const { location } = geoState
+  const { location: geoLocation } = geoState
+
+  const makeApiCall = useCallback(() => {
+    // eslint-disable-next-line no-console
+    console.info(' SUCCESS ')
+  }, [])
 
   const handleSubmit = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
@@ -28,27 +38,40 @@ const useContactFields = () => {
         city,
         country,
         streetAddress: address,
-        postalCode: postal_code
+        postalCode: postal_code,
+        location,
+        area,
+        state
       } = locAddress
-      const updatedData:
-        | IContactFormDefaultErrorTypes
-        | IContactFormIsOnlineErrorTypes = {
+
+      const updatedData: IContactFormType = {
         purpose: 'contact',
-        city,
-        country,
+        is_online,
+        location,
         address,
         postal_code,
-        is_online,
-        longitude: location.mapPosition.lng,
-        latitude: location.mapPosition.lat,
+        area,
+        state,
+        city,
+        country,
+        longitude: geoLocation.mapPosition.lng,
+        latitude: geoLocation.mapPosition.lat,
         ...contactFieldsState
       }
-      console.info('Updated data: ', updatedData)
+      const _errors: Partial<IContactFormErrorType> =
+        validateErrors(updatedData)
+      setContactFormErrors(dispatch, _errors)
+      isObjectEmpty(_errors) && makeApiCall()
     },
     [locationFieldsState, contactFieldsState]
   )
 
-  return { handleSubmit, is_online, locationFieldsState, contactFieldsState }
+  return {
+    handleSubmit,
+    is_online,
+    locationFieldsState,
+    contactFieldsState
+  }
 }
 
 export default useContactFields
