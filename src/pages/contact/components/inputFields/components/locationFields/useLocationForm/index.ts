@@ -1,7 +1,15 @@
-import { ChangeEvent, MouseEvent, useCallback, useEffect, useRef } from 'react'
+import {
+  ChangeEvent,
+  MouseEvent,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef
+} from 'react'
 import { usePlacesWidget } from 'react-google-autocomplete'
 import { useDispatch, useSelector } from 'react-redux'
 import { CheckboxChangeEvent } from 'antd/lib/checkbox'
+import { ContactFormErrorStateContext } from '../../../../../../../context/contactFormErrors.context'
 import { IGeoAddressType } from '../../../../../../../types/geoLocation/index'
 import { GOOGLE_MAP_API_KEY } from '../../../../../../../config/constants'
 import { setGeoLocationState } from '../../../../../../../redux/features/geoLocatonSlice'
@@ -10,6 +18,15 @@ import { setGeoAddressState } from '../../../../../../../redux/features/geoAddre
 import useCurrentPosition from '../../../../../../../general/hooks/useCurrentPosition'
 
 const useLocationForm = () => {
+  const {
+    locationError,
+    addressError,
+    areaError,
+    cityError,
+    stateError,
+    countryError
+  } = useContext(ContactFormErrorStateContext)
+
   const dispatch = useDispatch()
   const locationState = useSelector(
     (state: RootState) => state.currentAddressLocation
@@ -97,6 +114,12 @@ const useLocationForm = () => {
 
   return {
     is_online,
+    cityError,
+    areaError,
+    stateError,
+    countryError,
+    addressError,
+    locationError,
     handleSuffixClick,
     handleAddressChange,
     handleContactChange,
