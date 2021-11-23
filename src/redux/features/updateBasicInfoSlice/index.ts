@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { initialState } from './helper'
 import { updateBasicInfo } from './apiActions'
 
-export const updateBankInfoSlice = createSlice({
+export const updateBasicInfoSlice = createSlice({
   name: 'updateBasicInfo',
   initialState,
   reducers: {},

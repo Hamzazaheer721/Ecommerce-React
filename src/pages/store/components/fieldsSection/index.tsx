@@ -49,8 +49,8 @@ const FieldsSection: FC = memo(() => {
     industry_typeError,
     descriptionError
   } = errors
+  const { whatsapp } = inputData
   const nameField = useRef<HTMLInputElement>(null)
-  const whatsappField = useRef<HTMLInputElement>(null)
   const business_urlField = useRef<HTMLInputElement>(null)
   const descriptionField = useRef<HTMLInputElement>(null)
 
@@ -73,12 +73,10 @@ const FieldsSection: FC = memo(() => {
         <ErrorContainer>
           <InputContainer>
             <Input
-              ref={whatsappField}
-              name="whatsapp"
+              value={whatsapp}
               label="WhatsApp Number"
               phonefield
               prefix={faWhatsapp}
-              store
               handlePhoneChange={handlePhoneChange}
             />
           </InputContainer>
@@ -105,6 +103,7 @@ const FieldsSection: FC = memo(() => {
         <ErrorContainer>
           <InputContainer>
             <Select
+              autoDefaultValue={industryOptionsArray[0].value}
               handleChange={(select) => {
                 inputData.industry = select
               }}
@@ -118,6 +117,7 @@ const FieldsSection: FC = memo(() => {
         <ErrorContainer>
           <InputContainer>
             <Select
+              autoDefaultValue={industryTypeOptionsArray[0].value}
               handleChange={(select) => {
                 inputData.industry_type = select
               }}

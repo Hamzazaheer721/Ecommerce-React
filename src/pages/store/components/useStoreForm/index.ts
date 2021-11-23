@@ -1,10 +1,18 @@
-import { useState, useCallback, ChangeEvent, MouseEvent } from 'react'
-import { useDispatch } from 'react-redux'
+import {
+  useState,
+  useCallback,
+  ChangeEvent,
+  MouseEvent,
+  useEffect
+} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { IInputFormInitialValue, validateInputForm } from './helper'
 import { IInputFormType } from './types'
 import { updateBasicInfo } from '../../../../redux/features/updateBasicInfoSlice/apiActions'
 import { IStoreProfileErrorType } from '../../../../types/businessProfileStore'
 import { isObjectEmpty } from '../../../../general/helper'
+import { RootState } from '../../../../redux/store'
+import { openModal } from '../../../../redux/features/modalSlice'
 
 const useStoreForm = () => {
   const dispatch = useDispatch()
@@ -13,6 +21,22 @@ const useStoreForm = () => {
     IInputFormInitialValue
   )
   const [errors, setErrors] = useState<IStoreProfileErrorType>({})
+  const basicInfoState = useSelector(
+    (state: RootState) => state.updateBasicInfo
+  )
+  const { message: basicInfoStateMessage, success: basicInfoStateSuccess } =
+    basicInfoState
+
+  useEffect(() => {
+    basicInfoStateMessage &&
+      basicInfoStateSuccess &&
+      dispatch(
+        openModal({
+          modalType: 'success',
+          description: basicInfoStateMessage
+        })
+      )
+  }, [basicInfoState])
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -51,6 +75,7 @@ const useStoreForm = () => {
   const handleSubmit = useCallback(
     async (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
+      setErrors({})
       const validateErrors = validateInputForm(inputData)
       setErrors(validateErrors)
       isObjectEmpty(validateErrors)

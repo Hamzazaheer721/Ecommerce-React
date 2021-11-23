@@ -46,8 +46,8 @@ export const validatePassword = (pass: string) => {
 
 // validate Domain
 export const validateDomain = (domain: string) => {
-  // const re = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/;
-  const re = /^[a-zA-Z0-9]{3,20}$/
+  const re = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/
+  // const re = /^[a-zA-Z0-9]{3,20}$/
   return re.test(domain)
 }
 

@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux';
-import { contactFieldSlice } from '../features/contactFieldsSlice/index';
+import { combineReducers } from 'redux'
+import { contactFieldSlice } from '../features/contactFieldsSlice/index'
 import { currentGeoLocationSlice } from '../features/geoLocatonSlice/index'
 import { userSignupSlice } from '../features/userSignupSlice'
 import { userSigninSlice } from '../features/userSigninSlice/index'
@@ -12,6 +12,7 @@ import { updateUserProfileSlice } from '../features/updateUserProfileSlice/index
 import { geoAddressSlice } from '../features/geoAddressSlice'
 import { updateBankInfoSlice } from '../features/updateBankInfo'
 import { deactivateUserSlice } from '../features/deactivateUserSlice'
+import { updateBasicInfoSlice } from '../features/updateBasicInfoSlice'
 
 export const reducers = combineReducers({
   user: userSigninSlice.reducer,
@@ -26,5 +27,6 @@ export const reducers = combineReducers({
   currentAddressLocation: geoAddressSlice.reducer,
   updateBankInfo: updateBankInfoSlice.reducer,
   deactivateUser: deactivateUserSlice.reducer,
-  contactFields: contactFieldSlice.reducer
+  contactFields: contactFieldSlice.reducer,
+  updateBasicInfo: updateBasicInfoSlice.reducer
 })
