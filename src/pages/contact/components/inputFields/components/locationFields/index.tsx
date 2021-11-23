@@ -40,7 +40,8 @@ const LocationFields: FC = memo(() => {
     stateError,
     countryError,
     locationError,
-    addressError
+    addressError,
+    postalCodeError
   } = useLocationForm()
 
   return (
@@ -95,6 +96,11 @@ const LocationFields: FC = memo(() => {
             debounceValue={3000}
             grayed={is_online}
           />
+          {postalCodeError && (
+            <EmptyErrorState lessenLineHeight="1">
+              {postalCodeError}
+            </EmptyErrorState>
+          )}
         </InputContainer>
         <InputContainer withError>
           <Input
