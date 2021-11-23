@@ -33,7 +33,7 @@ const useBankForm = () => {
       description: bankInfoStateMessage
     }
     notification.error(config)
-  }, [])
+  }, [bankInfoStateMessage])
 
   useEffect(() => {
     if (bankInfoStateSuccess && bankInfoStateMessage) {

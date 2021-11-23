@@ -34,12 +34,12 @@ export const validateInputForm = (
 
   if (isEmpty(payment_method)) {
     errors.payment_method = 'Please choose your payment method'
-  }
-
-  if (isEmpty(paypal_email)) {
-    errors.paypal_email = 'Please enter your paypal Email'
-  } else if (!isEmail(paypal_email)) {
-    errors.paypal_email = 'Please enter a valid Email'
+  } else if (payment_method === 'paypal') {
+    if (isEmpty(paypal_email)) {
+      errors.paypal_email = 'Please enter your paypal Email'
+    } else if (!isEmail(paypal_email)) {
+      errors.paypal_email = 'Please enter a valid Email'
+    }
   }
 
   if (isEmpty(bank_name)) {
