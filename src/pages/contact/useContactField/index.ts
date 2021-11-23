@@ -41,7 +41,7 @@ const useContactFields = () => {
       description: contactFormMessage
     }
     notification.error(config)
-  }, [])
+  }, [contactFormMessage])
 
   const _resetContactFormState = useCallback(() => {
     dispatch(resetContactForm())

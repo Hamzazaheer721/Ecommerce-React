@@ -12,6 +12,7 @@ export const Container = styled.div`
     border: none;
     margin: 18px;
     box-shadow: 0px 3px 5px #0000001a;
+    border-radius: 8px;
   }
 
   .ant-collapse-content {
