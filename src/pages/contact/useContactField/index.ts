@@ -1,18 +1,20 @@
 import { MouseEvent, useCallback, useContext } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   setContactFormErrors,
   ContactFormErrorDispatchContext
 } from '../../../context/contactFormErrors.context'
 import { isObjectEmpty } from '../../../general/helper'
+import { saveContactFormData } from '../../../redux/features/apiCallFeatures/contactFormSlice/apiActions'
 import { RootState } from '../../../redux/store'
 import { IContactFormType } from '../../../types/contact'
 import { validateErrors } from './helper'
 import { IContactFormErrorType } from './types'
 
 const useContactFields = () => {
-  const dispatch = useContext(ContactFormErrorDispatchContext)
+  const dispatchContext = useContext(ContactFormErrorDispatchContext)
 
+  const dispatch = useDispatch()
   const locationFieldsState = useSelector(
     (state: RootState) => state.currentAddressLocation
   )
@@ -25,9 +27,8 @@ const useContactFields = () => {
   const geoState = useSelector((state: RootState) => state.currentGeoLocation)
   const { location: geoLocation } = geoState
 
-  const makeApiCall = useCallback(() => {
-    // eslint-disable-next-line no-console
-    console.info(' SUCCESS ')
+  const makeApiCall = useCallback((_data: IContactFormType) => {
+    dispatch(saveContactFormData(_data))
   }, [])
 
   const handleSubmit = useCallback(
@@ -60,8 +61,8 @@ const useContactFields = () => {
       }
       const _errors: Partial<IContactFormErrorType> =
         validateErrors(updatedData)
-      setContactFormErrors(dispatch, _errors)
-      isObjectEmpty(_errors) && makeApiCall()
+      setContactFormErrors(dispatchContext, _errors)
+      isObjectEmpty(_errors) && makeApiCall(updatedData)
     },
     [locationFieldsState, contactFieldsState]
   )
