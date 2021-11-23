@@ -1,4 +1,5 @@
-import { MouseEvent, useCallback, useContext } from 'react'
+import { notification } from 'antd'
+import { MouseEvent, useCallback, useContext, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   setContactFormErrors,
@@ -6,8 +7,10 @@ import {
 } from '../../../context/contactFormErrors.context'
 import { isObjectEmpty } from '../../../general/helper'
 import { saveContactFormData } from '../../../redux/features/apiCallFeatures/contactFormSlice/apiActions'
+import { openModal } from '../../../redux/features/modalSlice'
 import { RootState } from '../../../redux/store'
 import { IContactFormType } from '../../../types/contact'
+import { ArgsProps } from '../../../types/notification/types'
 import { validateErrors } from './helper'
 import { IContactFormErrorType } from './types'
 
@@ -26,6 +29,32 @@ const useContactFields = () => {
 
   const geoState = useSelector((state: RootState) => state.currentGeoLocation)
   const { location: geoLocation } = geoState
+
+  const contactFormState = useSelector((state: RootState) => state.contactForm)
+  const { success: contactFormSuccess, message: contactFormMessage } =
+    contactFormState
+
+  const openNotification = useCallback(() => {
+    const config: ArgsProps = {
+      message: 'Error',
+      description: contactFormMessage
+    }
+    notification.error(config)
+  }, [])
+
+  useEffect(() => {
+    if (contactFormSuccess && contactFormMessage) {
+      dispatch(
+        openModal({
+          modalType: 'success',
+          description: contactFormMessage
+        })
+      )
+    }
+    if (!contactFormSuccess && contactFormMessage) {
+      openNotification()
+    }
+  }, [contactFormSuccess, contactFormMessage])
 
   const makeApiCall = useCallback((_data: IContactFormType) => {
     dispatch(saveContactFormData(_data))
