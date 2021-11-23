@@ -35,7 +35,12 @@ const LocationFields: FC = memo(() => {
     postalCode,
     autoCompleteRef,
     is_online,
-    areaError
+    areaError,
+    cityError,
+    stateError,
+    countryError,
+    locationError,
+    addressError
   } = useLocationForm()
 
   return (
@@ -57,6 +62,11 @@ const LocationFields: FC = memo(() => {
           debounceValue={3000}
           grayed={is_online}
         />
+        {locationError && (
+          <EmptyErrorState lessenLineHeight="1">
+            {locationError}
+          </EmptyErrorState>
+        )}
       </SingleInputContainer>
       <SingleInputContainer>
         <Input
@@ -69,6 +79,9 @@ const LocationFields: FC = memo(() => {
           debounceValue={3000}
           grayed={is_online}
         />
+        {addressError && (
+          <EmptyErrorState lessenLineHeight="1">{addressError}</EmptyErrorState>
+        )}
       </SingleInputContainer>
       <InputsContainer>
         <InputContainer withError>
@@ -100,7 +113,7 @@ const LocationFields: FC = memo(() => {
         </InputContainer>
       </InputsContainer>
       <InputsContainer>
-        <InputContainer>
+        <InputContainer withError>
           <Input
             prefix={faBuilding}
             label="City"
@@ -111,8 +124,11 @@ const LocationFields: FC = memo(() => {
             debounceValue={3000}
             grayed={is_online}
           />
+          {cityError && (
+            <EmptyErrorState lessenLineHeight="1">{cityError}</EmptyErrorState>
+          )}
         </InputContainer>
-        <InputContainer>
+        <InputContainer withError>
           <Input
             prefix={faCity}
             label="State"
@@ -123,6 +139,9 @@ const LocationFields: FC = memo(() => {
             debounceValue={3000}
             grayed={is_online}
           />
+          {stateError && (
+            <EmptyErrorState lessenLineHeight="1">{stateError}</EmptyErrorState>
+          )}
         </InputContainer>
       </InputsContainer>
       <SingleInputContainer>
@@ -136,6 +155,9 @@ const LocationFields: FC = memo(() => {
           debounceValue={3000}
           grayed={is_online}
         />
+        {countryError && (
+          <EmptyErrorState lessenLineHeight="1">{countryError}</EmptyErrorState>
+        )}
       </SingleInputContainer>
       <Checkbox
         handleChange={handleContactChange}
