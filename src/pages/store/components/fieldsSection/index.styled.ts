@@ -52,19 +52,24 @@ export const CheckboxContainer = styled.div`
   display: flex;
 `
 
-export const CustomCheckBox = styled.input`
-  margin: 2.5px;
-  box-shadow: 0px 3px 6px #00000029;
-  border: 0.5px solid #4e98e2;
-  border-radius: 3px;
-`
 export const CheckboxPlaceholder = styled.p`
   color: black;
   padding-left: 6px;
   font-size: 12px;
+  transform: translateY(12%) !important;
+
   span {
     color: ${(props) => props.theme.color.primary};
     cursor: pointer;
+  }
+
+  @media ${device.mobile} {
+    transform: translateY(1%) !important;
+    line-height: 14px;
+  }
+
+  @media ${device.tiny} {
+    flex: 1 1 100%;
   }
 `
 export const ErrorContainer = styled.div`

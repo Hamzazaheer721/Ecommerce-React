@@ -17,7 +17,6 @@ import {
   InputsContainer,
   SingleInputContainer,
   CheckboxContainer,
-  CustomCheckBox,
   CheckboxPlaceholder,
   ErrorContainer,
   SingleInputWrapper
@@ -28,6 +27,7 @@ import useStoreForm from '../useStoreForm'
 import { industryTypeOptionsArray, industryOptionsArray } from './helper'
 import { ButtonLayout, ButtonContainer } from '../../../../styles/global'
 import { EmptyErrorState } from '../../../../styles/typography'
+import Checkbox from '../../../../components/checkbox'
 
 const FieldsSection: FC = memo(() => {
   const theme = useContext(ThemeContext)
@@ -38,7 +38,8 @@ const FieldsSection: FC = memo(() => {
     handlePhoneChange,
     handleSubmit,
     handleTextAreaChange,
-    errors
+    errors,
+    handleCheckChange
   } = useStoreForm()
 
   const {
@@ -157,11 +158,13 @@ const FieldsSection: FC = memo(() => {
       <InputsContainer>
         <InputContainer>
           <CheckboxContainer>
-            <CustomCheckBox
-              type="checkbox"
+            <Checkbox
+              width="16px"
+              height="16px"
               name="remember"
-              // onChange={handleChange}
+              handleChange={handleCheckChange}
             />
+
             <CheckboxPlaceholder>
               I`ve read and understod the
               <span> Terms & Conditions </span>
