@@ -9,6 +9,7 @@ import {
 import { SingleInputContainer } from '../../index.styled'
 import Input from '../../../../../../components/input'
 import useContactForm from './useContactForm'
+import { EmptyErrorState } from '../../../../../../styles/typography'
 
 const ContactFields: FC = memo(() => {
   const {
@@ -19,7 +20,9 @@ const ContactFields: FC = memo(() => {
     mobile_number,
     ntn_num,
     phone_number,
-    website
+    website,
+    mobileNumberError,
+    emailError
   } = useContactForm()
   return (
     <>
@@ -40,6 +43,11 @@ const ContactFields: FC = memo(() => {
           value={mobile_number}
           handlePhoneChange={handleMobileChange}
         />
+        {mobileNumberError && (
+          <EmptyErrorState lessenLineHeight="1">
+            {mobileNumberError}
+          </EmptyErrorState>
+        )}
       </SingleInputContainer>
       <SingleInputContainer>
         <Input
@@ -50,6 +58,9 @@ const ContactFields: FC = memo(() => {
           debounceValue={2000}
           handleChange={handleChange}
         />
+        {emailError && (
+          <EmptyErrorState lessenLineHeight="1">{emailError}</EmptyErrorState>
+        )}
       </SingleInputContainer>
       <SingleInputContainer>
         <Input

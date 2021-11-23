@@ -1,4 +1,5 @@
 /* eslint-disable no-useless-escape */
+
 // empty check
 export const isEmpty = (value: string) => {
   if (!value) return true
@@ -32,8 +33,8 @@ export const validateActivationCode = (code: string) => {
 
 // phone number check
 export const validatePhoneNumber = (phone_number: string) => {
-  const re = /^[a-zA-Z0-9\-().\s]{7,15}$/
-  return re.test(phone_number)
+  const re = /^[0-9\-()+.\s]{7,15}$/
+  return re.test(phone_number.trim())
 }
 
 // password check
@@ -46,12 +47,12 @@ export const validatePassword = (pass: string) => {
 // validate Domain
 export const validateDomain = (domain: string) => {
   const re = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/
-  // const re = /^[a-zA-Z0-9]{3,20}$/;
+  // const re = /^[a-zA-Z0-9]{3,20}$/
   return re.test(domain)
 }
 
-export const doesDigitExist = (_val: string) => {
-  const re = /^(?=(.*\d){1})$/
+export const validatePostalCode = (_val: string) => {
+  const re = /^(?=(.*\d){5,10})$/
   return re.test(_val)
 }
 
@@ -68,4 +69,9 @@ export const doesSmallLetterExist = (_val: string) => {
 export const doesSpecialCharacterExist = (_val: string) => {
   const re = /^(?=(.*[!@#$%^&*]){1})$/
   return re.test(_val)
+}
+
+export const validateAlphabets = (name: string) => {
+  const re = /^[a-z A-Z]{3,20}$/
+  return re.test(name)
 }

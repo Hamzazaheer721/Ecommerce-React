@@ -13,13 +13,14 @@ interface ISelectProps {
   prefix?: IconProp
   label?: string
   options?: any
+  autoDefaultValue?: string
 }
 const Select: FC<ISelectProps> = memo(
-  ({ prefix, handleChange, label, options }) => {
+  ({ prefix, handleChange, label, options, autoDefaultValue }) => {
     const { Option } = SelectField
     return (
       <SelectContainer>
-        <SelectField onChange={handleChange}>
+        <SelectField defaultValue={autoDefaultValue} onChange={handleChange}>
           {options?.map((option: any) => (
             <Option key={option.value} value={option.value}>
               {option.label}

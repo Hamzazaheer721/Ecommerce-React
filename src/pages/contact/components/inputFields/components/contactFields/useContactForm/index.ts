@@ -1,12 +1,14 @@
-import { ChangeEvent, useCallback } from 'react'
+import { ChangeEvent, useCallback, useContext } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { ContactFormErrorStateContext } from '../../../../../../../context/contactFormErrors.context';
 import { setContactFields } from '../../../../../../../redux/features/contactFieldsSlice'
 import { IContactType } from '../../../../../../../redux/features/contactFieldsSlice/types'
 import { RootState } from '../../../../../../../redux/store/index'
 
 const useContactForm = () => {
-  const dispatch = useDispatch()
+  const {mobileNumberError, emailError} = useContext(ContactFormErrorStateContext)
 
+  const dispatch = useDispatch()
   const contactFieldsState = useSelector(
     (state: RootState) => state.contactFields
   )
@@ -63,7 +65,9 @@ const useContactForm = () => {
     phone_number,
     mobile_number,
     ntn_num,
-    website
+    website,
+    emailError,
+    mobileNumberError
   }
 }
 

@@ -103,6 +103,7 @@ const FieldsSection: FC = memo(() => {
         <ErrorContainer>
           <InputContainer>
             <Select
+              autoDefaultValue={industryOptionsArray[0].value}
               handleChange={(select) => {
                 inputData.industry = select
               }}
@@ -116,6 +117,7 @@ const FieldsSection: FC = memo(() => {
         <ErrorContainer>
           <InputContainer>
             <Select
+              autoDefaultValue={industryTypeOptionsArray[0].value}
               handleChange={(select) => {
                 inputData.industry_type = select
               }}

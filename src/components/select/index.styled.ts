@@ -25,7 +25,7 @@ export const Label = styled.p`
 `
 
 export const SelectContainer = styled.div`
-  height: 100%;
+  height: 47px;
   width: 100%;
   position: relative;
   border: ${(props) => props.theme.borderColor.gray};
@@ -33,7 +33,7 @@ export const SelectContainer = styled.div`
   border-radius: 8px;
   transition: 0.4s;
   padding: 3.4px;
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
 
   p {
     top: 0;

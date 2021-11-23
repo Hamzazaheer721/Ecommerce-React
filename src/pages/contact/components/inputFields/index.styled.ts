@@ -9,6 +9,7 @@ export const FieldsSectionContainer = styled.div`
   margin-top: 15px;
   gap: 20px;
 `
+
 export const SingleInputContainer = styled.div`
   border: none;
   outline: none;
@@ -58,6 +59,7 @@ export const CustomCheckBox = styled.input`
   border: 0.5px solid #4e98e2;
   border-radius: 3px;
 `
+
 export const CheckboxPlaceholder = styled.p`
   color: #606060;
   text-align: left;

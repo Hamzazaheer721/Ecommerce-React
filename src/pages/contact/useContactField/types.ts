@@ -7,4 +7,5 @@ export type IContactFormErrorType = {
   cityError: string
   stateError: string
   countryError: string
+  postalCodeError: string
 }
