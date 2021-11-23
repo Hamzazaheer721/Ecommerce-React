@@ -24,7 +24,8 @@ const useLocationForm = () => {
     areaError,
     cityError,
     stateError,
-    countryError
+    countryError,
+    postalCodeError
   } = useContext(ContactFormErrorStateContext)
 
   const dispatch = useDispatch()
@@ -120,6 +121,7 @@ const useLocationForm = () => {
     countryError,
     addressError,
     locationError,
+    postalCodeError,
     handleSuffixClick,
     handleAddressChange,
     handleContactChange,

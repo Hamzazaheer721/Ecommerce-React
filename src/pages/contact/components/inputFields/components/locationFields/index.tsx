@@ -40,7 +40,8 @@ const LocationFields: FC = memo(() => {
     stateError,
     countryError,
     locationError,
-    addressError
+    addressError,
+    postalCodeError
   } = useLocationForm()
 
   return (
@@ -59,10 +60,10 @@ const LocationFields: FC = memo(() => {
           handleSecondSuffixClick={handleSecondSuffixClick}
           handleSuffixClick={handleSuffixClick}
           setInitialValue
-          debounceValue={3000}
+          debounceValue={1000}
           grayed={is_online}
         />
-        {locationError && (
+        {!is_online && locationError && (
           <EmptyErrorState lessenLineHeight="1">
             {locationError}
           </EmptyErrorState>
@@ -76,10 +77,10 @@ const LocationFields: FC = memo(() => {
           value={streetAddress}
           handleChange={handleAddressChange}
           setInitialValue
-          debounceValue={3000}
+          debounceValue={1000}
           grayed={is_online}
         />
-        {addressError && (
+        {!is_online && addressError && (
           <EmptyErrorState lessenLineHeight="1">{addressError}</EmptyErrorState>
         )}
       </SingleInputContainer>
@@ -92,9 +93,14 @@ const LocationFields: FC = memo(() => {
             value={postalCode}
             handleChange={handleAddressChange}
             setInitialValue
-            debounceValue={3000}
+            debounceValue={1000}
             grayed={is_online}
           />
+          {postalCodeError && (
+            <EmptyErrorState lessenLineHeight="1">
+              {postalCodeError}
+            </EmptyErrorState>
+          )}
         </InputContainer>
         <InputContainer withError>
           <Input
@@ -104,10 +110,10 @@ const LocationFields: FC = memo(() => {
             value={area}
             handleChange={handleAddressChange}
             setInitialValue
-            debounceValue={3000}
+            debounceValue={1000}
             grayed={is_online}
           />
-          {areaError && (
+          {!is_online && areaError && (
             <EmptyErrorState lessenLineHeight="1">{areaError}</EmptyErrorState>
           )}
         </InputContainer>
@@ -121,10 +127,10 @@ const LocationFields: FC = memo(() => {
             value={city}
             handleChange={handleAddressChange}
             setInitialValue
-            debounceValue={3000}
+            debounceValue={1000}
             grayed={is_online}
           />
-          {cityError && (
+          {!is_online && cityError && (
             <EmptyErrorState lessenLineHeight="1">{cityError}</EmptyErrorState>
           )}
         </InputContainer>
@@ -136,10 +142,10 @@ const LocationFields: FC = memo(() => {
             value={state}
             handleChange={handleAddressChange}
             setInitialValue
-            debounceValue={3000}
+            debounceValue={1000}
             grayed={is_online}
           />
-          {stateError && (
+          {!is_online && stateError && (
             <EmptyErrorState lessenLineHeight="1">{stateError}</EmptyErrorState>
           )}
         </InputContainer>
@@ -152,10 +158,10 @@ const LocationFields: FC = memo(() => {
           value={country}
           handleChange={handleAddressChange}
           setInitialValue
-          debounceValue={3000}
+          debounceValue={1000}
           grayed={is_online}
         />
-        {countryError && (
+        {!is_online && countryError && (
           <EmptyErrorState lessenLineHeight="1">{countryError}</EmptyErrorState>
         )}
       </SingleInputContainer>

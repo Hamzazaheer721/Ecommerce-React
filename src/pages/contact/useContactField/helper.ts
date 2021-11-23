@@ -66,8 +66,6 @@ export const validateErrors = (
 
     if (!area) {
       errors.areaError = 'Please enter your area'
-    } else if (!validateAlphabets(area)) {
-      errors.areaError = 'Please enter a valid area'
     }
 
     if (!city) {
