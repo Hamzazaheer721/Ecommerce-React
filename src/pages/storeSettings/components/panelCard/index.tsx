@@ -13,6 +13,7 @@ interface IPanelCardProps {
 }
 
 const PanelCard: FC<IPanelCardProps> = memo(({ title, grayColor }) => {
+  // eslint-disable-next-line no-console
   console.info('hey')
   return (
     <PanelCardContainer $grayColor={!!grayColor}>
