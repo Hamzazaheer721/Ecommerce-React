@@ -55,7 +55,7 @@ const ContactFields: FC = memo(() => {
           prefix={faEnvelope}
           value={email}
           name="email"
-          debounceValue={2000}
+          debounceValue={1500}
           handleChange={handleChange}
         />
         {emailError && (
@@ -68,7 +68,7 @@ const ContactFields: FC = memo(() => {
           prefix={faBrowser}
           name="website"
           value={website}
-          debounceValue={2000}
+          debounceValue={1500}
           handleChange={handleChange}
         />
       </SingleInputContainer>
@@ -78,7 +78,7 @@ const ContactFields: FC = memo(() => {
           prefix={faClipboardList}
           name="ntn_num"
           value={ntn_num}
-          debounceValue={2000}
+          debounceValue={1500}
           handleChange={handleChange}
         />
       </SingleInputContainer>
