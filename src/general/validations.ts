@@ -78,6 +78,6 @@ export const validateAlphabets = (name: string) => {
 
 // IBAN check
 export const validateIban = (iban: string) => {
-  const re = /^[a-z A-Z]{5,34}$/
+  const re = /^[0-9a-zA-Z]{5,34}$/
   return re.test(iban)
 }
