@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Title } from './components/header/index.styled'
+import { Title } from './components/panelHeader/index.styled'
 
 export const Container = styled.div`
   .ant-collapse > .ant-collapse-item > .ant-collapse-header {

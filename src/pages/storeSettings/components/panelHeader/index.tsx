@@ -8,11 +8,11 @@ interface IHeaderProps {
   title: string
 }
 
-const Header: FC<IHeaderProps> = memo(({ icon, title }: IHeaderProps) => (
+const PanelHeader: FC<IHeaderProps> = memo(({ icon, title }: IHeaderProps) => (
   <HeaderContainer>
     <FontAwesomeIcon icon={icon} />
     <Title>{title}</Title>
   </HeaderContainer>
 ))
 
-export default Header
+export default PanelHeader
