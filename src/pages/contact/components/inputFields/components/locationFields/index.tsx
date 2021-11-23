@@ -60,7 +60,7 @@ const LocationFields: FC = memo(() => {
           handleSecondSuffixClick={handleSecondSuffixClick}
           handleSuffixClick={handleSuffixClick}
           setInitialValue
-          debounceValue={3000}
+          debounceValue={1000}
           grayed={is_online}
         />
         {!is_online && locationError && (
@@ -77,7 +77,7 @@ const LocationFields: FC = memo(() => {
           value={streetAddress}
           handleChange={handleAddressChange}
           setInitialValue
-          debounceValue={3000}
+          debounceValue={1000}
           grayed={is_online}
         />
         {!is_online && addressError && (
@@ -93,7 +93,7 @@ const LocationFields: FC = memo(() => {
             value={postalCode}
             handleChange={handleAddressChange}
             setInitialValue
-            debounceValue={3000}
+            debounceValue={1000}
             grayed={is_online}
           />
           {postalCodeError && (
@@ -110,7 +110,7 @@ const LocationFields: FC = memo(() => {
             value={area}
             handleChange={handleAddressChange}
             setInitialValue
-            debounceValue={3000}
+            debounceValue={1000}
             grayed={is_online}
           />
           {!is_online && areaError && (
@@ -127,7 +127,7 @@ const LocationFields: FC = memo(() => {
             value={city}
             handleChange={handleAddressChange}
             setInitialValue
-            debounceValue={3000}
+            debounceValue={1000}
             grayed={is_online}
           />
           {!is_online && cityError && (
@@ -142,7 +142,7 @@ const LocationFields: FC = memo(() => {
             value={state}
             handleChange={handleAddressChange}
             setInitialValue
-            debounceValue={3000}
+            debounceValue={1000}
             grayed={is_online}
           />
           {!is_online && stateError && (
@@ -158,7 +158,7 @@ const LocationFields: FC = memo(() => {
           value={country}
           handleChange={handleAddressChange}
           setInitialValue
-          debounceValue={3000}
+          debounceValue={1000}
           grayed={is_online}
         />
         {!is_online && countryError && (
