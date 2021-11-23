@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FC, memo } from 'react'
+import { PanelCardContainer } from './index.styled'
 
 interface IPanelCardProps {
   title: string
@@ -11,12 +12,12 @@ interface IPanelCardProps {
   switchButton?: boolean
 }
 
-const PanelCard: FC<IPanelCardProps> = memo(({ title }) => {
+const PanelCard: FC<IPanelCardProps> = memo(({ title, grayColor }) => {
   console.info('hey')
   return (
-    <>
+    <PanelCardContainer $grayColor={!!grayColor}>
       <div>{title}</div>
-    </>
+    </PanelCardContainer>
   )
 })
 
