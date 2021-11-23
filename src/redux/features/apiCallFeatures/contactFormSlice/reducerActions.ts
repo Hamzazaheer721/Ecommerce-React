@@ -1,10 +1,11 @@
 import { CaseReducer } from '@reduxjs/toolkit'
-import { IContactFormInitialState } from './helper'
 import { IContactFormStateType } from './types'
 
-export const resetContactForm: CaseReducer<IContactFormStateType> = (
+export const resetContactFormState: CaseReducer<IContactFormStateType> = (
   state
 ) => {
   // eslint-disable-next-line no-unused-vars
-  state = IContactFormInitialState
+  state.loading = false
+  state.message = ''
+  state.success = false
 }
