@@ -1,11 +1,21 @@
-import { memo } from 'react'
+/* eslint-disable no-unused-vars */
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { FC, memo } from 'react'
 
-const PanelCard = memo(() => {
-  // eslint-disable-next-line no-console
+interface IPanelCardProps {
+  title: string
+  description: string
+  icon: IconProp
+  grayColor: boolean
+  currencyText?: boolean
+  switchButton?: boolean
+}
+
+const PanelCard: FC<IPanelCardProps> = memo(({ title }) => {
   console.info('hey')
   return (
     <>
-      <h4>hey</h4>
+      <div>{title}</div>
     </>
   )
 })
