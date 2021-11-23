@@ -20,7 +20,8 @@ import {
   faBox,
   faUserFriends,
   faUserGraduate,
-  faBadgeCheck
+  faBadgeCheck,
+  faBadgePercent
 } from '@fortawesome/pro-light-svg-icons'
 import Icon from '../../../icon'
 import { SubMenuItem, CustomMenu, IconContainer } from './index.styled'
@@ -92,10 +93,20 @@ const MenuComponent = memo(() => {
           Subscription
         </Menu.Item>
         <Menu.Item
-          key="4"
+          key="15"
           icon={
             <IconContainer>
               <Icon icon={faSlidersV} />
+            </IconContainer>
+          }
+        >
+          Setting
+        </Menu.Item>
+        <Menu.Item
+          key="4"
+          icon={
+            <IconContainer>
+              <Icon icon={faTasks} />
             </IconContainer>
           }
         >
@@ -105,7 +116,7 @@ const MenuComponent = memo(() => {
           key="5"
           icon={
             <IconContainer>
-              <Icon icon={faTasks} />
+              <Icon icon={faFileAlt} />
             </IconContainer>
           }
         >
@@ -115,7 +126,7 @@ const MenuComponent = memo(() => {
           key="6"
           icon={
             <IconContainer>
-              <Icon icon={faFileAlt} />
+              <Icon icon={faFile} />
             </IconContainer>
           }
         >
@@ -125,7 +136,7 @@ const MenuComponent = memo(() => {
           key="7"
           icon={
             <IconContainer>
-              <Icon icon={faFile} />
+              <Icon icon={faCommentsAlt} />
             </IconContainer>
           }
         >
@@ -145,7 +156,7 @@ const MenuComponent = memo(() => {
           key="9"
           icon={
             <IconContainer>
-              <Icon icon={faCommentsAlt} />
+              <Icon icon={faListUl} />
             </IconContainer>
           }
         >
@@ -155,7 +166,7 @@ const MenuComponent = memo(() => {
           key="10"
           icon={
             <IconContainer>
-              <Icon icon={faListUl} />
+              <Icon icon={faBox} />
             </IconContainer>
           }
         >
@@ -165,7 +176,7 @@ const MenuComponent = memo(() => {
           key="11"
           icon={
             <IconContainer>
-              <Icon icon={faBox} />
+              <Icon icon={faUserFriends} />
             </IconContainer>
           }
         >
@@ -175,7 +186,7 @@ const MenuComponent = memo(() => {
           key="12"
           icon={
             <IconContainer>
-              <Icon icon={faUserFriends} />
+              <Icon icon={faUserGraduate} />
             </IconContainer>
           }
         >
@@ -185,7 +196,7 @@ const MenuComponent = memo(() => {
           key="13"
           icon={
             <IconContainer>
-              <Icon icon={faUserGraduate} />
+              <Icon icon={faBadgeCheck} />
             </IconContainer>
           }
         >
@@ -195,7 +206,7 @@ const MenuComponent = memo(() => {
           key="14"
           icon={
             <IconContainer>
-              <Icon icon={faBadgeCheck} />
+              <Icon icon={faBadgePercent} />
             </IconContainer>
           }
         >
