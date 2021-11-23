@@ -10,8 +10,8 @@ export type IContactFormDefaultTypes = {
   is_online: false
   email: string
   mobile_number: string
-  latitude: number
-  longitude: number
+  latitude: string
+  longitude: string
   location: string
   state: string
   area: string
@@ -29,8 +29,8 @@ export type IContactFormIsOnlineTypes = {
   is_online: true
   email: string
   mobile_number: string
-  latitude: number
-  longitude: number
+  latitude: string
+  longitude: string
   website?: string
   location?: string
   state?: string
