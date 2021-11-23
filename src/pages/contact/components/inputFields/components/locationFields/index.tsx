@@ -63,7 +63,7 @@ const LocationFields: FC = memo(() => {
           debounceValue={3000}
           grayed={is_online}
         />
-        {locationError && (
+        {!is_online && locationError && (
           <EmptyErrorState lessenLineHeight="1">
             {locationError}
           </EmptyErrorState>
@@ -80,7 +80,7 @@ const LocationFields: FC = memo(() => {
           debounceValue={3000}
           grayed={is_online}
         />
-        {addressError && (
+        {!is_online && addressError && (
           <EmptyErrorState lessenLineHeight="1">{addressError}</EmptyErrorState>
         )}
       </SingleInputContainer>
@@ -113,7 +113,7 @@ const LocationFields: FC = memo(() => {
             debounceValue={3000}
             grayed={is_online}
           />
-          {areaError && (
+          {!is_online && areaError && (
             <EmptyErrorState lessenLineHeight="1">{areaError}</EmptyErrorState>
           )}
         </InputContainer>
@@ -130,7 +130,7 @@ const LocationFields: FC = memo(() => {
             debounceValue={3000}
             grayed={is_online}
           />
-          {cityError && (
+          {!is_online && cityError && (
             <EmptyErrorState lessenLineHeight="1">{cityError}</EmptyErrorState>
           )}
         </InputContainer>
@@ -145,7 +145,7 @@ const LocationFields: FC = memo(() => {
             debounceValue={3000}
             grayed={is_online}
           />
-          {stateError && (
+          {!is_online && stateError && (
             <EmptyErrorState lessenLineHeight="1">{stateError}</EmptyErrorState>
           )}
         </InputContainer>
@@ -161,7 +161,7 @@ const LocationFields: FC = memo(() => {
           debounceValue={3000}
           grayed={is_online}
         />
-        {countryError && (
+        {!is_online && countryError && (
           <EmptyErrorState lessenLineHeight="1">{countryError}</EmptyErrorState>
         )}
       </SingleInputContainer>
