@@ -15,11 +15,14 @@ import { updateBankInfo } from '../../../redux/features/updateBankInfo/apiAction
 import { isObjectEmpty } from '../../../general/helper'
 import { openModal } from '../../../redux/features/modalSlice'
 import { ArgsProps } from '../../../types/notification/types'
+import { setContactFields } from '../../../redux/features/contactFieldsSlice'
 
 const useBankForm = () => {
   const [inputData, setInputData] = useState<IInputFormType>(
     IInputFormInitialValue
   )
+  const { acc_holder_mobile_number } = inputData
+
   const [errors, setErrors] = useState<IInputformErrorsType>({})
 
   const bankInfoState = useSelector((state: RootState) => state.updateBankInfo)
@@ -65,11 +68,21 @@ const useBankForm = () => {
         str = str.replace(dialCode, '')
         str = str.trim()
       }
-      if (str && `+${_val}` !== inputData.acc_holder_mobile_number) {
-        setInputData({ ...inputData, acc_holder_mobile_number: `+${_val}` })
+      if (!_val) {
+        dispatch(
+          setContactFields({ name: 'acc_holder_mobile_number', value: '' })
+        )
+      }
+      if (str && `+${_val}` !== acc_holder_mobile_number) {
+        dispatch(
+          setContactFields({
+            name: 'acc_holder_mobile_number',
+            value: `+${_val}`
+          })
+        )
       }
     },
-    [inputData.acc_holder_mobile_number]
+    [acc_holder_mobile_number]
   )
 
   const handleSubmit = useCallback(
