@@ -6,6 +6,8 @@ import {
   useEffect
 } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { CheckboxChangeEvent } from 'antd/lib/checkbox'
+
 import { IInputFormInitialValue, validateInputForm } from './helper'
 import { IInputFormType } from './types'
 import { updateBasicInfo } from '../../../../redux/features/updateBasicInfoSlice/apiActions'
@@ -84,13 +86,23 @@ const useStoreForm = () => {
     [inputData]
   )
 
+  const handleCheckChange = useCallback(
+    (e: CheckboxChangeEvent) => {
+      e.stopPropagation()
+      const { name, checked } = e.target
+      setInputData({ ...inputData, [name as string]: checked })
+    },
+    [inputData]
+  )
+
   return {
     handleChange,
     inputData,
     errors,
     handlePhoneChange,
     handleSubmit,
-    handleTextAreaChange
+    handleTextAreaChange,
+    handleCheckChange
   }
 }
 
