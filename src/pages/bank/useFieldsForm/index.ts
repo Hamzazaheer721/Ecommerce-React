@@ -1,15 +1,57 @@
-import { useState, useCallback, ChangeEvent, MouseEvent } from 'react'
-import { useDispatch } from 'react-redux'
-import { IInputFormInitialValue } from './helper'
-import { IInputFormType } from './types'
+import {
+  useState,
+  useCallback,
+  ChangeEvent,
+  MouseEvent,
+  useEffect
+} from 'react'
+import { notification } from 'antd'
+
+import { useDispatch, useSelector } from 'react-redux'
+import { IInputFormInitialValue, validateInputForm } from './helper'
+import { IInputFormType, IInputformErrorsType } from './types'
+import { RootState } from '../../../redux/store'
 import { updateBankInfo } from '../../../redux/features/updateBankInfo/apiActions'
+import { isObjectEmpty } from '../../../general/helper'
+import { openModal } from '../../../redux/features/modalSlice'
+import { ArgsProps } from '../../../types/notification/types'
+import { setContactFields } from '../../../redux/features/contactFieldsSlice'
 
 const useBankForm = () => {
   const [inputData, setInputData] = useState<IInputFormType>(
     IInputFormInitialValue
   )
+  const { acc_holder_mobile_number } = inputData
 
+  const [errors, setErrors] = useState<IInputformErrorsType>({})
+
+  const bankInfoState = useSelector((state: RootState) => state.updateBankInfo)
+  const { message: bankInfoStateMessage, success: bankInfoStateSuccess } =
+    bankInfoState
   const dispatch = useDispatch()
+
+  const openNotification = useCallback(() => {
+    const config: ArgsProps = {
+      message: 'Error',
+      description: bankInfoStateMessage
+    }
+    notification.error(config)
+  }, [bankInfoStateMessage])
+
+  useEffect(() => {
+    if (bankInfoStateSuccess && bankInfoStateMessage) {
+      dispatch(
+        openModal({
+          modalType: 'success',
+          description: bankInfoStateMessage
+        })
+      )
+    }
+    if (!bankInfoStateSuccess && bankInfoStateMessage) {
+      openNotification()
+    }
+  }, [bankInfoStateSuccess, bankInfoStateMessage])
+
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       const { name, value } = e.target
@@ -26,22 +68,35 @@ const useBankForm = () => {
         str = str.replace(dialCode, '')
         str = str.trim()
       }
-      if (str && `+${_val}` !== inputData.acc_holder_mobile_number) {
-        setInputData({ ...inputData, acc_holder_mobile_number: `+${_val}` })
+      if (!_val) {
+        dispatch(
+          setContactFields({ name: 'acc_holder_mobile_number', value: '' })
+        )
+      }
+      if (str && `+${_val}` !== acc_holder_mobile_number) {
+        dispatch(
+          setContactFields({
+            name: 'acc_holder_mobile_number',
+            value: `+${_val}`
+          })
+        )
       }
     },
-    [inputData.acc_holder_mobile_number]
+    [acc_holder_mobile_number]
   )
 
   const handleSubmit = useCallback(
     async (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
-      dispatch(updateBankInfo(inputData))
+      setErrors({})
+      const validateErrors = validateInputForm(inputData)
+      setErrors(validateErrors)
+      isObjectEmpty(validateErrors) && dispatch(updateBankInfo(inputData))
     },
     [inputData]
   )
 
-  return { handleChange, handlePhoneChange, handleSubmit, inputData }
+  return { handleChange, handlePhoneChange, handleSubmit, inputData, errors }
 }
 
 export default useBankForm

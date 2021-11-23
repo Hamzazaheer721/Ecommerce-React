@@ -4,4 +4,5 @@ export type IContactType = {
   email: string
   website: string
   ntn_num: string
+  acc_holder_mobile_number: string
 }
