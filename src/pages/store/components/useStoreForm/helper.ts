@@ -1,5 +1,9 @@
 import { IInputFormType } from './types'
-import { isEmpty } from '../../../../general/validations'
+import {
+  isEmpty,
+  validateName,
+  validatePhoneNumber
+} from '../../../../general/validations'
 import { IStoreProfileErrorType } from '../../../../types/businessProfileStore'
 
 export const IInputFormInitialValue: IInputFormType = {
@@ -19,10 +23,14 @@ export const validateInputForm = (inputData: IInputFormType) => {
 
   if (isEmpty(name)) {
     errors.nameError = 'Please enter your name'
+  } else if (!validateName(name)) {
+    errors.nameError = 'Please enter a valid full name'
   }
 
   if (isEmpty(whatsapp)) {
     errors.whatsappError = 'Please enter your number'
+  } else if (!validatePhoneNumber(whatsapp)) {
+    errors.whatsappError = 'Please enter a valid Whatsapp number'
   }
 
   if (isEmpty(business_url)) {
@@ -40,6 +48,5 @@ export const validateInputForm = (inputData: IInputFormType) => {
   if (isEmpty(description)) {
     errors.descriptionError = 'Please enter description'
   }
-
   return errors
 }

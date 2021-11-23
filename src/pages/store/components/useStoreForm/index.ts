@@ -51,6 +51,7 @@ const useStoreForm = () => {
   const handleSubmit = useCallback(
     async (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
+      setErrors({})
       const validateErrors = validateInputForm(inputData)
       setErrors(validateErrors)
       isObjectEmpty(validateErrors)
