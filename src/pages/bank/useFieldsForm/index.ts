@@ -1,10 +1,20 @@
-import { useState, useCallback, ChangeEvent, MouseEvent } from 'react'
-import { useDispatch } from 'react-redux'
+import {
+  useState,
+  useCallback,
+  ChangeEvent,
+  MouseEvent,
+  useEffect
+} from 'react'
+import { notification } from 'antd'
+
+import { useDispatch, useSelector } from 'react-redux'
 import { IInputFormInitialValue, validateInputForm } from './helper'
 import { IInputFormType, IInputformErrorsType } from './types'
-// import { RootState } from '../../../redux/store'
+import { RootState } from '../../../redux/store'
 import { updateBankInfo } from '../../../redux/features/updateBankInfo/apiActions'
 import { isObjectEmpty } from '../../../general/helper'
+import { openModal } from '../../../redux/features/modalSlice'
+import { ArgsProps } from '../../../types/notification/types'
 
 const useBankForm = () => {
   const [inputData, setInputData] = useState<IInputFormType>(
@@ -12,10 +22,33 @@ const useBankForm = () => {
   )
   const [errors, setErrors] = useState<IInputformErrorsType>({})
 
-  // const bankInfoState = useSelector((state: RootState) => state.updateBankInfo)
-  // const { message: bankInfoStateMessage, success: bankInfoStateSuccess } =
-  //   bankInfoState
+  const bankInfoState = useSelector((state: RootState) => state.updateBankInfo)
+  const { message: bankInfoStateMessage, success: bankInfoStateSuccess } =
+    bankInfoState
   const dispatch = useDispatch()
+
+  const openNotification = useCallback(() => {
+    const config: ArgsProps = {
+      message: 'Error',
+      description: bankInfoStateMessage
+    }
+    notification.error(config)
+  }, [])
+
+  useEffect(() => {
+    if (bankInfoStateSuccess && bankInfoStateMessage) {
+      dispatch(
+        openModal({
+          modalType: 'success',
+          description: bankInfoStateMessage
+        })
+      )
+    }
+    if (!bankInfoStateSuccess && bankInfoStateMessage) {
+      openNotification()
+    }
+  }, [bankInfoStateSuccess, bankInfoStateMessage])
+
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       const { name, value } = e.target
@@ -45,8 +78,7 @@ const useBankForm = () => {
       setErrors({})
       const validateErrors = validateInputForm(inputData)
       setErrors(validateErrors)
-      isObjectEmpty(validateErrors)
-      dispatch(updateBankInfo(inputData))
+      isObjectEmpty(validateErrors) && dispatch(updateBankInfo(inputData))
     },
     [inputData]
   )
