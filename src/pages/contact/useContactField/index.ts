@@ -35,6 +35,7 @@ const useContactFields = () => {
     (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
       e.stopPropagation()
+      setContactFormErrors(dispatchContext, {})
       const {
         city,
         country,
@@ -44,7 +45,6 @@ const useContactFields = () => {
         area,
         state
       } = locAddress
-
       const updatedData: IContactFormType = {
         purpose: 'contact',
         is_online,
@@ -55,8 +55,8 @@ const useContactFields = () => {
         state,
         city,
         country,
-        longitude: geoLocation.mapPosition.lng,
-        latitude: geoLocation.mapPosition.lat,
+        longitude: String(geoLocation.mapPosition.lng),
+        latitude: String(geoLocation.mapPosition.lat),
         ...contactFieldsState
       }
       const _errors: Partial<IContactFormErrorType> =
