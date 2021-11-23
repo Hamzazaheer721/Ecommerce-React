@@ -4,4 +4,5 @@ export type IModalStateType = {
   description?: string
   nextScreen?: string
   methodType?: 'deactivateAccount' | ''
+  callbackOnOK?: () => void
 }

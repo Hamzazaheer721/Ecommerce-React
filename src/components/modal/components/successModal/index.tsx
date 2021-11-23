@@ -21,13 +21,13 @@ const SuccessModal: FC = memo(() => {
   const dispatch = useDispatch()
   const history = useHistory()
 
-  const { modalVisibility, nextScreen, description } = useSelector(
-    (state: RootState) => state.modal
-  )
+  const { modalVisibility, nextScreen, description, callbackOnOK } =
+    useSelector((state: RootState) => state.modal)
 
   const toggleModalState = useCallback(() => {
     dispatch(closeModal())
     nextScreen && history.push(nextScreen)
+    callbackOnOK && callbackOnOK()
   }, [modalVisibility, nextScreen, history])
 
   return (

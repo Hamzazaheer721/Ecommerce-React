@@ -6,6 +6,7 @@ import {
   ContactFormErrorDispatchContext
 } from '../../../context/contactFormErrors.context'
 import { isObjectEmpty } from '../../../general/helper'
+import { resetContactForm } from '../../../redux/features/apiCallFeatures/contactFormSlice'
 import { saveContactFormData } from '../../../redux/features/apiCallFeatures/contactFormSlice/apiActions'
 import { openModal } from '../../../redux/features/modalSlice'
 import { RootState } from '../../../redux/store'
@@ -42,12 +43,17 @@ const useContactFields = () => {
     notification.error(config)
   }, [])
 
+  const _resetContactFormState = useCallback(() => {
+    dispatch(resetContactForm())
+  }, [])
+
   useEffect(() => {
     if (contactFormSuccess && contactFormMessage) {
       dispatch(
         openModal({
           modalType: 'success',
-          description: contactFormMessage
+          description: contactFormMessage,
+          callbackOnOK: _resetContactFormState
         })
       )
     }
