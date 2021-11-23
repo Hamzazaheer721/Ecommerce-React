@@ -18,12 +18,14 @@ export const ModalSlice = createSlice({
       if (payload.description) state.description = payload.description
       if (payload.nextScreen) state.nextScreen = payload.nextScreen
       if (payload.methodType) state.methodType = payload.methodType
+      if (payload.callbackOnOK) state.callbackOnOK = payload.callbackOnOK
     },
     closeModal: (state) => {
       state.description = ''
       state.modalType = ''
       state.modalVisibility = false
       state.nextScreen = ''
+      state.callbackOnOK = undefined
     }
   }
 })

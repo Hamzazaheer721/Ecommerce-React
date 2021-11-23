@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { resetContactForm } from './reducerActions'
+import { resetContactFormState } from './reducerActions'
 import { saveContactFormData } from './apiActions'
 import { IContactFormInitialState } from './helper'
 
@@ -7,7 +7,7 @@ export const contactFormSlice = createSlice({
   name: 'contactForm',
   initialState: IContactFormInitialState,
   reducers: {
-    resetContactFormState: resetContactForm
+    resetContactForm: resetContactFormState
   },
   extraReducers: (builder) => {
     builder
@@ -27,4 +27,4 @@ export const contactFormSlice = createSlice({
   }
 })
 
-export const { resetContactFormState } = contactFormSlice.actions
+export const { resetContactForm } = contactFormSlice.actions
