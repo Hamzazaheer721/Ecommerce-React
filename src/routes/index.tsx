@@ -14,6 +14,7 @@ import Contact from '../pages/contact'
 import businessProfile from '../pages/businessProfile'
 import ManageBranches from '../pages/manageBranches'
 import Setting from '../pages/setting'
+import StoreSettingsRoute from '../pages/storeSettings'
 
 const RouterComponent = memo(() => (
   <Router>
@@ -34,6 +35,7 @@ const RouterComponent = memo(() => (
       <Route exact path="/business-profile" component={businessProfile} />
       <Route exact path="/manage-branches" component={ManageBranches} />
       <Route exact path="/setting" component={Setting} />
+      <Route exact path="/storeSettings" component={StoreSettingsRoute} />
     </Switch>
   </Router>
 ))
