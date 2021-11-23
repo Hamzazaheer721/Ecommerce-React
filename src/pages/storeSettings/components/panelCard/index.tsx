@@ -16,7 +16,7 @@ const PanelCard: FC<IPanelCardProps> = memo(({ title, grayColor }) => {
   console.info('hey')
   return (
     <PanelCardContainer $grayColor={!!grayColor}>
-      <div>{title}</div>
+      <p>{title}</p>
     </PanelCardContainer>
   )
 })
