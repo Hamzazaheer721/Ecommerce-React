@@ -24,9 +24,10 @@ import Select from '../../components/select'
 import ButtonComponent from '../../components/genericButton'
 import useFieldsForm from './useFieldsForm'
 import { optionsArray } from './helper'
+import { EmptyErrorState } from '../../styles/typography'
 
 const ViewComponent = memo(() => {
-  const { handleChange, handlePhoneChange, handleSubmit, inputData } =
+  const { handleChange, handlePhoneChange, handleSubmit, inputData, errors } =
     useFieldsForm()
   const bankNameField = useRef<HTMLInputElement>(null)
   const paypalEmail = useRef<HTMLInputElement>(null)
@@ -39,6 +40,14 @@ const ViewComponent = memo(() => {
 
   const theme = useContext(ThemeContext)
   const { acc_holder_mobile_number } = inputData
+
+  const {
+    acc_holder_name,
+    bank_name,
+    iban_number,
+    payment_method,
+    paypal_email
+  } = errors
   return (
     <Container>
       <LoginViewContainer secondLayout>
@@ -54,6 +63,9 @@ const ViewComponent = memo(() => {
                 label="Payment Method"
                 options={optionsArray}
               />
+              {payment_method && (
+                <EmptyErrorState>{payment_method}</EmptyErrorState>
+              )}
             </InputContainer>
           </InputsContainer>
 
@@ -67,6 +79,9 @@ const ViewComponent = memo(() => {
                 handleChange={handleChange}
                 value={paypalEmail && paypalEmail.current?.value}
               />
+              {paypal_email && (
+                <EmptyErrorState>{paypal_email}</EmptyErrorState>
+              )}
             </InputContainer>
           ) : (
             ''
@@ -81,6 +96,7 @@ const ViewComponent = memo(() => {
               handleChange={handleChange}
               value={bankNameField && bankNameField.current?.value}
             />
+            {bank_name && <EmptyErrorState>{bank_name}</EmptyErrorState>}
           </InputContainer>
 
           <InputContainer>
@@ -92,6 +108,7 @@ const ViewComponent = memo(() => {
               handleChange={handleChange}
               value={ibannumberField && ibannumberField.current?.value}
             />
+            {iban_number && <EmptyErrorState>{iban_number}</EmptyErrorState>}
           </InputContainer>
           <InputContainer>
             <Input
@@ -104,6 +121,9 @@ const ViewComponent = memo(() => {
                 accountholdernameField && accountholdernameField.current?.value
               }
             />
+            {acc_holder_name && (
+              <EmptyErrorState>{acc_holder_name}</EmptyErrorState>
+            )}
           </InputContainer>
           <InputContainer>
             <Input

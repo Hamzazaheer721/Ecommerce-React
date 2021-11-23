@@ -1,14 +1,20 @@
 import { useState, useCallback, ChangeEvent, MouseEvent } from 'react'
 import { useDispatch } from 'react-redux'
-import { IInputFormInitialValue } from './helper'
-import { IInputFormType } from './types'
+import { IInputFormInitialValue, validateInputForm } from './helper'
+import { IInputFormType, IInputformErrorsType } from './types'
+// import { RootState } from '../../../redux/store'
 import { updateBankInfo } from '../../../redux/features/updateBankInfo/apiActions'
+import { isObjectEmpty } from '../../../general/helper'
 
 const useBankForm = () => {
   const [inputData, setInputData] = useState<IInputFormType>(
     IInputFormInitialValue
   )
+  const [errors, setErrors] = useState<IInputformErrorsType>({})
 
+  // const bankInfoState = useSelector((state: RootState) => state.updateBankInfo)
+  // const { message: bankInfoStateMessage, success: bankInfoStateSuccess } =
+  //   bankInfoState
   const dispatch = useDispatch()
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -36,12 +42,16 @@ const useBankForm = () => {
   const handleSubmit = useCallback(
     async (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
+      setErrors({})
+      const validateErrors = validateInputForm(inputData)
+      setErrors(validateErrors)
+      isObjectEmpty(validateErrors)
       dispatch(updateBankInfo(inputData))
     },
     [inputData]
   )
 
-  return { handleChange, handlePhoneChange, handleSubmit, inputData }
+  return { handleChange, handlePhoneChange, handleSubmit, inputData, errors }
 }
 
 export default useBankForm

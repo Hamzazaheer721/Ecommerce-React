@@ -75,3 +75,9 @@ export const validateAlphabets = (name: string) => {
   const re = /^[a-z A-Z]{3,20}$/
   return re.test(name)
 }
+
+// IBAN check
+export const validateIban = (iban: string) => {
+  const re = /^[a-z A-Z]{5,34}$/
+  return re.test(iban)
+}
