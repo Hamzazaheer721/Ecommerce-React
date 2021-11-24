@@ -4,6 +4,7 @@ import { Collapse } from 'antd'
 import { faCog, faShippingTimed, faTag } from '@fortawesome/pro-light-svg-icons'
 import { Container } from './index.styled'
 import PanelHeader from './components/panelHeader'
+import SettingsContainer from './components/settingsContainer'
 
 const ViewComponent: FC = memo(() => {
   const { Panel } = Collapse
@@ -12,7 +13,7 @@ const ViewComponent: FC = memo(() => {
     <Container>
       <Collapse expandIconPosition="right" defaultActiveKey={['1']} accordion>
         <Panel header={<PanelHeader icon={faCog} title="Setting" />} key="1">
-          <p>test</p>
+          <SettingsContainer />
         </Panel>
         <Panel
           header={<PanelHeader icon={faShippingTimed} title="Shipping" />}

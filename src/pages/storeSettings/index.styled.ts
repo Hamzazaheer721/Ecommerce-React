@@ -14,6 +14,10 @@ export const Container = styled.div`
     border-radius: 8px; /* It is wrapping border radius of ant-collapse-header */
   }
 
+  .ant-collapse-content > .ant-collapse-content-box{
+    padding: 0px !important;
+  }
+
   .ant-collapse-item-active{
     .ant-collapse-header{
       border-radius: 0px;
