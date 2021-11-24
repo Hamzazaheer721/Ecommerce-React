@@ -8,7 +8,8 @@ import {
   PanelCardLeftContainer,
   PanelCardRightContainer,
   PanelCardRightContainerDescription,
-  PanelCardRightHeaderContainer
+  PanelCardRightHeaderContainer,
+  PanelRightContainerTitle
 } from './index.styled'
 import './styles.css'
 
@@ -35,7 +36,7 @@ const PanelCard: FC<IPanelCardProps> = memo(
         </PanelCardLeftContainer>
         <PanelCardRightContainer>
           <PanelCardRightHeaderContainer>
-            <>{title}</>
+            <PanelRightContainerTitle>{title}</PanelRightContainerTitle>
             <>
               {switchButton && <SwitchButton size="small" />}
               {currencyText && <span>PKR</span>}

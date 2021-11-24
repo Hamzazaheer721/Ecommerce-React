@@ -13,7 +13,9 @@ export const PanelCardContainer = styled.div<IPanelCardContainerProps>`
   padding: 10px 30px;
   gap: 10px;
 `
-export const PanelCardLeftContainer = styled.div``
+export const PanelCardLeftContainer = styled.div`
+  flex-basis: 20px;
+`
 
 export const PanelCardRightContainer = styled.div`
   flex: 1 1 100%;
@@ -30,4 +32,9 @@ export const PanelCardRightHeaderContainer = styled.div`
 export const PanelCardRightContainerDescription = styled.span`
   color: ${(props) => props.theme.color.darkGray};
   padding-right: 3rem;
+  font-size: 12px;
+`
+export const PanelRightContainerTitle = styled.span`
+  font-size: 14px;
+  color: #333333;
 `
