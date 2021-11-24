@@ -6,10 +6,9 @@ import { memo, FC, useCallback, useEffect } from 'react'
 import 'antd/dist/antd.css'
 import { faCheck } from '@fortawesome/pro-light-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
 
 // import { useHistory } from 'react-router-dom'
-import { closeModal } from '../../../../redux/features/modalSlice'
+import { closeModal, openModal } from '../../../../redux/features/modalSlice'
 import { deactivateUser } from '../../../../redux/features/deactivateUserSlice/apiActions'
 import { deleteUser } from '../../../../redux/features/deleteUserSlice/apiActions'
 import { RootState } from '../../../../redux/store'
@@ -24,7 +23,6 @@ import {
 } from './index.styled'
 
 const AlertModal: FC = memo(() => {
-  const { push } = useHistory()
   const dispatch = useDispatch()
 
   const { modalVisibility, description, methodType } = useSelector(
@@ -36,8 +34,6 @@ const AlertModal: FC = memo(() => {
   const { deleteUserStatus } = useSelector(
     (state: RootState) => state.deleteUser
   )
-  const user = localStorage.getItem('user')
-  const { email } = JSON.parse(String(user))
 
   const cancelModalState = useCallback(() => {
     dispatch(closeModal())
@@ -47,26 +43,40 @@ const AlertModal: FC = memo(() => {
     switch (methodType) {
       case 'deactivateAccount':
         return dispatch(deactivateUser())
-      case 'deleteAccount':
+      case 'deleteAccount': {
+        const user = localStorage.getItem('user')
+        const { email } = user && JSON.parse(String(user))
         return dispatch(deleteUser(email))
+      }
       default:
         return null
     }
   }, [])
 
   useEffect(() => {
-    if (deactivateStatus) {
-      cancelModalState()
-      push('/login')
-    }
-  }, [deactivateStatus])
-
-  useEffect(() => {
     if (deleteUserStatus) {
       cancelModalState()
-      push('/login')
+      dispatch(
+        openModal({
+          modalType: 'success',
+          description: 'Successfully deleted & Logged Out',
+          nextScreen: '/login'
+        })
+      )
     }
   }, [deleteUserStatus])
+
+  useEffect(() => {
+    if (deactivateStatus) {
+      dispatch(
+        openModal({
+          modalType: 'success',
+          description: 'Successfully deactivated & Logged Out',
+          nextScreen: '/login'
+        })
+      )
+    }
+  }, [deactivateStatus])
 
   return (
     <>

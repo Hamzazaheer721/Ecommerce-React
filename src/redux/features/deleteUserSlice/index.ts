@@ -13,6 +13,8 @@ export const deleteUserSlice = createSlice({
         state.deleteUserStatus = true
         state.message = payload.message
         state.success = payload.success
+        localStorage.removeItem('user')
+        localStorage.removeItem('token')
       })
       .addCase(deleteUser.pending, (state) => {
         state.loading = true
