@@ -14,6 +14,7 @@ import { updateBankInfoSlice } from '../features/updateBankInfo'
 import { deactivateUserSlice } from '../features/deactivateUserSlice'
 import { updateBasicInfoSlice } from '../features/updateBasicInfoSlice'
 import { contactFormSlice } from '../features/apiCallFeatures/contactFormSlice'
+import { deleteUserSlice } from '../features/deleteUserSlice'
 
 export const reducers = combineReducers({
   user: userSigninSlice.reducer,
@@ -30,5 +31,6 @@ export const reducers = combineReducers({
   deactivateUser: deactivateUserSlice.reducer,
   contactFields: contactFieldSlice.reducer,
   updateBasicInfo: updateBasicInfoSlice.reducer,
-  contactForm: contactFormSlice.reducer
+  contactForm: contactFormSlice.reducer,
+  deleteUser: deleteUserSlice.reducer
 })

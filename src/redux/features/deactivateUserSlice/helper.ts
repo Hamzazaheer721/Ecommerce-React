@@ -4,5 +4,5 @@ export const initialState: IDeactivateUserStateType = {
   loading: false,
   success: false,
   message: '',
-  status: false
+  deactivateStatus: false
 }

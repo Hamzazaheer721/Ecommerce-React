@@ -54,11 +54,28 @@ const useUserProfileForm = () => {
     []
   )
 
+  const deleteModalHandler = useCallback(
+    // eslint-disable-next-line no-unused-vars
+    (e: MouseEvent<HTMLHeadingElement>) => {
+      dispatch(
+        openModal({
+          modalType: 'alert',
+          description:
+            'You will lose all your data by deleting your account. This action cannot be undone',
+          nextScreen: '/login',
+          methodType: 'deleteAccount'
+        })
+      )
+    },
+    []
+  )
+
   return {
     handleChange,
     handlePhoneChange,
     handleSubmit,
     deactivateModalHandler,
+    deleteModalHandler,
     inputData
   }
 }

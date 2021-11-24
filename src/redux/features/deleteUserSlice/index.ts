@@ -1,23 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { initialState } from './helper'
-import { deactivateUser } from './apiActions'
+import { deleteUser } from './apiActions'
 
-export const deactivateUserSlice = createSlice({
-  name: 'deactivate',
+export const deleteUserSlice = createSlice({
+  name: 'delete',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(deactivateUser.fulfilled, (state, { payload }) => {
+      .addCase(deleteUser.fulfilled, (state, { payload }) => {
         state.loading = false
-        state.deactivateStatus = true
+        state.deleteUserStatus = true
         state.message = payload.message
         state.success = payload.success
+        localStorage.removeItem('user')
+        localStorage.removeItem('token')
       })
-      .addCase(deactivateUser.pending, (state) => {
+      .addCase(deleteUser.pending, (state) => {
         state.loading = true
       })
-      .addCase(deactivateUser.rejected, (state, { payload }) => {
+      .addCase(deleteUser.rejected, (state, { payload }) => {
         if (payload) {
           state.loading = false
           state.message = payload.message
