@@ -39,9 +39,9 @@ import {
 } from './index.styled'
 import ProfileImage from '../profileImage'
 import Input from '../../../components/input'
-import useUserProfileForm from '../useUserProfileForm'
 import { MapContainer, ButtonContainer } from '../../../styles/global'
 import GenericButton from '../../../components/genericButton'
+import useUserProfileForm from '../useUserProfileForm'
 
 const UserProfile = memo(() => {
   const {
