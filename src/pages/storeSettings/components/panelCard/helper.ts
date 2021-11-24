@@ -12,7 +12,8 @@ export const panelCardBlock: IPanelCardType[] = [
     switchButton: true,
     currencyText: false,
     description: 'Enable/Disable store on our listings page.',
-    grayColor: false
+    grayColor: false,
+    checkboxes: false
   },
   {
     icon: faMoneyBill,
@@ -20,7 +21,8 @@ export const panelCardBlock: IPanelCardType[] = [
     switchButton: true,
     currencyText: false,
     description: 'Enable/Disable cash on delivery for orders.',
-    grayColor: true
+    grayColor: true,
+    checkboxes: false
   },
   {
     icon: faFileInvoiceDollar,
@@ -29,7 +31,8 @@ export const panelCardBlock: IPanelCardType[] = [
     currencyText: false,
     description:
       'A charge of 10% (incl. VAT) transaction fee will be levied per order. Enable/ Disable whether this would be charged on the customer side.',
-    grayColor: false
+    grayColor: false,
+    checkboxes: false
   },
   {
     icon: faMoneyBill,
@@ -38,6 +41,15 @@ export const panelCardBlock: IPanelCardType[] = [
     switchButton: false,
     description:
       'A currency conversion fee will apply to your transactions if your currency is different than your payout currency.',
-    grayColor: true
+    grayColor: true,
+    checkboxes: false
+  },
+  {
+    checkboxes: true,
+    title: 'Service Options',
+    icon: faFileInvoiceDollar,
+    grayColor: false,
+    currencyText: false,
+    switchButton: false
   }
 ]

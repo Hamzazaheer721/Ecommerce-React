@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Checkbox } from 'antd'
 import { device } from '../../styles/devices'
 
@@ -7,6 +7,7 @@ interface ICheckboxProps {
   borderRadius: string
   border: string
   width: string
+  labelSize?: string
 }
 
 export const CustomCheckBox = styled(Checkbox)<Partial<ICheckboxProps>>`
@@ -45,4 +46,14 @@ export const CustomCheckBox = styled(Checkbox)<Partial<ICheckboxProps>>`
     }
   }
 `
-export const Container = styled.div``
+export const Container = styled.div<{ labelSize?: string, labelColor?: string}>`
+  ${({ labelSize, labelColor }) => labelSize &&
+    css`
+      & {
+        .ant-checkbox-wrapper {
+          font-size: ${labelSize} !important;
+          color: ${labelColor}
+        }
+      }
+    `}
+`
