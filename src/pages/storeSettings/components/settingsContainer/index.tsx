@@ -8,6 +8,7 @@ const SettingsContainer: FC = memo(() => (
   <PanelSettingsContainer>
     {panelCardBlock.map((_card: IPanelCardType) => (
       <PanelCard
+        checkboxes={_card.checkboxes}
         title={_card.title}
         icon={_card.icon}
         currencyText={_card.currencyText}
