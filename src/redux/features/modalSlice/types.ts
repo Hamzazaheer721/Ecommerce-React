@@ -3,6 +3,6 @@ export type IModalStateType = {
   modalType: 'success' | 'discount' | 'order' | 'alert' | ''
   description?: string
   nextScreen?: string
-  methodType?: 'deactivateAccount' | ''
+  methodType?: 'deactivateAccount' | 'deleteAccount' | ''
   callbackOnOK?: () => void
 }

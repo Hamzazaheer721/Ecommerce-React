@@ -49,6 +49,7 @@ const UserProfile = memo(() => {
     handlePhoneChange,
     handleSubmit,
     deactivateModalHandler,
+    deleteModalHandler,
     inputData
   } = useUserProfileForm()
   const nameField = useRef<HTMLInputElement>(null)
@@ -166,7 +167,7 @@ const UserProfile = memo(() => {
           <SimpleIcon icon={faUserMinus} />
           Deactivate Account
         </LinkText>
-        <DeleteLinkText>
+        <DeleteLinkText onClick={deleteModalHandler}>
           <SimpleIcon icon={faUser} />
           Delete Account
         </DeleteLinkText>

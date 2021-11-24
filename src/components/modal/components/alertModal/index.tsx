@@ -11,6 +11,7 @@ import { useHistory } from 'react-router-dom'
 // import { useHistory } from 'react-router-dom'
 import { closeModal } from '../../../../redux/features/modalSlice'
 import { deactivateUser } from '../../../../redux/features/deactivateUserSlice/apiActions'
+import { deleteUser } from '../../../../redux/features/deleteUserSlice/apiActions'
 import { RootState } from '../../../../redux/store'
 import {
   NotificationIcon,
@@ -25,13 +26,18 @@ import {
 const AlertModal: FC = memo(() => {
   const { push } = useHistory()
   const dispatch = useDispatch()
-  // const history = useHistory()
 
   const { modalVisibility, description, methodType } = useSelector(
     (state: RootState) => state.modal
   )
-
-  const { status } = useSelector((state: RootState) => state.deactivateUser)
+  const { deactivateStatus } = useSelector(
+    (state: RootState) => state.deactivateUser
+  )
+  const { deleteUserStatus } = useSelector(
+    (state: RootState) => state.deleteUser
+  )
+  const user = localStorage.getItem('user')
+  const { email } = JSON.parse(String(user))
 
   const cancelModalState = useCallback(() => {
     dispatch(closeModal())
@@ -41,17 +47,26 @@ const AlertModal: FC = memo(() => {
     switch (methodType) {
       case 'deactivateAccount':
         return dispatch(deactivateUser())
+      case 'deleteAccount':
+        return dispatch(deleteUser(email))
       default:
         return null
     }
   }, [])
 
   useEffect(() => {
-    if (status) {
+    if (deactivateStatus) {
       cancelModalState()
       push('/login')
     }
-  }, [status])
+  }, [deactivateStatus])
+
+  useEffect(() => {
+    if (deleteUserStatus) {
+      cancelModalState()
+      push('/login')
+    }
+  }, [deleteUserStatus])
 
   return (
     <>

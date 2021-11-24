@@ -11,7 +11,7 @@ export type IDeactivateUserRejectPayload = {
 
 export type IDeactivateUserStateType = {
   loading: boolean
-  status: boolean
+  deactivateStatus: boolean
   success: boolean
   message: string
 }
