@@ -1,12 +1,15 @@
 /* eslint-disable no-unused-vars */
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { FC, memo, useCallback } from 'react'
+import { FC, memo, useCallback, useContext } from 'react'
+import { ThemeContext } from 'styled-components'
+import Checkbox from '../../../../components/checkbox'
 import SwitchButton from '../../../../components/switchButton'
 import {
   PanelCardContainer,
   PanelCardLeftContainer,
   PanelCardRightContainer,
+  PanelCardRightContainerCheckboxContainer,
   PanelCardRightContainerDescription,
   PanelCardRightHeaderContainer,
   PanelRightContainerTitle
@@ -37,6 +40,7 @@ const PanelCard: FC<IPanelCardProps> = memo(
       (_desc) => _desc.replace('10%', '<b class="bold">10%</b>'),
       []
     )
+    const theme = useContext(ThemeContext)
 
     return (
       <PanelCardContainer $grayColor={!!grayColor}>
@@ -60,12 +64,26 @@ const PanelCard: FC<IPanelCardProps> = memo(
             ) : (
               <>{description}</>
             )}
-            {checkboxes && (
-              <>
-                <span>checkboxes</span>
-              </>
-            )}
           </PanelCardRightContainerDescription>
+          {checkboxes && (
+            <PanelCardRightContainerCheckboxContainer>
+              <Checkbox
+                label="Delivery"
+                labelSize="12px"
+                labelColor={theme.color.darkGray}
+              />
+              <Checkbox
+                label="Dine In"
+                labelSize="12px"
+                labelColor={theme.color.darkGray}
+              />
+              <Checkbox
+                label="Pick Up"
+                labelSize="12px"
+                labelColor={theme.color.darkGray}
+              />
+            </PanelCardRightContainerCheckboxContainer>
+          )}
         </PanelCardRightContainer>
       </PanelCardContainer>
     )
