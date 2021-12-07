@@ -6,6 +6,16 @@
 import { GOOGLE_MAP_API_KEY } from '../config/constants'
 import { IGeoIntializeCustomData } from '../types/geoLocation'
 
+export const getFirstKey = (_obj: any): string => {
+  let _key: string = '';
+  // eslint-disable-next-line guard-for-in
+  for (const k in _obj) {
+    _key = k
+    break;
+  }
+  return _key
+}
+
 export const isObjectEmpty = (obj: any): boolean => {
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) return false
