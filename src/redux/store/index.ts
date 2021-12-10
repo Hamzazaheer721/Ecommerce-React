@@ -16,7 +16,7 @@ import { reducers } from '../reducers'
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['registerUser', 'forgotPassword'] // only registerUser will be persisted
+  whitelist: ['registerUser', 'forgotPassword'] // only registerUser and forgot Password will be persisted
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers)
