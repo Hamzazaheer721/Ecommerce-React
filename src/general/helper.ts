@@ -6,7 +6,7 @@
 import { GOOGLE_MAP_API_KEY } from '../config/constants'
 import { IGeoIntializeCustomData } from '../types/geoLocation'
 
-export const getFirstKey = (_obj: any): string => {
+export const getFirstKey = <T extends object> (_obj: T): string => {
   let _key: string = '';
   // eslint-disable-next-line guard-for-in
   for (const k in _obj) {
@@ -16,7 +16,7 @@ export const getFirstKey = (_obj: any): string => {
   return _key
 }
 
-export const isObjectEmpty = (obj: any): boolean => {
+export const isObjectEmpty = <T extends object>(obj: T): boolean => {
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) return false
   }
